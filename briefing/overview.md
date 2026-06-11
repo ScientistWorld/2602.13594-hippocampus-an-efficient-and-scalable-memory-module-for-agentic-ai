@@ -1,14 +1,5 @@
 # Overview
 
-- **Paper ID:** <!-- e.g. 1706.03762 -->
-- **Title:** <!-- e.g. Attention Is All You Need -->
-- **Domain:** <!-- e.g. Computer Vision / Object Detection -->
-- **TL;DR:** <!-- One sentence: what this paper does and why it matters -->
+The paper proposes HIPPOCAMPUS, an efficient memory substrate for agentic AI. Instead of dense vector databases or knowledge graphs, it uses compact binary token signatures for semantic search and a lossless token-ID stream for exact content reconstruction. Both streams are indexed by Dynamic Wavelet Matrices.
 
-## Short Summary
-
-<!-- 3-5 sentences covering the problem, approach, and main findings -->
-
-## Key Results
-
-<!-- 2-3 bullet points: main findings or numbers in bullet points -->
+The central claim is that this compressed-domain memory can preserve retrieval quality while reducing search latency and retrieved-token cost. This workspace reproduces the core mechanism on a portable long-memory QA benchmark and scores both accuracy and efficiency constraints.

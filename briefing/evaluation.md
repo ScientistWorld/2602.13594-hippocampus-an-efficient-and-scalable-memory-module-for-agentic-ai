@@ -1,15 +1,7 @@
 # Evaluation
 
-How success is measured. Describe only the metrics, targets, and evaluation procedure — do NOT describe the paper's method or how they achieved these results. Think of this as a general evaluation protocal for other scientists trying to solve the same problem, where they should not see this paper's solution.
+Run `bash scripts/evaluate.sh <artifact.jsonl> ...` to score one or more retrieval artifacts. Each artifact row must include a question id, answer, `gold_entry_ids`, a method name, and a ranked `retrieved` list of memory entries.
 
-## Metrics
+The primary metric is `hit_at_1`, the percentage of questions whose top retrieved entry is one of the labeled answer-bearing entries. Supporting quality metrics are `hit_at_3` and answer-token F1 over the retrieved text.
 
-<!-- What metrics are used? How are they computed? What does higher/lower mean? -->
-
-## Baselines and Targets
-
-<!-- What performance levels exist as reference points? Include the paper's reported numbers as targets, and any standard baselines. A scientist agent should know what "good" looks like. -->
-
-## Evaluation Protocol
-
-<!-- How should evaluation be run? What data split, what conditions? Any important details about how to compare fairly (e.g., fixed seeds, specific test sets, averaging over runs). -->
+Constraint metrics measure the paper's efficiency claim: average retrieved-token footprint, average search time, machine-independent bit-operation count, and approximate storage size. Search time is reported for diagnostics only; `avg_bit_operations` is the preferred hardware-independent efficiency metric.

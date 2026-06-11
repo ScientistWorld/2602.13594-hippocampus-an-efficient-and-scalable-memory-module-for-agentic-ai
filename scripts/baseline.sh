@@ -11,10 +11,16 @@
 # You can decide what this baseline script should do yourself.
 #
 # Usage:
-#   bash scripts/baseline.sh <name>
+#   bash scripts/baseline.sh
 
 set -e
 
 cd /home/user
 
-# TODO: run baseline
+mkdir -p outputs
+python baseline/lexical_retriever.py \
+  --data data/memory_qa.json \
+  --output-dir outputs/lexical_baseline \
+  --top-k 3
+
+bash scripts/evaluate.sh outputs/lexical_baseline/retrieval_results.jsonl

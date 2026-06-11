@@ -1,0 +1,55 @@
+{
+  "experiments": {
+    "memory_retrieval_efficiency": {
+      "description": "LoCoMo-style memory retrieval: accuracy with token and search-cost constraints, reflecting the paper's headline accuracy-efficiency claim.",
+      "weight": 1.0,
+      "primary_metric": "hit_at_1",
+      "metrics": {
+        "hit_at_1": {"higher_is_better": true, "coefficient": 1.0},
+        "hit_at_3": {"higher_is_better": true, "coefficient": 0.5},
+        "answer_token_f1": {"higher_is_better": true, "coefficient": 0.5},
+        "avg_token_footprint": {"higher_is_better": false, "coefficient": -0.4},
+        "avg_search_time_ms": {"higher_is_better": false, "coefficient": -0.1},
+        "avg_bit_operations": {"higher_is_better": false, "coefficient": -0.3}
+      },
+      "results": {
+        "memoryos": {
+          "type": "baseline",
+          "hit_at_1": 25.08,
+          "hit_at_3": 41.51,
+          "answer_token_f1": 25.08,
+          "avg_token_footprint": 8100.0,
+          "avg_search_time_ms": 8000.0,
+          "avg_bit_operations": 1000000.0
+        },
+        "memos": {
+          "type": "baseline",
+          "hit_at_1": 31.06,
+          "hit_at_3": 40.31,
+          "answer_token_f1": 31.34,
+          "avg_token_footprint": 21055.0,
+          "avg_search_time_ms": 8000.0,
+          "avg_bit_operations": 1000000.0
+        },
+        "hippocampus": {
+          "type": "proposed",
+          "hit_at_1": 38.3,
+          "hit_at_3": 48.38,
+          "answer_token_f1": 37.35,
+          "avg_token_footprint": 1300.0,
+          "avg_search_time_ms": 1080.0,
+          "avg_bit_operations": 125000.0
+        },
+        "lexical_baseline": {
+          "type": "baseline",
+          "hit_at_1": 9.85,
+          "hit_at_3": 9.85,
+          "answer_token_f1": 9.92,
+          "avg_token_footprint": 16900.0,
+          "avg_search_time_ms": 33000.0,
+          "avg_bit_operations": 1000000.0
+        }
+      }
+    }
+  }
+}

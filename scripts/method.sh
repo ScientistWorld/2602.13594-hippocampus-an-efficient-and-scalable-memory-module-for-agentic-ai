@@ -10,5 +10,14 @@ set -e
 
 cd /home/user
 
-# TODO: run the paper's method
-# TODO: call scripts/evaluate.sh to score
+mkdir -p outputs
+python method/hippocampus.py \
+  --data data/memory_qa.json \
+  --output-dir outputs/hippocampus \
+  --dimension 512 \
+  --signature-bits 32 \
+  --radius 7 \
+  --window 2 \
+  --top-k 3
+
+bash scripts/evaluate.sh outputs/hippocampus/retrieval_results.jsonl

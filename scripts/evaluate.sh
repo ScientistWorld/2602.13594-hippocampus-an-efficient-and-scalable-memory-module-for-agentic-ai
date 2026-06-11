@@ -15,8 +15,8 @@
 # This file is read by the system for automated comparison.
 #
 # Example usage:
-#   ./evaluate.sh <method_and_run_name>                             # evaluate with defaults
-#   ./evaluate.sh <method_and_run_name> checkpoints/epoch_10.pt     # evaluate a specific checkpoint
+#   bash scripts/evaluate.sh outputs/hippocampus/retrieval_results.jsonl
+#   bash scripts/evaluate.sh outputs/hippocampus/retrieval_results.jsonl outputs/lexical_baseline/retrieval_results.jsonl
 #
 # Called from run.sh after training, or independently.
 
@@ -26,5 +26,8 @@ cd /home/user
 
 mkdir -p scoring
 
-# TODO: implement evaluation using code in eval/
-# Must write scoring/scores.json at the end
+if [ "$#" -eq 0 ]; then
+  set -- outputs/hippocampus/retrieval_results.jsonl
+fi
+
+python eval/evaluate_retrieval.py --artifacts "$@" --output scoring/scores.json

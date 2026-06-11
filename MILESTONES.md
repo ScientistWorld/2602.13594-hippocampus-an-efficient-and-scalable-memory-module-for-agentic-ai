@@ -1,21 +1,17 @@
 # Reproduction Milestones
 
-**Current: none**
-
-<!-- Milestone levels (update "Current" above as you progress):
-  none             — just started, no meaningful progress yet
-  method_runs      — the paper's method executes end-to-end without errors
-  core_claim       — minimum experiment supports the paper's central claim
-  core_claim_plus  — core claim reproduced on additional settings
-  secondary_claims — secondary results or contributions reproduced
-  majority         — more than half of reported results reproduced
-  near_complete    — most results reproduced, only minor gaps remain
-  full             — all reported results reproduced
--->
+**Current: method_runs**
 
 ## Progress Log
 
-<!-- Write your progress here -->
+### [2026-06-11 20:35] - none
+- Read the paper and identified the core method: dual Dynamic Wavelet Matrices, sparse random indexing, Hamming-ball search, metadata validation, and exact token reconstruction.
+- Confirmed by web search that no public implementation was available.
+
+### [2026-06-11 21:10] - method_runs
+- Implemented the paper's actual memory algorithm in `method/hippocampus.py`.
+- Verified DWM `access`, `rank`, and `select` on a small sequence.
+- Ran local smoke tests showing the method executes end-to-end on the generated memory QA benchmark.
 
 ## Stop Justification
-- Completed at milestone `none`.
+- Not stopped. A scheduler job is being submitted to produce the authoritative scores.

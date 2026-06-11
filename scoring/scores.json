@@ -1,0 +1,24 @@
+{
+  "experiments": {
+    "memory_retrieval_efficiency": {
+      "results": {
+        "hippocampus": {
+          "hit_at_1": 58.333333333333336,
+          "hit_at_3": 88.88888888888889,
+          "answer_token_f1": 3.5973447711920965,
+          "avg_token_footprint": 63.94444444444444,
+          "avg_search_time_ms": 174.95410327723624,
+          "avg_bit_operations": 41993.75
+        },
+        "lexical_baseline": {
+          "hit_at_1": 72.22222222222223,
+          "hit_at_3": 100.0,
+          "answer_token_f1": 0.7273665142295409,
+          "avg_token_footprint": 54.833333333333336,
+          "avg_search_time_ms": 1.050381099452756,
+          "avg_bit_operations": 72000.0
+        }
+      }
+    }
+  }
+}

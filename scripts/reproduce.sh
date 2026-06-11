@@ -18,7 +18,22 @@ set -e
 
 cd /home/user
 
-# TODO: implement full reproduction pipeline
-# e.g.:
-#   bash scripts/baseline.sh
-#   bash scripts/method.sh
+bash scripts/download.sh
+
+mkdir -p outputs
+python baseline/lexical_retriever.py \
+  --data data/memory_qa.json \
+  --output-dir outputs/lexical_baseline \
+  --top-k 3
+python method/hippocampus.py \
+  --data data/memory_qa.json \
+  --output-dir outputs/hippocampus \
+  --dimension 512 \
+  --signature-bits 32 \
+  --radius 7 \
+  --window 2 \
+  --top-k 3
+
+bash scripts/evaluate.sh \
+  outputs/hippocampus/retrieval_results.jsonl \
+  outputs/lexical_baseline/retrieval_results.jsonl
