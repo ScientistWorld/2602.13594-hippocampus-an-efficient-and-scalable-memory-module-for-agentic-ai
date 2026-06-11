@@ -15,9 +15,11 @@
 # This reproduction has no external downloads. It regenerates the portable
 # workspace-local benchmark if needed.
 
-set -e
+set -euo pipefail
 
-cd /home/user
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
+mkdir -p data/downloads
 
 # The public LoCoMo/LongMemEval evaluation harnesses used in the paper are not
 # bundled with this workspace. The gym uses a deterministic, tracked
