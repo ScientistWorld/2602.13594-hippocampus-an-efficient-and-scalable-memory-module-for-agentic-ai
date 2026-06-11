@@ -7,7 +7,7 @@
           "hit_at_3": 97.22222222222223,
           "answer_token_f1": 3.8692944816020027,
           "avg_token_footprint": 61.5,
-          "avg_search_time_ms": 133.5645123197335,
+          "avg_search_time_ms": 110.25358976459958,
           "avg_bit_operations": 5249.736111111111
         },
         "recency_baseline": {
@@ -15,7 +15,7 @@
           "hit_at_3": 0.0,
           "answer_token_f1": 0.0,
           "avg_token_footprint": 39.0,
-          "avg_search_time_ms": 0.01938501817575242,
+          "avg_search_time_ms": 0.02053986140203455,
           "avg_bit_operations": 45.0
         }
       }
