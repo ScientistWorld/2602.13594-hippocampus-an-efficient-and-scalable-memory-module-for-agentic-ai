@@ -5,14 +5,18 @@
         "hippocampus": {
           "hit_at_1": 43.05555555555556,
           "hit_at_3": 62.5,
+          "gold_entry_recall": 62.5,
           "answer_token_f1": 2.547911848915302,
+          "worst_category_hit_at_1": 37.5,
           "avg_token_footprint": 62.68055555555556,
           "avg_bit_operations": 7640.375
         },
         "recency_baseline": {
           "hit_at_1": 0.0,
           "hit_at_3": 0.0,
+          "gold_entry_recall": 0.0,
           "answer_token_f1": 0.0,
+          "worst_category_hit_at_1": 0.0,
           "avg_token_footprint": 39.0,
           "avg_bit_operations": 63.0
         }

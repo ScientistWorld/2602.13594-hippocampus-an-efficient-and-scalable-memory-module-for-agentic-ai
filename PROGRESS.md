@@ -9,6 +9,7 @@
 - Follow-up integrity pass fixed two risks: the evaluator now reloads gold answers and gold entry IDs from `data/memory_qa.json`, and HIPPOCAMPUS no longer uses exact content-token reranking. Candidate span validation uses Signature-DWM `rank` checks as described in the paper.
 - CPU validation job `3ddccb10-194` exposed a clean-container packaging bug in the DWM self-test: direct execution of `method/wavelet_selftest.py` did not place the repository root on `sys.path`. The self-test now inserts the root explicitly and passes under `env -i`.
 - Retry job `d64d2a90-2ab` completed successfully in the clean container, confirming the full `scripts/run.sh` workflow after the import fix.
+- Main evaluator hardening now matches the declared scoring contract: it rejects cross-conversation retrieval, duplicate entries, unknown entry IDs, and outputs larger than top-3. It also writes `gold_entry_recall` and `worst_category_hit_at_1` into `scoring/scores.json`.
 
 ## What Works
 
@@ -25,6 +26,11 @@ After that fix, the packaged run passed `bash scripts/run.sh`, including `python
 
 - `hippocampus`: 43.06% `hit_at_1`, 62.50% `hit_at_3`, 62.68 retrieved tokens/query, and 7,640.38 bit operations/query.
 - `recency_baseline`: 0.00% `hit_at_1`, 0.00% `hit_at_3`, 39.00 retrieved tokens/query, 0.02 ms diagnostic search time/query, and 63.00 bit operations/query.
+
+The current main score file also includes supporting robustness metrics:
+
+- `hippocampus`: 62.50% `gold_entry_recall` and 37.50% `worst_category_hit_at_1`.
+- `recency_baseline`: 0.00% `gold_entry_recall` and 0.00% `worst_category_hit_at_1`.
 
 This supports the core claim on the portable delayed-recall benchmark: the paper's DWM plus sparse random-indexing memory retrieves old relevant facts under a small token footprint, while a lightweight recency memory fails.
 

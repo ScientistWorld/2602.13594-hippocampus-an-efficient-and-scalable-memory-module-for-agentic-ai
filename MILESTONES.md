@@ -28,5 +28,10 @@
 - Confirmed standard reproduced scores: HIPPOCAMPUS 43.06% `hit_at_1`, 62.50% `hit_at_3`, 62.68 retrieved tokens/query, and 7,640.38 bit operations/query.
 - Confirmed compact-signature setting: 50.00% `hit_at_1`, 73.61% `hit_at_3`, 63.76 retrieved tokens/query, and 7,640.38 bit operations/query.
 
+### [2026-06-11 21:00] - core_claim_plus
+- Hardened the main reusable evaluator to enforce top-3 retrieval, known entry IDs, no duplicate retrieved entries, and per-conversation memory boundaries.
+- Added reproduced `gold_entry_recall` and `worst_category_hit_at_1` to `scoring/scores.json`, matching the declared metrics in `scoring/reference.json`.
+- Local `bash scripts/reproduce.sh`, `python method/wavelet_selftest.py`, and `python validate.py --compare` pass after the evaluator update.
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.

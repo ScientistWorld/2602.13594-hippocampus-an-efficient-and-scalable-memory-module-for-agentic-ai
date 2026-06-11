@@ -1,6 +1,6 @@
-# Validation errors fixed. Do NOT submit another job.
-action: done
+# Validate the hardened evaluator and refreshed score files in the clean compute container.
+action: submit
 gpus: 0
-test: false
+test: true
 milestone: core_claim_plus
-notes: "Made scripts resolve the repo root portably and ensured download.sh creates data/downloads on fresh clones."
+notes: "CPU validation of hardened main evaluator, regenerated scores.json metrics, DWM self-test, reproduce.sh, and train/test scoring."
