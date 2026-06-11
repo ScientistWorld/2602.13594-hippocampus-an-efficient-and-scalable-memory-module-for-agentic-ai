@@ -42,6 +42,8 @@ def run(args: argparse.Namespace) -> None:
             scored = []
             operations = 0
             for entry in entries:
+                if entry["conversation_id"] != item["conversation_id"]:
+                    continue
                 e_counts = Counter(entry["tokens"])
                 score = 0.0
                 for tok, q_count in q_counts.items():

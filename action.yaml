@@ -1,5 +1,5 @@
 action: submit
 gpus: 0
 test: true
-milestone: method_runs
-notes: "CPU smoke/reproduction job: regenerate the portable memory QA benchmark if needed, run lexical baseline and HIPPOCAMPUS, write scoring/scores.json, and validate the workspace."
+milestone: core_claim
+notes: "CPU confirmation job for the corrected conversation-scoped reproduction: run recency baseline and HIPPOCAMPUS, write scoring/scores.json, and validate the workspace."

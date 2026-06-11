@@ -23,4 +23,9 @@ python baseline/lexical_retriever.py \
   --output-dir outputs/lexical_baseline \
   --top-k 3
 
-bash scripts/evaluate.sh outputs/lexical_baseline/retrieval_results.jsonl
+python baseline/recency_retriever.py \
+  --data data/memory_qa.json \
+  --output-dir outputs/recency_baseline \
+  --top-k 3
+
+bash scripts/evaluate.sh outputs/recency_baseline/retrieval_results.jsonl

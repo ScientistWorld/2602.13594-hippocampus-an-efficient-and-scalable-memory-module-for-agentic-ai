@@ -8,8 +8,8 @@
 
 ## Scoring
 - [x] `scoring/reference.json` — paper's reported numbers and efficiency constraints
-- [ ] Workspace validated via `python validate.py`
-- [ ] `scoring/scores.json` — reproduced numbers
+- [x] Workspace validated via `python validate.py`
+- [x] `scoring/scores.json` — reproduced numbers
 - [x] `scoring/EXPERIMENTS.md`
 - [x] `scoring/TARGETS.md`
 - [x] `scoring/CONSTRAINTS.md`
@@ -18,7 +18,7 @@
 ## Code
 - [x] Evaluation code in `eval/`
 - [x] Method implementation in `method/`
-- [x] Baseline implementation in `baseline/`
+- [x] Baseline implementations in `baseline/`
 
 ## Scripts
 - [x] `scripts/evaluate.sh`
@@ -35,7 +35,7 @@
 
 ## Milestones
 - [x] `method_runs`
-- [ ] `core_claim`
+- [x] `core_claim`
 - [ ] `core_claim_plus`
 - [ ] `secondary_claims`
 - [ ] `majority`

@@ -341,7 +341,7 @@ class HippocampusMemory:
     def _ham(a: int, b: int) -> int:
         return (a ^ b).bit_count()
 
-    def retrieve(self, question: str, top_k: int = 3) -> dict:
+    def retrieve(self, question: str, top_k: int = 3, conversation_id: str | None = None) -> dict:
         if self.signature_dwm is None or self.content_dwm is None:
             raise RuntimeError("memory not built")
         start_time = time.perf_counter()
@@ -352,10 +352,12 @@ class HippocampusMemory:
         comparisons = 0
         for pos in range(len(self.signature_dwm)):
             stored = self.signature_dwm.access(pos)
+            entry = self._entry_for_position(pos)
+            if conversation_id is not None and entry.conversation_id != conversation_id:
+                continue
             min_distance = min(self._ham(sig, stored) for sig in query_signatures)
             comparisons += len(query_signatures)
             if min_distance <= self.radius:
-                entry = self._entry_for_position(pos)
                 scores[entry.entry_id] += self.radius - min_distance + 1
                 first_positions.setdefault(entry.entry_id, pos)
 
@@ -363,8 +365,10 @@ class HippocampusMemory:
             # Fallback preserves usability when the Hamming radius is too tight.
             for pos in range(len(self.signature_dwm)):
                 stored = self.signature_dwm.access(pos)
-                min_distance = min(self._ham(sig, stored) for sig in query_signatures)
                 entry = self._entry_for_position(pos)
+                if conversation_id is not None and entry.conversation_id != conversation_id:
+                    continue
+                min_distance = min(self._ham(sig, stored) for sig in query_signatures)
                 scores[entry.entry_id] += max(1, self.signature_bits - min_distance)
                 first_positions.setdefault(entry.entry_id, pos)
 
@@ -415,7 +419,7 @@ def run(args: argparse.Namespace) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     with (output_dir / "retrieval_results.jsonl").open("w") as f:
         for item in dataset["questions"]:
-            result = memory.retrieve(item["question"], top_k=args.top_k)
+            result = memory.retrieve(item["question"], top_k=args.top_k, conversation_id=item["conversation_id"])
             row = {
                 "method": "hippocampus",
                 "question_id": item["question_id"],

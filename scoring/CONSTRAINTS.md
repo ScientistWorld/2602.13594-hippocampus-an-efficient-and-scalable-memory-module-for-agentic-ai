@@ -3,6 +3,8 @@
 ## Data
 Use `data/memory_qa.json` exactly as provided for scoring. Do not add external conversations, extra labels, or generated paraphrases to the scoring set.
 
+Each question must be answered using only entries from its labeled `conversation_id`. Cross-conversation retrieval changes the task from per-agent memory recall to global corpus search.
+
 ## Output Budget
 Return at most three memory entries per question. The benchmark is about selective recall, so returning larger contexts changes the problem.
 
@@ -14,6 +16,7 @@ Do not use paid APIs or external LLM calls during scoring. The paper's contribut
 
 ## Compliance Checklist
 - [ ] Scoring uses only `data/memory_qa.json`
+- [ ] Retrieval for each question is limited to its labeled conversation
 - [ ] Each question has at most three retrieved entries
 - [ ] `scripts/evaluate.sh` is unchanged for final scoring
 - [ ] No paid or external API calls are used during scoring

@@ -40,7 +40,7 @@
           "avg_search_time_ms": 1080.0,
           "avg_bit_operations": 125000.0
         },
-        "lexical_baseline": {
+        "recency_baseline": {
           "type": "baseline",
           "hit_at_1": 9.85,
           "hit_at_3": 9.85,

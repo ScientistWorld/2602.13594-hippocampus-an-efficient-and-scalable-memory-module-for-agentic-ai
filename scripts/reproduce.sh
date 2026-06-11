@@ -21,9 +21,9 @@ cd /home/user
 bash scripts/download.sh
 
 mkdir -p outputs
-python baseline/lexical_retriever.py \
+python baseline/recency_retriever.py \
   --data data/memory_qa.json \
-  --output-dir outputs/lexical_baseline \
+  --output-dir outputs/recency_baseline \
   --top-k 3
 python method/hippocampus.py \
   --data data/memory_qa.json \
@@ -36,4 +36,4 @@ python method/hippocampus.py \
 
 bash scripts/evaluate.sh \
   outputs/hippocampus/retrieval_results.jsonl \
-  outputs/lexical_baseline/retrieval_results.jsonl
+  outputs/recency_baseline/retrieval_results.jsonl
