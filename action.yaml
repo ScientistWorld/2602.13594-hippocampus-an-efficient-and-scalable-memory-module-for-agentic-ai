@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: done
-gpus: 0
+action: pending
+gpus: 1
 test: false
-milestone: core_claim_plus
-notes: "Continuation audit and CPU compute job 1bd28256-326 passed. HIPPOCAMPUS core claim is reproduced and compact-signature ablation provides an additional setting."
+milestone: core_claim
+notes: ""
