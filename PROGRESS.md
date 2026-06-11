@@ -1,5 +1,12 @@
 # Progress
 
+## Continuation Audit
+
+- The method implementation is a real reproduction of HIPPOCAMPUS mechanics: token-ID content stream, sparse random-indexing signatures, separate Dynamic Wavelet Matrices, Hamming-distance retrieval, DWM rank-based span validation, and DWM access-based reconstruction.
+- The evaluator is method-independent and reads JSONL artifacts produced by methods or baselines. It does not import from `method/` or regenerate predictions.
+- `python validate.py --compare` passes with the current `scoring/reference.json` and `scoring/scores.json`.
+- Fixed a stale documentation sentence that still described wall-clock search time as a constraint metric. Search time remains in raw artifacts only; scored constraints are token footprint and bit operations.
+
 ## What Works
 
 - Implemented HIPPOCAMPUS core mechanics: content token-ID stream, signature stream, Dynamic Wavelet Matrix `access/rank/select`, sparse random indexing, Hamming-ball retrieval, metadata span validation, and exact content reconstruction.
