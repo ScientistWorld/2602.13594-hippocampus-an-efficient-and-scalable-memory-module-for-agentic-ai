@@ -13,6 +13,7 @@ set -e
 
 cd /home/user
 
+python method/wavelet_selftest.py
 bash scripts/reproduce.sh
 python validate.py --compare
 bash scripts/ablation.sh

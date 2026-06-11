@@ -3,10 +3,10 @@
     "memory_retrieval_efficiency": {
       "results": {
         "hippocampus": {
-          "hit_at_1": 61.111111111111114,
-          "hit_at_3": 100.0,
-          "answer_token_f1": 3.7569353685106424,
-          "avg_token_footprint": 65.08333333333333,
+          "hit_at_1": 43.05555555555556,
+          "hit_at_3": 62.5,
+          "answer_token_f1": 2.547911848915302,
+          "avg_token_footprint": 62.68055555555556,
           "avg_bit_operations": 7640.375
         },
         "recency_baseline": {

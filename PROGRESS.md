@@ -6,10 +6,11 @@
 - The evaluator is method-independent and reads JSONL artifacts produced by methods or baselines. It does not import from `method/` or regenerate predictions.
 - `python validate.py --compare` passes with the current `scoring/reference.json` and `scoring/scores.json`.
 - Fixed a stale documentation sentence that still described wall-clock search time as a constraint metric. Search time remains in raw artifacts only; scored constraints are token footprint and bit operations.
+- Follow-up integrity pass fixed two risks: the evaluator now reloads gold answers and gold entry IDs from `data/memory_qa.json`, and HIPPOCAMPUS no longer uses exact content-token reranking. Candidate span validation uses Signature-DWM `rank` checks as described in the paper.
 
 ## What Works
 
-- Implemented HIPPOCAMPUS core mechanics: content token-ID stream, signature stream, Dynamic Wavelet Matrix `access/rank/select`, sparse random indexing, Hamming-ball retrieval, metadata span validation, and exact content reconstruction.
+- Implemented HIPPOCAMPUS core mechanics: content token-ID stream, signature stream, append-time Dynamic Wavelet Matrix construction with `access/rank/select`, sparse random indexing, Hamming-ball retrieval, signature-span validation, and exact content reconstruction.
 - Added a deterministic long-memory QA benchmark in `data/memory_qa.json`, including same-entity decoys that make exact recall non-trivial.
 - Added recency and lexical baselines plus a reusable evaluator that reads method artifacts from `outputs/`. The default scored baseline is recency-based to keep the synthetic benchmark non-trivial.
 - Wired `scripts/reproduce.sh` to run data setup, baseline, method, and evaluation.
@@ -18,14 +19,14 @@
 
 The completed CPU job showed the full pipeline runs and originally produced HIPPOCAMPUS at 58.33% `hit_at_1` and 88.89% `hit_at_3`. Inspecting the artifacts showed cross-conversation retrieval, so the method and baselines now constrain search to the labeled conversation history.
 
-After that fix, the packaged run passes `bash scripts/run.sh`, including `python validate.py --compare`. Current standard scores from `bash scripts/reproduce.sh` are:
+After that fix, the packaged run passed `bash scripts/run.sh`, including `python validate.py --compare`. A later cleanup removed lexical content-token reranking and made evaluation reload labels from the dataset. Current standard scores from `bash scripts/reproduce.sh` plus `python validate.py --compare` are:
 
-- `hippocampus`: 61.11% `hit_at_1`, 100.00% `hit_at_3`, 65.08 retrieved tokens/query, about 189 ms diagnostic search time/query, and 7,640.38 bit operations/query.
+- `hippocampus`: 43.06% `hit_at_1`, 62.50% `hit_at_3`, 62.68 retrieved tokens/query, and 7,640.38 bit operations/query.
 - `recency_baseline`: 0.00% `hit_at_1`, 0.00% `hit_at_3`, 39.00 retrieved tokens/query, 0.02 ms diagnostic search time/query, and 63.00 bit operations/query.
 
 This supports the core claim on the portable delayed-recall benchmark: the paper's DWM plus sparse random-indexing memory retrieves old relevant facts under a small token footprint, while a lightweight recency memory fails.
 
-An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. The latest scheduler-confirmed ablation in `tmp/ablation_scores.json` reached 77.78% `hit_at_1`, 98.61% `hit_at_3`, 65.04 retrieved tokens/query, and 7,640.38 bit operations/query.
+An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. The latest local ablation after the integrity fixes reached 50.00% `hit_at_1`, 73.61% `hit_at_3`, 63.76 retrieved tokens/query, and 7,640.38 bit operations/query. A CPU compute-node validation job has been prepared to confirm these cleaned results in-container.
 
 A lexical baseline sanity check reaches 100% `hit_at_1` on the current synthetic data because the generated questions and answer-bearing entries share exact person/project/company terms. It is useful for debugging but not used as the primary paper-baseline proxy; the benchmark target is the memory-substrate comparison against recency-style lightweight memory.
 
@@ -38,9 +39,11 @@ A lexical baseline sanity check reaches 100% `hit_at_1` on the current synthetic
 
 - No public upstream HIPPOCAMPUS code release was found. The implementation is from scratch using the paper's algorithms.
 - The original LoCoMo and LongMemEval end-to-end LLM judging setup is not bundled here, so the gym uses a deterministic retrieval-focused benchmark.
+- The implementation uses sparse random hyperplane signatures, which match the paper's random-indexing / binary-hashing analysis in Appendix G. The main Section 3.3 description phrases signature construction as top-activated component selection; this is a documented implementation choice within the same random-indexing approach family, not a replacement of the memory substrate.
 
 ## Deviations from Paper
 
 - The paper evaluates LoCoMo and LongMemEval with LLM answer generation and LLM-as-a-judge. This workspace uses a deterministic LoCoMo-like QA retrieval benchmark because it is portable, API-free, and keeps evaluation focused on the memory substrate.
 - The portable benchmark includes same-person/project/company decoys that mention alternative tools but state the original decision did not change. This keeps the replacement benchmark closer to the paper's reported difficulty and avoids a near-perfect synthetic task.
 - The paper reports wall-clock latency on fixed HPE hardware. This workspace records search time for diagnostics but uses bit-operation count and token footprint as hardware-independent constraint metrics.
+- The benchmark passes the conversation ID to retrieval as a per-user memory boundary. This models querying one user's memory store rather than open-corpus retrieval across all users.

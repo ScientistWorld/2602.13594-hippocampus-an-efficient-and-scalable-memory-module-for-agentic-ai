@@ -57,59 +57,76 @@ def _bits_msb(value: int, width: int) -> list[int]:
 class DynamicWaveletMatrix:
     """Append-friendly wavelet matrix over integer symbols.
 
-    The implementation keeps dynamic append semantics and materializes the
-    wavelet levels after a streaming build. Rank/select/access use the same
-    top-down and bottom-up transformations described in the paper.
+    Each append performs the paper's top-down insertion through bit levels:
+    the new symbol is inserted into the current level at the position induced
+    by the previous prefix bits, then mapped into the zero/one partition for
+    the next level. Rank/select/access use the same transformations described
+    in the paper.
     """
 
     def __init__(self, bit_width: int) -> None:
         self.bit_width = max(1, bit_width)
         self.symbols: list[int] = []
-        self.levels: list[list[int]] = []
-        self.zero_counts: list[int] = []
-        self._rank1_prefix: list[list[int]] = []
-        self._dirty = True
+        self.levels: list[list[int]] = [[] for _ in range(self.bit_width)]
+        self.zero_counts: list[int] = [0 for _ in range(self.bit_width)]
+        self._rank1_prefix: list[list[int]] = [[0] for _ in range(self.bit_width)]
+        self._prefix_dirty: list[bool] = [False for _ in range(self.bit_width)]
+
+    @staticmethod
+    def _rank1_in_bits(bits: list[int], end: int) -> int:
+        end = max(0, min(end, len(bits)))
+        return sum(bits[:end])
+
+    @staticmethod
+    def _prefix(bits: list[int]) -> list[int]:
+        prefix = [0]
+        total = 0
+        for bit in bits:
+            total += bit
+            prefix.append(total)
+        return prefix
 
     def append(self, symbol: int) -> None:
         if symbol < 0 or symbol >= (1 << self.bit_width):
             raise ValueError(f"symbol {symbol} does not fit in {self.bit_width} bits")
+        pos = len(self.symbols)
         self.symbols.append(symbol)
-        self._dirty = True
+        for level, bit in enumerate(_bits_msb(symbol, self.bit_width)):
+            bits = self.levels[level]
+            rank1_before = self._rank1_in_bits(bits, pos)
+            rank0_before = pos - rank1_before
+            zero_count_before = self.zero_counts[level]
+            bits.insert(pos, bit)
+            if bit == 0:
+                self.zero_counts[level] += 1
+                pos = rank0_before
+            else:
+                pos = zero_count_before + rank1_before
+            self._prefix_dirty[level] = True
 
     def extend(self, symbols: list[int]) -> None:
         for symbol in symbols:
             self.append(symbol)
 
     def build(self) -> None:
-        seq = list(self.symbols)
-        self.levels = []
-        self.zero_counts = []
-        self._rank1_prefix = []
-        for level in range(self.bit_width):
-            shift = self.bit_width - level - 1
-            bits = [(symbol >> shift) & 1 for symbol in seq]
-            zeros = [symbol for symbol in seq if ((symbol >> shift) & 1) == 0]
-            ones = [symbol for symbol in seq if ((symbol >> shift) & 1) == 1]
-            self.levels.append(bits)
-            self.zero_counts.append(len(zeros))
-            prefix = [0]
-            total = 0
-            for bit in bits:
-                total += bit
-                prefix.append(total)
-            self._rank1_prefix.append(prefix)
-            seq = zeros + ones
-        self._dirty = False
-
-    def _ensure(self) -> None:
-        if self._dirty:
-            self.build()
+        symbols = list(self.symbols)
+        self.symbols = []
+        self.levels = [[] for _ in range(self.bit_width)]
+        self.zero_counts = [0 for _ in range(self.bit_width)]
+        self._rank1_prefix = [[0] for _ in range(self.bit_width)]
+        self._prefix_dirty = [False for _ in range(self.bit_width)]
+        self.extend(symbols)
 
     def __len__(self) -> int:
         return len(self.symbols)
 
+    def _ensure_prefix(self, level: int) -> None:
+        if self._prefix_dirty[level]:
+            self._rank1_prefix[level] = self._prefix(self.levels[level])
+            self._prefix_dirty[level] = False
+
     def rank1(self, level: int, end: int) -> int:
-        self._ensure()
+        self._ensure_prefix(level)
         end = max(0, min(end, len(self.symbols)))
         return self._rank1_prefix[level][end]
 
@@ -117,7 +134,6 @@ class DynamicWaveletMatrix:
         return end - self.rank1(level, end)
 
     def select_bit(self, level: int, bit: int, occurrence_1_based: int) -> int | None:
-        self._ensure()
         if occurrence_1_based <= 0:
             return None
         count = 0
@@ -129,7 +145,6 @@ class DynamicWaveletMatrix:
         return None
 
     def access(self, index: int) -> int:
-        self._ensure()
         if index < 0 or index >= len(self.symbols):
             raise IndexError(index)
         pos = index
@@ -144,7 +159,6 @@ class DynamicWaveletMatrix:
         return value
 
     def rank(self, symbol: int, end: int) -> int:
-        self._ensure()
         p_l, p_r = 0, max(0, min(end, len(self.symbols)))
         for level, bit in enumerate(_bits_msb(symbol, self.bit_width)):
             if bit == 0:
@@ -157,7 +171,8 @@ class DynamicWaveletMatrix:
         return p_r - p_l
 
     def select(self, symbol: int, occurrence_1_based: int) -> int | None:
-        self._ensure()
+        if occurrence_1_based <= 0:
+            return None
         p_l, p_r = 0, len(self.symbols)
         bits = _bits_msb(symbol, self.bit_width)
         for level, bit in enumerate(bits):
@@ -183,7 +198,8 @@ class DynamicWaveletMatrix:
         return pos
 
     def approx_bytes(self) -> int:
-        self._ensure()
+        for level in range(self.bit_width):
+            self._ensure_prefix(level)
         bit_cells = sum(len(level) for level in self.levels)
         rank_cells = sum(len(prefix) for prefix in self._rank1_prefix)
         return math.ceil(bit_cells / 8) + rank_cells * 4 + len(self.zero_counts) * 4
@@ -329,14 +345,6 @@ class HippocampusMemory:
             keyword_ids = ids
         return self.indexer.signatures_for_stream(keyword_ids, window=1)
 
-    def _query_keyword_ids(self, question: str) -> list[int]:
-        stop = {"which", "what", "did", "for", "the", "at", "on", "use", "used", "by", "should", "be", "technology", "settle"}
-        ids = []
-        for tok in tokenize(question):
-            if tok not in stop and tok in self.vocab.token_to_id:
-                ids.append(self.vocab.token_to_id[tok])
-        return ids
-
     @staticmethod
     def _ham(a: int, b: int) -> int:
         return (a ^ b).bit_count()
@@ -346,7 +354,6 @@ class HippocampusMemory:
             raise RuntimeError("memory not built")
         start_time = time.perf_counter()
         query_signatures = self._query_signatures(question)
-        query_keyword_ids = self._query_keyword_ids(question)
         scores: Counter[str] = Counter()
         first_positions: dict[str, int] = {}
         comparisons = 0
@@ -373,15 +380,16 @@ class HippocampusMemory:
                 first_positions.setdefault(entry.entry_id, pos)
 
         entry_by_id = {entry.entry_id: entry for entry in self.entries}
-        # Metadata-span validation from the paper: use DWM rank to check how
-        # many query symbols co-occur inside each candidate entry span.
+        # Metadata-span validation from the paper: use Signature-DWM rank to
+        # check whether query signatures co-occur inside candidate spans.
         for entry_id in list(scores):
             entry = entry_by_id[entry_id]
-            exact_hits = 0
-            for token_id in query_keyword_ids:
-                if token_id < (1 << self.content_dwm.bit_width):
-                    exact_hits += int(self.content_dwm.rank(token_id, entry.end) - self.content_dwm.rank(token_id, entry.start) > 0)
-            scores[entry_id] += exact_hits * (self.radius + 2)
+            signature_hits = 0
+            for signature in query_signatures:
+                signature_hits += int(
+                    self.signature_dwm.rank(signature, entry.end) - self.signature_dwm.rank(signature, entry.start) > 0
+                )
+            scores[entry_id] += signature_hits * (self.radius + 2)
 
         ranked_entries = sorted(
             (entry_by_id[entry_id] for entry_id in scores),
