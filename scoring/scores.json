@@ -3,20 +3,20 @@
     "memory_retrieval_efficiency": {
       "results": {
         "hippocampus": {
-          "hit_at_1": 93.05555555555556,
-          "hit_at_3": 97.22222222222223,
-          "answer_token_f1": 3.8692944816020027,
-          "avg_token_footprint": 61.5,
-          "avg_search_time_ms": 110.25358976459958,
-          "avg_bit_operations": 5249.736111111111
+          "hit_at_1": 61.111111111111114,
+          "hit_at_3": 100.0,
+          "answer_token_f1": 3.7569353685106424,
+          "avg_token_footprint": 65.08333333333333,
+          "avg_search_time_ms": 192.58436056811155,
+          "avg_bit_operations": 7640.375
         },
         "recency_baseline": {
           "hit_at_1": 0.0,
           "hit_at_3": 0.0,
           "answer_token_f1": 0.0,
           "avg_token_footprint": 39.0,
-          "avg_search_time_ms": 0.02053986140203455,
-          "avg_bit_operations": 45.0
+          "avg_search_time_ms": 0.024032235362230696,
+          "avg_bit_operations": 63.0
         }
       }
     }

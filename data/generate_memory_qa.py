@@ -61,7 +61,13 @@ def _entry(entry_id: str, session: int, speaker: str, text: str) -> dict:
     }
 
 
-def build_dataset(seed: int, conversations: int, facts_per_conversation: int, distractors_per_fact: int) -> dict:
+def build_dataset(
+    seed: int,
+    conversations: int,
+    facts_per_conversation: int,
+    distractors_per_fact: int,
+    ambiguous_decoys_per_fact: int,
+) -> dict:
     rng = random.Random(seed)
     conversations_out = []
     questions_out = []
@@ -99,6 +105,18 @@ def build_dataset(seed: int, conversations: int, facts_per_conversation: int, di
                     f"{other_company} and mentioned {other_tool}, but no decision was made."
                 )
                 entries.append(_entry(distractor_id, session, "user", distractor))
+
+            # Same-entity decoys make retrieval meaningfully harder: the entry
+            # shares the question's person/project/company but explicitly says
+            # the alternate tool was only considered, not chosen.
+            for decoy_idx in range(ambiguous_decoys_per_fact):
+                other_tool = TOOLS[(TOOLS.index(tool) + decoy_idx + 1) % len(TOOLS)]
+                decoy_id = f"c{conv_idx}_e{len(entries)}"
+                decoy = (
+                    f"{person} later revisited the {project} for {company} and considered "
+                    f"{other_tool}, but the team did not change the original decision."
+                )
+                entries.append(_entry(decoy_id, session + 1, "assistant", decoy))
 
             question = rng.choice(QUESTION_TEMPLATES).format(
                 person=person, project=project, company=company
@@ -138,6 +156,7 @@ def main() -> None:
     parser.add_argument("--conversations", type=int, default=8)
     parser.add_argument("--facts-per-conversation", type=int, default=9)
     parser.add_argument("--distractors-per-fact", type=int, default=3)
+    parser.add_argument("--ambiguous-decoys-per-fact", type=int, default=2)
     args = parser.parse_args()
 
     data = build_dataset(
@@ -145,6 +164,7 @@ def main() -> None:
         conversations=args.conversations,
         facts_per_conversation=args.facts_per_conversation,
         distractors_per_fact=args.distractors_per_fact,
+        ambiguous_decoys_per_fact=args.ambiguous_decoys_per_fact,
     )
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
