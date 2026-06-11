@@ -36,7 +36,6 @@ def evaluate_file(path: Path) -> dict:
     hit_at_k = 0
     answer_f1 = 0.0
     token_footprint = 0
-    search_time = 0.0
     bit_operations = 0
     for row in rows:
         retrieved = row.get("retrieved", [])
@@ -47,7 +46,6 @@ def evaluate_file(path: Path) -> dict:
         joined = " ".join(item.get("reconstructed_text", item.get("text", "")) for item in retrieved)
         answer_f1 += token_f1(joined, row["answer"])
         token_footprint += row.get("token_footprint", 0)
-        search_time += row.get("search_time_s", 0.0)
         bit_operations += row.get("bit_operations", 0)
     n = len(rows)
     return {
@@ -55,7 +53,6 @@ def evaluate_file(path: Path) -> dict:
         "hit_at_3": 100.0 * hit_at_k / n,
         "answer_token_f1": 100.0 * answer_f1 / n,
         "avg_token_footprint": token_footprint / n,
-        "avg_search_time_ms": 1000.0 * search_time / n,
         "avg_bit_operations": bit_operations / n,
     }
 
