@@ -29,4 +29,4 @@
 - Confirmed compact-signature setting: 50.00% `hit_at_1`, 73.61% `hit_at_3`, 63.76 retrieved tokens/query, and 7,640.38 bit operations/query.
 
 ## Stop Justification
-- Completed at milestone `core_claim_plus`: the real HIPPOCAMPUS memory substrate runs end-to-end in-container, beats the recency baseline on the portable retrieval benchmark, preserves token/search-efficiency constraints, and includes one additional compact-signature setting. Higher milestones would require the paper's broader LLM-answering benchmark surface.
+- Completed at milestone `core_claim_plus`.

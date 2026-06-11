@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: submit
+action: done
 gpus: 0
 test: true
 milestone: core_claim_plus
-notes: "Retry CPU validation after fixing the clean-container DWM self-test import: self-test, standard reproduction, scoring validation, and compact-signature ablation."
+notes: "Reproduction validated in clean container by job d64d2a90-2ab: DWM self-test, standard HIPPOCAMPUS reproduction, scoring comparison, and compact-signature ablation all passed."
