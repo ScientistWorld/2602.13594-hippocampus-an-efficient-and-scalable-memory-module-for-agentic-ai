@@ -1,5 +1,6 @@
-# Split scoring is complete. Do NOT submit another job.
-action: done
+# Submit the core reproduction job. Do NOT sleep, poll, or wait.
+action: submit
 gpus: 0
 test: false
-notes: "Explicit balanced 36-question train/test retrieval split; 28 train metrics and 28 test metrics across 4 methods; hippocampus hit@1 52.78 train vs 33.33 test, compact 50.00 vs 50.00, lexical 100.00 vs 100.00 with higher bit cost, recency 0.00 vs 0.00; caveat: synthetic lexical baseline saturates retrieval quality but efficiency constraints remain scored."
+milestone: core_claim_plus
+notes: "Run HIPPOCAMPUS DWM self-test, core reproduction, compare validation, and train/test split scoring on CPU."

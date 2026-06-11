@@ -1,11 +1,15 @@
 #!/bin/bash
-# Score the visible train and held-out test evaluation slices over existing
-# retrieval artifacts. Do not regenerate method outputs in this designer pass.
+# Run the core HIPPOCAMPUS reproduction and validation workflow.
 
 cd /home/user
 
 set -euo pipefail
 
+python method/wavelet_selftest.py
+bash scripts/reproduce.sh
+python validate.py --compare
+
+# Keep the ResearchGym train/test split scores current after reproducing the
+# method artifacts.
 bash scripts/evaluate_train.sh
 bash scripts/evaluate_test.sh
-python validate.py --reference-only
