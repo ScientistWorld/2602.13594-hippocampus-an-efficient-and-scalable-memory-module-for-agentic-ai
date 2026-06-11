@@ -30,24 +30,14 @@
           "coefficient": 0.35,
           "description": "Lowest top-one hit rate across single-hop, multi-hop, and temporal question groups."
         },
-        "reconstruction_exact_match": {
-          "higher_is_better": true,
-          "coefficient": 0.25,
-          "description": "Rate at which retrieved reconstructed text exactly matches the canonical memory entry text after token normalization."
-        },
-        "avg_retrieved_entries": {
-          "higher_is_better": false,
-          "coefficient": -0.15,
-          "description": "Average number of entries returned per question, discouraging always filling the retrieval budget."
-        },
         "avg_token_footprint": {
           "higher_is_better": false,
-          "coefficient": -0.4,
+          "coefficient": -0.05,
           "description": "Average number of retrieved evidence tokens per question, measuring context-budget cost."
         },
         "avg_bit_operations": {
           "higher_is_better": false,
-          "coefficient": -0.3,
+          "coefficient": -0.01,
           "description": "Average machine-independent bit-operation proxy for retrieval search work."
         }
       },

@@ -123,8 +123,6 @@ def evaluate_file(
     answer_f1 = 0.0
     token_footprint = 0
     bit_operations = 0
-    retrieved_entries = 0
-    exact_reconstructions = 0
     category_hits: dict[str, list[int]] = defaultdict(list)
     for row in filtered:
         gold_item = gold_by_question[row["question_id"]]
@@ -156,9 +154,6 @@ def evaluate_file(
         for item in retrieved:
             text = item.get("reconstructed_text", item.get("text", ""))
             token_footprint += token_count(text)
-            retrieved_entries += 1
-            canonical = entry_by_id[item["entry_id"]]["text"]
-            exact_reconstructions += int(normalized_tokens(text) == normalized_tokens(canonical))
         bit_operations += row.get("bit_operations", 0)
 
     n = len(filtered)
@@ -172,8 +167,6 @@ def evaluate_file(
         "gold_entry_recall": 100.0 * gold_entry_recall / n,
         "answer_token_f1": 100.0 * answer_f1 / n,
         "worst_category_hit_at_1": worst_category_hit_at_1,
-        "reconstruction_exact_match": 100.0 * exact_reconstructions / retrieved_entries if retrieved_entries else 0.0,
-        "avg_retrieved_entries": retrieved_entries / n,
         "avg_token_footprint": token_footprint / n,
         "avg_bit_operations": bit_operations / n,
     }

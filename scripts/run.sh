@@ -1,19 +1,11 @@
 #!/bin/bash
-# Example job script submitted via the end-of-turn YAML block.
-#
-# This runs inside the compute container with:
-#   - Your workspace mounted at /home/user
-#   - GPU(s) available
-#   - No internet access
-#
-# Make sure all data, code, and dependencies are already in the
-# workspace or baked into the container before submitting.
-
-set -e
+# Score the visible train and held-out test evaluation slices over existing
+# retrieval artifacts. Do not regenerate method outputs in this designer pass.
 
 cd /home/user
 
-python method/wavelet_selftest.py
-bash scripts/reproduce.sh
-python validate.py --compare
-bash scripts/ablation.sh
+set -euo pipefail
+
+bash scripts/evaluate_train.sh
+bash scripts/evaluate_test.sh
+python validate.py --reference-only
