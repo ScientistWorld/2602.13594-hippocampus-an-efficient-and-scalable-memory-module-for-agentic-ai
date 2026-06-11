@@ -2,8 +2,8 @@
 # Once you set action to 'done', STOP immediately.
 # Do NOT sleep, poll, or wait. The system reads this file
 # only after your turn ends.
-action: pending
+action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: ""
+notes: "Deterministic category-stratified 50/50 question split; 5 train metrics, 5 test metrics; scripts written, scores produced later."
