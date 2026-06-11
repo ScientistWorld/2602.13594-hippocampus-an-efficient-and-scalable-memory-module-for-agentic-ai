@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import re
 from collections import defaultdict
@@ -14,16 +13,27 @@ from pathlib import Path
 SLICE = "test"
 EXPERIMENT = "memory_retrieval_efficiency"
 TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
-SPLIT_SEED = "memory-retrieval-eval-split-v1"
+MAX_RETRIEVED = 3
+TEST_QUESTION_IDS = frozenset(
+    {
+        "q43", "q58", "q25", "q13", "q19", "q16", "q22", "q55", "q1", "q28", "q34", "q37",
+        "q21", "q33", "q9", "q12", "q3", "q63", "q15", "q66", "q30", "q69", "q36", "q48",
+        "q23", "q62", "q68", "q44", "q8", "q71", "q35", "q50", "q32", "q38", "q29", "q14",
+    }
+)
 
 
 def token_count(text: str) -> int:
     return len(TOKEN_RE.findall(text.lower()))
 
 
+def normalized_tokens(text: str) -> list[str]:
+    return TOKEN_RE.findall(text.lower())
+
+
 def token_f1(prediction: str, answer: str) -> float:
-    pred = prediction.lower().split()
-    gold = answer.lower().split()
+    pred = normalized_tokens(prediction)
+    gold = normalized_tokens(answer)
     if not pred or not gold:
         return 0.0
     common: dict[str, int] = {}
@@ -41,28 +51,25 @@ def token_f1(prediction: str, answer: str) -> float:
     return 2 * precision * recall / (precision + recall)
 
 
-def split_key(question_id: str) -> str:
-    payload = f"{SPLIT_SEED}|{question_id}".encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()
-
-
-def load_gold(path: Path) -> tuple[dict[str, dict], set[str], dict[str, int]]:
+def load_gold(path: Path) -> tuple[dict[str, dict], dict[str, dict], set[str], dict[str, int]]:
     dataset = json.loads(path.read_text())
     gold_by_question = {item["question_id"]: item for item in dataset["questions"]}
-    by_category: dict[str, list[dict]] = defaultdict(list)
+    entry_by_id: dict[str, dict] = {}
+    for conversation in dataset["conversations"]:
+        for entry in conversation["entries"]:
+            entry_by_id[entry["entry_id"]] = {**entry, "conversation_id": conversation["conversation_id"]}
+
+    selected = set(TEST_QUESTION_IDS)
+    unknown = selected - set(gold_by_question)
+    if unknown:
+        raise ValueError(f"{SLICE} split contains unknown question ids: {sorted(unknown)}")
+
+    category_counts: dict[str, int] = defaultdict(int)
     for item in dataset["questions"]:
-        by_category[item.get("category", "unknown")].append(item)
+        if item["question_id"] in selected:
+            category_counts[item.get("category", "unknown")] += 1
 
-    selected: set[str] = set()
-    category_counts: dict[str, int] = {}
-    for category, items in sorted(by_category.items()):
-        ordered = sorted(items, key=lambda item: (split_key(item["question_id"]), item["question_id"]))
-        midpoint = len(ordered) // 2
-        test_items = ordered[midpoint:]
-        selected.update(item["question_id"] for item in test_items)
-        category_counts[category] = len(test_items)
-
-    return gold_by_question, selected, category_counts
+    return gold_by_question, entry_by_id, selected, dict(sorted(category_counts.items()))
 
 
 def read_artifact_rows(path: Path) -> list[dict]:
@@ -85,7 +92,12 @@ def train_method_names(path: Path) -> list[str]:
     return list(results)
 
 
-def evaluate_file(path: Path, gold_by_question: dict[str, dict], selected_ids: set[str]) -> dict[str, float]:
+def evaluate_file(
+    path: Path,
+    gold_by_question: dict[str, dict],
+    entry_by_id: dict[str, dict],
+    selected_ids: set[str],
+) -> dict[str, float]:
     rows = read_artifact_rows(path)
     filtered: list[dict] = []
     seen: set[str] = set()
@@ -107,26 +119,61 @@ def evaluate_file(path: Path, gold_by_question: dict[str, dict], selected_ids: s
 
     hit_at_1 = 0
     hit_at_k = 0
+    gold_entry_recall = 0.0
     answer_f1 = 0.0
     token_footprint = 0
     bit_operations = 0
+    retrieved_entries = 0
+    exact_reconstructions = 0
+    category_hits: dict[str, list[int]] = defaultdict(list)
     for row in filtered:
         gold_item = gold_by_question[row["question_id"]]
         retrieved = row.get("retrieved", [])
+        if len(retrieved) > MAX_RETRIEVED:
+            raise ValueError(
+                f"artifact {path} returns {len(retrieved)} entries for {row['question_id']}; "
+                f"maximum allowed is {MAX_RETRIEVED}"
+            )
         gold = set(gold_item["gold_entry_ids"])
         ids = [item["entry_id"] for item in retrieved]
-        hit_at_1 += int(bool(ids and ids[0] in gold))
-        hit_at_k += int(bool(gold.intersection(ids)))
+        if len(ids) != len(set(ids)):
+            raise ValueError(f"duplicate retrieved entry_id for {row['question_id']} in artifact {path}")
+        for entry_id in ids:
+            if entry_id not in entry_by_id:
+                raise ValueError(f"unknown retrieved entry_id for {row['question_id']} in artifact {path}: {entry_id}")
+            if entry_by_id[entry_id]["conversation_id"] != gold_item["conversation_id"]:
+                raise ValueError(
+                    f"cross-conversation retrieval for {row['question_id']} in artifact {path}: {entry_id}"
+                )
+        top1_hit = int(bool(ids and ids[0] in gold))
+        any_hit = int(bool(gold.intersection(ids)))
+        hit_at_1 += top1_hit
+        hit_at_k += any_hit
+        gold_entry_recall += len(gold.intersection(ids)) / len(gold)
+        category_hits[gold_item.get("category", "unknown")].append(top1_hit)
         joined = " ".join(item.get("reconstructed_text", item.get("text", "")) for item in retrieved)
         answer_f1 += token_f1(joined, gold_item["answer"])
-        token_footprint += sum(token_count(item.get("reconstructed_text", item.get("text", ""))) for item in retrieved)
+        for item in retrieved:
+            text = item.get("reconstructed_text", item.get("text", ""))
+            token_footprint += token_count(text)
+            retrieved_entries += 1
+            canonical = entry_by_id[item["entry_id"]]["text"]
+            exact_reconstructions += int(normalized_tokens(text) == normalized_tokens(canonical))
         bit_operations += row.get("bit_operations", 0)
 
     n = len(filtered)
+    worst_category_hit_at_1 = min(
+        (100.0 * sum(values) / len(values) for values in category_hits.values()),
+        default=0.0,
+    )
     return {
         "hit_at_1": 100.0 * hit_at_1 / n,
         "hit_at_3": 100.0 * hit_at_k / n,
+        "gold_entry_recall": 100.0 * gold_entry_recall / n,
         "answer_token_f1": 100.0 * answer_f1 / n,
+        "worst_category_hit_at_1": worst_category_hit_at_1,
+        "reconstruction_exact_match": 100.0 * exact_reconstructions / retrieved_entries if retrieved_entries else 0.0,
+        "avg_retrieved_entries": retrieved_entries / n,
         "avg_token_footprint": token_footprint / n,
         "avg_bit_operations": bit_operations / n,
     }
@@ -140,7 +187,7 @@ def main() -> None:
     parser.add_argument("--train-scores", default="scoring/scores_train.json")
     args = parser.parse_args()
 
-    gold_by_question, selected_ids, category_counts = load_gold(Path(args.data))
+    gold_by_question, entry_by_id, selected_ids, category_counts = load_gold(Path(args.data))
     artifacts_by_method: dict[str, Path] = {}
     for artifact in args.artifacts:
         artifact_path = Path(artifact)
@@ -162,7 +209,12 @@ def main() -> None:
 
     results: dict[str, dict[str, float]] = {}
     for method_name in methods_to_score:
-        results[method_name] = evaluate_file(artifacts_by_method[method_name], gold_by_question, selected_ids)
+        results[method_name] = evaluate_file(
+            artifacts_by_method[method_name],
+            gold_by_question,
+            entry_by_id,
+            selected_ids,
+        )
 
     scores = {
         "slice": SLICE,
@@ -170,7 +222,7 @@ def main() -> None:
             EXPERIMENT: {
                 "slice": SLICE,
                 "split": {
-                    "seed": SPLIT_SEED,
+                    "name": "explicit_balanced_test_slice_v2",
                     "question_count": len(selected_ids),
                     "category_counts": category_counts,
                 },

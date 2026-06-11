@@ -2,8 +2,8 @@
 # Once you set action to 'done', STOP immediately.
 # Do NOT sleep, poll, or wait. The system reads this file
 # only after your turn ends.
-action: pending
+action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: ""
+notes: "Improvements: explicit non-seed split IDs, stricter artifact validation, added anti-shortcut retrieval/reconstruction/category metrics, completed metric descriptions. Notes: runner should verify existing artifacts against stricter validation."

@@ -5,11 +5,51 @@
       "weight": 1.0,
       "primary_metric": "hit_at_1",
       "metrics": {
-        "hit_at_1": {"higher_is_better": true, "coefficient": 1.0},
-        "hit_at_3": {"higher_is_better": true, "coefficient": 0.5},
-        "answer_token_f1": {"higher_is_better": true, "coefficient": 0.5},
-        "avg_token_footprint": {"higher_is_better": false, "coefficient": -0.4},
-        "avg_bit_operations": {"higher_is_better": false, "coefficient": -0.3}
+        "hit_at_1": {
+          "higher_is_better": true,
+          "coefficient": 1.0,
+          "description": "Fraction of questions whose top-ranked retrieved memory entry is answer-bearing."
+        },
+        "hit_at_3": {
+          "higher_is_better": true,
+          "coefficient": 0.4,
+          "description": "Fraction of questions with any answer-bearing memory entry in the allowed top-three retrieval set."
+        },
+        "gold_entry_recall": {
+          "higher_is_better": true,
+          "coefficient": 0.4,
+          "description": "Average fraction of all labeled supporting entries recovered, catching partial multi-hop retrieval."
+        },
+        "answer_token_f1": {
+          "higher_is_better": true,
+          "coefficient": 0.35,
+          "description": "Token overlap between the retrieved evidence text and the gold answer."
+        },
+        "worst_category_hit_at_1": {
+          "higher_is_better": true,
+          "coefficient": 0.35,
+          "description": "Lowest top-one hit rate across single-hop, multi-hop, and temporal question groups."
+        },
+        "reconstruction_exact_match": {
+          "higher_is_better": true,
+          "coefficient": 0.25,
+          "description": "Rate at which retrieved reconstructed text exactly matches the canonical memory entry text after token normalization."
+        },
+        "avg_retrieved_entries": {
+          "higher_is_better": false,
+          "coefficient": -0.15,
+          "description": "Average number of entries returned per question, discouraging always filling the retrieval budget."
+        },
+        "avg_token_footprint": {
+          "higher_is_better": false,
+          "coefficient": -0.4,
+          "description": "Average number of retrieved evidence tokens per question, measuring context-budget cost."
+        },
+        "avg_bit_operations": {
+          "higher_is_better": false,
+          "coefficient": -0.3,
+          "description": "Average machine-independent bit-operation proxy for retrieval search work."
+        }
       },
       "results": {
         "memoryos": {
