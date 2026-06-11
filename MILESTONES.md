@@ -22,5 +22,11 @@
 - CPU validation job `3ddccb10-194` failed before reproduction because the DWM self-test was run as a file under a clean container environment, leaving the repository root off `sys.path`.
 - Patched `method/wavelet_selftest.py` to add the repository root explicitly before importing `method.hippocampus`; the same entrypoint now passes under a clean local environment.
 
+### [2026-06-11 20:38] - core_claim_plus
+- Scheduler-confirmed CPU validation job `d64d2a90-2ab` completed successfully in the clean container.
+- The job ran the DWM self-test, standard HIPPOCAMPUS reproduction, `python validate.py --compare`, and compact-signature ablation without errors.
+- Confirmed standard reproduced scores: HIPPOCAMPUS 43.06% `hit_at_1`, 62.50% `hit_at_3`, 62.68 retrieved tokens/query, and 7,640.38 bit operations/query.
+- Confirmed compact-signature setting: 50.00% `hit_at_1`, 73.61% `hit_at_3`, 63.76 retrieved tokens/query, and 7,640.38 bit operations/query.
+
 ## Stop Justification
-- Completed at milestone `core_claim_plus`.
+- Completed at milestone `core_claim_plus`: the real HIPPOCAMPUS memory substrate runs end-to-end in-container, beats the recency baseline on the portable retrieval benchmark, preserves token/search-efficiency constraints, and includes one additional compact-signature setting. Higher milestones would require the paper's broader LLM-answering benchmark surface.
