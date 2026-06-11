@@ -1,3 +1,8 @@
-action: done
-milestone: core_claim_plus
-notes: "Validation-fixed reproduction is complete: hardened benchmark keeps HIPPOCAMPUS scores paper-consistent while preserving core_claim_plus."
+# IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
+# Do NOT sleep, poll, or wait for jobs. The system reads this file
+# only after your turn ends. Sleeping blocks the entire pipeline.
+action: pending
+gpus: 1
+test: false
+milestone: core_claim
+notes: ""
