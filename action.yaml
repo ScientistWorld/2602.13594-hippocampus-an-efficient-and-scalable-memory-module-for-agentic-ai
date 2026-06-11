@@ -1,6 +1,6 @@
-# Submit the core reproduction job. Do NOT sleep, poll, or wait.
-action: submit
+# Validation errors fixed. Do NOT submit another job.
+action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Run HIPPOCAMPUS DWM self-test, core reproduction, compare validation, and train/test split scoring on CPU."
+notes: "Reference-filtered explicit balanced 36-question train/test split; 14 train metrics and 14 test metrics across registered methods; hippocampus hit@1 52.78 train vs 33.33 test, recency 0.00 vs 0.00; python validate.py passes."

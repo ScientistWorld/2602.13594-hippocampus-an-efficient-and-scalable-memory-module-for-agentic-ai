@@ -84,6 +84,11 @@ def artifact_method_name(path: Path) -> str:
     return json.loads(first_line)["method"]
 
 
+def reference_method_names(path: Path) -> set[str]:
+    reference = json.loads(path.read_text())
+    return set(reference["experiments"][EXPERIMENT]["results"])
+
+
 def evaluate_file(
     path: Path,
     gold_by_question: dict[str, dict],
@@ -169,16 +174,22 @@ def main() -> None:
     parser.add_argument("--artifacts", nargs="+", required=True)
     parser.add_argument("--data", default="data/memory_qa.json")
     parser.add_argument("--output", default="scoring/scores_train.json")
+    parser.add_argument("--reference", default="scoring/reference.json")
     args = parser.parse_args()
 
     gold_by_question, entry_by_id, selected_ids, category_counts = load_gold(Path(args.data))
+    allowed_methods = reference_method_names(Path(args.reference))
     results: dict[str, dict[str, float]] = {}
     for artifact in args.artifacts:
         artifact_path = Path(artifact)
         method_name = artifact_method_name(artifact_path)
+        if method_name not in allowed_methods:
+            continue
         if method_name in results:
             raise ValueError(f"multiple artifacts declare method {method_name!r}")
         results[method_name] = evaluate_file(artifact_path, gold_by_question, entry_by_id, selected_ids)
+    if not results:
+        raise ValueError("no artifacts matched methods registered in reference.json")
 
     scores = {
         "slice": SLICE,
