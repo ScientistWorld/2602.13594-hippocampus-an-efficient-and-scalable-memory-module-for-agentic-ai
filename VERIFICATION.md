@@ -2,29 +2,32 @@
 
 ## Initial Assessment
 
-The workspace started at `core_claim_plus` with a real HIPPOCAMPUS-style implementation: token content stream, binary signature stream, Dynamic Wavelet Matrix primitives, Hamming retrieval, span validation, and exact reconstruction. The latest CPU test job completed successfully, and `python validate.py --compare` passed locally.
+The workspace started at milestone `core_claim_plus`. The claimed method implementation is recognizable as the paper's memory substrate: it builds separate compressed streams for stored content and retrieval keys, performs bounded candidate retrieval, validates spans, and reconstructs returned entries from the stored representation. The main evaluator reads JSONL artifacts and does not import from `method/`.
 
-The claimed milestone is justified for a portable core-claim reproduction: the paper's memory-substrate mechanics run end to end, produce reusable artifacts, and are scored against quality and efficiency constraints.
+`python validate.py --compare` passed at the start of verification, and prior CPU-node jobs had completed the packaged workflow successfully.
 
 ## Issues Found
 
-- Minor: `scoring/TARGETS.md` did not list every supporting metric currently scored in `scores.json`.
-- Minor: `scoring/reference.json` used paper-reported LoCoMo values as contextual references for gym retrieval metrics that the paper did not directly report, but did not explain the mapping.
-- Minor: `PROGRESS.md` overstated the synthetic benchmark difficulty. A lexical sanity baseline is near-perfect because generated questions share surface entities with answer-bearing entries.
-- Residual limitation: the benchmark is synthetic and easier than LoCoMo/LongMemEval. It is useful for validating the compressed memory substrate, but less suitable as a broad open-ended retrieval benchmark.
+- Critical, fixed: `eval/train/evaluate_retrieval.py` and `eval/test/evaluate_retrieval.py` filtered artifacts to method names already present in `scoring/reference.json`. That would silently ignore a future scientist's new method name in train/test scoring.
+- Minor, fixed: `scripts/run.sh` called train/test evaluators without explicit artifact paths, so stale ignored files under `outputs/` could affect split scores in a dirty workspace.
+- Minor, fixed: `scoring/DIRECTION.md` described the paper's exact mechanism too specifically for a high-level method-safe guidance file.
+- Cosmetic, fixed: a generated root-level `__pycache__/` directory was present and was removed.
+- Residual limitation: the benchmark is synthetic and easier than LoCoMo/LongMemEval. A lexical sanity baseline can solve the current templated data very well, so the gym is best viewed as a portable core-claim environment rather than a full semantic-memory benchmark.
 
 ## Fixes Applied
 
-- Updated `scoring/TARGETS.md` to include `gold_entry_recall` and `worst_category_hit_at_1`.
-- Added a `notes` field to `scoring/reference.json` explaining the paper-to-gym metric mapping and the replacement of wall-clock latency with bit-operation count.
-- Corrected `PROGRESS.md` to explicitly document that lexical matching is a strong sanity baseline on this synthetic data.
-- Added a final verification entry to `MILESTONES.md`.
+- Removed the `reference.json` method-name filter from the train/test evaluators. They now score arbitrary artifact method names while still enforcing split membership, top-3 output size, known entries, duplicate checks, and conversation boundaries.
+- Updated `scripts/run.sh` to refresh committed train/test scores from the official `hippocampus` and `recency_baseline` artifacts explicitly.
+- Reworded `scoring/DIRECTION.md` to describe the allowed research family without naming the paper's specific internal mechanism.
+- Reran `bash scripts/run.sh`; it completed successfully and `python validate.py --compare` passed.
 
 ## Final Judgment
 
-The workspace is ready to serve as a research gym for the reproduced core claim. Improve-mode agents can inspect and extend the HIPPOCAMPUS implementation; from-scratch agents can use the method-agnostic data/eval path without importing `method/`. The main caveat is evaluation difficulty: the bundled benchmark is portable and API-free but does not match the semantic and generation difficulty of the original LoCoMo/LongMemEval experiments.
+The workspace is ready for core-claim gym use. Improve-mode agents can inspect and modify the reproduced method; from-scratch agents can use `data/`, `eval/`, and the shell evaluators without importing `method/`. The scoring includes both retrieval benefit metrics and efficiency constraints, with wall-clock time excluded from scored metrics.
+
+The main caveat is difficulty: the bundled benchmark is small, synthetic, and vulnerable to lexical matching. This does not invalidate the implemented paper method, but it limits how much scientific weight to place on improvements beyond the documented core retrieval-efficiency claim.
 
 - Milestone: core_claim_plus
-- Ready for gym use: yes
+- Ready for gym use: partial
 - Confidence: medium
-- Key limitation: synthetic retrieval data is easier than the paper's full benchmarks and is vulnerable to lexical matching.
+- Key limitation: synthetic retrieval data is easier than the paper's full LoCoMo/LongMemEval setup and is vulnerable to lexical matching.

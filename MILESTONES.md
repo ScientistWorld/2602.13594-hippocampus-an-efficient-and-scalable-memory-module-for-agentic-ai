@@ -38,5 +38,10 @@
 - Documented the benchmark limitation: the portable synthetic dataset validates the memory-substrate claim but remains easier than LoCoMo/LongMemEval and is vulnerable to lexical matching.
 - Refreshed the optional compact-signature ablation score with the current evaluator schema and removed the stale wall-clock metric from the tracked ablation artifact.
 
+### [2026-06-11 21:12] - core_claim_plus
+- Final verifier fixed train/test scoring so arbitrary future method names are evaluated instead of filtered to `reference.json` methods.
+- Updated `scripts/run.sh` to pass official artifacts explicitly, avoiding stale ignored output files in split scores.
+- Reran `bash scripts/run.sh`; validation passed with the current core-claim scores.
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.
