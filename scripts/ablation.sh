@@ -3,8 +3,8 @@
 #
 # The standard gym score is produced by scripts/reproduce.sh and must remain
 # aligned with scoring/reference.json. This script writes a separate score file
-# under tmp/ so additional settings can be inspected without changing the
-# paper-reference contract.
+# under scoring/ablation_scores.json so additional settings can be inspected
+# without changing the main paper-reference contract in scoring/scores.json.
 
 set -e
 
@@ -13,7 +13,7 @@ cd "$ROOT_DIR"
 
 bash scripts/download.sh
 
-mkdir -p outputs tmp
+mkdir -p outputs scoring
 python method/hippocampus.py \
   --data data/memory_qa.json \
   --output-dir outputs/hippocampus_compact_signature \
@@ -26,6 +26,6 @@ python method/hippocampus.py \
 
 python eval/evaluate_retrieval.py \
   --artifacts outputs/hippocampus_compact_signature/retrieval_results.jsonl \
-  --output tmp/ablation_scores.json
+  --output scoring/ablation_scores.json
 
-cat tmp/ablation_scores.json
+cat scoring/ablation_scores.json

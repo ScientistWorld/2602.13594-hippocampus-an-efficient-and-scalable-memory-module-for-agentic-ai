@@ -10,7 +10,7 @@
 
 ### [2026-06-11 20:13] - core_claim_plus
 - Added and ran a compact-signature HIPPOCAMPUS setting through `scripts/ablation.sh`.
-- Preserved the standard gym score as HIPPOCAMPUS versus recency baseline, with the compact setting written separately to `tmp/ablation_scores.json`.
+- Preserved the standard gym score as HIPPOCAMPUS versus recency baseline, with the compact setting written separately to `scoring/ablation_scores.json`.
 
 ### [2026-06-11 20:31] - core_claim_plus
 - Replaced lazy static DWM materialization with append-time level insertion and a reusable DWM primitive self-test.
@@ -36,6 +36,7 @@
 ### [2026-06-11 21:10] - core_claim_plus
 - Final verification confirmed the workspace validates, train/test scoring is wired correctly, and the method/problem separation is clean.
 - Documented the benchmark limitation: the portable synthetic dataset validates the memory-substrate claim but remains easier than LoCoMo/LongMemEval and is vulnerable to lexical matching.
+- Refreshed the optional compact-signature ablation score with the current evaluator schema and removed the stale wall-clock metric from the tracked ablation artifact.
 
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.

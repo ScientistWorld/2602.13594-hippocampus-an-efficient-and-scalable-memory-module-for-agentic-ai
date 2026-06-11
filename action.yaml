@@ -3,4 +3,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Final verification passed; workspace is ready for core-claim gym use with documented synthetic-data limitation."
+notes: "Final verification passed; optional ablation artifact refreshed with current scoring schema. Workspace is ready for core-claim gym use with documented synthetic-data limitation."

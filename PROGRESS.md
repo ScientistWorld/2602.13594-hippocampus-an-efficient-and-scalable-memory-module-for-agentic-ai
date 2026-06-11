@@ -10,6 +10,7 @@
 - CPU validation job `3ddccb10-194` exposed a clean-container packaging bug in the DWM self-test: direct execution of `method/wavelet_selftest.py` did not place the repository root on `sys.path`. The self-test now inserts the root explicitly and passes under `env -i`.
 - Retry job `d64d2a90-2ab` completed successfully in the clean container, confirming the full `scripts/run.sh` workflow after the import fix.
 - Main evaluator hardening now matches the declared scoring contract: it rejects cross-conversation retrieval, duplicate entries, unknown entry IDs, and outputs larger than top-3. It also writes `gold_entry_recall` and `worst_category_hit_at_1` into `scoring/scores.json`.
+- Refreshed the optional compact-signature ablation so `scripts/ablation.sh` writes the current hardware-independent schema to `scoring/ablation_scores.json`.
 
 ## What Works
 
