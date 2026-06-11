@@ -1,6 +1,6 @@
-# Validate the hardened evaluator and refreshed score files in the clean compute container.
-action: submit
+# Final verifier sign-off.
+action: done
 gpus: 0
-test: true
+test: false
 milestone: core_claim_plus
-notes: "CPU validation of hardened main evaluator, regenerated scores.json metrics, DWM self-test, reproduce.sh, and train/test scoring."
+notes: "Final verification passed; workspace is ready for core-claim gym use with documented synthetic-data limitation."

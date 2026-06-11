@@ -33,5 +33,9 @@
 - Added reproduced `gold_entry_recall` and `worst_category_hit_at_1` to `scoring/scores.json`, matching the declared metrics in `scoring/reference.json`.
 - Local `bash scripts/reproduce.sh`, `python method/wavelet_selftest.py`, and `python validate.py --compare` pass after the evaluator update.
 
+### [2026-06-11 21:10] - core_claim_plus
+- Final verification confirmed the workspace validates, train/test scoring is wired correctly, and the method/problem separation is clean.
+- Documented the benchmark limitation: the portable synthetic dataset validates the memory-substrate claim but remains easier than LoCoMo/LongMemEval and is vulnerable to lexical matching.
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.

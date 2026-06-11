@@ -14,7 +14,7 @@
 ## What Works
 
 - Implemented HIPPOCAMPUS core mechanics: content token-ID stream, signature stream, append-time Dynamic Wavelet Matrix construction with `access/rank/select`, sparse random indexing, Hamming-ball retrieval, signature-span validation, and exact content reconstruction.
-- Added a deterministic long-memory QA benchmark in `data/memory_qa.json`, including same-entity decoys that make exact recall non-trivial.
+- Added a deterministic long-memory QA benchmark in `data/memory_qa.json`, including same-entity decoys for delayed-recall testing.
 - Added recency and lexical baselines plus a reusable evaluator that reads method artifacts from `outputs/`. The default scored baseline is recency-based to keep the synthetic benchmark non-trivial.
 - Wired `scripts/reproduce.sh` to run data setup, baseline, method, and evaluation.
 
@@ -53,6 +53,6 @@ A lexical baseline sanity check reaches 100% `hit_at_1` on the current synthetic
 ## Deviations from Paper
 
 - The paper evaluates LoCoMo and LongMemEval with LLM answer generation and LLM-as-a-judge. This workspace uses a deterministic LoCoMo-like QA retrieval benchmark because it is portable, API-free, and keeps evaluation focused on the memory substrate.
-- The portable benchmark includes same-person/project/company decoys that mention alternative tools but state the original decision did not change. This keeps the replacement benchmark closer to the paper's reported difficulty and avoids a near-perfect synthetic task.
+- The portable benchmark includes same-person/project/company decoys that mention alternative tools but state the original decision did not change. This is enough to validate the memory-substrate mechanics against a recency baseline, but it does not fully reproduce the difficulty of LoCoMo/LongMemEval: a lexical sanity baseline can still solve the templated synthetic questions near-perfectly.
 - The paper reports wall-clock latency on fixed HPE hardware. This workspace records search time for diagnostics but uses bit-operation count and token footprint as hardware-independent constraint metrics.
 - The benchmark passes the conversation ID to retrieval as a per-user memory boundary. This models querying one user's memory store rather than open-corpus retrieval across all users.

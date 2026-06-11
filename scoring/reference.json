@@ -2,6 +2,7 @@
   "experiments": {
     "memory_retrieval_efficiency": {
       "description": "LoCoMo-style memory retrieval: accuracy with token and search-cost constraints, reflecting the paper's headline accuracy-efficiency claim.",
+      "notes": "The paper reports LoCoMo QA F1/BLEU/judge scores plus wall-clock latency and token consumption, not hit-rate retrieval metrics on this portable synthetic benchmark. The quality reference values below are mapped from the closest reported LoCoMo table entries for context; scores.json is computed from the workspace retrieval artifacts. Wall-clock latency is intentionally replaced by the machine-independent avg_bit_operations constraint.",
       "weight": 1.0,
       "primary_metric": "hit_at_1",
       "metrics": {
