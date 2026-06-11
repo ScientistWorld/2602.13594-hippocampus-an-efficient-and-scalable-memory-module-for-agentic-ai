@@ -1,8 +1,8 @@
 # IMPORTANT: Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends. Sleeping blocks the entire pipeline.
-action: submit
+action: done
 gpus: 0
-test: true
-milestone: core_claim
-notes: "Continuation audit found the reproduction intact after a small documentation fix. Run scripts/run.sh on a CPU test node to validate the packaged HIPPOCAMPUS reproduction and compact-signature ablation before restoring core_claim_plus."
+test: false
+milestone: core_claim_plus
+notes: "Continuation audit and CPU compute job 1bd28256-326 passed. HIPPOCAMPUS core claim is reproduced and compact-signature ablation provides an additional setting."

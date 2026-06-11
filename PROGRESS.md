@@ -25,7 +25,7 @@ After that fix, the packaged run passes `bash scripts/run.sh`, including `python
 
 This supports the core claim on the portable delayed-recall benchmark: the paper's DWM plus sparse random-indexing memory retrieves old relevant facts under a small token footprint, while a lightweight recency memory fails.
 
-An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. The latest scheduler-confirmed ablation in `tmp/ablation_scores.json` reached 94.44% `hit_at_1`, 100.00% `hit_at_3`, 61.63 retrieved tokens/query, and 5,249.74 bit operations/query.
+An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. The latest scheduler-confirmed ablation in `tmp/ablation_scores.json` reached 77.78% `hit_at_1`, 98.61% `hit_at_3`, 65.04 retrieved tokens/query, and 7,640.38 bit operations/query.
 
 A lexical baseline sanity check reaches 100% `hit_at_1` on the current synthetic data because the generated questions and answer-bearing entries share exact person/project/company terms. It is useful for debugging but not used as the primary paper-baseline proxy; the benchmark target is the memory-substrate comparison against recency-style lightweight memory.
 

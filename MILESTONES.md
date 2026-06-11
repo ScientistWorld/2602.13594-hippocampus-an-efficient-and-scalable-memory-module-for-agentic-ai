@@ -12,5 +12,9 @@
 - Added and ran a compact-signature HIPPOCAMPUS setting through `scripts/ablation.sh`.
 - Preserved the standard gym score as HIPPOCAMPUS versus recency baseline, with the compact setting written separately to `tmp/ablation_scores.json`.
 
+### [2026-06-11 20:18] - core_claim_plus
+- Continuation audit verified the implementation is the paper's actual memory-substrate algorithm, not a surrogate.
+- CPU compute job `1bd28256-326` completed `scripts/run.sh` successfully, including scoring validation and compact-signature ablation.
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.
