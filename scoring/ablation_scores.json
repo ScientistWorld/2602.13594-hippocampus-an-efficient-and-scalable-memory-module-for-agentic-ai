@@ -7,7 +7,7 @@
           "hit_at_3": 100.0,
           "answer_token_f1": 3.9546821870758637,
           "avg_token_footprint": 61.625,
-          "avg_search_time_ms": 70.5397369161397,
+          "avg_search_time_ms": 56.59408844359051,
           "avg_bit_operations": 5249.736111111111
         }
       }

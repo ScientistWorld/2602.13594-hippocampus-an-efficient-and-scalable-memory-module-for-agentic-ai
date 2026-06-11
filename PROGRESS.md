@@ -11,19 +11,19 @@
 
 The completed CPU job showed the full pipeline runs and originally produced HIPPOCAMPUS at 58.33% `hit_at_1` and 88.89% `hit_at_3`. Inspecting the artifacts showed cross-conversation retrieval, so the method and baselines now constrain search to the labeled conversation history.
 
-After that fix, `bash scripts/reproduce.sh && python validate.py --compare` passes locally. Corrected scores are:
+After that fix, the scheduler-confirmed packaged run `d5d52535-982` passes `bash scripts/run.sh`, including `python validate.py --compare`. Corrected standard scores are:
 
-- `hippocampus`: 93.06% `hit_at_1`, 97.22% `hit_at_3`, 61.50 retrieved tokens/query, 125.73 ms diagnostic search time/query, and 5,249.74 bit operations/query.
+- `hippocampus`: 93.06% `hit_at_1`, 97.22% `hit_at_3`, 61.50 retrieved tokens/query, 110.25 ms diagnostic search time/query, and 5,249.74 bit operations/query.
 - `recency_baseline`: 0.00% `hit_at_1`, 0.00% `hit_at_3`, 39.00 retrieved tokens/query, 0.02 ms diagnostic search time/query, and 45.00 bit operations/query.
 
 This supports the core claim on the portable delayed-recall benchmark: the paper's DWM plus sparse random-indexing memory retrieves old relevant facts under a small token footprint, while a lightweight recency memory fails.
 
-An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. Local scoring in `scoring/ablation_scores.json` reached 94.44% `hit_at_1`, 100.00% `hit_at_3`, 61.62 retrieved tokens/query, and 5,249.74 bit operations/query.
+An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. Scheduler-confirmed scoring in `scoring/ablation_scores.json` reached 94.44% `hit_at_1`, 100.00% `hit_at_3`, 61.62 retrieved tokens/query, and 5,249.74 bit operations/query.
 
 ## Remaining
 
-- Run the corrected packaged reproduction and compact-signature ablation through the scheduler.
 - Higher milestones would require reproducing more of the paper's LLM-answering benchmark surface, including LoCoMo or LongMemEval answer generation and judging.
+- The current environment is complete for the retrieval-efficiency core claim and one additional compact-signature setting.
 
 ## Issues
 

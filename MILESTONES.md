@@ -20,7 +20,7 @@
 
 ### [2026-06-11 20:18] - core_claim_plus
 - Added an optional compact-signature HIPPOCAMPUS ablation that preserves the paper's DWM plus sparse random-indexing computation with 16-bit signatures.
-- Local ablation scoring reached 94.44% hit@1 and 100.00% hit@3 with 61.62 retrieved tokens/query.
+- Scheduler-confirmed ablation scoring reached 94.44% hit@1 and 100.00% hit@3 with 61.62 retrieved tokens/query.
 
 ## Stop Justification
-- Not stopped. A scheduler job is being submitted to confirm the standard score and optional compact-signature ablation inside the packaged environment.
+- Stopping at `core_claim_plus`. The packaged environment reproduces the paper's retrieval-efficiency core claim and confirms one additional compact-signature HIPPOCAMPUS setting. Higher milestones would require a broader LLM-answering benchmark reproduction.
