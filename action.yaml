@@ -3,4 +3,4 @@ action: done
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "Reference-filtered explicit balanced 36-question train/test split; 14 train metrics and 14 test metrics across registered methods; hippocampus hit@1 52.78 train vs 33.33 test, recency 0.00 vs 0.00; python validate.py passes."
+notes: "Made scripts resolve the repo root portably and ensured download.sh creates data/downloads on fresh clones."
