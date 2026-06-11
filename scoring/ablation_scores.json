@@ -1,0 +1,16 @@
+{
+  "experiments": {
+    "memory_retrieval_efficiency": {
+      "results": {
+        "hippocampus_compact_signature": {
+          "hit_at_1": 94.44444444444444,
+          "hit_at_3": 100.0,
+          "answer_token_f1": 3.9546821870758637,
+          "avg_token_footprint": 61.625,
+          "avg_search_time_ms": 70.5397369161397,
+          "avg_bit_operations": 5249.736111111111
+        }
+      }
+    }
+  }
+}

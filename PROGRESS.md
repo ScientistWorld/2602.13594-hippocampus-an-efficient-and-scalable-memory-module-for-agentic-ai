@@ -18,10 +18,12 @@ After that fix, `bash scripts/reproduce.sh && python validate.py --compare` pass
 
 This supports the core claim on the portable delayed-recall benchmark: the paper's DWM plus sparse random-indexing memory retrieves old relevant facts under a small token footprint, while a lightweight recency memory fails.
 
+An optional compact-signature ablation is available through `scripts/ablation.sh`. It keeps the same HIPPOCAMPUS computation but uses 16-bit signatures and radius 3. Local scoring in `scoring/ablation_scores.json` reached 94.44% `hit_at_1`, 100.00% `hit_at_3`, 61.62 retrieved tokens/query, and 5,249.74 bit operations/query.
+
 ## Remaining
 
-- Run the corrected packaged reproduction through the scheduler.
-- If budget allows after scheduler confirmation, add one extra setting such as a signature-bit/radius ablation or a larger generated memory stream.
+- Run the corrected packaged reproduction and compact-signature ablation through the scheduler.
+- Higher milestones would require reproducing more of the paper's LLM-answering benchmark surface, including LoCoMo or LongMemEval answer generation and judging.
 
 ## Issues
 

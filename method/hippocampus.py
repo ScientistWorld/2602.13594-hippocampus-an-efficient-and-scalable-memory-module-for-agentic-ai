@@ -421,7 +421,7 @@ def run(args: argparse.Namespace) -> None:
         for item in dataset["questions"]:
             result = memory.retrieve(item["question"], top_k=args.top_k, conversation_id=item["conversation_id"])
             row = {
-                "method": "hippocampus",
+                "method": args.method_name,
                 "question_id": item["question_id"],
                 "conversation_id": item["conversation_id"],
                 "question": item["question"],
@@ -448,6 +448,7 @@ def main() -> None:
     parser.add_argument("--window", type=int, default=2)
     parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--seed", type=int, default=13)
+    parser.add_argument("--method-name", default="hippocampus")
     args = parser.parse_args()
     run(args)
 

@@ -1,5 +1,5 @@
 action: submit
 gpus: 0
 test: true
-milestone: core_claim
-notes: "CPU confirmation job for the corrected conversation-scoped reproduction: run recency baseline and HIPPOCAMPUS, write scoring/scores.json, and validate the workspace."
+milestone: core_claim_plus
+notes: "CPU confirmation job: run the standard conversation-scoped reproduction, validate scoring/scores.json, then run the optional compact-signature HIPPOCAMPUS ablation."

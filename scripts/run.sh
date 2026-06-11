@@ -15,3 +15,4 @@ cd /home/user
 
 bash scripts/reproduce.sh
 python validate.py --compare
+bash scripts/ablation.sh

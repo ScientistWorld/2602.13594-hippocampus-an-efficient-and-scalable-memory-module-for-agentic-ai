@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Progress Log
 
@@ -18,5 +18,9 @@
 - Re-ran the packaged reproduction locally with conversation-scoped HIPPOCAMPUS retrieval and a recency baseline.
 - HIPPOCAMPUS reached 93.06% hit@1 and 97.22% hit@3 with 61.50 retrieved tokens/query, while the recency baseline reached 0.00% hit@1/hit@3 on the same delayed-recall benchmark.
 
+### [2026-06-11 20:18] - core_claim_plus
+- Added an optional compact-signature HIPPOCAMPUS ablation that preserves the paper's DWM plus sparse random-indexing computation with 16-bit signatures.
+- Local ablation scoring reached 94.44% hit@1 and 100.00% hit@3 with 61.62 retrieved tokens/query.
+
 ## Stop Justification
-- Not stopped. A scheduler job is being submitted to confirm the corrected packaged reproduction.
+- Not stopped. A scheduler job is being submitted to confirm the standard score and optional compact-signature ablation inside the packaged environment.
