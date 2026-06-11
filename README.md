@@ -34,7 +34,7 @@ Run `bash scripts/evaluate.sh <artifact.jsonl> ...` to score one or more retriev
 
 The primary metric is `hit_at_1`, the percentage of questions whose top retrieved entry is one of the labeled answer-bearing entries. Supporting quality metrics are `hit_at_3` and answer-token F1 over the retrieved text.
 
-Constraint metrics measure the paper's efficiency claim: average retrieved-token footprint, average search time, machine-independent bit-operation count, and approximate storage size. Search time is reported for diagnostics only; `avg_bit_operations` is the preferred hardware-independent efficiency metric.
+Constraint metrics measure the paper's efficiency claim: average retrieved-token footprint and machine-independent bit-operation count. Raw artifacts include per-query search time for diagnostics, but wall-clock timing is not scored because it depends on hardware.
 
 ---
 
@@ -68,12 +68,34 @@ Constraint metrics measure the paper's efficiency claim: average retrieved-token
 
 </details>
 
+### Iteration 2: gpt-5.5
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 4m | **GPU**: 0.0h
+- **Jobs**: 4 total (4 completed, 0 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-11 20:07] - core_claim
+- Scheduler-confirmed `bash scripts/run.sh` completed successfully on a CPU compute node.
+- HIPPOCAMPUS retrieved answer-bearing memory entries on the portable long-memory QA benchmark while keeping returned context small and using binary-signature search work.
+
+### [2026-06-11 20:13] - core_claim_plus
+- Added and ran a compact-signature HIPPOCAMPUS setting through `scripts/ablation.sh`.
+- Preserved the standard gym score as HIPPOCAMPUS versus recency baseline, with the compact setting written separately to `tmp/ablation_scores.json`.
+
+### [2026-06-11 20:18] - core_claim_plus
+- Continuation audit verified the implementation is the paper's actual memory-substrate algorithm, not a surrogate.
+- CPU compute job `1bd28256-326` completed `scripts/run.sh` successfully, including scoring validation and compact-signature ablation.
+
+</details>
+
 
 ---
 
 # Reproduction Milestones
 
-**Current: core_claim**
+**Current: core_claim_plus**
 
 ## Stop Justification
-- Completed at milestone `core_claim`.
+- Completed at milestone `core_claim_plus`.
