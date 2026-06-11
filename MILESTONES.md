@@ -24,4 +24,4 @@
 - Local ablation scoring reached 77.78% hit@1 and 98.61% hit@3 with 65.04 retrieved tokens/query.
 
 ## Stop Justification
-- Stopping at `core_claim_plus`. The packaged environment reproduces the paper's retrieval-efficiency core claim on a non-trivial, paper-consistent portable benchmark and includes one additional compact-signature HIPPOCAMPUS setting. Higher milestones would require a broader LLM-answering benchmark reproduction.
+- Completed at milestone `core_claim_plus`.
