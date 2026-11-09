@@ -1,8 +1,8 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: pending
+action: submit
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: ""
+notes: "Hardening check (CPU): reproduce reference + baselines on LoCoMo train/hidden test via evaluator-run retrievers; run seeds, better/weaker variants and shortcut submissions through the hidden test; validate."
