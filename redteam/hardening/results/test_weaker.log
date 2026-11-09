@@ -1,0 +1,4 @@
+[test] weaker_16bit: {"evidence_recall_at_10": 10.874761073713952, "evidence_hit_at_1": 3.2460732984293195, "answer_token_recall": 33.28345446600756, "worst_category_recall": 5.377358490566038, "avg_context_tokens": 549.9078534031414}
+[test] weaker_one_bit: FAILED - ('evidence_recall_at_10 2.68 is below the task floor 5.0', {'evidence_recall_at_10': 2.675060250976481, 'evidence_hit_at_1': 0.0, 'answer_token_recall': 15.982886958710806, 'worst_category_recall': 1.4545454545454546, 'avg_context_tokens': 291.80104712041884})
+[test] weaker_one_bit: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.4062827225131}
+[test] legacy_iter10_config: {"evidence_recall_at_10": 12.397573339981717, "evidence_hit_at_1": 3.8743455497382198, "answer_token_recall": 32.31420570156325, "worst_category_recall": 2.075471698113208, "avg_context_tokens": 471.4607329842932}

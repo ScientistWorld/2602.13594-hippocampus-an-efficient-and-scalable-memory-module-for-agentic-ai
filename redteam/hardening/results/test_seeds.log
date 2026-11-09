@@ -1,0 +1,2 @@
+[test] hippocampus_seed14: {"evidence_recall_at_10": 26.25587966425663, "evidence_hit_at_1": 9.214659685863875, "answer_token_recall": 40.45257856984064, "worst_category_recall": 12.057226399331661, "avg_context_tokens": 491.6523560209424}
+[test] hippocampus_seed15: {"evidence_recall_at_10": 24.996010969832955, "evidence_hit_at_1": 9.424083769633508, "answer_token_recall": 39.72729957138641, "worst_category_recall": 12.518796992481203, "avg_context_tokens": 490.6670157068063}

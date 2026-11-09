@@ -1,0 +1,4 @@
+[train] bm25_baseline: {"evidence_recall_at_10": 56.50894680810008, "evidence_hit_at_1": 29.08777969018933, "answer_token_recall": 58.65592150678291, "worst_category_recall": 18.401206636500753, "avg_context_tokens": 347.22030981067127}
+[train] hippocampus: {"evidence_recall_at_10": 23.795825818653974, "evidence_hit_at_1": 7.573149741824441, "answer_token_recall": 40.42280914703503, "worst_category_recall": 5.555555555555555, "avg_context_tokens": 493.09638554216866}
+[train] recency_baseline: FAILED - ('evidence_recall_at_10 0.90 is below the task floor 5.0', {'evidence_recall_at_10': 0.9036144578313253, 'evidence_hit_at_1': 0.1721170395869191, 'answer_token_recall': 13.298970901941109, 'worst_category_recall': 0.6410256410256411, 'avg_context_tokens': 350.81411359724615})
+[train] recency_baseline: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 798.7934595524957}

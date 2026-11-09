@@ -1,35 +1,82 @@
 {
   "experiments": {
-    "memory_retrieval_efficiency": {
-      "results": {
+    "locomo_memory_retrieval": {
+      "_category_recall": {
+        "bm25_baseline": {
+          "multi_hop": 26.192042606516292,
+          "open_domain": 34.43396226415094,
+          "single_hop": 61.96969696969696,
+          "temporal": 67.79166666666667
+        },
         "hippocampus": {
-          "answer_token_f1": 2.366858377474667,
-          "avg_bit_operations": 7468.5,
-          "avg_token_footprint": 62.583333333333336,
-          "gold_entry_recall": 55.55555555555556,
-          "hit_at_1": 33.333333333333336,
-          "hit_at_3": 55.55555555555556,
-          "worst_category_hit_at_1": 16.666666666666668
+          "multi_hop": 12.714598997493734,
+          "open_domain": 17.955974842767294,
+          "single_hop": 25.939393939393938,
+          "temporal": 30.833333333333336
+        }
+      },
+      "_status": {
+        "bm25_baseline": {
+          "valid": true
+        },
+        "hippocampus": {
+          "valid": true
         },
         "recency_baseline": {
-          "answer_token_f1": 0.0,
-          "avg_bit_operations": 63.0,
-          "avg_token_footprint": 39.0,
-          "gold_entry_recall": 0.0,
-          "hit_at_1": 0.0,
-          "hit_at_3": 0.0,
-          "worst_category_hit_at_1": 0.0
+          "reason": "evidence_recall_at_10 1.05 is below the task floor 5.0",
+          "unscored_raw_metrics": {
+            "answer_token_recall": 12.836771123343343,
+            "avg_context_tokens": 308.5298429319372,
+            "evidence_hit_at_1": 0.0,
+            "evidence_recall_at_10": 1.0471204188481675,
+            "worst_category_recall": 0.0
+          },
+          "valid": false
+        }
+      },
+      "results": {
+        "bm25_baseline": {
+          "answer_token_recall": 55.4933397284029,
+          "avg_context_tokens": 332.4492146596859,
+          "evidence_hit_at_1": 31.93717277486911,
+          "evidence_recall_at_10": 55.96634255796559,
+          "worst_category_recall": 26.192042606516292
+        },
+        "hippocampus": {
+          "answer_token_recall": 39.60265608702625,
+          "avg_context_tokens": 491.0523560209424,
+          "evidence_hit_at_1": 9.319371727748692,
+          "evidence_recall_at_10": 24.41635502368487,
+          "worst_category_recall": 12.714598997493734
+        },
+        "recency_baseline": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.4062827225131,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
         }
       },
       "slice": "test",
       "split": {
         "category_counts": {
-          "multi_hop": 12,
-          "single_hop": 12,
-          "temporal": 12
+          "multi_hop": 152,
+          "open_domain": 53,
+          "single_hop": 550,
+          "temporal": 200
         },
-        "name": "explicit_balanced_test_slice_v2",
-        "question_count": 36
+        "conversations": [
+          "conv-30",
+          "conv-42",
+          "conv-43",
+          "conv-47",
+          "conv-48",
+          "conv-50"
+        ],
+        "max_retrieved": 10,
+        "min_evidence_recall": 5.0,
+        "name": "locomo_heldout_conversations_v3",
+        "question_count": 955
       }
     }
   },

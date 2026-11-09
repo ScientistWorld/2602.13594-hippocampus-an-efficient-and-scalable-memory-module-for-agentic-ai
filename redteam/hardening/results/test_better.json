@@ -1,0 +1,66 @@
+{
+  "experiments": {
+    "locomo_memory_retrieval": {
+      "_category_recall": {
+        "better_bm25_rerank": {
+          "multi_hop": 20.083542188805342,
+          "open_domain": 29.559748427672957,
+          "single_hop": 38.42424242424242,
+          "temporal": 47.66666666666667
+        },
+        "better_idf_weighting": {
+          "multi_hop": 10.773809523809522,
+          "open_domain": 12.89308176100629,
+          "single_hop": 24.515151515151512,
+          "temporal": 32.0
+        }
+      },
+      "_status": {
+        "better_bm25_rerank": {
+          "valid": true
+        },
+        "better_idf_weighting": {
+          "valid": true
+        }
+      },
+      "results": {
+        "better_bm25_rerank": {
+          "answer_token_recall": 45.35000164773803,
+          "avg_context_tokens": 401.9298429319372,
+          "evidence_hit_at_1": 28.06282722513089,
+          "evidence_recall_at_10": 36.94872434139448,
+          "worst_category_recall": 20.083542188805342
+        },
+        "better_idf_weighting": {
+          "answer_token_recall": 39.98565219299742,
+          "avg_context_tokens": 498.8020942408377,
+          "evidence_hit_at_1": 7.329842931937173,
+          "evidence_recall_at_10": 23.250560957367238,
+          "worst_category_recall": 10.773809523809522
+        }
+      },
+      "slice": "test",
+      "split": {
+        "category_counts": {
+          "multi_hop": 152,
+          "open_domain": 53,
+          "single_hop": 550,
+          "temporal": 200
+        },
+        "conversations": [
+          "conv-30",
+          "conv-42",
+          "conv-43",
+          "conv-47",
+          "conv-48",
+          "conv-50"
+        ],
+        "max_retrieved": 10,
+        "min_evidence_recall": 5.0,
+        "name": "locomo_heldout_conversations_v3",
+        "question_count": 955
+      }
+    }
+  },
+  "slice": "test"
+}

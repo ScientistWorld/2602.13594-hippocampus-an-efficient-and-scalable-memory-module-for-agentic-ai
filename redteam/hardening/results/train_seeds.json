@@ -1,0 +1,64 @@
+{
+  "experiments": {
+    "locomo_memory_retrieval": {
+      "_category_recall": {
+        "hippocampus_seed14": {
+          "multi_hop": 10.845571095571096,
+          "open_domain": 7.415786827551533,
+          "single_hop": 30.927835051546392,
+          "temporal": 28.09917355371901
+        },
+        "hippocampus_seed15": {
+          "multi_hop": 11.717944336365388,
+          "open_domain": 5.084784496549202,
+          "single_hop": 25.601374570446737,
+          "temporal": 30.44077134986226
+        }
+      },
+      "_status": {
+        "hippocampus_seed14": {
+          "valid": true
+        },
+        "hippocampus_seed15": {
+          "valid": true
+        }
+      },
+      "results": {
+        "hippocampus_seed14": {
+          "answer_token_recall": 42.74702738418629,
+          "avg_context_tokens": 499.94492254733217,
+          "evidence_hit_at_1": 8.433734939759036,
+          "evidence_recall_at_10": 24.26702225249355,
+          "worst_category_recall": 7.415786827551533
+        },
+        "hippocampus_seed15": {
+          "answer_token_recall": 41.458221704115466,
+          "avg_context_tokens": 493.6110154905336,
+          "evidence_hit_at_1": 5.163511187607573,
+          "evidence_recall_at_10": 22.125598437910934,
+          "worst_category_recall": 5.084784496549202
+        }
+      },
+      "slice": "train",
+      "split": {
+        "category_counts": {
+          "multi_hop": 130,
+          "open_domain": 39,
+          "single_hop": 291,
+          "temporal": 121
+        },
+        "conversations": [
+          "conv-26",
+          "conv-41",
+          "conv-44",
+          "conv-49"
+        ],
+        "max_retrieved": 10,
+        "min_evidence_recall": 5.0,
+        "name": "locomo_train_conversations_v3",
+        "question_count": 581
+      }
+    }
+  },
+  "slice": "train"
+}

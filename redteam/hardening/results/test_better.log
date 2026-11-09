@@ -1,0 +1,2 @@
+[test] better_idf_weighting: {"evidence_recall_at_10": 23.250560957367238, "evidence_hit_at_1": 7.329842931937173, "answer_token_recall": 39.98565219299742, "worst_category_recall": 10.773809523809522, "avg_context_tokens": 498.8020942408377}
+[test] better_bm25_rerank: {"evidence_recall_at_10": 36.94872434139448, "evidence_hit_at_1": 28.06282722513089, "answer_token_recall": 45.35000164773803, "worst_category_recall": 20.083542188805342, "avg_context_tokens": 401.9298429319372}

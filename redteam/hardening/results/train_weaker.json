@@ -1,0 +1,82 @@
+{
+  "experiments": {
+    "locomo_memory_retrieval": {
+      "_category_recall": {
+        "legacy_iter10_config": {
+          "multi_hop": 5.17948717948718,
+          "open_domain": 1.9230769230769231,
+          "single_hop": 17.010309278350515,
+          "temporal": 13.498622589531681
+        },
+        "weaker_16bit": {
+          "multi_hop": 6.821371610845296,
+          "open_domain": 7.264957264957266,
+          "single_hop": 11.683848797250858,
+          "temporal": 11.432506887052343
+        }
+      },
+      "_status": {
+        "legacy_iter10_config": {
+          "valid": true
+        },
+        "weaker_16bit": {
+          "valid": true
+        },
+        "weaker_one_bit": {
+          "reason": "evidence_recall_at_10 2.45 is below the task floor 5.0",
+          "unscored_raw_metrics": {
+            "answer_token_recall": 14.487411201941875,
+            "avg_context_tokens": 273.92426850258175,
+            "evidence_hit_at_1": 0.0,
+            "evidence_recall_at_10": 2.454102122776822,
+            "worst_category_recall": 1.2820512820512822
+          },
+          "valid": false
+        }
+      },
+      "results": {
+        "legacy_iter10_config": {
+          "answer_token_recall": 30.99911560755831,
+          "avg_context_tokens": 463.0447504302926,
+          "evidence_hit_at_1": 3.9586919104991396,
+          "evidence_recall_at_10": 12.619047619047622,
+          "worst_category_recall": 1.9230769230769231
+        },
+        "weaker_16bit": {
+          "answer_token_recall": 32.16766596748497,
+          "avg_context_tokens": 553.5163511187608,
+          "evidence_hit_at_1": 2.0654044750430294,
+          "evidence_recall_at_10": 10.246893246259132,
+          "worst_category_recall": 6.821371610845296
+        },
+        "weaker_one_bit": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 798.7934595524957,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        }
+      },
+      "slice": "train",
+      "split": {
+        "category_counts": {
+          "multi_hop": 130,
+          "open_domain": 39,
+          "single_hop": 291,
+          "temporal": 121
+        },
+        "conversations": [
+          "conv-26",
+          "conv-41",
+          "conv-44",
+          "conv-49"
+        ],
+        "max_retrieved": 10,
+        "min_evidence_recall": 5.0,
+        "name": "locomo_train_conversations_v3",
+        "question_count": 581
+      }
+    }
+  },
+  "slice": "train"
+}
