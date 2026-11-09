@@ -1,13 +1,16 @@
 # Research Direction
 
 ## Research Problem
-Improve long-term contextual memory retrieval for agentic systems. The goal is to recall relevant past entries from growing conversational histories without relying on large prompt contexts or expensive dense-vector search.
+Improve long-term conversational memory recall for agentic systems: find the few past dialogue turns that answer a new question in a history of hundreds of turns, while delivering little context.
 
 ## Core Contribution
-The paper contributes an efficient external memory substrate for selective recall under context-budget and search-work constraints. Improvements should stay within the problem of compact long-memory indexing and retrieval.
+The paper contributes a lightweight memory substrate that indexes conversation history compactly. It aims to keep recall quality while making search cheap and the returned context small.
 
 ## Approach Scope
-In-bounds work may improve compact representations, indexing, candidate validation, metadata use, or ranking while preserving the goal of selective memory retrieval with a small returned context.
+In bounds: better compact representations of memory entries, keyword or query processing, candidate generation and validation, ranking, use of metadata (speakers, sessions, timestamps), and choosing how many entries to return.
+
+## Where the reference falls short
+On LoCoMo the reference recovers about a quarter of the evidence turns. Multi-hop questions are hardest. It prefers long turns, so it delivers more context than needed. Exhaustive lexical scoring already recovers more than twice as much evidence, so there is substantial headroom.
 
 ## Out of Bounds
-Do not replace the task with answer generation from a large LLM context, full-history prompting, or a large neural retriever whose gains mainly come from pretrained model scale. Do not add external labeled data to the scoring set.
+Full-history prompting, answer generation with large LLMs, large pretrained neural retrievers, external labelled data, or any use of the held-out labels.

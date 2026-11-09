@@ -1,19 +1,20 @@
 # Evaluation Targets
 
-## Primary: memory_retrieval_efficiency
-Tests whether a long-memory system returns answer-bearing memory entries for natural-language questions.
-- **Metric**: `hit_at_1` (higher is better)
+All targets belong to experiment `locomo_memory_retrieval` (weight 1.0). Scores come from `scripts/evaluate_test.sh` on 6 held-out LoCoMo conversations (955 questions); `scripts/evaluate_train.sh` gives the same measurement on 4 visible conversations (581 questions).
 
-## Constraint: memory_retrieval_efficiency
-Tests whether retrieval remains efficient instead of solving the task by returning large amounts of memory.
-- **Metrics**: `avg_token_footprint` and `avg_bit_operations` (lower is better)
-- `avg_search_time_ms` may appear in artifacts as a diagnostic only; it is not a scored target because wall-clock speed depends on hardware.
+## Primary
+- `evidence_recall_at_10` (higher is better, coefficient 1.0): average fraction of labelled evidence turns among the at most 10 returned entries.
 
-## Supporting: memory_retrieval_efficiency
-Tests whether useful evidence appears anywhere in a small retrieved set, whether all labeled supporting entries are recovered, whether returned text contains answer tokens, and whether performance is not concentrated in only one question category.
-- **Metrics**: `hit_at_3`, `gold_entry_recall`, `answer_token_f1`, and `worst_category_hit_at_1` (higher is better)
+## Supporting quality
+- `evidence_hit_at_1` (higher, 0.4): the top-ranked entry is evidence.
+- `answer_token_recall` (higher, 0.4): the gold answer's content words appear in the delivered context.
+- `worst_category_recall` (higher, 0.3): lowest evidence recall over single-hop, multi-hop, temporal and open-domain questions.
 
-## Benchmark Limitation
-This portable benchmark is intentionally small and API-free. It validates selective long-memory retrieval and efficiency constraints, but it is easier than the paper's full LoCoMo/LongMemEval setup; surface lexical matching is a known strong sanity baseline on this synthetic data.
+## Constraint (efficiency)
+- `avg_context_tokens` (lower, coefficient magnitude 0.2): delivered context tokens per question (per-query token footprint).
+- Hard budget: at most 10 entries per question. Over-budget, malformed, or near-zero-recall runs (below 5% evidence recall) are scored as failed.
 
-Run `bash scripts/reproduce.sh` to generate method and baseline artifacts, then `bash scripts/evaluate.sh outputs/hippocampus/retrieval_results.jsonl outputs/recency_baseline/retrieval_results.jsonl`.
+## Reference (hidden test, seed 13)
+HIPPOCAMPUS: recall@10 24.42, hit@1 9.32, answer-token recall 39.60, worst category 12.71, 491.1 context tokens. Exhaustive BM25 gets 55.97 recall@10 at 332.4 tokens. The most-recent-entries baseline gets 1.05 recall and is scored as failed. Returning the whole history would cost about 20.7K tokens per question.
+
+Not scored: wall-clock latency and operation counts, which cannot be measured method-agnostically without timing.

@@ -1,22 +1,19 @@
 # Scientist Constraints
 
+## Interface
+Submit methods as retriever scripts in `scripts/retrievers/<name>.sh` with the contract in `briefing/evaluation.md`. The hidden evaluator runs every script there on conversations you cannot see, so the method must work on new conversations without manual steps and without internet.
+
 ## Data
-Use `data/memory_qa.json` exactly as provided for scoring. Do not add external conversations, extra labels, or generated paraphrases to the scoring set.
+Use only the memory input the evaluator passes to your script. Do not read evaluator files (`eval/`), git history, or copies of the LoCoMo questions, answers or evidence labels from any other source. LoCoMo is public, and embedding its labels is a shortcut, not a method. Training or tuning may use `data/locomo_train.json`, including its labels.
 
-Each question must be answered using only entries from its labeled `conversation_id`. Cross-conversation retrieval changes the task from per-agent memory recall to global corpus search.
-
-## Output Budget
-Return at most three memory entries per question. The benchmark is about selective recall, so returning larger contexts changes the problem.
-
-## Evaluation
-Use `scripts/evaluate.sh` and the artifact schema already used by `outputs/*/retrieval_results.jsonl`. Do not modify gold labels, metric definitions, or the scoring split.
+## Output budget
+At most 10 entries per question, all from that question's conversation, with no duplicates. Only the ranked entry IDs are scored; the evaluator rebuilds the delivered text itself.
 
 ## Resources
-Do not use paid APIs or external LLM calls during scoring. The paper's contribution is a memory substrate, and API-based answer generation would confound retrieval with model capability.
+No paid APIs, external LLM calls, or downloads at test time. Do not add large pretrained neural retrievers whose gains come from model scale; the paper's contribution is a lightweight memory substrate.
 
 ## Compliance Checklist
-- [ ] Scoring uses only `data/memory_qa.json`
-- [ ] Retrieval for each question is limited to its labeled conversation
-- [ ] Each question has at most three retrieved entries
-- [ ] `scripts/evaluate.sh` is unchanged for final scoring
-- [ ] No paid or external API calls are used during scoring
+- [ ] Method runs from `scripts/retrievers/<name>.sh` on the label-free input
+- [ ] At most 10 entries per question, from the question's own conversation
+- [ ] No access to `eval/`, git history, or external label copies
+- [ ] No paid or external API calls during retrieval

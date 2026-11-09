@@ -1,3 +1,5 @@
+> **Superseded (iteration 11):** this file describes the earlier synthetic-benchmark gym. The current gym (LoCoMo, evaluator-run retrievers) is described in `HARDENING.md`, `briefing/` and `scoring/`.
+
 # Train/Test Evaluation Design Notes
 
 ## What I Checked

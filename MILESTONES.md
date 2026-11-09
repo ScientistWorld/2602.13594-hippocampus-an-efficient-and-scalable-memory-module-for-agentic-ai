@@ -43,5 +43,12 @@
 - Updated `scripts/run.sh` to pass official artifacts explicitly, avoiding stale ignored output files in split scores.
 - Reran `bash scripts/run.sh`; validation passed with the current core-claim scores.
 
+### [2026-11-09 07:20] - core_claim_plus (iteration 11, hardening)
+- Moved the gym to the paper's LoCoMo benchmark: 4 visible training conversations (581 questions) and 6 held-out test conversations (955 questions), with test labels only in `eval/test/`.
+- The hidden test runs every `scripts/retrievers/*.sh` on label-free held-out inputs and scores only the returned entry IDs. Failure gates: 10-entry budget and a 5% recall floor.
+- HIPPOCAMPUS reference (fidelity fixes: dense Gaussian hyperplanes per Appendix G, keyword co-occurrence ranking, per-conversation DWMs): hidden-test recall@10 24.42 (train 23.80) at 491 context tokens.
+- Comparisons: recency 1.05 (failed); full history about 20.7K tokens; exhaustive BM25 55.97. Seed range 1.84 recall points.
+- Signature-length ablation: 16-bit 10.87, 1-bit fails the floor. A better variant (BM25 re-ranking of signature candidates) reaches 36.95. Details in `HARDENING.md`.
+
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.

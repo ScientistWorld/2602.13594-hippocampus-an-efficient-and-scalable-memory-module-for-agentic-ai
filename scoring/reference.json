@@ -35,7 +35,7 @@
       "results": {
         "hippocampus": {
           "type": "proposed",
-          "evidence_recall_at_10": 0.0
+          "evidence_recall_at_10": 24.41635502368487
         },
         "bm25_baseline": {
           "type": "baseline"
@@ -278,6 +278,17 @@
             "avg_bit_operations": 1000000.0
           }
         }
+      },
+      "_reference_run_hidden_test": {
+        "note": "Frozen reference (scripts/retrievers/hippocampus.sh, seed 13) on the hidden test, job 9aae9672-758. Seeds 14/15 span 1.84 recall points.",
+        "hippocampus": {
+          "evidence_recall_at_10": 24.41635502368487,
+          "evidence_hit_at_1": 9.319371727748692,
+          "answer_token_recall": 39.60265608702625,
+          "worst_category_recall": 12.714598997493734,
+          "avg_context_tokens": 491.0523560209424
+        },
+        "full_history_context_tokens_per_question": 20691.5
       }
     }
   }
