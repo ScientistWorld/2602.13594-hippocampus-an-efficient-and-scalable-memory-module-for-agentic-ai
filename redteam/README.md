@@ -21,6 +21,10 @@ log, and cohort-standardized rank. `summary.json` records raw metrics, the
 normalization population, coefficient directions, and seed ranges. The exact
 future rank cannot be known before future attempts define their population;
 Pareto improvements over the reference are independent of that normalization.
+The final normalization population counts each of the 20 successful submissions
+once, including reference_seed13. `summarize.py` also reports a sensitivity
+calculation excluding the impossible negative-operation submission.
+Run `python redteam/verify_results.py` for lightweight saved-result checks.
 
 `reference_scores_test.json` and `rank_specification.json` are frozen audit
 inputs used only by the reporting code, never staged into submissions.

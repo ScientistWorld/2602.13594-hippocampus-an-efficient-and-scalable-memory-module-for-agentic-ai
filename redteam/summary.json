@@ -1,6 +1,6 @@
 {
   "rank_definition": "experiment weight * sum(abs(coefficient) * oriented improvement / audit cohort population stddev)",
-  "normalization_population": "all successful audit submissions plus the frozen reference; actual future rank depends on its population",
+  "normalization_population": "the 20 successful audit submissions, including reference_seed13 exactly once; actual future rank depends on its population",
   "reference": {
     "answer_token_f1": 2.366858377474667,
     "avg_bit_operations": 7468.5,
@@ -11,17 +11,17 @@
     "worst_category_hit_at_1": 16.666666666666668
   },
   "metric_population_stddev": {
-    "hit_at_1": 36.91400578318863,
-    "hit_at_3": 33.79312516832344,
-    "gold_entry_recall": 33.79312516832344,
-    "answer_token_f1": 38.11802413941138,
-    "worst_category_hit_at_1": 40.627634515425235,
-    "avg_token_footprint": 27.001147824621025,
-    "avg_bit_operations": 212958856028.21103
+    "hit_at_1": 37.57297426424648,
+    "hit_at_3": 34.57496552045628,
+    "gold_entry_recall": 34.57496552045628,
+    "answer_token_f1": 38.8098757349862,
+    "worst_category_hit_at_1": 41.1129879451467,
+    "avg_token_footprint": 27.319277487768666,
+    "avg_bit_operations": 217944948199.05405
   },
   "attempts": {
     "better_ranking": {
-      "rank_delta": 3.2305244080445066,
+      "rank_delta": 3.172876564383288,
       "metrics": {
         "answer_token_f1": 3.6158213378306456,
         "avg_bit_operations": 9495.166666666666,
@@ -33,7 +33,7 @@
       }
     },
     "brute_force_lexical": {
-      "rank_delta": 3.5846697460903947,
+      "rank_delta": 3.5205481728174868,
       "metrics": {
         "answer_token_f1": 3.77005729773938,
         "avg_bit_operations": 12320.0,
@@ -45,7 +45,7 @@
       }
     },
     "recency_baseline": {
-      "rank_delta": -2.339833483731516,
+      "rank_delta": -2.2926821473746632,
       "metrics": {
         "answer_token_f1": 0.0,
         "avg_bit_operations": 63.0,
@@ -69,7 +69,7 @@
       }
     },
     "reference_seed14": {
-      "rank_delta": 1.685350454809116,
+      "rank_delta": 1.6534186702933806,
       "metrics": {
         "answer_token_f1": 3.3726409600886953,
         "avg_bit_operations": 7468.5,
@@ -81,7 +81,7 @@
       }
     },
     "reference_seed15": {
-      "rank_delta": 2.2128356616039904,
+      "rank_delta": 2.1728001690615515,
       "metrics": {
         "answer_token_f1": 3.3464092036280646,
         "avg_bit_operations": 7468.5,
@@ -105,7 +105,7 @@
       }
     },
     "shortcut_empty_output": {
-      "rank_delta": -2.2676143316885877,
+      "rank_delta": -2.221303978572358,
       "metrics": {
         "answer_token_f1": 0.0,
         "avg_bit_operations": 0.0,
@@ -117,7 +117,7 @@
       }
     },
     "shortcut_forged_text": {
-      "rank_delta": 1.0100436993962576,
+      "rank_delta": 0.992740065974557,
       "metrics": {
         "answer_token_f1": 100.0,
         "avg_bit_operations": 7468.5,
@@ -129,7 +129,7 @@
       }
     },
     "shortcut_generator_answers": {
-      "rank_delta": 3.725105805998955,
+      "rank_delta": 3.6589675514332107,
       "metrics": {
         "answer_token_f1": 10.488006536315714,
         "avg_bit_operations": 1.0,
@@ -141,7 +141,7 @@
       }
     },
     "shortcut_id_only_labels": {
-      "rank_delta": 3.6702125514869848,
+      "rank_delta": 3.605308836513805,
       "metrics": {
         "answer_token_f1": 0.0,
         "avg_bit_operations": 1.0,
@@ -153,7 +153,7 @@
       }
     },
     "shortcut_negative_operations": {
-      "rank_delta": 0.04695742765147218,
+      "rank_delta": 0.04588314690162845,
       "metrics": {
         "answer_token_f1": 2.366858377474667,
         "avg_bit_operations": -1000000000000.0,
@@ -165,7 +165,7 @@
       }
     },
     "shortcut_omitted_operations": {
-      "rank_delta": 3.507015457958055e-10,
+      "rank_delta": 3.4267828007551936e-10,
       "metrics": {
         "answer_token_f1": 2.366858377474667,
         "avg_bit_operations": 0.0,
@@ -189,7 +189,7 @@
       }
     },
     "shortcut_relabel_dataset": {
-      "rank_delta": 4.472523209331383,
+      "rank_delta": 4.392600540657624,
       "metrics": {
         "answer_token_f1": 100.0,
         "avg_bit_operations": 7468.5,
@@ -201,7 +201,7 @@
       }
     },
     "shortcut_replace_corpus": {
-      "rank_delta": 4.586561571557165,
+      "rank_delta": 4.5053109400233105,
       "metrics": {
         "answer_token_f1": 100.0,
         "avg_bit_operations": 0.0,
@@ -225,7 +225,7 @@
       }
     },
     "shortcut_visible_labels": {
-      "rank_delta": 3.725105805998955,
+      "rank_delta": 3.6589675514332107,
       "metrics": {
         "answer_token_f1": 10.488006536315714,
         "avg_bit_operations": 1.0,
@@ -237,7 +237,7 @@
       }
     },
     "shortcut_wrong_ids_answer_text": {
-      "rank_delta": -1.3517282549007628,
+      "rank_delta": -1.3217594274269975,
       "metrics": {
         "answer_token_f1": 100.0,
         "avg_bit_operations": 0.0,
@@ -249,7 +249,7 @@
       }
     },
     "weaker_one_bit": {
-      "rank_delta": -1.343733028646935,
+      "rank_delta": -1.3172934500345392,
       "metrics": {
         "answer_token_f1": 2.0137152701423577,
         "avg_bit_operations": 7468.5,
@@ -270,6 +270,39 @@
     "hit_at_3": 33.33333333333333,
     "worst_category_hit_at_1": 50.0
   },
-  "seed_rank_range": 2.2128356616039904,
-  "reference_metrics_at_mathematical_bound": []
+  "seed_rank_range": 2.1728001690615515,
+  "reference_metrics_at_mathematical_bound": [],
+  "sensitivity_without_impossible_cost": {
+    "metric_population_stddev": {
+      "hit_at_1": 38.26054396788834,
+      "hit_at_3": 35.41332837814752,
+      "gold_entry_recall": 35.41332837814752,
+      "answer_token_f1": 39.53326463548748,
+      "worst_category_hit_at_1": 41.5857940916967,
+      "avg_token_footprint": 27.6282205019872,
+      "avg_bit_operations": 4143.103152663513
+    },
+    "rank_deltas": {
+      "better_ranking": 3.110024169027288,
+      "brute_force_lexical": 3.444357236228463,
+      "recency_baseline": -2.2269124935396074,
+      "reference_seed13": 0.0,
+      "reference_seed14": 1.6211628286049042,
+      "reference_seed15": 2.132503215537891,
+      "shortcut_baseline_poisoning": 0.0,
+      "shortcut_empty_output": -2.156180426474369,
+      "shortcut_forged_text": 0.9753734767841451,
+      "shortcut_generator_answers": 3.610531414001545,
+      "shortcut_id_only_labels": 3.558145787996596,
+      "shortcut_omitted_operations": 0.01802634335859743,
+      "shortcut_prewrite_scores": 0.0,
+      "shortcut_relabel_dataset": 4.312192435403453,
+      "shortcut_replace_corpus": 4.441668832754678,
+      "shortcut_row_gold": 0.0,
+      "shortcut_visible_labels": 3.610531414001545,
+      "shortcut_wrong_ids_answer_text": -1.2731122313092011,
+      "weaker_one_bit": -1.2904836716752588
+    },
+    "seed_rank_range": 2.132503215537891
+  }
 }

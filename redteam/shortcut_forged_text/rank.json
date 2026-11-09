@@ -1,5 +1,5 @@
 {
-  "rank_delta": 1.0100436993962576,
+  "rank_delta": 0.992740065974557,
   "metrics": {
     "answer_token_f1": 100.0,
     "avg_bit_operations": 7468.5,

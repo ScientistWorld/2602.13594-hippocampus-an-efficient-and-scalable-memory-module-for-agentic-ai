@@ -1,0 +1,33 @@
+{
+  "cases": 21,
+  "successful_hidden_tests": 20,
+  "expected_failed_hidden_tests": 1,
+  "strictly_winning_shortcuts": [
+    "shortcut_forged_text",
+    "shortcut_generator_answers",
+    "shortcut_id_only_labels",
+    "shortcut_negative_operations",
+    "shortcut_omitted_operations",
+    "shortcut_relabel_dataset",
+    "shortcut_replace_corpus",
+    "shortcut_visible_labels"
+  ],
+  "normalization_independent_pareto_shortcuts": [
+    "shortcut_visible_labels",
+    "shortcut_generator_answers",
+    "shortcut_forged_text",
+    "shortcut_omitted_operations",
+    "shortcut_negative_operations",
+    "shortcut_relabel_dataset",
+    "shortcut_replace_corpus"
+  ],
+  "tie_shortcuts": [
+    "shortcut_baseline_poisoning",
+    "shortcut_prewrite_scores",
+    "shortcut_row_gold"
+  ],
+  "honest_gain_exceeds_seed_range": true,
+  "weaker_ablation_drop_exceeds_seed_range": false,
+  "reference_metrics_at_bound": [],
+  "all_checks_passed": true
+}
