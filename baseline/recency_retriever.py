@@ -1,84 +1,38 @@
 #!/usr/bin/env python3
-"""Simple recency baseline for long-memory retrieval.
+"""Recency baseline: return the most recent memory entries of the conversation.
 
-This approximates lightweight memory systems that prefer the most recent
-conversation entries without building a semantic index.
+Stands in for lightweight memory systems that keep only the latest context
+without any semantic index. Same I/O contract as every gym retriever:
+    python baseline/recency_retriever.py --input <memory.json> --output <results.jsonl>
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import re
-import time
 from pathlib import Path
 
 
-TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
-
-
-def token_count(text: str) -> int:
-    return len(TOKEN_RE.findall(text.lower()))
-
-
 def run(args: argparse.Namespace) -> None:
-    dataset = json.loads(Path(args.data).read_text())
-    entries_by_conversation = {}
-    total_storage = 0
+    dataset = json.loads(Path(args.input).read_text())
+    latest = {}
     for conversation in dataset["conversations"]:
-        conv_entries = []
-        for entry in conversation["entries"]:
-            total_storage += len(entry["text"].encode("utf-8"))
-            conv_entries.append({**entry, "conversation_id": conversation["conversation_id"]})
-        entries_by_conversation[conversation["conversation_id"]] = conv_entries
-
-    out = Path(args.output_dir)
-    out.mkdir(parents=True, exist_ok=True)
-    with (out / "retrieval_results.jsonl").open("w") as f:
+        entries = sorted(conversation["entries"], key=lambda e: (e["session"], e["turn"]), reverse=True)
+        latest[conversation["conversation_id"]] = [entry["entry_id"] for entry in entries[: args.top_k]]
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("w") as handle:
         for item in dataset["questions"]:
-            start = time.perf_counter()
-            entries = entries_by_conversation[item["conversation_id"]]
-            ranked = sorted(entries, key=lambda entry: (entry["session"], entry["timestamp"], entry["entry_id"]), reverse=True)[
-                : args.top_k
-            ]
-            retrieved = []
-            for entry in ranked:
-                retrieved.append(
-                    {
-                        "entry_id": entry["entry_id"],
-                        "conversation_id": entry["conversation_id"],
-                        "session": entry["session"],
-                        "speaker": entry["speaker"],
-                        "timestamp": entry["timestamp"],
-                        "text": entry["text"],
-                        "reconstructed_text": entry["text"].lower(),
-                        "token_count": token_count(entry["text"]),
-                    }
-                )
-            row = {
-                "method": "recency_baseline",
-                "question_id": item["question_id"],
-                "conversation_id": item["conversation_id"],
-                "question": item["question"],
-                "answer": item["answer"],
-                "gold_entry_ids": item["gold_entry_ids"],
-                "retrieved": retrieved,
-                "search_time_s": time.perf_counter() - start,
-                "signature_comparisons": 0,
-                "bit_operations": len(entries),
-                "token_footprint": sum(entry["token_count"] for entry in retrieved),
-                "storage_bytes": total_storage,
-            }
-            f.write(json.dumps(row) + "\n")
+            row = {"question_id": item["question_id"], "retrieved_entry_ids": latest[item["conversation_id"]]}
+            handle.write(json.dumps(row) + "\n")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data", default="data/memory_qa.json")
-    parser.add_argument("--output-dir", default="outputs/recency_baseline")
-    parser.add_argument("--top-k", type=int, default=3)
-    args = parser.parse_args()
-    run(args)
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--top-k", type=int, default=10)
+    run(parser.parse_args())
 
 
 if __name__ == "__main__":

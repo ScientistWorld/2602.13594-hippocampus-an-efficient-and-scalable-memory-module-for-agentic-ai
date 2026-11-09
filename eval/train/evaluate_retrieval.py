@@ -1,201 +1,373 @@
 #!/usr/bin/env python3
-"""Evaluate the visible train slice of memory retrieval artifacts."""
+"""Train-split evaluator for long-conversation memory retrieval.
+
+Runs every registered retriever (scripts/retrievers/*.sh, or explicit scripts)
+on the visible LoCoMo training conversations in data/locomo_train.json, then
+scores the returned entry IDs against their evidence labels. It mirrors the
+hidden-test protocol exactly (same input format, budget, metrics and failure
+rules), so train scores are a faithful development signal.
+
+Integrity rules enforced here:
+* Retrievers receive a label-free copy of the memories and questions in a
+  private temporary directory, and run from a sandbox view of the workspace
+  that does not contain eval/ or .git.
+* Only the ranked entry IDs a retriever returns are read. Every scored number
+  (evidence recall, answer-token recall, context tokens, ...) is recomputed
+  from the evaluator's own copy of the corpus and labels; any other field a
+  retriever writes is ignored.
+* A run that breaks the output contract (missing/duplicate questions, unknown
+  or cross-conversation entries, more than MAX_RETRIEVED entries) or that does
+  not reach MIN_EVIDENCE_RECALL is scored as failed: every quality metric is 0
+  and the context cost is set to the largest value the budget allows.
+"""
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
+import subprocess
+import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 
 
 SLICE = "train"
-EXPERIMENT = "memory_retrieval_efficiency"
+EXPERIMENT = "locomo_memory_retrieval"
+ROOT = Path(__file__).resolve().parents[2]
+DATA_PATH = ROOT / "data" / "locomo_train.json"
+MAX_RETRIEVED = 10
+# Utility floor: below this evidence recall@10 the run has not solved the task
+# (returning random entries gives ~1.7%; the most-recent-entries baseline ~0.4%).
+MIN_EVIDENCE_RECALL = 5.0
+RETRIEVER_TIMEOUT_S = 4 * 3600
+CATEGORIES = ("multi_hop", "open_domain", "single_hop", "temporal")
+SCORED_METRICS = (
+    "evidence_recall_at_10",
+    "evidence_hit_at_1",
+    "answer_token_recall",
+    "worst_category_recall",
+    "avg_context_tokens",
+)
 TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
-MAX_RETRIEVED = 3
-TRAIN_QUESTION_IDS = frozenset(
-    {
-        "q64", "q40", "q67", "q46", "q7", "q61", "q49", "q52", "q10", "q70", "q31", "q4",
-        "q6", "q27", "q18", "q45", "q24", "q60", "q0", "q51", "q39", "q42", "q57", "q54",
-        "q2", "q56", "q41", "q47", "q53", "q11", "q17", "q20", "q26", "q65", "q59", "q5",
-    }
+ANSWER_STOPWORDS = frozenset(
+    "a an the of in on at to for and or with by from is was are were be been it its that this as".split()
 )
 
 
-def token_count(text: str) -> int:
-    return len(TOKEN_RE.findall(text.lower()))
+class RunFailure(Exception):
+    pass
 
 
-def normalized_tokens(text: str) -> list[str]:
+def tokens(text: str) -> list[str]:
     return TOKEN_RE.findall(text.lower())
 
 
-def token_f1(prediction: str, answer: str) -> float:
-    pred = normalized_tokens(prediction)
-    gold = normalized_tokens(answer)
-    if not pred or not gold:
-        return 0.0
-    common: dict[str, int] = {}
-    for tok in pred:
-        common[tok] = common.get(tok, 0) + 1
-    overlap = 0
-    for tok in gold:
-        if common.get(tok, 0) > 0:
-            common[tok] -= 1
-            overlap += 1
-    if overlap == 0:
-        return 0.0
-    precision = overlap / len(pred)
-    recall = overlap / len(gold)
-    return 2 * precision * recall / (precision + recall)
+def render(entry: dict) -> str:
+    """Context delivered for one memory entry: its timestamp and full text."""
+    return f"[{entry['date_time']}] {entry['text']}"
 
 
-def load_gold(path: Path) -> tuple[dict[str, dict], dict[str, dict], set[str], dict[str, int]]:
-    dataset = json.loads(path.read_text())
-    gold_by_question = {item["question_id"]: item for item in dataset["questions"]}
-    entry_by_id: dict[str, dict] = {}
-    for conversation in dataset["conversations"]:
+def load_dataset(path: Path) -> dict:
+    data = json.loads(path.read_text())
+    entries: dict[str, dict] = {}
+    for conversation in data["conversations"]:
         for entry in conversation["entries"]:
-            entry_by_id[entry["entry_id"]] = {**entry, "conversation_id": conversation["conversation_id"]}
-
-    selected = set(TRAIN_QUESTION_IDS)
-    unknown = selected - set(gold_by_question)
-    if unknown:
-        raise ValueError(f"{SLICE} split contains unknown question ids: {sorted(unknown)}")
-
-    category_counts: dict[str, int] = defaultdict(int)
-    for item in dataset["questions"]:
-        if item["question_id"] in selected:
-            category_counts[item.get("category", "unknown")] += 1
-
-    return gold_by_question, entry_by_id, selected, dict(sorted(category_counts.items()))
+            entries[entry["entry_id"]] = {**entry, "conversation_id": conversation["conversation_id"]}
+    data["_entries"] = entries
+    data["_questions"] = {q["question_id"]: q for q in data["questions"]}
+    return data
 
 
-def read_artifact_rows(path: Path) -> list[dict]:
-    rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
-    if not rows:
-        raise ValueError(f"empty retrieval file: {path}")
-    return rows
+def public_input(data: dict) -> dict:
+    conversations = []
+    for conversation in data["conversations"]:
+        conversations.append(
+            {
+                "conversation_id": conversation["conversation_id"],
+                "speakers": conversation.get("speakers", []),
+                "entries": [
+                    {key: entry[key] for key in ("entry_id", "session", "turn", "date_time", "speaker", "text")}
+                    for entry in conversation["entries"]
+                ],
+            }
+        )
+    questions = [
+        {key: q[key] for key in ("question_id", "conversation_id", "question")} for q in data["questions"]
+    ]
+    return {"split": SLICE, "conversations": conversations, "questions": questions}
 
 
-def artifact_method_name(path: Path) -> str:
-    first_line = path.read_text().splitlines()[0]
-    return json.loads(first_line)["method"]
-
-
-def evaluate_file(
-    path: Path,
-    gold_by_question: dict[str, dict],
-    entry_by_id: dict[str, dict],
-    selected_ids: set[str],
-) -> dict[str, float]:
-    rows = read_artifact_rows(path)
-    filtered: list[dict] = []
-    seen: set[str] = set()
-    for row in rows:
-        question_id = row["question_id"]
-        if question_id not in gold_by_question:
-            raise ValueError(f"unknown question_id in artifact {path}: {question_id}")
-        if question_id not in selected_ids:
+def build_sandbox(base: Path) -> Path:
+    sandbox = base / "workspace"
+    sandbox.mkdir()
+    for child in ROOT.iterdir():
+        if child.name in {"eval", ".git"}:
             continue
-        if question_id in seen:
-            raise ValueError(f"duplicate {SLICE} question_id in artifact {path}: {question_id}")
-        seen.add(question_id)
-        filtered.append(row)
+        os.symlink(child, sandbox / child.name)
+    # Retriever scripts call `python`; point it at this interpreter.
+    bin_dir = base / "bin"
+    bin_dir.mkdir()
+    for name in ("python", "python3"):
+        os.symlink(sys.executable, bin_dir / name)
+    return sandbox
 
-    missing = sorted(selected_ids - seen, key=lambda qid: int(qid[1:]) if qid[1:].isdigit() else qid)
-    if missing:
-        preview = ", ".join(missing[:8])
-        raise ValueError(f"artifact {path} is missing {len(missing)} {SLICE} questions: {preview}")
 
-    hit_at_1 = 0
-    hit_at_k = 0
-    gold_entry_recall = 0.0
-    answer_f1 = 0.0
-    token_footprint = 0
-    bit_operations = 0
-    category_hits: dict[str, list[int]] = defaultdict(list)
-    for row in filtered:
-        gold_item = gold_by_question[row["question_id"]]
-        retrieved = row.get("retrieved", [])
-        if len(retrieved) > MAX_RETRIEVED:
-            raise ValueError(
-                f"artifact {path} returns {len(retrieved)} entries for {row['question_id']}; "
-                f"maximum allowed is {MAX_RETRIEVED}"
+def run_retriever(script: Path, input_path: Path, output_path: Path, sandbox: Path, log_path: Path) -> None:
+    script = script.resolve()
+    try:
+        launch = sandbox / script.relative_to(ROOT)
+    except ValueError:
+        launch = script
+    with log_path.open("w") as log:
+        try:
+            env = dict(os.environ)
+            env["PATH"] = f"{sandbox.parent / 'bin'}{os.pathsep}{env.get('PATH', '')}"
+            proc = subprocess.run(
+                ["bash", str(launch), str(input_path), str(output_path)],
+                cwd=sandbox,
+                env=env,
+                stdout=log,
+                stderr=subprocess.STDOUT,
+                timeout=RETRIEVER_TIMEOUT_S,
             )
-        gold = set(gold_item["gold_entry_ids"])
-        ids = [item["entry_id"] for item in retrieved]
-        if len(ids) != len(set(ids)):
-            raise ValueError(f"duplicate retrieved entry_id for {row['question_id']} in artifact {path}")
-        for entry_id in ids:
-            if entry_id not in entry_by_id:
-                raise ValueError(f"unknown retrieved entry_id for {row['question_id']} in artifact {path}: {entry_id}")
-            if entry_by_id[entry_id]["conversation_id"] != gold_item["conversation_id"]:
-                raise ValueError(
-                    f"cross-conversation retrieval for {row['question_id']} in artifact {path}: {entry_id}"
-                )
-        top1_hit = int(bool(ids and ids[0] in gold))
-        any_hit = int(bool(gold.intersection(ids)))
-        hit_at_1 += top1_hit
-        hit_at_k += any_hit
-        gold_entry_recall += len(gold.intersection(ids)) / len(gold)
-        category_hits[gold_item.get("category", "unknown")].append(top1_hit)
-        joined = " ".join(item.get("reconstructed_text", item.get("text", "")) for item in retrieved)
-        answer_f1 += token_f1(joined, gold_item["answer"])
-        for item in retrieved:
-            text = item.get("reconstructed_text", item.get("text", ""))
-            token_footprint += token_count(text)
-        bit_operations += row.get("bit_operations", 0)
+        except subprocess.TimeoutExpired as exc:
+            raise RunFailure(f"retriever timed out after {RETRIEVER_TIMEOUT_S}s") from exc
+    if proc.returncode != 0:
+        tail = log_path.read_text()[-600:]
+        raise RunFailure(f"retriever exited with code {proc.returncode}: {tail}")
+    if not output_path.is_file():
+        raise RunFailure("retriever wrote no output file")
 
-    n = len(filtered)
-    worst_category_hit_at_1 = min(
-        (100.0 * sum(values) / len(values) for values in category_hits.values()),
-        default=0.0,
-    )
+
+def parse_rows(output_path: Path, data: dict) -> dict[str, list[str]]:
+    questions = data["_questions"]
+    entries = data["_entries"]
+    rankings: dict[str, list[str]] = {}
+    for line_no, line in enumerate(output_path.read_text().splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise RunFailure(f"line {line_no}: invalid JSON") from exc
+        if not isinstance(row, dict):
+            raise RunFailure(f"line {line_no}: row is not an object")
+        qid = row.get("question_id")
+        ids = row.get("retrieved_entry_ids")
+        if not isinstance(qid, str) or qid not in questions:
+            raise RunFailure(f"line {line_no}: unknown question_id {qid!r}")
+        if qid in rankings:
+            raise RunFailure(f"duplicate row for question {qid}")
+        if not isinstance(ids, list) or not all(isinstance(x, str) for x in ids):
+            raise RunFailure(f"question {qid}: retrieved_entry_ids must be a list of strings")
+        if len(ids) > MAX_RETRIEVED:
+            raise RunFailure(f"question {qid}: {len(ids)} entries returned, budget is {MAX_RETRIEVED}")
+        if len(set(ids)) != len(ids):
+            raise RunFailure(f"question {qid}: duplicate entry ids")
+        conv_id = questions[qid]["conversation_id"]
+        for entry_id in ids:
+            entry = entries.get(entry_id)
+            if entry is None:
+                raise RunFailure(f"question {qid}: unknown entry id {entry_id!r}")
+            if entry["conversation_id"] != conv_id:
+                raise RunFailure(f"question {qid}: entry {entry_id} belongs to another conversation")
+        rankings[qid] = ids
+    missing = [qid for qid in questions if qid not in rankings]
+    if missing:
+        raise RunFailure(f"{len(missing)} questions have no row (e.g. {missing[0]})")
+    return rankings
+
+
+def answer_terms(answer: str) -> set[str]:
+    terms = set(tokens(answer))
+    content = terms - ANSWER_STOPWORDS
+    return content or terms
+
+
+def per_question(rankings: dict[str, list[str]], data: dict) -> list[dict]:
+    entries = data["_entries"]
+    records = []
+    for q in data["questions"]:
+        ids = rankings[q["question_id"]]
+        gold = set(q["evidence_entry_ids"])
+        context = [render(entries[entry_id]) for entry_id in ids]
+        context_tokens = [tokens(text) for text in context]
+        delivered = set().union(*context_tokens) if context_tokens else set()
+        wanted = answer_terms(q["answer"])
+        records.append(
+            {
+                "question_id": q["question_id"],
+                "category": q["category"],
+                "evidence_recall": len(gold.intersection(ids)) / len(gold),
+                "hit_at_1": float(bool(ids) and ids[0] in gold),
+                "answer_token_recall": len(wanted & delivered) / len(wanted) if wanted else 0.0,
+                "context_tokens": sum(len(t) for t in context_tokens),
+            }
+        )
+    return records
+
+
+def aggregate(records: list[dict]) -> tuple[dict[str, float], dict[str, float]]:
+    n = len(records)
+    by_category: dict[str, list[float]] = defaultdict(list)
+    for record in records:
+        by_category[record["category"]].append(record["evidence_recall"])
+    category_recall = {cat: 100.0 * sum(v) / len(v) for cat, v in sorted(by_category.items())}
+    metrics = {
+        "evidence_recall_at_10": 100.0 * sum(r["evidence_recall"] for r in records) / n,
+        "evidence_hit_at_1": 100.0 * sum(r["hit_at_1"] for r in records) / n,
+        "answer_token_recall": 100.0 * sum(r["answer_token_recall"] for r in records) / n,
+        "worst_category_recall": min(category_recall.values()),
+        "avg_context_tokens": sum(r["context_tokens"] for r in records) / n,
+    }
+    return metrics, category_recall
+
+
+def failed_metrics(data: dict) -> dict[str, float]:
+    """Worst scores a run can get: zero quality, maximum context the budget allows."""
+    by_conv: dict[str, list[int]] = defaultdict(list)
+    for entry in data["_entries"].values():
+        by_conv[entry["conversation_id"]].append(len(tokens(render(entry))))
+    worst_context = {
+        conv: sum(sorted(lengths, reverse=True)[:MAX_RETRIEVED]) for conv, lengths in by_conv.items()
+    }
+    avg_worst = sum(worst_context[q["conversation_id"]] for q in data["questions"]) / len(data["questions"])
     return {
-        "hit_at_1": 100.0 * hit_at_1 / n,
-        "hit_at_3": 100.0 * hit_at_k / n,
-        "gold_entry_recall": 100.0 * gold_entry_recall / n,
-        "answer_token_f1": 100.0 * answer_f1 / n,
-        "worst_category_hit_at_1": worst_category_hit_at_1,
-        "avg_token_footprint": token_footprint / n,
-        "avg_bit_operations": bit_operations / n,
+        "evidence_recall_at_10": 0.0,
+        "evidence_hit_at_1": 0.0,
+        "answer_token_recall": 0.0,
+        "worst_category_recall": 0.0,
+        "avg_context_tokens": avg_worst,
     }
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--artifacts", nargs="+", required=True)
-    parser.add_argument("--data", default="data/memory_qa.json")
-    parser.add_argument("--output", default="scoring/scores_train.json")
-    args = parser.parse_args()
-
-    gold_by_question, entry_by_id, selected_ids, category_counts = load_gold(Path(args.data))
+def score_artifacts(paths: list[Path], data: dict) -> dict:
     results: dict[str, dict[str, float]] = {}
-    for artifact in args.artifacts:
-        artifact_path = Path(artifact)
-        method_name = artifact_method_name(artifact_path)
-        if method_name in results:
-            raise ValueError(f"multiple artifacts declare method {method_name!r}")
-        results[method_name] = evaluate_file(artifact_path, gold_by_question, entry_by_id, selected_ids)
+    status: dict[str, dict] = {}
+    categories: dict[str, dict[str, float]] = {}
+    for path in paths:
+        name = path.stem if path.stem != "retrieval_results" else path.parent.name
+        try:
+            records = per_question(parse_rows(path, data), data)
+            metrics, category_recall = aggregate(records)
+            if metrics["evidence_recall_at_10"] < MIN_EVIDENCE_RECALL:
+                raise RunFailure(f"evidence_recall_at_10 below the task floor {MIN_EVIDENCE_RECALL}")
+            results[name], categories[name], status[name] = metrics, category_recall, {"valid": True}
+        except RunFailure as exc:
+            results[name], status[name] = failed_metrics(data), {"valid": False, "reason": str(exc)}
+    return {"experiments": {EXPERIMENT: {"slice": SLICE, "results": results, "_status": status, "_category_recall": categories}}}
 
-    scores = {
+
+def discover(registry: Path) -> list[Path]:
+    return sorted(path for path in registry.glob("*.sh") if path.is_file())
+
+
+def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, keep_dir: Path | None) -> dict:
+    names = [script.stem for script in scripts]
+    if len(set(names)) != len(names):
+        raise SystemExit(f"retriever names must be unique: {names}")
+    results: dict[str, dict[str, float]] = {}
+    status: dict[str, dict] = {}
+    categories: dict[str, dict[str, float]] = {}
+    with tempfile.TemporaryDirectory(prefix="memory_eval_") as tmp:
+        tmp_path = Path(tmp)
+        input_path = tmp_path / "memory_input.json"
+        input_path.write_text(json.dumps(public_input(data)))
+        sandbox = build_sandbox(tmp_path)
+        for script in scripts:
+            name = script.stem
+            output_path = tmp_path / f"{name}.jsonl"
+            log_path = tmp_path / f"{name}.log"
+            try:
+                run_retriever(script, input_path, output_path, sandbox, log_path)
+                rankings = parse_rows(output_path, data)
+                records = per_question(rankings, data)
+                metrics, category_recall = aggregate(records)
+                if metrics["evidence_recall_at_10"] < MIN_EVIDENCE_RECALL:
+                    raise RunFailure(
+                        f"evidence_recall_at_10 {metrics['evidence_recall_at_10']:.2f} is below the "
+                        f"task floor {MIN_EVIDENCE_RECALL}",
+                        metrics,
+                    )
+                results[name] = metrics
+                categories[name] = category_recall
+                status[name] = {"valid": True}
+                if per_question_dir is not None:
+                    per_question_dir.mkdir(parents=True, exist_ok=True)
+                    (per_question_dir / f"{name}.jsonl").write_text(
+                        "".join(json.dumps(r) + "\n" for r in records)
+                    )
+            except RunFailure as exc:
+                results[name] = failed_metrics(data)
+                status[name] = {"valid": False, "reason": str(exc.args[0])}
+                if len(exc.args) > 1:
+                    status[name]["unscored_raw_metrics"] = exc.args[1]
+                print(f"[{SLICE}] {name}: FAILED - {exc}", file=sys.stderr)
+            if keep_dir is not None:
+                keep_dir.mkdir(parents=True, exist_ok=True)
+                for path in (output_path, log_path):
+                    if path.is_file():
+                        (keep_dir / path.name).write_bytes(path.read_bytes())
+            print(f"[{SLICE}] {name}: {json.dumps(results[name])}", file=sys.stderr)
+    category_counts: dict[str, int] = defaultdict(int)
+    for q in data["questions"]:
+        category_counts[q["category"]] += 1
+    return {
         "slice": SLICE,
         "experiments": {
             EXPERIMENT: {
                 "slice": SLICE,
                 "split": {
-                    "name": "explicit_balanced_train_slice_v2",
-                    "question_count": len(selected_ids),
-                    "category_counts": category_counts,
+                    "name": "locomo_train_conversations_v3",
+                    "conversations": [c["conversation_id"] for c in data["conversations"]],
+                    "question_count": len(data["questions"]),
+                    "category_counts": dict(sorted(category_counts.items())),
+                    "max_retrieved": MAX_RETRIEVED,
+                    "min_evidence_recall": MIN_EVIDENCE_RECALL,
                 },
                 "results": results,
+                "_status": status,
+                "_category_recall": categories,
             }
         },
     }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("retrievers", nargs="*", help="retriever scripts (default: every scripts/retrievers/*.sh)")
+    parser.add_argument("--registry", default=str(ROOT / "scripts" / "retrievers"))
+    parser.add_argument("--output", default=str(ROOT / "scoring" / "scores_train.json"))
+    parser.add_argument("--data", default=str(DATA_PATH))
+    parser.add_argument(
+        "--artifacts",
+        nargs="*",
+        default=None,
+        help="score saved retrieval JSONL files (method name = file stem) instead of running retrievers",
+    )
+    parser.add_argument("--per-question-dir", default=None, help="optional per-question dump for paired analysis")
+    parser.add_argument("--keep-outputs", default=None, help="optional directory to keep raw retriever outputs")
+    args = parser.parse_args()
+
+    data = load_dataset(Path(args.data))
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
+    if args.artifacts:
+        scores = score_artifacts([Path(p) for p in args.artifacts], data)
+        output.write_text(json.dumps(scores, indent=2, sort_keys=True) + "\n")
+        return
+    scripts = [Path(p) for p in args.retrievers] if args.retrievers else discover(Path(args.registry))
+    if not scripts:
+        raise SystemExit("no retrievers found")
+    scores = evaluate(
+        scripts,
+        data,
+        Path(args.per_question_dir) if args.per_question_dir else None,
+        Path(args.keep_outputs) if args.keep_outputs else None,
+    )
     output.write_text(json.dumps(scores, indent=2, sort_keys=True) + "\n")
 
 

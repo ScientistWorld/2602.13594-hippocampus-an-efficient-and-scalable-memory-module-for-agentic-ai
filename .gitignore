@@ -231,3 +231,6 @@ tmp/
 protocol.md
 *.egg-info
 core.[0-9]*
+
+# Hardening per-question dumps (regenerable)
+redteam/hardening/results/per_question_*/

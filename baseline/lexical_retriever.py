@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Method-agnostic lexical baseline for the memory QA benchmark."""
+"""Exhaustive BM25 baseline over raw entry text.
+
+Scores every entry of the question's conversation with Okapi BM25
+(k1 = 1.2, b = 0.75) over lower-cased word tokens without stop words, and
+returns the top entries. This is the brute-force lexical sanity check: it
+reads the full raw text of every candidate for every query.
+    python baseline/lexical_retriever.py --input <memory.json> --output <results.jsonl>
+"""
 
 from __future__ import annotations
 
@@ -7,90 +14,75 @@ import argparse
 import json
 import math
 import re
-import time
 from collections import Counter
 from pathlib import Path
 
 
 TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
-STOP = {"which", "what", "did", "for", "the", "at", "on", "use", "used", "by", "should", "be", "and", "a"}
+STOPWORDS = frozenset(
+    """
+    a about above after again against all am an and any are as at be because been before being below
+    between both but by can could did do does doing done down during each few for from further get got
+    had has have having he her here hers herself him himself his how i if in into is it its itself just
+    me more most my myself no nor not now of off on once only or other our ours ourselves out over own
+    same she should so some such than that the their theirs them themselves then there these they this
+    those through to too under until up very was we were what when where which while who whom why will
+    with would you your yours yourself yourselves s t don ever also many much kind kinds type types
+    like likely
+    """.split()
+)
 
 
 def tokenize(text: str) -> list[str]:
-    return [tok for tok in TOKEN_RE.findall(text.lower()) if tok not in STOP]
+    return [tok for tok in TOKEN_RE.findall(text.lower()) if tok not in STOPWORDS]
+
+
+class BM25Index:
+    def __init__(self, entries: list[dict], k1: float = 1.2, b: float = 0.75) -> None:
+        self.ids = [entry["entry_id"] for entry in entries]
+        self.order = [(entry["session"], entry["turn"]) for entry in entries]
+        self.tfs = [Counter(tokenize(entry["text"])) for entry in entries]
+        self.lengths = [sum(tf.values()) for tf in self.tfs]
+        self.avg_len = sum(self.lengths) / max(1, len(self.lengths))
+        df = Counter()
+        for tf in self.tfs:
+            df.update(tf.keys())
+        n = len(entries)
+        self.idf = {tok: math.log(1 + (n - count + 0.5) / (count + 0.5)) for tok, count in df.items()}
+        self.k1, self.b = k1, b
+
+    def search(self, question: str, top_k: int) -> list[str]:
+        terms = set(tokenize(question))
+        scored = []
+        for index, tf in enumerate(self.tfs):
+            norm = self.k1 * (1 - self.b + self.b * self.lengths[index] / self.avg_len)
+            score = 0.0
+            for term in terms:
+                freq = tf.get(term)
+                if freq:
+                    score += self.idf[term] * freq * (self.k1 + 1) / (freq + norm)
+            scored.append((-score, self.order[index], index))
+        scored.sort()
+        return [self.ids[index] for _, _, index in scored[:top_k]]
 
 
 def run(args: argparse.Namespace) -> None:
-    dataset = json.loads(Path(args.data).read_text())
-    entries = []
-    for conversation in dataset["conversations"]:
-        for entry in conversation["entries"]:
-            tokens = tokenize(entry["text"])
-            entries.append({**entry, "conversation_id": conversation["conversation_id"], "tokens": tokens})
-    df = Counter()
-    for entry in entries:
-        df.update(set(entry["tokens"]))
-    n = len(entries)
-
-    out = Path(args.output_dir)
-    out.mkdir(parents=True, exist_ok=True)
-    with (out / "retrieval_results.jsonl").open("w") as f:
+    dataset = json.loads(Path(args.input).read_text())
+    indexes = {conv["conversation_id"]: BM25Index(conv["entries"]) for conv in dataset["conversations"]}
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("w") as handle:
         for item in dataset["questions"]:
-            start = time.perf_counter()
-            q_tokens = tokenize(item["question"])
-            q_counts = Counter(q_tokens)
-            scored = []
-            operations = 0
-            for entry in entries:
-                if entry["conversation_id"] != item["conversation_id"]:
-                    continue
-                e_counts = Counter(entry["tokens"])
-                score = 0.0
-                for tok, q_count in q_counts.items():
-                    operations += 1
-                    if tok in e_counts:
-                        idf = math.log((n + 1) / (df[tok] + 1)) + 1.0
-                        score += q_count * e_counts[tok] * idf
-                scored.append((score, entry))
-            ranked = [entry for score, entry in sorted(scored, key=lambda x: (-x[0], x[1]["entry_id"]))[: args.top_k]]
-            retrieved = []
-            for entry in ranked:
-                retrieved.append(
-                    {
-                        "entry_id": entry["entry_id"],
-                        "conversation_id": entry["conversation_id"],
-                        "session": entry["session"],
-                        "speaker": entry["speaker"],
-                        "timestamp": entry["timestamp"],
-                        "text": entry["text"],
-                        "reconstructed_text": entry["text"].lower(),
-                        "token_count": len(entry["tokens"]),
-                    }
-                )
-            row = {
-                "method": "lexical_baseline",
-                "question_id": item["question_id"],
-                "conversation_id": item["conversation_id"],
-                "question": item["question"],
-                "answer": item["answer"],
-                "gold_entry_ids": item["gold_entry_ids"],
-                "retrieved": retrieved,
-                "search_time_s": time.perf_counter() - start,
-                "signature_comparisons": 0,
-                "bit_operations": operations * 32,
-                "token_footprint": sum(item["token_count"] for item in retrieved),
-                "storage_bytes": sum(len(entry["text"].encode("utf-8")) for entry in entries),
-            }
-            f.write(json.dumps(row) + "\n")
+            ids = indexes[item["conversation_id"]].search(item["question"], args.top_k)
+            handle.write(json.dumps({"question_id": item["question_id"], "retrieved_entry_ids": ids}) + "\n")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data", default="data/memory_qa.json")
-    parser.add_argument("--output-dir", default="outputs/lexical_baseline")
-    parser.add_argument("--top-k", type=int, default=3)
-    args = parser.parse_args()
-    run(args)
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--top-k", type=int, default=10)
+    run(parser.parse_args())
 
 
 if __name__ == "__main__":

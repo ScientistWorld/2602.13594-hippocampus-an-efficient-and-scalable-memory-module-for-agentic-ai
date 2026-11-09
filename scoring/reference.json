@@ -1,79 +1,282 @@
 {
   "experiments": {
-    "memory_retrieval_efficiency": {
-      "description": "LoCoMo-style memory retrieval: accuracy with token and search-cost constraints, reflecting the paper's headline accuracy-efficiency claim.",
-      "notes": "The paper reports LoCoMo QA F1/BLEU/judge scores plus wall-clock latency and token consumption, not hit-rate retrieval metrics on this portable synthetic benchmark. The quality reference values below are mapped from the closest reported LoCoMo table entries for context; scores.json is computed from the workspace retrieval artifacts. Wall-clock latency is intentionally replaced by the machine-independent avg_bit_operations constraint.",
+    "locomo_memory_retrieval": {
+      "description": "Long-conversation memory retrieval on LoCoMo (the paper's benchmark): for each question, return at most 10 memory entries (dialogue turns) from that conversation's history. Scores how much of the labelled evidence is recovered and how much context is delivered, reflecting the paper's claim of preserved retrieval quality at a small per-query token footprint.",
+      "notes": "Hidden test = 6 held-out LoCoMo conversations (955 questions, categories 1-4); visible train = 4 conversations (581 questions). Every retriever is run by the evaluator on label-free inputs and only its ranked entry IDs are read. The paper reports LLM-answer F1/BLEU-1/LLM-judge plus wall-clock latency and token consumption; it does not report evidence recall, so its numbers are not on this gym's scale and are kept under _paper_reported (unchanged). Wall-clock latency and self-reported operation counts are not scored (cannot be measured method-agnostically without timing). The single numeric entry under results.hippocampus is this gym's frozen reference run on the hidden test (seed 13), not a paper number. Runs that break the output contract or fall below 5% evidence recall are scored as failed (quality 0, maximal context).",
       "weight": 1.0,
-      "primary_metric": "hit_at_1",
+      "primary_metric": "evidence_recall_at_10",
       "metrics": {
-        "hit_at_1": {
+        "evidence_recall_at_10": {
           "higher_is_better": true,
           "coefficient": 1.0,
-          "description": "Fraction of questions whose top-ranked retrieved memory entry is answer-bearing."
+          "description": "Average fraction of a question's labelled evidence turns that appear among the (at most 10) returned entries, in percent."
         },
-        "hit_at_3": {
+        "evidence_hit_at_1": {
           "higher_is_better": true,
           "coefficient": 0.4,
-          "description": "Fraction of questions with any answer-bearing memory entry in the allowed top-three retrieval set."
+          "description": "Percent of questions whose top-ranked returned entry is a labelled evidence turn."
         },
-        "gold_entry_recall": {
+        "answer_token_recall": {
           "higher_is_better": true,
           "coefficient": 0.4,
-          "description": "Average fraction of all labeled supporting entries recovered, catching partial multi-hop retrieval."
+          "description": "Average fraction of the gold answer's content words present in the delivered context (timestamp + text of the returned entries, rebuilt by the evaluator), in percent."
         },
-        "answer_token_f1": {
+        "worst_category_recall": {
           "higher_is_better": true,
-          "coefficient": 0.35,
-          "description": "Token overlap between the retrieved evidence text and the gold answer."
+          "coefficient": 0.3,
+          "description": "Lowest evidence recall@10 over the four LoCoMo question groups (single-hop, multi-hop, temporal, open-domain), in percent."
         },
-        "worst_category_hit_at_1": {
-          "higher_is_better": true,
-          "coefficient": 0.35,
-          "description": "Lowest top-one hit rate across single-hop, multi-hop, and temporal question groups."
-        },
-        "avg_token_footprint": {
+        "avg_context_tokens": {
           "higher_is_better": false,
-          "coefficient": -0.05,
-          "description": "Average number of retrieved evidence tokens per question, measuring context-budget cost."
-        },
-        "avg_bit_operations": {
-          "higher_is_better": false,
-          "coefficient": -0.01,
-          "description": "Average machine-independent bit-operation proxy for retrieval search work."
+          "coefficient": -0.2,
+          "description": "Average number of word tokens in the delivered context per question (per-query token footprint), recomputed by the evaluator from the returned entry IDs."
         }
       },
       "results": {
-        "memoryos": {
-          "type": "baseline",
-          "hit_at_1": 25.08,
-          "hit_at_3": 41.51,
-          "answer_token_f1": 25.08,
-          "avg_token_footprint": 8100.0,
-          "avg_bit_operations": 1000000.0
-        },
-        "memos": {
-          "type": "baseline",
-          "hit_at_1": 31.06,
-          "hit_at_3": 40.31,
-          "answer_token_f1": 31.34,
-          "avg_token_footprint": 21055.0,
-          "avg_bit_operations": 1000000.0
-        },
         "hippocampus": {
           "type": "proposed",
-          "hit_at_1": 38.3,
-          "hit_at_3": 48.38,
-          "answer_token_f1": 37.35,
-          "avg_token_footprint": 1300.0,
-          "avg_bit_operations": 125000.0
+          "evidence_recall_at_10": 0.0
+        },
+        "bm25_baseline": {
+          "type": "baseline"
         },
         "recency_baseline": {
-          "type": "baseline",
-          "hit_at_1": 9.85,
-          "hit_at_3": 9.85,
-          "answer_token_f1": 9.92,
-          "avg_token_footprint": 16900.0,
-          "avg_bit_operations": 1000000.0
+          "type": "baseline"
+        }
+      },
+      "_paper_reported": {
+        "source": "Li et al., HIPPOCAMPUS (arXiv 2602.13594), Table 1 (LoCoMo), Figures 8-9, Table 4, Table 5. LLM-answer metrics, not retrieval metrics; F1 and BLEU-1 multiplied by 100.",
+        "locomo_table1": {
+          "ReadAgent": {
+            "single_hop": {
+              "f1": 8.78,
+              "bleu1": 5.93,
+              "judge": 1.03
+            },
+            "multi_hop": {
+              "f1": 5.44,
+              "bleu1": 5.03,
+              "judge": 1.01
+            },
+            "temporal": {
+              "f1": 11.24,
+              "bleu1": 11.12,
+              "judge": 1.08
+            },
+            "open_domain": {
+              "f1": 9.32,
+              "bleu1": 8.1,
+              "judge": 1.45
+            }
+          },
+          "MemoryBank": {
+            "single_hop": {
+              "f1": 5.05,
+              "bleu1": 3.97,
+              "judge": 2.0
+            },
+            "multi_hop": {
+              "f1": 6.02,
+              "bleu1": 5.89,
+              "judge": 1.12
+            },
+            "temporal": {
+              "f1": 9.85,
+              "bleu1": 9.92,
+              "judge": 1.03
+            },
+            "open_domain": {
+              "f1": 7.9,
+              "bleu1": 7.97,
+              "judge": 2.09
+            }
+          },
+          "MemGPT": {
+            "single_hop": {
+              "f1": 25.43,
+              "bleu1": 17.68,
+              "judge": 1.91
+            },
+            "multi_hop": {
+              "f1": 9.11,
+              "bleu1": 8.82,
+              "judge": 1.06
+            },
+            "temporal": {
+              "f1": 26.48,
+              "bleu1": 26.19,
+              "judge": 1.02
+            },
+            "open_domain": {
+              "f1": 39.74,
+              "bleu1": 40.03,
+              "judge": 1.92
+            }
+          },
+          "A-mem": {
+            "single_hop": {
+              "f1": 19.82,
+              "bleu1": 19.86,
+              "judge": 2.66
+            },
+            "multi_hop": {
+              "f1": 12.97,
+              "bleu1": 12.81,
+              "judge": 1.85
+            },
+            "temporal": {
+              "f1": 34.63,
+              "bleu1": 34.87,
+              "judge": 2.18
+            },
+            "open_domain": {
+              "f1": 41.0,
+              "bleu1": 41.41,
+              "judge": 2.72
+            }
+          },
+          "MemoryOS": {
+            "single_hop": {
+              "f1": 32.5,
+              "bleu1": 30.13,
+              "judge": 2.76
+            },
+            "multi_hop": {
+              "f1": 28.61,
+              "bleu1": 26.81,
+              "judge": 1.79
+            },
+            "temporal": {
+              "f1": 25.08,
+              "bleu1": 25.08,
+              "judge": 2.61
+            },
+            "open_domain": {
+              "f1": 41.51,
+              "bleu1": 41.43,
+              "judge": 2.59
+            }
+          },
+          "MemOS": {
+            "single_hop": {
+              "f1": 39.24,
+              "bleu1": 40.76,
+              "judge": 2.75
+            },
+            "multi_hop": {
+              "f1": 30.11,
+              "bleu1": 30.91,
+              "judge": 2.56
+            },
+            "temporal": {
+              "f1": 31.06,
+              "bleu1": 31.34,
+              "judge": 2.81
+            },
+            "open_domain": {
+              "f1": 40.31,
+              "bleu1": 40.51,
+              "judge": 2.6
+            }
+          },
+          "HIPPOCAMPUS": {
+            "single_hop": {
+              "f1": 34.36,
+              "bleu1": 30.04,
+              "judge": 3.08
+            },
+            "multi_hop": {
+              "f1": 31.97,
+              "bleu1": 31.85,
+              "judge": 3.22
+            },
+            "temporal": {
+              "f1": 38.3,
+              "bleu1": 37.35,
+              "judge": 2.94
+            },
+            "open_domain": {
+              "f1": 48.38,
+              "bleu1": 46.8,
+              "judge": 2.97
+            }
+          }
+        },
+        "locomo_efficiency": {
+          "hippocampus_avg_total_latency_s": 1.08,
+          "memgpt_avg_total_latency_s": 33.6,
+          "hippocampus_avg_tokens_per_query": 1300,
+          "memgpt_avg_tokens_per_query": 16900,
+          "memoryos_avg_tokens_per_query": 8100,
+          "headline": "up to 31x lower end-to-end retrieval latency and up to 14x lower per-query token footprint"
+        },
+        "locomo_ablation_table4_D512": {
+          "d16": {
+            "f1": 38.14
+          },
+          "d32": {
+            "f1": 38.3
+          },
+          "d64": {
+            "f1": 37.75
+          },
+          "d128": {
+            "f1": 38.16
+          }
+        },
+        "locomo_construction_table5": {
+          "hippocampus_minutes": 6.7,
+          "hippocampus_tokens": 0,
+          "a_mem_minutes": 35.69,
+          "a_mem_tokens": 19926,
+          "memos_minutes": 70.0,
+          "memos_tokens": 21055
+        }
+      },
+      "_iteration10_mapped_results": {
+        "note": "Verbatim results block of the previous (synthetic-benchmark) gym, which mapped paper table entries onto that gym's metric names. Kept unchanged for traceability; not used for scoring.",
+        "metrics": [
+          "hit_at_1",
+          "hit_at_3",
+          "gold_entry_recall",
+          "answer_token_f1",
+          "worst_category_hit_at_1",
+          "avg_token_footprint",
+          "avg_bit_operations"
+        ],
+        "results": {
+          "memoryos": {
+            "type": "baseline",
+            "hit_at_1": 25.08,
+            "hit_at_3": 41.51,
+            "answer_token_f1": 25.08,
+            "avg_token_footprint": 8100.0,
+            "avg_bit_operations": 1000000.0
+          },
+          "memos": {
+            "type": "baseline",
+            "hit_at_1": 31.06,
+            "hit_at_3": 40.31,
+            "answer_token_f1": 31.34,
+            "avg_token_footprint": 21055.0,
+            "avg_bit_operations": 1000000.0
+          },
+          "hippocampus": {
+            "type": "proposed",
+            "hit_at_1": 38.3,
+            "hit_at_3": 48.38,
+            "answer_token_f1": 37.35,
+            "avg_token_footprint": 1300.0,
+            "avg_bit_operations": 125000.0
+          },
+          "recency_baseline": {
+            "type": "baseline",
+            "hit_at_1": 9.85,
+            "hit_at_3": 9.85,
+            "answer_token_f1": 9.92,
+            "avg_token_footprint": 16900.0,
+            "avg_bit_operations": 1000000.0
+          }
         }
       }
     }
