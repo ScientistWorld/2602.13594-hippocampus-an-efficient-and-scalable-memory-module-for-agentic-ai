@@ -1,0 +1,1 @@
+{"experiments": {"memory_retrieval_efficiency": {"results": {"hippocampus": {"hit_at_1": 100, "hit_at_3": 100, "gold_entry_recall": 100, "worst_category_hit_at_1": 100, "answer_token_f1": 100, "avg_token_footprint": 0, "avg_bit_operations": 0}}}}}

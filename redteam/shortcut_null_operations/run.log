@@ -1,0 +1,21 @@
+$ python method/audit_variant.py
+$ bash scripts/evaluate_train.sh
+Traceback (most recent call last):
+  File "/home/user/redteam/shortcut_null_operations/workspace/eval/train/evaluate_retrieval.py", line 203, in <module>
+    main()
+  File "/home/user/redteam/shortcut_null_operations/workspace/eval/train/evaluate_retrieval.py", line 181, in main
+    results[method_name] = evaluate_file(artifact_path, gold_by_question, entry_by_id, selected_ids)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/redteam/shortcut_null_operations/workspace/eval/train/evaluate_retrieval.py", line 149, in evaluate_file
+    bit_operations += row.get("bit_operations", 0)
+TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+$ bash scripts/evaluate_test.sh
+Traceback (most recent call last):
+  File "/home/user/redteam/shortcut_null_operations/workspace/eval/test/evaluate_retrieval.py", line 232, in <module>
+    main()
+  File "/home/user/redteam/shortcut_null_operations/workspace/eval/test/evaluate_retrieval.py", line 205, in main
+    results[method_name] = evaluate_file(
+                           ^^^^^^^^^^^^^^
+  File "/home/user/redteam/shortcut_null_operations/workspace/eval/test/evaluate_retrieval.py", line 157, in evaluate_file
+    bit_operations += row.get("bit_operations", 0)
+TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'

@@ -1,0 +1,3 @@
+$ python method/hippocampus.py --data data/memory_qa.json --output-dir outputs/hippocampus --dimension 512 --signature-bits 1 --radius 0 --window 2 --top-k 3 --seed 13
+$ bash scripts/evaluate_train.sh
+$ bash scripts/evaluate_test.sh

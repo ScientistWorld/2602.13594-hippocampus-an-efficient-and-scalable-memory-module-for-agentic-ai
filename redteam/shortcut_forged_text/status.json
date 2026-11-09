@@ -1,0 +1,9 @@
+{
+  "name": "shortcut_forged_text",
+  "train_exit": 0,
+  "test_exit": 0,
+  "elapsed_seconds": 0.41557860374450684,
+  "test_command": "bash scripts/evaluate_test.sh",
+  "test_script_sha256": "384ada2c4206ecd58420b0648e51c6db7d79742485046c5f88543164c45c9546",
+  "test_evaluator_sha256": "296d937f0e5761b90bf2a88af94d2406a4b828b82296c3056bd875e68bb02740"
+}

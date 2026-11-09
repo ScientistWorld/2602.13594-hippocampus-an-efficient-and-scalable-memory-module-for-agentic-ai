@@ -1,0 +1,3 @@
+$ python method/audit_variant.py
+$ bash scripts/evaluate_train.sh
+$ bash scripts/evaluate_test.sh

@@ -1,0 +1,12 @@
+{
+  "rank_delta": 1.685350454809116,
+  "metrics": {
+    "answer_token_f1": 3.3726409600886953,
+    "avg_bit_operations": 7468.5,
+    "avg_token_footprint": 63.75,
+    "gold_entry_recall": 88.88888888888889,
+    "hit_at_1": 55.55555555555556,
+    "hit_at_3": 88.88888888888889,
+    "worst_category_hit_at_1": 50.0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "experiments": {
+    "memory_retrieval_efficiency": {
+      "results": {
+        "hippocampus": {
+          "answer_token_f1": 2.194115534410188,
+          "avg_bit_operations": 7812.25,
+          "avg_token_footprint": 67.63888888888889,
+          "gold_entry_recall": 33.333333333333336,
+          "hit_at_1": 13.88888888888889,
+          "hit_at_3": 33.333333333333336,
+          "worst_category_hit_at_1": 8.333333333333334
+        }
+      },
+      "slice": "train",
+      "split": {
+        "category_counts": {
+          "multi_hop": 12,
+          "single_hop": 12,
+          "temporal": 12
+        },
+        "name": "explicit_balanced_train_slice_v2",
+        "question_count": 36
+      }
+    }
+  },
+  "slice": "train"
+}

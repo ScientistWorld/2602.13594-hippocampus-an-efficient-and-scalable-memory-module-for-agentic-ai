@@ -1,0 +1,3 @@
+$ python baseline/lexical_retriever.py --data data/memory_qa.json --output-dir outputs/hippocampus --top-k 3
+$ bash scripts/evaluate_train.sh
+$ bash scripts/evaluate_test.sh
