@@ -1,0 +1,716 @@
+{
+  "conversation_id": "conv-30",
+  "questions": [
+    {
+      "question": "Where was the studio space Jon was considering in January?",
+      "answer": "Downtown",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D2:6"
+      ],
+      "support": "D2:6 Jon says the spot is downtown, which is easy to get to",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Where was the studio space Jon was considering in late January 2023 located?"
+    },
+    {
+      "question": "How did Jon feel about getting his studio ready in January?",
+      "answer": "A mix of exciting and nerve-wracking",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D2:10"
+      ],
+      "support": "D2:10 Jon says looking for the place and getting ready has been a mix of exciting and nerve-wracking",
+      "verdict": "fixed",
+      "note": "Added late-January anchor (D4:9 / D3:1 also describe the search); reworded",
+      "original_question": "In late January 2023, how did Jon say finding a studio location and getting ready had felt?"
+    },
+    {
+      "question": "What did Gina say setbacks are?",
+      "answer": "Opportunities for comebacks",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D4:6"
+      ],
+      "support": "D4:6 Gina says setbacks are just opportunities for comebacks",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Gina tell Jon setbacks are?"
+    },
+    {
+      "question": "What did Jon hope to get from competing in the dance competition near him?",
+      "answer": "A chance to show his skills and get props from the dance community",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D4:13"
+      ],
+      "support": "D4:13 Jon says the comp is a chance to show his skills and hopefully get props from the dance fam",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Jon hope to get out of the dance competition he was preparing for in February 2023?"
+    },
+    {
+      "question": "What is Jon's favorite part of running his own studio?",
+      "answer": "The freedom to create a space where dancers of all ages and levels can express themselves, and seeing his students progress",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D5:4"
+      ],
+      "support": "D5:4 Jon answers Gina's question about his favorite part of running the studio",
+      "verdict": "fixed",
+      "note": "Added anchor; D7:7 and public D9:5 also mention students' progress in other months",
+      "original_question": "In February 2023, what did Jon say was the best thing about having his own studio?"
+    },
+    {
+      "question": "What inspired Gina's designs with the local artist?",
+      "answer": "From a fashion magazine",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D5:7"
+      ],
+      "support": "D5:7 Gina says she got the idea from a fashion mag",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Where did Gina get the idea for the designs she created with a local artist?"
+    },
+    {
+      "question": "How do Jon's two passions affect each other?",
+      "answer": "They energize each other: dancing pumps him up for business goals, and business wins boost his drive to dance",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D5:20"
+      ],
+      "support": "D5:20 Jon explains that dance and business give him energy for each other",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How do dancing and running his business affect each other for Jon?"
+    },
+    {
+      "question": "What part of teaching keeps Jon motivated?",
+      "answer": "Seeing his students succeed and reach their goals",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D7:7"
+      ],
+      "support": "D7:7 Jon says seeing his students succeed motivates him",
+      "verdict": "fixed",
+      "note": "Added anchor to separate from similar statements in Feb/Apr",
+      "original_question": "In March 2023, what aspect of teaching did Jon say keeps him motivated in his studio business?"
+    },
+    {
+      "question": "What does Gina say sparks her creativity?",
+      "answer": "Fashion",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D8:6"
+      ],
+      "support": "D8:6 Gina says fashion fuels her creativity",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What does Gina say fuels her creativity?"
+    },
+    {
+      "question": "Who was Gina planning to work with to promote her online store?",
+      "answer": "Fashion bloggers and influencers",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D8:12"
+      ],
+      "support": "D8:12 Gina plans to work with fashion bloggers and influencers",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying evidence phrasing",
+      "original_question": "Who was Gina thinking of collaborating with to draw more notice to her online store?"
+    },
+    {
+      "question": "What did Jon say would happen at the dance competition he was hosting?",
+      "answer": "His studio and other schools would put on a night of performances and judging",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D8:17"
+      ],
+      "support": "D8:17 Jon describes the night of performances and judging with other schools",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Jon say would happen at the event he invited Gina to in April 2023?"
+    },
+    {
+      "question": "What did Gina use to enjoy about her old dance lessons?",
+      "answer": "Spending time in the studio",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D9:8"
+      ],
+      "support": "D9:8 Gina remembers dance classes and says she used to love spending time in the studio",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Gina use to love about her dance classes?"
+    },
+    {
+      "question": "How did Jon describe starting his dream business in May?",
+      "answer": "Stepping into the unknown and hoping for the best",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D11:3"
+      ],
+      "support": "D11:3 Jon says he is stepping into the unknown and hoping for the best",
+      "verdict": "fixed",
+      "note": "Removed D11:4 (Gina's echo adds nothing)",
+      "original_question": "How did Jon describe launching his dream business in May 2023?"
+    },
+    {
+      "question": "How did Gina feel her internship interview went?",
+      "answer": "It was great",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D11:15",
+        "conv-30:D11:16"
+      ],
+      "support": "D11:15 Jon asks how the interview went; D11:16 Gina says it was great",
+      "verdict": "fixed",
+      "note": "Removed 'design internship' detail that only appears in a public turn",
+      "original_question": "How did Gina say her interview in May 2023 went?"
+    },
+    {
+      "question": "What kept Jon's mind focused in May?",
+      "answer": "Practicing dance routines",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D11:17"
+      ],
+      "support": "D11:17 Jon says practicing dance routines keeps his mind focused and motivated",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying; 'activity' separates from D12:12",
+      "original_question": "In May 2023, what activity did Jon say helped keep his mind focused?"
+    },
+    {
+      "question": "What ideas did Jon get from the business book he was reading?",
+      "answer": "Building a focused, efficient business and adapting based on customer feedback",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D12:8"
+      ],
+      "support": "D12:8 Jon says the book got him thinking about a focused, efficient business and tweaking from customer feedback",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did the book Jon was reading in May 2023 get him thinking about?"
+    },
+    {
+      "question": "What kind of place did Jon want his studio to be in June?",
+      "answer": "A place of support and encouragement",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D13:5"
+      ],
+      "support": "D13:5 Jon wants the studio to be a place of support and encouragement for all dancers",
+      "verdict": "fixed",
+      "note": "Added June anchor; D11:11 and public D8:13 describe other place goals",
+      "original_question": "In June 2023, what kind of environment did Jon say he wanted his studio to be for its dancers?"
+    },
+    {
+      "question": "What do the different colors on Jon's whiteboard mean?",
+      "answer": "He color-codes his achievements to track his progress",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D13:13",
+        "conv-30:D13:14",
+        "conv-30:D13:15"
+      ],
+      "support": "D13:13 Jon uses a whiteboard with markers; D13:14 Gina asks about colors; D13:15 Jon color-codes achievements to track progress",
+      "verdict": "fixed",
+      "note": "Added D13:13 which ties the colors to the whiteboard",
+      "original_question": "How does Jon use different colors on his whiteboard?"
+    },
+    {
+      "question": "What did Gina's old dance photo remind Jon of?",
+      "answer": "How much he loves performing",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D14:15"
+      ],
+      "support": "D14:15 Jon thanks Gina for sharing the dance pic and says it reminds him how much he loves performing",
+      "verdict": "fixed",
+      "note": "Removed 'old' (only stated in public D14:14); D14:15 alone shows Gina shared it",
+      "original_question": "What did a dance photo Gina shared in June 2023 remind Jon of?"
+    },
+    {
+      "question": "What does Gina say her hoodie design reminds her of?",
+      "answer": "The grit it takes to stand out and face challenges",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D16:5"
+      ],
+      "support": "D16:5 Gina says the design reminds her of the grit it takes to stand out",
+      "verdict": "fixed",
+      "note": "Removed hoodie detail that only appears in public D16:3",
+      "original_question": "What does Gina say a design she showed Jon in June 2023 reminds her of?"
+    },
+    {
+      "question": "How does Jon say writing his goals down helps him?",
+      "answer": "It keeps him motivated and focused on what he has to do",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D16:12"
+      ],
+      "support": "D16:12 Jon says seeing goals on paper keeps him motivated and focused",
+      "verdict": "fixed",
+      "note": "Added exact date; D13:13 (whiteboard) gives the same benefit",
+      "original_question": "On 21 June 2023, how did Jon say seeing his goals on paper helped him?"
+    },
+    {
+      "question": "What did the sign in the photo Gina shared in June say?",
+      "answer": "Never give up",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D16:13",
+        "conv-30:D16:14"
+      ],
+      "support": "D16:13 Gina shares a sign saying never give up; D16:14 Jon says the sign reminds him to never give up",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did the sign in Gina's photo from June 2023 say?"
+    },
+    {
+      "question": "How was Jon's dance practice in early July?",
+      "answer": "Fun and exhausting",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D17:2"
+      ],
+      "support": "D17:2 Jon says dance practice has been fun and exhausting",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Jon describe his dance practice in early July 2023?"
+    },
+    {
+      "question": "What does Gina tell Jon stumbling blocks can turn out to be?",
+      "answer": "Opened doors",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D17:3"
+      ],
+      "support": "D17:3 Gina says stumbling blocks can be opened doors",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "According to Gina, what can stumbling blocks turn out to be?"
+    },
+    {
+      "question": "What saying did Gina use to encourage Jon about finding investors?",
+      "answer": "Rome wasn't built in a day",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D18:3"
+      ],
+      "support": "D18:3 Gina says finding investors can be tough and that Rome wasn't built in a day",
+      "verdict": "fixed",
+      "note": "Disambiguated from other sayings (Just do it, stumbling blocks)",
+      "original_question": "What proverb did Gina use in July 2023 to encourage Jon about finding investors?"
+    },
+    {
+      "question": "What was written on the dress in Jon's photo?",
+      "answer": "june bunty",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D8:21"
+      ],
+      "support": "D8:21 Jon shares a photo of a dress with a sign that says june bunty",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did the sign on the dress in Jon's photo say?"
+    },
+    {
+      "question": "What picture did Jon share in February while preparing for a show?",
+      "answer": "A woman in a gray dress doing a trick",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D4:11"
+      ],
+      "support": "D4:11 Jon mentions rehearsing for a show and shares a photo of a woman in a gray dress doing a trick",
+      "verdict": "fixed",
+      "note": "Added anchor; public D1:24 also has a rehearsal photo",
+      "original_question": "In early February 2023, what did Jon share a photo of while telling Gina about rehearsing for an upcoming show?"
+    },
+    {
+      "question": "How did Gina choose which pieces to offer in her store in March?",
+      "answer": "Keeping up with fashion trends",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D7:4"
+      ],
+      "support": "D7:4 Gina says she has been keeping up with fashion trends to offer the best pieces",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying evidence phrasing",
+      "original_question": "In March 2023, what had Gina been doing so she could stock the best items for her customers?"
+    },
+    {
+      "question": "Who did Jon and Gina learn dance with growing up?",
+      "answer": "Jon took lessons with his friends; Gina had a mentor",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D9:9",
+        "conv-30:D13:8"
+      ],
+      "support": "D9:9 Jon took lessons with friends when younger; D13:8 Gina had a mentor when learning to dance",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Who did Jon and Gina each learn dance with when they were younger?"
+    },
+    {
+      "question": "What dresses on display did Gina share in April?",
+      "answer": "A dress displayed with a flamingo, and a red dress with gold accents on a mannequin",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D9:2",
+        "conv-30:D9:4"
+      ],
+      "support": "D9:2 photo of a dress and a flamingo on display; D9:4 photo of a red dress with gold accents on a mannequin",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What dresses on display did Gina share photos of in April 2023?"
+    },
+    {
+      "question": "In what ways did Jon offer to show Gina his dancing?",
+      "answer": "He invited her to see his moves the following Friday, and later offered to send her a video of one of his routines",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D1:12",
+        "conv-30:D11:19",
+        "conv-30:D11:21"
+      ],
+      "support": "D1:12 Jon offers to show his moves next Friday; D11:19/D11:21 Jon offers to send a routine video",
+      "verdict": "fixed",
+      "note": "Removed D1:13 (Gina's acceptance is not Jon's offer)",
+      "original_question": "In January and May 2023, how did Jon offer to show Gina his dancing?"
+    },
+    {
+      "question": "How have audiences reacted to Jon's dancing?",
+      "answer": "Many people complimented his moves at the festival, and his online dance videos created a stir",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D5:2",
+        "conv-30:D14:5"
+      ],
+      "support": "D5:2 people at the festival complimented his moves; D14:5 his posted dance videos are creating a stir",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did people respond to Jon's dancing at the festival and online?"
+    },
+    {
+      "question": "What topics has Jon asked Gina for advice on?",
+      "answer": "Staying motivated, staying confident, marketing, starting out as an entrepreneur, and tackling business challenges",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D10:5",
+        "conv-30:D10:7",
+        "conv-30:D14:3",
+        "conv-30:D14:9",
+        "conv-30:D18:4",
+        "conv-30:D18:12"
+      ],
+      "support": "D10:5 motivation; D10:7 confidence; D14:3 marketing tips; D14:9 advice for starting out; D18:4 tackling challenges; D18:12 marketing strategies",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What topics has Jon asked Gina for advice on?"
+    },
+    {
+      "question": "What did Jon and Gina liken dance to in May?",
+      "answer": "Gina said it is like air; Jon said it is like second nature",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D11:8",
+        "conv-30:D11:9"
+      ],
+      "support": "D11:8 Gina says dance is like air; D11:9 Jon says dancing is like second nature",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Gina and Jon each compare dance to in May 2023?"
+    },
+    {
+      "question": "How did Jon's business confidence change?",
+      "answer": "He felt low on confidence in late April but said he was feeling confident by late June",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D10:7",
+        "conv-30:D16:16"
+      ],
+      "support": "D10:7 Jon feels low on confidence; D16:16 Jon says he is feeling confident and won't give up",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Jon's confidence in his business change between April and June 2023?"
+    },
+    {
+      "question": "What did Jon and Gina gain from networking?",
+      "answer": "It helped Gina find great products she might have missed, and it got Jon in touch with investors and good advice",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D18:5",
+        "conv-30:D18:6",
+        "conv-30:D18:8"
+      ],
+      "support": "D18:5 networking opened Gina up to products; D18:6 networking got Jon good stuff; D18:8 he met investors and got advice",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How has networking helped both Gina and Jon?"
+    },
+    {
+      "question": "What did Jon and Gina promise to send each other?",
+      "answer": "Jon promised a video of one of his dance routines; Gina promised to send her presentation",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D11:19",
+        "conv-30:D11:21",
+        "conv-30:D13:5",
+        "conv-30:D13:6"
+      ],
+      "support": "D11:19/D11:21 Jon will send a routine video; D13:5 Jon asks to see her presentation and D13:6 Gina says she will send it later",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Jon and Gina each promise to send the other?"
+    },
+    {
+      "question": "What trophy photos has Jon shared?",
+      "answer": "A trophy with a glass globe on top, and three young girls standing with trophies",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D5:18",
+        "conv-30:D6:9"
+      ],
+      "support": "D5:18 Jon shares a trophy with a glass globe; D6:9 Jon shares three young girls with trophies",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What trophy photos has Jon shared?"
+    },
+    {
+      "question": "When was Jon going to show Gina his dance moves?",
+      "answer": "27 January 2023 (the Friday after 20 January 2023)",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D1:12",
+        "conv-30:D1:13"
+      ],
+      "support": "D1:12 Jon offers to show his moves next Friday (session 20 Jan 2023); D1:13 Gina agrees",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon plan to show Gina his dance moves?"
+    },
+    {
+      "question": "When was the nearby dance competition Jon rehearsed for?",
+      "answer": "March 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D4:13"
+      ],
+      "support": "D4:13 (4 Feb 2023) Jon is getting ready for a dance comp next month",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When was the nearby dance competition Jon was rehearsing to compete in?"
+    },
+    {
+      "question": "When did Gina first find a new piece for her store?",
+      "answer": "8 February 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D5:1"
+      ],
+      "support": "D5:1 (8 Feb 2023) Gina says she found a cool new fashion piece for her store",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Gina first mention finding a new fashion piece for her store?"
+    },
+    {
+      "question": "When did Jon send Gina a champagne toast?",
+      "answer": "16 March 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D6:19"
+      ],
+      "support": "D6:19 (16 Mar 2023) Jon says cheers and shares two glasses of champagne",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon share a photo of champagne glasses to toast with Gina?"
+    },
+    {
+      "question": "When did Gina show Jon her favorite dance session?",
+      "answer": "3 April 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D8:6"
+      ],
+      "support": "D8:6 (3 Apr 2023) Gina shares a pic of her fave dance session",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Gina share a photo of her favorite dance session?"
+    },
+    {
+      "question": "When was Jon learning alongside his students?",
+      "answer": "9 April 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D9:1"
+      ],
+      "support": "D9:1 (9 Apr 2023) Jon says he is even learning with his students",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon mention he was learning alongside his students?"
+    },
+    {
+      "question": "When did Jon struggle with confidence in his business?",
+      "answer": "April 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D10:7"
+      ],
+      "support": "D10:7 (25 Apr 2023) Jon says he has been feeling low on confidence lately",
+      "verdict": "fixed",
+      "note": "Answer format",
+      "original_question": "When was Jon feeling low on confidence about his business?"
+    },
+    {
+      "question": "When did Gina last get new stock for her store?",
+      "answer": "Between 19 and 21 June 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D16:1"
+      ],
+      "support": "D16:1 (21 Jun 2023) Gina says since they last talked (19 Jun) she acquired new unique pieces",
+      "verdict": "fixed",
+      "note": "Reworded with 'most recently' to separate from D5:1 (Feb); avoided copying",
+      "original_question": "When did Gina most recently get some new one-of-a-kind pieces for her store?"
+    },
+    {
+      "question": "When did Jon first show Gina his whiteboard?",
+      "answer": "27 May 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D12:8"
+      ],
+      "support": "D12:8 (27 May 2023) Jon shares a photo of a whiteboard with a list of dates",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon first show Gina a photo of his whiteboard?"
+    },
+    {
+      "question": "When was Jon finishing his business plan?",
+      "answer": "May 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D12:12"
+      ],
+      "support": "D12:12 (27 May 2023) Jon says he is wrapping up the business plan",
+      "verdict": "fixed",
+      "note": "Answer format",
+      "original_question": "When was Jon wrapping up his business plan?"
+    },
+    {
+      "question": "When did Jon put his plans on paper?",
+      "answer": "21 June 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D16:10",
+        "conv-30:D16:12"
+      ],
+      "support": "D16:10 (21 Jun 2023) Jon is writing all his plans down; D16:12 his goals are written on paper",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon say he was writing all his plans down?"
+    },
+    {
+      "question": "When did Jon commit to his business full-time?",
+      "answer": "9 July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D17:2"
+      ],
+      "support": "D17:2 (9 Jul 2023) Jon says he will go full-time with his biz idea",
+      "verdict": "fixed",
+      "note": "Answer format; reworded to avoid copying",
+      "original_question": "When did Jon say he planned to work on his business full-time?"
+    },
+    {
+      "question": "When did Gina set up a new ordering website?",
+      "answer": "The week before 21 July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D18:1"
+      ],
+      "support": "D18:1 (21 Jul 2023) Gina built the website last week",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying evidence phrasing",
+      "original_question": "When did Gina create a new ordering website for her customers?"
+    },
+    {
+      "question": "When was Jon stressed from rehearsing and planning?",
+      "answer": "The few days before 23 July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D19:1"
+      ],
+      "support": "D19:1 (23 Jul 2023) Jon says they haven't talked in a few days and he's been rehearsing hard and working on business plans",
+      "verdict": "fixed",
+      "note": "Disambiguated from D4:11 (also rehearsing hard and working on business)",
+      "original_question": "When had Jon been finding it stressful to rehearse hard and work on business plans?"
+    },
+    {
+      "question": "Would Jon likely find a Kanban board useful for planning?",
+      "answer": "Likely yes; he already uses a whiteboard to track ideas and milestones and to visualize his goals",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-30:D12:9",
+        "conv-30:D12:10",
+        "conv-30:D13:13"
+      ],
+      "support": "D12:9-10 the whiteboard gives Jon a visual of his progress; D13:13 he uses a whiteboard to visualize goals",
+      "verdict": "fixed",
+      "note": "Added D12:9 so 'it' in D12:10 is the whiteboard",
+      "original_question": "Would Jon likely find a visual task board, like a Kanban board, useful?"
+    },
+    {
+      "question": "Would Gina likely enjoy a book of inspiring sayings during hard times?",
+      "answer": "Likely yes; she said a quote kept her positive through tough times",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-30:D5:13"
+      ],
+      "support": "D5:13 Gina says a quote kept her positive through tough times",
+      "verdict": "fixed",
+      "note": "Narrowed answer to D5:13; dropped weak D13:20",
+      "original_question": "Would Gina likely appreciate a book of motivational quotes?"
+    },
+    {
+      "question": "What does Gina say is great about being self-employed?",
+      "answer": "Being her own boss and doing something she loves",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D14:8"
+      ],
+      "support": "D14:8 Gina says being her own boss and doing something she loves is awesome",
+      "verdict": "fixed",
+      "note": "Not inference; relabeled single_hop and anchored (other turns show general enjoyment, incl. public D2:1)",
+      "original_question": "In June 2023, what did Gina say was great about being self-employed?"
+    },
+    {
+      "question": "Would Jon likely teach a 50-year-old who has never danced?",
+      "answer": "Likely yes; he wants his studio to serve dancers of all ages, levels and backgrounds",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-30:D5:4",
+        "conv-30:D19:7"
+      ],
+      "support": "D5:4 Jon helps dancers of all ages and levels; D19:7 he wants to welcome dancers of all ages and backgrounds",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Would Jon likely welcome adult beginners at his studio?"
+    },
+    {
+      "question": "Would Jon likely empathize with a dancer who feels self-conscious?",
+      "answer": "Likely yes; he used to be scared of what people would think before learning his own happiness matters most",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-30:D9:7"
+      ],
+      "support": "D9:7 Jon used to be scared to death of what people would think",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Would Jon likely relate to a student who is afraid of being judged while dancing?"
+    }
+  ]
+}

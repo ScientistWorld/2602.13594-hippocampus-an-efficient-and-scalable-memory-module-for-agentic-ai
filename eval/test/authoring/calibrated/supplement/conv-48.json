@@ -1,0 +1,309 @@
+{
+  "conversation_id": "conv-48",
+  "questions": [
+    {
+      "question": "Was the death of Deborah's father expected?",
+      "answer": "No, it was sudden and left the family shell-shocked",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D2:1"
+      ],
+      "support": "D2:1 Deborah: his sudden death left them all shell-shocked",
+      "original_question": "Was the death of Deborah's father expected?"
+    },
+    {
+      "question": "What does Deborah say Warrior II helps with?",
+      "answer": "It builds strength and boosts focus",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D4:14"
+      ],
+      "support": "D4:14 Deborah: Warrior II builds strength and boosts focus",
+      "original_question": "According to Deborah, what are the benefits of the Warrior II pose?"
+    },
+    {
+      "question": "What did the inspiring story Jolene read make Deborah think of?",
+      "answer": "Someone special and the grace and strength they showed when facing hardships",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D4:25",
+        "conv-48:D4:26"
+      ],
+      "support": "D4:25 Jolene's success-despite-challenges story; D4:26 Deborah: it reminds her of someone special and their grace and strength in hardship",
+      "original_question": "What did the story Jolene read about a person succeeding against the odds remind Deborah of?"
+    },
+    {
+      "question": "What view relaxed Jolene in Bogota?",
+      "answer": "Watching the sunset over the water",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D4:33"
+      ],
+      "support": "D4:33 Jolene: on vacation in Bogota, watching the sunset over the water was beautiful and calming",
+      "original_question": "What scene did Jolene find calming during her vacation in Bogota?"
+    },
+    {
+      "question": "What did Jolene say about her partner's ring?",
+      "answer": "It's just a decoration, not a wedding ring; they aren't married yet",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D7:5",
+        "conv-48:D7:7"
+      ],
+      "support": "D7:5 photo of the couple with rings; D7:7 Jolene: not married yet, the ring on his hand is just a decoration",
+      "original_question": "What did Jolene say about the ring her partner wears in their photo?"
+    },
+    {
+      "question": "How did Deborah's neighborhood yoga class come about?",
+      "answer": "Her neighbors were interested in trying yoga, so she hosted a class for them",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D9:5"
+      ],
+      "support": "D9:5 Deborah: neighbors were interested in trying yoga, so she hosted a class for them",
+      "original_question": "How did Deborah's neighborhood yoga class come about?"
+    },
+    {
+      "question": "What does Jolene enjoy most about interning?",
+      "answer": "Applying what she learned in school to real projects and seeing her ideas come to life",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D13:5",
+        "conv-48:D13:7"
+      ],
+      "support": "D13:5 internship at an engineering firm; D13:7 best part is applying school learning to real projects",
+      "original_question": "What has Jolene liked most about her internship at the engineering firm?"
+    },
+    {
+      "question": "What did Jolene once win in a bet?",
+      "answer": "Three large pizzas",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D19:10"
+      ],
+      "support": "D19:10 Jolene: she and her partner play for bets; she once won three large pizzas",
+      "original_question": "What did Jolene once win from betting with her partner over a game?"
+    },
+    {
+      "question": "What did the note from Deborah's friend say?",
+      "answer": "\"Let go of what no longer serves you.\"",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D23:22",
+        "conv-48:D23:23"
+      ],
+      "support": "D23:22 Deborah: the friend's note says 'Let go of what no longer serves you'; D23:23 Jolene repeats it",
+      "original_question": "What quote did Deborah's friend write on the note she showed Jolene?"
+    },
+    {
+      "question": "How does Deborah describe her yoga friends?",
+      "answer": "As her second family; they have held each other up through a lot",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D24:5"
+      ],
+      "support": "D24:5 Deborah: yoga pals have been her second family",
+      "original_question": "How does Deborah describe her yoga friends?"
+    },
+    {
+      "question": "What does Jolene hope to become after her diving lesson?",
+      "answer": "A certified diver",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D29:4"
+      ],
+      "support": "D29:4 Jolene: maybe one day she'll be a certified diver",
+      "original_question": "What does Jolene hope to become someday after trying a scuba diving lesson?"
+    },
+    {
+      "question": "What memory did the festival stir for Deborah?",
+      "answer": "Her mom's soothing voice singing lullabies to her",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-48:D30:1"
+      ],
+      "support": "D30:1 Deborah: festival music reminds her of her mom singing lullabies in a soothing voice",
+      "original_question": "What memory of her mom did the music festival bring back for Deborah?"
+    },
+    {
+      "question": "What loss do Deborah, Jolene, and Anna all have in common?",
+      "answer": "Each of them has lost her mother",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-48:D1:5",
+        "conv-48:D1:6",
+        "conv-48:D2:13",
+        "conv-48:D4:40",
+        "conv-48:D12:3",
+        "conv-48:D22:23"
+      ],
+      "support": "D1:5/D2:13/D12:3/D22:23 Deborah's mother passed away; D1:6 Jolene's mother passed away last year; D4:40 Anna wears a pendant in memory of her mother",
+      "original_question": "What loss do Deborah, Jolene, and Anna all have in common?"
+    },
+    {
+      "question": "Which people close to Deborah has she watched sunsets with?",
+      "answer": "Anna, and her mom",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-48:D10:17",
+        "conv-48:D19:20",
+        "conv-48:D19:21"
+      ],
+      "support": "D10:17 Deborah and Anna sat by the sea watching the sunset; D19:20 asks about memories with her mom at the spot; D19:21 she and her mom watched a sunset together in silence",
+      "original_question": "Which people close to Deborah has she described watching a sunset with?"
+    },
+    {
+      "question": "How did Jolene's feelings about to-do lists change?",
+      "answer": "In March her to-do lists felt never-ending and overwhelming; by August a bullet journal kept her organized and crossing tasks off felt satisfying",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-48:D8:16",
+        "conv-48:D10:6",
+        "conv-48:D10:8",
+        "conv-48:D18:3",
+        "conv-48:D18:5"
+      ],
+      "support": "D8:16 (2 Mar) to-do list never-ending, overwhelmed; D10:6/D10:8 (22 Mar) lists overwhelming; D18:3 (16 Aug) bullet journal helpful; D18:5 satisfying to cross tasks off",
+      "original_question": "How did Jolene's feelings about her task lists change between March and August 2023?"
+    },
+    {
+      "question": "Did Jolene start dating her partner before or after her mother died?",
+      "answer": "Before; they had been together about three years by February 2023, and her mother died in 2022",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-48:D1:6",
+        "conv-48:D7:7"
+      ],
+      "support": "D1:6 (23 Jan 2023) mother passed away last year; D7:7 (25 Feb 2023) together for three years",
+      "original_question": "Did Jolene start dating her partner before or after her mother died?"
+    },
+    {
+      "question": "Whose last photos with Deborah did she share?",
+      "answer": "Her mother and her friend Karlie",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-48:D1:5",
+        "conv-48:D6:4",
+        "conv-48:D6:8"
+      ],
+      "support": "D1:5 mother passed away, 'our last photo together'; D6:4 lost a friend last week; D6:8 last photo with Karlie",
+      "original_question": "Which two loved ones who have died did Deborah show Jolene her final photo with?"
+    },
+    {
+      "question": "How many times have Jolene's snakes escaped?",
+      "answer": "Twice: Seraphim slipped out of her cage to curl up next to her while she gamed, and another time a snake escaped and was found under the bed after hours of searching",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-48:D2:22",
+        "conv-48:D15:20"
+      ],
+      "support": "D2:22 Seraphim slinked out of her cage while Jolene played video games; D15:20 snake got out, found under the bed after hours",
+      "original_question": "How many times has Jolene told Deborah about one of her snakes getting loose?"
+    },
+    {
+      "question": "When did Jolene and her partner play \"Detroit\"?",
+      "answer": "The week before 27 January 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D2:26"
+      ],
+      "support": "D2:26 (27 Jan 2023) Jolene: gaming with partner last week, played 'Detroit'",
+      "original_question": "When did Jolene and her partner play \"Detroit\"?"
+    },
+    {
+      "question": "When did Deborah and Anna grow closer during a yoga class?",
+      "answer": "3 February 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D4:12"
+      ],
+      "support": "D4:12 (4 Feb 2023) Deborah: bonded with Anna during yesterday's yoga class",
+      "original_question": "When did Deborah and Anna grow closer during a yoga class?"
+    },
+    {
+      "question": "When did Deborah's friend Karlie pass away?",
+      "answer": "The week before 22 February 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D6:4",
+        "conv-48:D6:8"
+      ],
+      "support": "D6:4 (22 Feb 2023) lost a friend last week; D6:8 that friend is Karlie (last photo)",
+      "original_question": "When did Deborah's friend Karlie pass away?"
+    },
+    {
+      "question": "When did Jolene and her partner receive Battlefield 1?",
+      "answer": "The week before 21 August 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D20:1"
+      ],
+      "support": "D20:1 (21 Aug 2023) Jolene: given Battlefield 1 for the console last week",
+      "original_question": "When did Jolene and her partner receive Battlefield 1?"
+    },
+    {
+      "question": "When did Deborah visit her mom's house in summer 2023?",
+      "answer": "July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D23:4"
+      ],
+      "support": "D23:4 (30 Aug 2023) Deborah: last month visited her mom's house",
+      "original_question": "When did Deborah visit her mom's house, as she told Jolene on 30 August 2023?"
+    },
+    {
+      "question": "When did Jolene have her finals in 2023?",
+      "answer": "September 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D24:14"
+      ],
+      "support": "D24:14 (3 Sep 2023) Jolene: lots of finals coming up this month",
+      "original_question": "When did Jolene have her finals in 2023?"
+    },
+    {
+      "question": "When was Jolene designing an aerial monitoring system?",
+      "answer": "August 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-48:D17:10"
+      ],
+      "support": "D17:10 (12 Aug 2023) Jolene: working on an aerial surveillance prototype now",
+      "original_question": "When was Jolene developing a prototype for aerial surveillance?"
+    },
+    {
+      "question": "Would Deborah likely enjoy Detroit: Become Human?",
+      "answer": "Likely yes; Detroit: Become Human involves detective-style investigation, and she and her husband prefer detective games.",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-48:D2:26",
+        "conv-48:D19:11",
+        "conv-48:D19:13"
+      ],
+      "support": "D2:26 Jolene played 'Detroit'; D19:11 Deborah played games with her husband; D19:13 they prefer detective games",
+      "original_question": "Would Deborah likely enjoy playing \"Detroit\", the game Jolene played with her partner?"
+    },
+    {
+      "question": "Is Jolene likely building a drone?",
+      "answer": "Probably; an affordable aerial system for emergency response and environmental monitoring is a typical drone application.",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-48:D17:10",
+        "conv-48:D17:12"
+      ],
+      "support": "D17:10 aerial surveillance prototype; D17:12 affordable system for emergencies and environmental monitoring",
+      "original_question": "Might Jolene's aerial surveillance prototype be a drone?"
+    },
+    {
+      "question": "What genre might Jolene's yoga playlist fall under?",
+      "answer": "Likely ambient or neo-classical, since she listens to Nils Frahm and Olafur Arnalds and likes soft, soothing music.",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-48:D11:9",
+        "conv-48:D28:18"
+      ],
+      "support": "D11:9 Jolene listens to Nils Frahm and Olafur Arnalds during practice; D28:18 soft, soothing background music",
+      "original_question": "What genre of music does Jolene likely play during yoga?"
+    }
+  ]
+}

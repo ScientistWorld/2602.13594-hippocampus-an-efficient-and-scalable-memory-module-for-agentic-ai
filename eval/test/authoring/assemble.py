@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Merge the verified and supplementary per-conversation question files into eval/test/private_questions.json.
+"""Merge the style-calibrated verified and supplementary per-conversation question
+files (calibrated/verified/, calibrated/supplement/) into eval/test/private_questions.json.
+
+Pipeline: drafts/ -> verified/ (answer/evidence/uniqueness checked) and
+supplement/ (batch citing publicly cited turns) -> calibrated/ (question wording
+shortened to LoCoMo's length and question-evidence word overlap, measured by
+tools/calib_stats.py; answers and evidence unchanged) -> this script.
 
     python3 -I eval/test/authoring/assemble.py
 """
@@ -19,7 +25,7 @@ def main() -> None:
     for cid in TEST_CONVERSATIONS:
         batch = []
         for part, label in (("verified", "main"), ("supplement", "supplement")):
-            data = json.loads((HERE / part / f"{cid}.json").read_text())
+            data = json.loads((HERE / "calibrated" / part / f"{cid}.json").read_text())
             assert data["conversation_id"] == cid
             batch.extend({**q, "batch": label} for q in data["questions"])
         # IDs and order are visible to retrievers: shuffle (fixed seed) so neither

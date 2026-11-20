@@ -1,0 +1,355 @@
+{
+  "conversation_id": "conv-50",
+  "questions": [
+    {
+      "question": "What did Calvin reflect on after his old friend saw him perform?",
+      "answer": "How far he has come, and how important relationships are in the music business",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D29:1"
+      ],
+      "support": "D29:1 Calvin: the show got him thinking about how far he's come and reminded him how important relationships are in this biz",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Calvin reflect on after his old high school buddy came to see him perform in Boston?"
+    },
+    {
+      "question": "Which part of his 2022 restoration did Dave photograph?",
+      "answer": "The engine",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D4:7"
+      ],
+      "support": "D4:7 (1 May 2023) Dave restored a classic car last year and shares a photo of its engine",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What part of the classic car he restored in 2022 did Dave show Calvin a photo of?"
+    },
+    {
+      "question": "What did Dave plan to focus on for now in May 2023?",
+      "answer": "Working on his current project and assisting customers",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D5:5"
+      ],
+      "support": "D5:5 Dave: for now, just keep working on this project and assisting customers",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "While dreaming of building a custom car someday, what did Dave plan to keep doing for the time being in May 2023?"
+    },
+    {
+      "question": "Did Calvin know of the headliner at Dave's October festival?",
+      "answer": "Yes; he had heard great things about The Fireworks",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D23:9",
+        "conv-50:D23:10"
+      ],
+      "support": "D23:9 Dave: The Fireworks headlined; D23:10 Calvin has heard great things about them",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Had Calvin heard of the band that headlined the festival Dave attended in October 2023?"
+    },
+    {
+      "question": "As a car engineer, what amazes Dave?",
+      "answer": "That something so powerful and cool can be made from small parts",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D26:6"
+      ],
+      "support": "D26:6 Dave: now an automotive engineer, crazy that something so powerful and cool comes from small parts",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "As an automotive engineer, what does Dave find crazy to think about?"
+    },
+    {
+      "question": "Was anyone injured in Calvin's accident?",
+      "answer": "No, no one was hurt",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D9:1"
+      ],
+      "support": "D9:1 Calvin: little car accident last Friday, no one was hurt",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Was anyone injured in Calvin's car accident in June 2023?"
+    },
+    {
+      "question": "What did Calvin credit for the modern look of Dave's car?",
+      "answer": "Its silver finish",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D13:7",
+        "conv-50:D13:8"
+      ],
+      "support": "D13:7 Dave is giving a classic muscle car a modern twist; D13:8 Calvin: the silver finish gives it a modern twist",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "According to Calvin, what gave the classic muscle car Dave was modifying at the workshop its modern twist?"
+    },
+    {
+      "question": "What does the octopus on Calvin's guitar stand for?",
+      "answer": "His love for art and the sea",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D16:14"
+      ],
+      "support": "D16:14 Calvin: the octopus represents his love for art and the sea",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What does the octopus on Calvin's custom guitar stand for?"
+    },
+    {
+      "question": "Who introduced Calvin to his new Boston collaborators?",
+      "answer": "Through a mutual friend who knew they'd be a great fit",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D21:1",
+        "conv-50:D21:2",
+        "conv-50:D21:3"
+      ],
+      "support": "D21:1 met artists in Boston; D21:2 Dave asks how it was arranged; D21:3 a mutual friend knew they'd be a great fit",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Calvin's meeting with the artists in Boston in early October 2023 come about?"
+    },
+    {
+      "question": "Who bought the car Dave restored in 2022?",
+      "answer": "A collector",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D25:17"
+      ],
+      "support": "D25:17 (23 Oct 2023) Dave restored a car last year but sold it to a collector",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Who bought the car Dave had restored the year before, as he told Calvin in October 2023?"
+    },
+    {
+      "question": "Who came to Calvin's album party?",
+      "answer": "His family and friends",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D28:1"
+      ],
+      "support": "D28:1 Calvin: album party at his Japanese house, so much love from his fam and friends",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Who celebrated with Calvin at the party he threw at his Japanese house for his new album?"
+    },
+    {
+      "question": "How did Calvin feel after the gala?",
+      "answer": "Inspired, like he was on a creative high",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D30:4"
+      ],
+      "support": "D30:4 Calvin: an inspiring conversation, he feels on a creative high",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Calvin feel after his chat with the artist he met at the Boston gala?"
+    },
+    {
+      "question": "What places have Calvin and Dave each described as a sanctuary?",
+      "answer": "Calvin: the Japanese mansion he was turning into a recording studio; Dave: his dad's garage, where he tinkered with engines as a kid",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D11:4",
+        "conv-50:D22:5"
+      ],
+      "support": "D11:4 Calvin calls the mansion-to-studio project his sanctuary; D22:5 Dave's dad's garage was like his own sanctuary",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What places have Calvin and Dave each described as a sanctuary?"
+    },
+    {
+      "question": "What does Calvin's car remind him of?",
+      "answer": "His hard work and dedication, to keep pushing, and how far he has come",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D12:7",
+        "conv-50:D12:9",
+        "conv-50:D20:2"
+      ],
+      "support": "D12:7 car reminds him of his hard work and dedication; D12:9 seeing it every day reminds him to keep pushing; D20:2 car pic is a sign of his hard work and reminds him how far he's come",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What has Calvin said looking at his car reminds him of?"
+    },
+    {
+      "question": "Did Calvin end up enjoying Japanese culture?",
+      "answer": "Yes; by May 2023 he said he had been loving getting to know Japanese culture",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:5",
+        "conv-50:D5:10"
+      ],
+      "support": "D1:5 (23 Mar 2023) excited to learn about Japanese culture; D5:10 (3 May 2023) loving getting to know Japanese culture",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Did Calvin get to learn about Japanese culture as he had hoped in March 2023?"
+    },
+    {
+      "question": "What did Dave get to do at car events in March and October?",
+      "answer": "At the March event he talked with some of the owners and heard their stories; at the October car show he got to mess with car mods",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:2",
+        "conv-50:D22:1"
+      ],
+      "support": "D1:2 (23 Mar 2023) classic car event, spoke with owners and heard their stories; D22:1 (8 Oct 2023) car show, got to mess with car mods",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Besides admiring the cars, what did Dave get to do at the car events he told Calvin about in March and October 2023?"
+    },
+    {
+      "question": "Did Calvin's May show in Tokyo meet his hopes?",
+      "answer": "He hoped to show his music to a whole new crowd and expand his following; it was unreal, the crowd was insane and he felt so alive performing",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D6:11",
+        "conv-50:D7:1"
+      ],
+      "support": "D6:11 (16 May 2023) hopes the Tokyo show reaches a new crowd and expands his following; D7:1 (31 May 2023) Tokyo was unreal, crowd insane, felt so alive",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Calvin hope his May 2023 Tokyo performance would do for him, and how did it go?"
+    },
+    {
+      "question": "What has Dave told Calvin about Boston's music scene?",
+      "answer": "That it's awesome, with tons of talented musicians and cool places to play, such as Paradise Rock, House of Blues and Fenway Park",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D3:10",
+        "conv-50:D7:16"
+      ],
+      "support": "D3:10 music scene awesome, venues Paradise Rock, House of Blues, Fenway Park; D7:16 tons of talented musicians and cool places to play",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What has Dave told Calvin about Boston's music scene?"
+    },
+    {
+      "question": "When did Dave go to a car show in April?",
+      "answer": "The weekend before 20 April 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D3:12"
+      ],
+      "support": "D3:12 (20 Apr 2023) 'Last weekend I went to a car show'",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave go to the car show he told Calvin about in April 2023?"
+    },
+    {
+      "question": "When did Calvin play a show with the boys?",
+      "answer": "2 August 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D12:11"
+      ],
+      "support": "D12:11 (3 Aug 2023) photo of how he performed with the boys last night",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin perform on stage with the group he called 'the boys'?"
+    },
+    {
+      "question": "When did Dave expect to finish the car he was restoring in August?",
+      "answer": "By the end of September 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D14:11",
+        "conv-50:D14:13"
+      ],
+      "support": "D14:11 (14 Aug 2023) car he's restoring from a beat-up mess; D14:13 hopes it's fixed up by the end of next month",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "By when did Dave expect to finish restoring the beat-up car he showed Calvin in mid-August 2023?"
+    },
+    {
+      "question": "When did Calvin begin filming his music video?",
+      "answer": "The weekend before 31 August 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D16:6"
+      ],
+      "support": "D16:6 (31 Aug 2023) 'Last weekend I started shooting a video for my new album'",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin start shooting the video for his new album?"
+    },
+    {
+      "question": "When did Dave go to a rock concert?",
+      "answer": "The weekend before 15 September 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D19:1"
+      ],
+      "support": "D19:1 (15 Sep 2023) 'last weekend, I had the opportunity to attend a rock concert here in Boston'",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave attend a rock concert in Boston?"
+    },
+    {
+      "question": "When did Calvin go networking?",
+      "answer": "Between 25 and 29 October 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D27:1"
+      ],
+      "support": "D27:1 (29 Oct 2023) networking event since they last talked (25 Oct 2023)",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin go to a networking event to meet more artists?"
+    },
+    {
+      "question": "When did Dave go on a road trip?",
+      "answer": "Just before 21 July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D11:1"
+      ],
+      "support": "D11:1 (21 Jul 2023) 'I just got back from a road trip with my friends'",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave go on a countryside road trip with his friends?"
+    },
+    {
+      "question": "Was the band Dave loved most in March a hometown act?",
+      "answer": "Yes; Aerosmith formed in Boston, where the festival was held",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-50:D2:8",
+        "conv-50:D2:10"
+      ],
+      "support": "D2:8 music festival in Boston; D2:10 favorite was Aerosmith (world knowledge: a Boston band)",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Was Dave's favorite band at the music festival he went to in March 2023 from the same city as the festival?"
+    },
+    {
+      "question": "Which US city has the spot Calvin compared a Tokyo crossing to?",
+      "answer": "New York City, home of Times Square",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-50:D24:19"
+      ],
+      "support": "D24:19 Calvin: Shibuya Crossing is like Tokyo's Times Square (world knowledge: Times Square is in New York City)",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "In which US city is the landmark Calvin likened Shibuya Crossing to?"
+    },
+    {
+      "question": "Which studio made the animated film Calvin and Dave both love?",
+      "answer": "Pixar, which made Ratatouille",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-50:D19:5",
+        "conv-50:D19:6"
+      ],
+      "support": "D19:5 Dave: one of his favorite Disney movies; D19:6 Calvin: Ratatouille is one of his favorites (world knowledge: Pixar)",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Which animation studio made the Disney movie that Calvin and Dave both count among their favorites?"
+    }
+  ]
+}

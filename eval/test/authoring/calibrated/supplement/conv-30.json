@@ -1,0 +1,214 @@
+{
+  "conversation_id": "conv-30",
+  "questions": [
+    {
+      "question": "Why does Jon prefer Marley flooring for his studio?",
+      "answer": "It provides grip while still allowing movement, and it is durable and easy to clean",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D2:8"
+      ],
+      "support": "D2:8 Jon says Marley is grippy but lets you move, tough and easy to keep clean",
+      "verdict": "fixed",
+      "note": "Removed D2:9 (Gina's echo adds nothing); reworded answer to avoid copying evidence phrasing",
+      "original_question": "Why does Jon favor Marley floors for his studio?"
+    },
+    {
+      "question": "What light fixture did Gina pick for her store?",
+      "answer": "A chandelier",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D3:6"
+      ],
+      "support": "D3:6 Gina says the chandelier adds a nice glam feel matching the store's style",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What fixture gives Gina's store a glamorous touch?"
+    },
+    {
+      "question": "What does Gina say failure brings you closer to?",
+      "answer": "Success",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D14:14"
+      ],
+      "support": "D14:14 Gina tells Jon not to quit because failures lead you closer to success",
+      "verdict": "fixed",
+      "note": "Reworded question to avoid copying evidence phrasing",
+      "original_question": "What did Gina say failures ultimately move you toward?"
+    },
+    {
+      "question": "Why did Jon decide to organize a dance contest?",
+      "answer": "To show off local dancers' talent and get his studio more attention",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D8:13"
+      ],
+      "support": "D8:13 Jon is hosting a competition next month to showcase local talent and bring attention to his studio",
+      "verdict": "fixed",
+      "note": "Reworded answer; public QA lists the competition as an event but never gives its purpose",
+      "original_question": "Why did Jon decide to host a dance competition?"
+    },
+    {
+      "question": "What business opportunities did Jon find at the fair?",
+      "answer": "Some possible leads",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D10:1"
+      ],
+      "support": "D10:1 Jon went to a fair to show off his studio and got some possible leads",
+      "verdict": "fixed",
+      "note": "Reworded so the lesson he learned at the fair is not an alternative answer",
+      "original_question": "What business prospects did Jon get from presenting his studio at a fair?"
+    },
+    {
+      "question": "What styles of dance does Jon's rehearsal group do?",
+      "answer": "All kinds, from contemporary to hip-hop",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D1:24"
+      ],
+      "support": "D1:24 Jon says his small rehearsal group does all kinds of dances from contemporary to hip-hop",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What range of dance styles does Jon's rehearsal group perform?"
+    },
+    {
+      "question": "Why did Jon join a gym?",
+      "answer": "To stay on track with his business venture",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D6:1"
+      ],
+      "support": "D6:1 (16 Mar 2023) Jon started hitting the gym last week to stay on track with the venture",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Why did Jon start working out at the gym in March 2023?"
+    },
+    {
+      "question": "How did Jon feel after meeting with a business mentor?",
+      "answer": "Inspired and even more eager to chase his dreams",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-30:D14:1"
+      ],
+      "support": "D14:1 Jon says being mentored by a business dude was inspiring and he is more pumped to chase his dreams",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Jon feel after being coached by a business mentor in June 2023?"
+    },
+    {
+      "question": "What marketing advice has Gina given Jon for his studio?",
+      "answer": "Use social media and work with influencers; specifically, use Instagram and TikTok to reach younger people, post dance clips, and team up with local influencers or dance communities",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D14:4",
+        "conv-30:D18:13"
+      ],
+      "support": "D14:4 (Jun) Gina advises social media channels and influencers; D18:13 (Jul) Gina suggests Instagram/TikTok, dance clips, local influencers or dance communities",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What marketing tips has Gina given Jon for promoting his studio?"
+    },
+    {
+      "question": "How did Gina feel about her internship and the fashion editors?",
+      "answer": "Excited but nervous/scared about the internship; amazed but a bit scared and under pressure from the editors' attention",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D12:3",
+        "conv-30:D12:5",
+        "conv-30:D17:1"
+      ],
+      "support": "D12:3 excited and kinda nervous about the internship; D12:5 mix of excited and scared; D17:1 noticed by fashion editors, amazing but kinda scary, lots of pressure",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Gina feel about landing her fashion internship and about catching the attention of fashion editors?"
+    },
+    {
+      "question": "How do Jon and Gina describe contemporary dance?",
+      "answer": "Jon called it expressive and powerful; Gina called it expressive and graceful",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-30:D1:8",
+        "conv-30:D1:9"
+      ],
+      "support": "D1:8 Jon says contemporary is so expressive and powerful; D1:9 Gina says it is so expressive and graceful",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Jon and Gina each describe contemporary dance when sharing their favorite style?"
+    },
+    {
+      "question": "When did Jon's crew win a competition?",
+      "answer": "2022",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D1:16"
+      ],
+      "support": "D1:16 (20 Jan 2023) Jon's crew took home first in a local comp last year",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon's dance crew win a local competition?"
+    },
+    {
+      "question": "When did Jon take on a temporary job?",
+      "answer": "July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D18:2"
+      ],
+      "support": "D18:2 (21 Jul 2023) Jon says he got a temp job while looking for investors",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Jon take on a temporary job?"
+    },
+    {
+      "question": "When did Jon give Gina advice on branding?",
+      "answer": "23 March 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D7:5"
+      ],
+      "support": "D7:5 (23 Mar 2023) Jon advises brand identity and building customer relationships",
+      "verdict": "fixed",
+      "note": "Removed D7:6 (Gina's thanks adds nothing; session date comes from D7:5)",
+      "original_question": "When did Jon give Gina advice about brand identity and customer relationships?"
+    },
+    {
+      "question": "When did Gina show Jon one of her trophies?",
+      "answer": "9 April 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-30:D9:10"
+      ],
+      "support": "D9:10 (9 Apr 2023) Gina shares one of her trophies from a dance contest",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Gina share a photo of a trophy she won in a dance contest?"
+    },
+    {
+      "question": "Would Jon likely know his way around loans and interest rates?",
+      "answer": "Likely yes; he used to work as a banker",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-30:D1:2",
+        "conv-30:D5:10"
+      ],
+      "support": "D1:2 Jon lost his job as a banker; D5:10 Jon left his secure 9-5 as a banker",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Would Jon likely know his way around loans and interest rates?"
+    },
+    {
+      "question": "Would Gina likely enjoy seeing the Eiffel Tower in person?",
+      "answer": "Likely yes; she had never had the chance to visit and was thrilled to hear about Jon's trip",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-30:D2:5"
+      ],
+      "support": "D2:5 Gina reacts excitedly to Jon's Paris trip and says she never had a chance to visit it",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Would Gina likely want to travel to Paris?"
+    }
+  ]
+}

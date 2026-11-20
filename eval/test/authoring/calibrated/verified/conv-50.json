@@ -1,0 +1,1050 @@
+{
+  "conversation_id": "conv-50",
+  "questions": [
+    {
+      "question": "Who found Calvin his place to stay in Japan?",
+      "answer": "His agent",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:10",
+        "conv-50:D1:11"
+      ],
+      "support": "D1:11 Calvin says his agent found him the place",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Who found Calvin his place to stay in Japan?"
+    },
+    {
+      "question": "What were Calvin's initial plans for Japan?",
+      "answer": "Explore the city, try local cuisines, and maybe collaborate with local musicians",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:13"
+      ],
+      "support": "D1:13 Calvin lists his trip plans",
+      "verdict": "fixed",
+      "note": "Added March 2023 anchor; later turns (D10:10) give other Japan plans",
+      "original_question": "When Calvin first told Dave about his upcoming Japan trip in March 2023, what did he plan to do there?"
+    },
+    {
+      "question": "What was behind Calvin's big life change?",
+      "answer": "He was excited to learn about Japanese culture and get a chance to expand",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:4",
+        "conv-50:D1:5"
+      ],
+      "support": "D1:4 Dave asks what inspired the change/journey; D1:5 Calvin answers",
+      "verdict": "fixed",
+      "note": "A 'move to Japan' is never stated; reworded to the change Dave asked about",
+      "original_question": "What did Calvin say inspired his big life change in March 2023?"
+    },
+    {
+      "question": "Had Calvin been to Japan before March 2023?",
+      "answer": "No, never",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:6",
+        "conv-50:D1:7"
+      ],
+      "support": "D1:6 Dave asks; D1:7 Calvin says he has never been there",
+      "verdict": "fixed",
+      "note": "Removed unstated 'move' premise",
+      "original_question": "As of March 2023, had Calvin ever been to Japan?"
+    },
+    {
+      "question": "Did Dave meet his favorite band after their show?",
+      "answer": "No",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D2:13",
+        "conv-50:D2:14"
+      ],
+      "support": "D2:13 Calvin asks about his favorite singers; D2:14 Dave says he didn't get to hang with them",
+      "verdict": "fixed",
+      "note": "Removed band name, which needed public D2:10 to link",
+      "original_question": "Did Dave get to hang out with his favorite band after seeing them live in March 2023?"
+    },
+    {
+      "question": "Did Calvin catch any bands at the April festival in Tokyo?",
+      "answer": "No; he didn't see any bands but met lots of talented artists and industry people",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D3:3"
+      ],
+      "support": "D3:3 didn't see any bands, met artists and industry people",
+      "verdict": "fixed",
+      "note": "'Who did he meet' was ambiguous with public D15:4 (met Frank Ocean at a Tokyo festival); reworded to a unique fact",
+      "original_question": "Did Calvin see any bands at the Tokyo music festival he attended in April 2023?"
+    },
+    {
+      "question": "What does Dave enjoy about partnering with a local garage?",
+      "answer": "Working with awesome mechanics and sharing his knowledge about cars",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D5:1",
+        "conv-50:D5:3"
+      ],
+      "support": "D5:1 Dave is teaming up with a local garage; D5:3 says what he loves about this job",
+      "verdict": "fixed",
+      "note": "Added D5:1 (D5:3 only says 'this job'); reworded to avoid copying",
+      "original_question": "What does Dave enjoy about his new partnership with a local garage?"
+    },
+    {
+      "question": "Whose engine did Dave fix in May 2023?",
+      "answer": "His neighbor's",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D7:2",
+        "conv-50:D7:4"
+      ],
+      "support": "D7:2 Dave fixed his neighbor's engine; D7:4 confirms he helps neighbors",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Whose car engine did Dave fix in May 2023?"
+    },
+    {
+      "question": "Why does Calvin want to go hiking?",
+      "answer": "To escape it all and de-stress",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D8:9"
+      ],
+      "support": "D8:9 Calvin wants a mountain hike to escape and de-stress",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Why does Calvin want to go hiking in the mountains?"
+    },
+    {
+      "question": "Who was the man in Calvin's repair shop photo?",
+      "answer": "The mechanic fixing his car",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D9:5",
+        "conv-50:D9:7"
+      ],
+      "support": "D9:5 photo from repair shop; D9:7 Calvin says it's the mechanic",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Who was the man in the auto repair shop photo Calvin shared?"
+    },
+    {
+      "question": "Where was the living room view Calvin shared?",
+      "answer": "A small town in Japan",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D9:11",
+        "conv-50:D9:13"
+      ],
+      "support": "D9:11 shares the view; D9:13 says it's from a small town in Japan",
+      "verdict": "fixed",
+      "note": "Anchored; Calvin shared other unlocated mountain photos in June 2023 (D8:7, D8:9)",
+      "original_question": "Where was the mountain view Calvin shared from his living room in June 2023?"
+    },
+    {
+      "question": "What makes changing genres tough for Calvin?",
+      "answer": "Finding the right balance between sticking to his sound and trying new stuff",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D11:7",
+        "conv-50:D11:8"
+      ],
+      "support": "D11:7 Dave asks about challenges; D11:8 Calvin answers",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What does Calvin find tough about switching between music styles?"
+    },
+    {
+      "question": "How did Calvin respond to Dave's studio offer?",
+      "answer": "He thanked him but said he was super busy with his music at the moment and would keep it in mind",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D13:15",
+        "conv-50:D13:16"
+      ],
+      "support": "D13:15 Dave's offer and studio; D13:16 Calvin's reply",
+      "verdict": "fixed",
+      "note": "'In August 2023' also matched the props offer on 31 Aug (D16:11-12); anchored and added the offer turn",
+      "original_question": "How did Calvin respond when Dave offered him a hand with his music and showed off his studio setup on 11 August 2023?"
+    },
+    {
+      "question": "What does Calvin's guitar remind him of?",
+      "answer": "His passion for music and the amazing friendships he's made",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D16:16",
+        "conv-50:D16:17"
+      ],
+      "support": "D16:16 Calvin states it; D16:17 Dave restates it",
+      "verdict": "fixed",
+      "note": "Removed 'favorite custom' which comes from public D16:14",
+      "original_question": "According to Calvin, what is his guitar a reminder of?"
+    },
+    {
+      "question": "What did Calvin call Dave for fixing cars?",
+      "answer": "A superhero",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D17:4"
+      ],
+      "support": "D17:4 Calvin says it's like being their superhero",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Calvin compare Dave to for fixing people's cars?"
+    },
+    {
+      "question": "Did Dave record his September jam session?",
+      "answer": "No, they were too into it and forgot to record it",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D19:2",
+        "conv-50:D19:3"
+      ],
+      "support": "D19:2 Calvin asks for recordings; D19:3 Dave says they forgot",
+      "verdict": "fixed",
+      "note": "Removed 'band'/'great jam' premise that relied on public D19:1",
+      "original_question": "Did Dave get a recording of the jam session he told Calvin about in September 2023?"
+    },
+    {
+      "question": "What did Dave add to his restored car in October?",
+      "answer": "A custom exhaust and some performance upgrades",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D22:3"
+      ],
+      "support": "D22:3 Dave describes the custom exhaust and upgrades",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Dave add to the car he restored and modified himself, as he told Calvin in October 2023?"
+    },
+    {
+      "question": "How did Dave restore his car's headlights?",
+      "answer": "By cleaning, polishing, and protecting them",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D28:15",
+        "conv-50:D28:16"
+      ],
+      "support": "D28:15 Calvin asks; D28:16 Dave explains",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Dave get the headlights on his blue car looking so good?"
+    },
+    {
+      "question": "Where does Calvin watch TV at home?",
+      "answer": "In a separate relaxation room; he only works in the studio",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D28:28",
+        "conv-50:D28:29"
+      ],
+      "support": "D28:28 Dave asks; D28:29 Calvin describes the separate TV room",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Where does Calvin watch TV at home?"
+    },
+    {
+      "question": "What did Calvin and his old friend do as teens?",
+      "answer": "Freestyling and talking about getting famous with his friend",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D29:3"
+      ],
+      "support": "D29:3 Calvin recalls freestyling and talking about fame as teenagers",
+      "verdict": "fixed",
+      "note": "'High school buddy' identity comes from public D29:1; reworded so D29:3 suffices",
+      "original_question": "What did Calvin recall doing as a teenager when reminiscing in November 2023?"
+    },
+    {
+      "question": "What invite did Calvin accept in November?",
+      "answer": "To perform at an upcoming show in Boston",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D30:20"
+      ],
+      "support": "D30:20 Calvin accepted an invitation to perform in Boston",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What invitation did Calvin accept in November 2023?"
+    },
+    {
+      "question": "What does Dave say his camera helps him do?",
+      "answer": "Capture special moments really clearly",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D30:6",
+        "conv-50:D30:7"
+      ],
+      "support": "D30:6 Calvin asks; D30:7 Dave answers",
+      "verdict": "fixed",
+      "note": "'What he likes about it' was also answered by public D30:5 (takes awesome photos)",
+      "original_question": "What does Dave say his camera helps him do?"
+    },
+    {
+      "question": "Besides Frank Ocean, what collaboration came from Calvin's Tokyo festival?",
+      "answer": "Someone noticed his performance and now they're working together",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D15:9",
+        "conv-50:D15:10"
+      ],
+      "support": "D15:9 Dave asks about other collaborations; D15:10 Calvin answers",
+      "verdict": "fixed",
+      "note": "Excluded the Frank Ocean collaboration (public D15:2/D15:4) to make the answer unique",
+      "original_question": "Apart from Frank Ocean, what collaboration came out of Calvin's performance at the Tokyo festival?"
+    },
+    {
+      "question": "What did Calvin liken a concert crowd to in May?",
+      "answer": "One big harmony",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D7:13"
+      ],
+      "support": "D7:13 Calvin says everyone is part of one big harmony",
+      "verdict": "fixed",
+      "note": "Calvin describes crowd feelings in many sessions; anchored and narrowed to the comparison",
+      "original_question": "What did Calvin compare the feeling of a concert crowd to in May 2023?"
+    },
+    {
+      "question": "What did Dave compare the sunset sky to?",
+      "answer": "Like it was on fire",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D27:4"
+      ],
+      "support": "D27:4 Dave says the sky looks like it's on fire",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Dave describe the sky in his sunset photo in late October 2023?"
+    },
+    {
+      "question": "What did Calvin tell Dave not to forget in May?",
+      "answer": "To relax and enjoy the process",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D5:6"
+      ],
+      "support": "D5:6 Calvin tells Dave to relax and enjoy the process",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Calvin remind Dave not to forget while chasing his car dreams?"
+    },
+    {
+      "question": "How did Calvin describe his album studio in June?",
+      "answer": "Wonderful and great for creativity",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D8:3",
+        "conv-50:D8:5"
+      ],
+      "support": "D8:3 calls it a wonderful studio; D8:5 says it's great for creativity",
+      "verdict": "fixed",
+      "note": "Relabeled: answer combines two separate turns",
+      "original_question": "How did Calvin describe the studio where he worked on his album in June 2023?"
+    },
+    {
+      "question": "What did Calvin promise once his Japanese collabs were ready?",
+      "answer": "Some clips",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D10:12",
+        "conv-50:D10:14"
+      ],
+      "support": "D10:12 Japanese collaborations; D10:14 will share clips when ready",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Calvin promise to share once his collaborations with Japanese artists were ready?"
+    },
+    {
+      "question": "What did Dave warn Calvin against as he returned to work?",
+      "answer": "Overworking himself",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D10:17"
+      ],
+      "support": "D10:17 Dave tells Calvin not to overwork himself",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Dave tell Calvin to avoid when Calvin headed back to work in July 2023?"
+    },
+    {
+      "question": "What did Dave's road trip photo show?",
+      "answer": "A person riding a motorcycle down a dirt road",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D11:3"
+      ],
+      "support": "D11:3 Dave shares the photo of the place they found",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Dave's photo of the wonderful place he found in July 2023 show?"
+    },
+    {
+      "question": "What was the best part of the mod workshop for Dave?",
+      "answer": "Seeing the potential come to life",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D13:4",
+        "conv-50:D13:5"
+      ],
+      "support": "D13:4 Calvin asks; D13:5 Dave answers",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Dave find most thrilling about the car mod workshop?"
+    },
+    {
+      "question": "What does Dave compare customizing a car to?",
+      "answer": "Customizing a work of art on wheels",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D13:13"
+      ],
+      "support": "D13:13 Dave's comparison",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What does Dave compare customizing a car to?"
+    },
+    {
+      "question": "What does Calvin say he is all about?",
+      "answer": "Spreading joy and creating something people connect with",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D14:10",
+        "conv-50:D28:7"
+      ],
+      "support": "D14:10 and D28:7 Calvin says he's all about bringing joy",
+      "verdict": "fixed",
+      "note": "Relabeled: evidence spans two sessions",
+      "original_question": "What does Calvin say he is all about with his art?"
+    },
+    {
+      "question": "What did Dave admire in Calvin's car photo in September?",
+      "answer": "The way the sunlight hits the car",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D20:2",
+        "conv-50:D20:3"
+      ],
+      "support": "D20:2 Calvin shares the photo; D20:3 Dave praises the sunlight",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Dave love about Calvin's car photo in September 2023?"
+    },
+    {
+      "question": "What does Calvin see as the ultimate career goal?",
+      "answer": "Doing what you love for a living",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D22:6"
+      ],
+      "support": "D22:6 Calvin calls it the ultimate goal",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What does Calvin consider the ultimate goal when it comes to work?"
+    },
+    {
+      "question": "What did Calvin liken mentoring young musicians to?",
+      "answer": "A torch being passed to keep music alive",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D29:11"
+      ],
+      "support": "D29:11 Calvin's torch comparison",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did Calvin compare supporting young musicians to?"
+    },
+    {
+      "question": "What did Dave's car project photo on 25 October show?",
+      "answer": "A group of people washing a car in a garage",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D26:4"
+      ],
+      "support": "D26:4 Dave shares a pic of his latest car project",
+      "verdict": "fixed",
+      "note": "'Late October' also matched the new-project photo on 23 Oct (public D25:17); anchored to the date",
+      "original_question": "What did the photo of Dave's latest car project on 25 October 2023 show?"
+    },
+    {
+      "question": "Why did Calvin turn his Japan home into a studio?",
+      "answer": "It was his dream to have a space for creating music with other artists",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D11:4"
+      ],
+      "support": "D11:4 Calvin explains the dream behind the studio",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying a long phrase from D11:4",
+      "original_question": "Why was Calvin converting his home in Japan into a studio?"
+    },
+    {
+      "question": "What item made Dave think of concerts?",
+      "answer": "A brown amp",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D25:23",
+        "conv-50:D25:25"
+      ],
+      "support": "D25:23 Dave shares an amp photo; D25:25 says it reminds him of concerts",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What item in Dave's photo reminded him of good times at concerts?"
+    },
+    {
+      "question": "How did Calvin feel about his mechanics after the accident?",
+      "answer": "More confident and excited, trusting their expertise",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D9:8",
+        "conv-50:D9:9"
+      ],
+      "support": "D9:8 Dave asks if he's confident; D9:9 Calvin answers",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Calvin feel about the mechanics fixing his car after the accident?"
+    },
+    {
+      "question": "Why did servicing his car stress Calvin out?",
+      "answer": "He's attached to the car",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D12:1"
+      ],
+      "support": "D12:1 Calvin says the service was stressful as he's attached to the car",
+      "verdict": "fixed",
+      "note": "Public D12:2 restates the stress; asked for the reason, which only D12:1 gives",
+      "original_question": "Why was Calvin stressed when he took his Ferrari in for a service?"
+    },
+    {
+      "question": "What has Dave done with his neighbors in 2023?",
+      "answer": "Fixed a neighbor's car engine and had a good conversation with neighbors about current events and politics",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D7:2",
+        "conv-50:D7:4",
+        "conv-50:D25:7"
+      ],
+      "support": "D7:2/D7:4 fixed neighbor's car; D25:7 politics talk with neighbors",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What has Dave done with his neighbors in 2023?"
+    },
+    {
+      "question": "What has Dave offered to help Calvin with for his music?",
+      "answer": "Help with his music using Dave's studio setup with a high-quality sound system, and props or anything else for his music video",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D13:15",
+        "conv-50:D16:11"
+      ],
+      "support": "D13:15 offers help and studio; D16:11 offers help with video props",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What has Dave offered to help Calvin with for his music?"
+    },
+    {
+      "question": "How many music festivals did Dave go to in 2023?",
+      "answer": "Two: one in Boston in March and one in October",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D2:8",
+        "conv-50:D23:5"
+      ],
+      "support": "D2:8 Boston festival; D23:5 just got back from a festival",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How many music festivals did Dave go to in 2023?"
+    },
+    {
+      "question": "What does Dave play in the band he long admired?",
+      "answer": "Guitar",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D9:18",
+        "conv-50:D28:24"
+      ],
+      "support": "D9:18 joined a rock band, practicing guitar; D28:24 he'd been a fan of the band for ages",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What instrument does Dave play in the band he'd been a fan of for ages?"
+    },
+    {
+      "question": "Did Calvin end up collaborating with musicians in Japan?",
+      "answer": "Yes; by July 2023 he was working on music collaborations with Japanese artists",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D1:13",
+        "conv-50:D10:12"
+      ],
+      "support": "D1:13 plan to collaborate with local musicians; D10:12 collaborating with Japanese artists",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Did Calvin follow through on his plan to collaborate with local musicians in Japan?"
+    },
+    {
+      "question": "How has Calvin been helping new musical talent?",
+      "answer": "Supporting young musicians from a music program and making a beat for a young artist",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D29:9",
+        "conv-50:D29:11",
+        "conv-50:D29:13"
+      ],
+      "support": "D29:9/D29:11 supports young musicians; D29:13 making a beat for a young artist",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How has Calvin been helping new musical talent?"
+    },
+    {
+      "question": "What Tokyo photos did Dave share?",
+      "answer": "A busy street with people walking and shopping, and a crowded, colorful street at night",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D24:12",
+        "conv-50:D24:14"
+      ],
+      "support": "D24:12 busy street pic found online; D24:14 crowded street at night",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What Tokyo street scenes did Dave share photos of?"
+    },
+    {
+      "question": "What views from his mansion did Calvin describe in July?",
+      "answer": "A canal with a boat at sunset from the backyard and the city lights from the windows",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D10:6",
+        "conv-50:D10:8"
+      ],
+      "support": "D10:6 backyard canal photo; D10:8 city lights through the windows",
+      "verdict": "fixed",
+      "note": "Anchored to July 2023; D9:11 (June) also shows a 'view from living room'",
+      "original_question": "What views from his Japanese mansion did Calvin describe in July 2023?"
+    },
+    {
+      "question": "Which scenic photos has Calvin said he took himself?",
+      "answer": "The Tokyo night skyline, a canal at sunset from his mansion's backyard, and a bench under a pink-flowered tree in a Japanese garden",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D6:13",
+        "conv-50:D6:15",
+        "conv-50:D10:6",
+        "conv-50:D30:16"
+      ],
+      "support": "D6:13/D6:15 Tokyo skyline pic; D10:6 backyard photo; D30:16 Japanese garden photo",
+      "verdict": "fixed",
+      "note": "Removed 'in Japan': the Japanese garden photo (D30:16) is not stated to be in Japan",
+      "original_question": "Which scenic photos has Calvin said he took himself?"
+    },
+    {
+      "question": "How did Calvin react when Dave offered music help?",
+      "answer": "He said he was too busy but would keep it in mind, and that he'd let Dave know if he needed help with props",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D13:16",
+        "conv-50:D16:12"
+      ],
+      "support": "D13:16 too busy, will keep in mind; D16:12 will let him know about props",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Calvin respond to Dave's offers of help with his music projects?"
+    },
+    {
+      "question": "How did Calvin describe driving his car in March?",
+      "answer": "Super smooth and powerful, like a rockstar behind the wheel, and an adrenaline rush every time",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D2:3",
+        "conv-50:D2:5"
+      ],
+      "support": "D2:3 smooth, powerful, rockstar; D2:5 adrenaline rush",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Calvin describe driving his new car in March 2023?"
+    },
+    {
+      "question": "What did Dave's garage photos show in the fall?",
+      "answer": "A car with a Coca-Cola sign, and tools hanging on the wall in a slightly dirty but orderly space",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D18:12",
+        "conv-50:D25:13"
+      ],
+      "support": "D18:12 garage pic with Coca-Cola sign; D25:13 garage with tools on the wall",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What did the photos of Dave's garage show in fall 2023?"
+    },
+    {
+      "question": "How did Dave cope with losing a deal?",
+      "answer": "He felt bummed and wondered if he was wasting his time, but decided to have faith and patience",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D23:1",
+        "conv-50:D23:3"
+      ],
+      "support": "D23:1 bummed about the lost deal; D23:3 resolves to have faith and patience",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How did Dave react to losing a deal to a competing shop?"
+    },
+    {
+      "question": "What kind of spot did Calvin and Dave both find?",
+      "answer": "A bench under a tree with pink flowers",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D30:16",
+        "conv-50:D30:17"
+      ],
+      "support": "D30:16 Calvin's Japanese garden bench photo; D30:17 Dave found a similar spot",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "What kind of peaceful spot did both Calvin and Dave find in November 2023?"
+    },
+    {
+      "question": "Why did Calvin become a musician?",
+      "answer": "To follow his dreams, make a difference, and share his own story",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D11:10",
+        "conv-50:D18:5"
+      ],
+      "support": "D11:10 started music to follow his dreams; D18:5 making a difference and sharing his story",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Why did Calvin get into making music?"
+    },
+    {
+      "question": "How did Calvin describe the Tokyo festival crowd?",
+      "answer": "Lively, upbeat and buzzing with energy; everyone felt connected",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D15:6",
+        "conv-50:D15:8"
+      ],
+      "support": "D15:6 lively crowd; D15:8 upbeat crowd, everyone connected",
+      "verdict": "fixed",
+      "note": "Anchored to late August; on 14 Aug he described a different Tokyo show crowd (D14)",
+      "original_question": "How did Calvin describe the crowd at the Tokyo festival he told Dave about in late August 2023?"
+    },
+    {
+      "question": "How has Dave described the grime of his job?",
+      "answer": "His hands are permanently stained with grease, and his garage is a little dirty but everything is in its place",
+      "category": "multi_hop",
+      "evidence_entry_ids": [
+        "conv-50:D21:8",
+        "conv-50:D25:13"
+      ],
+      "support": "D21:8 grease-stained hands; D25:13 garage a little dirty but orderly",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "How has Dave described the grime that comes with his car work?"
+    },
+    {
+      "question": "When did Calvin take his new car for a ride?",
+      "answer": "25 March 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D2:5"
+      ],
+      "support": "D2:5 (26 Mar 2023) pic from yesterday's ride",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin take his new car for a ride and snap a photo of it?"
+    },
+    {
+      "question": "When did Calvin write new tunes?",
+      "answer": "The week before 26 March 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D2:17"
+      ],
+      "support": "D2:17 (26 Mar 2023) studio sessions last week",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin have studio sessions to write new tunes?"
+    },
+    {
+      "question": "When did Dave partner with a local garage?",
+      "answer": "Early May 2023 (around 3 May 2023)",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D5:1"
+      ],
+      "support": "D5:1 (3 May 2023) Dave announces teaming up",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave team up with a local garage?"
+    },
+    {
+      "question": "When did Calvin photograph the Tokyo skyline?",
+      "answer": "15 May 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D6:13",
+        "conv-50:D6:15"
+      ],
+      "support": "D6:15 (16 May 2023) took the pic last night",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin take a photo of the Tokyo skyline at night?"
+    },
+    {
+      "question": "When did Dave take the walk he called magical?",
+      "answer": "The Friday before 9 June 2023 (2 June 2023)",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D8:6"
+      ],
+      "support": "D8:6 (9 Jun 2023) stroll last Friday",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave take the stroll in a Boston park that he called magical?"
+    },
+    {
+      "question": "In June, when did Calvin plan to visit Boston?",
+      "answer": "July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D8:5"
+      ],
+      "support": "D8:5 (9 Jun 2023) visiting next month",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "As of June 2023, when was Calvin planning to visit Boston?"
+    },
+    {
+      "question": "When did Dave start playing in a band?",
+      "answer": "June 2023, shortly before 21 June 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D9:18"
+      ],
+      "support": "D9:18 (21 Jun 2023) recently joined a rock band",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave join a rock band?"
+    },
+    {
+      "question": "When did Dave visit his favorite hangout spot?",
+      "answer": "7 July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D10:4",
+        "conv-50:D10:5"
+      ],
+      "support": "D10:4 asks favorite spot; D10:5 (7 Jul 2023) going there today",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave go with his friends to their favorite hangout spot by the river?"
+    },
+    {
+      "question": "When did Calvin get his Ferrari serviced?",
+      "answer": "3 August 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D12:1"
+      ],
+      "support": "D12:1 (3 Aug 2023) just took it for a service",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin take his Ferrari in for a service?"
+    },
+    {
+      "question": "When did Dave go to a music festival in October?",
+      "answer": "Just before 15 October 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D23:5"
+      ],
+      "support": "D23:5 (15 Oct 2023) just got back from a festival",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave go to the music festival he told Calvin about in October 2023?"
+    },
+    {
+      "question": "When were the concerts Dave reminisced about in October?",
+      "answer": "September 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D25:25"
+      ],
+      "support": "D25:25 (23 Oct 2023) concerts last month",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When were the concerts Dave reminisced about in late October 2023?"
+    },
+    {
+      "question": "When did Dave photograph a waterfall?",
+      "answer": "The week before 17 November 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D30:13"
+      ],
+      "support": "D30:13 (17 Nov 2023) picture snapped last week",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave snap a photo of a waterfall?"
+    },
+    {
+      "question": "How quickly did Calvin sort things out after his crash?",
+      "answer": "About a week",
+      "category": "single_hop",
+      "evidence_entry_ids": [
+        "conv-50:D9:4",
+        "conv-50:D9:5"
+      ],
+      "support": "D9:4 Dave asks how long; D9:5 only took a week",
+      "verdict": "fixed",
+      "note": "Relabeled temporal->single_hop: asks a duration, not when",
+      "original_question": "How long did it take Calvin to sort everything out after his car accident in June 2023?"
+    },
+    {
+      "question": "When did Dave and Calvin plan a jam session?",
+      "answer": "22 September 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D20:9",
+        "conv-50:D20:10"
+      ],
+      "support": "D20:9 Dave suggests jamming; D20:10 Calvin agrees (22 Sep 2023)",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave and Calvin agree to have a jam session together?"
+    },
+    {
+      "question": "When was Calvin converting his Japan home into a studio?",
+      "answer": "July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D11:4"
+      ],
+      "support": "D11:4 (21 Jul 2023) working on the mansion-to-studio project",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying a long phrase from D11:4",
+      "original_question": "When was Calvin working on turning his home in Japan into a studio?"
+    },
+    {
+      "question": "When did Dave share his band's logo?",
+      "answer": "2 November 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D28:22"
+      ],
+      "support": "D28:22 (2 Nov 2023) shares band logo",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave show Calvin his rock band's logo?"
+    },
+    {
+      "question": "When did Dave send Calvin pictures of Tokyo?",
+      "answer": "19 October 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D24:12"
+      ],
+      "support": "D24:12 (19 Oct 2023) pic found online",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave share a photo of a Tokyo street he found online?"
+    },
+    {
+      "question": "When did Dave show off his studio?",
+      "answer": "11 August 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D13:15"
+      ],
+      "support": "D13:15 (11 Aug 2023) shows his studio setup",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Dave show Calvin his music studio setup?"
+    },
+    {
+      "question": "When did Calvin produce a track for a young artist?",
+      "answer": "13 November 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D29:13"
+      ],
+      "support": "D29:13 (13 Nov 2023) beat-making photo",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin share a photo of himself making a beat for a young artist?"
+    },
+    {
+      "question": "When did Dave photograph a pond?",
+      "answer": "9 June 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D8:2"
+      ],
+      "support": "D8:2 (9 Jun 2023) pic he just took",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying the image caption",
+      "original_question": "When did Dave take his photo of a boat on a tree-lined pond?"
+    },
+    {
+      "question": "When did Calvin share a photo of his car on display at a show?",
+      "answer": "20 April 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D3:13"
+      ],
+      "support": "D3:13 (20 Apr 2023) shares his car photo",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did Calvin share a photo of his car on display at a show?"
+    },
+    {
+      "question": "When did Calvin send Dave his backyard sunset shot?",
+      "answer": "7 July 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D10:6"
+      ],
+      "support": "D10:6 (7 Jul 2023) backyard photo",
+      "verdict": "fixed",
+      "note": "Reworded to avoid copying D10:6",
+      "original_question": "When did Calvin send Dave a sunset photo he took behind his mansion in Japan?"
+    },
+    {
+      "question": "When did Dave lose a deal to a rival shop?",
+      "answer": "The week before 15 October 2023",
+      "category": "temporal",
+      "evidence_entry_ids": [
+        "conv-50:D23:1"
+      ],
+      "support": "D23:1 (15 Oct 2023) rollercoaster week, rival snagged the deal",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "When did a competing shop snag a deal Dave's shop had been chasing?"
+    },
+    {
+      "question": "Would Dave enjoy receiving an LP as a present?",
+      "answer": "Likely yes; he listens to vinyl on an old record player while working on cars.",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-50:D28:36",
+        "conv-50:D28:38"
+      ],
+      "support": "D28:36 listens to vinyl; D28:38 old record player",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Would a vinyl record make a good gift for Dave?"
+    },
+    {
+      "question": "Would Dave likely enjoy watching a political debate?",
+      "answer": "Probably yes; he enjoyed discussing current events and politics with his neighbors to stay informed.",
+      "category": "open_domain",
+      "evidence_entry_ids": [
+        "conv-50:D25:7"
+      ],
+      "support": "D25:7 talked politics with neighbors and enjoyed it",
+      "verdict": "ok",
+      "note": "",
+      "original_question": "Would Dave likely enjoy watching a political debate?"
+    }
+  ]
+}
