@@ -15,6 +15,23 @@
           "temporal": 39.36605316973415
         }
       },
+      "_fixed_comparisons": {
+        "bm25": {
+          "answer_token_recall": 62.39982188412669,
+          "avg_context_tokens": 349.07890743550837,
+          "evidence_hit_at_1": 48.25493171471927,
+          "evidence_recall_at_10": 69.05159332321698,
+          "worst_category_recall": 46.40804597701149
+        },
+        "full_history_context_tokens": 20461.884673748104,
+        "recency": {
+          "answer_token_recall": 16.124220947081987,
+          "avg_context_tokens": 305.86646433990893,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 1.1254425897824987,
+          "worst_category_recall": 0.6514657980456026
+        }
+      },
       "_status": {
         "bm25_baseline": {
           "valid": true

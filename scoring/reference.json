@@ -35,13 +35,27 @@
       "results": {
         "hippocampus": {
           "type": "proposed",
-          "evidence_recall_at_10": 24.41635502368487
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
         "bm25_baseline": {
-          "type": "baseline"
+          "type": "baseline",
+          "answer_token_recall": 62.39982188412669,
+          "avg_context_tokens": 349.07890743550837,
+          "evidence_hit_at_1": 48.25493171471927,
+          "evidence_recall_at_10": 69.05159332321698,
+          "worst_category_recall": 46.40804597701149
         },
         "recency_baseline": {
-          "type": "baseline"
+          "type": "baseline",
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
         }
       },
       "_paper_reported": {
@@ -280,15 +294,15 @@
         }
       },
       "_reference_run_hidden_test": {
-        "note": "Frozen reference (scripts/retrievers/hippocampus.sh, seed 13) on the hidden test, job 9aae9672-758. Seeds 14/15 span 1.84 recall points.",
+        "note": "Final sequential reference run on 659 private questions; raw outputs in eval/test/audit/raw_test; paired audit in redteam/hardening/results/summary.json. No wall-clock limit.",
         "hippocampus": {
-          "evidence_recall_at_10": 24.41635502368487,
-          "evidence_hit_at_1": 9.319371727748692,
-          "answer_token_recall": 39.60265608702625,
-          "worst_category_recall": 12.714598997493734,
-          "avg_context_tokens": 491.0523560209424
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
-        "full_history_context_tokens_per_question": 20691.5
+        "full_history_context_tokens_per_question": 20461.884673748104
       }
     }
   }

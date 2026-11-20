@@ -8,6 +8,12 @@
           "single_hop": 27.14440825190011,
           "temporal": 39.36605316973415
         },
+        "sc_baseline_poisoning": {
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
+        },
         "sc_forged_fields": {
           "multi_hop": 15.49618320610687,
           "open_domain": 10.488505747126435,
@@ -57,9 +63,33 @@
           "temporal": 39.36605316973415
         }
       },
+      "_fixed_comparisons": {
+        "bm25": {
+          "answer_token_recall": 62.39982188412669,
+          "avg_context_tokens": 349.07890743550837,
+          "evidence_hit_at_1": 48.25493171471927,
+          "evidence_recall_at_10": 69.05159332321698,
+          "worst_category_recall": 46.40804597701149
+        },
+        "full_history_context_tokens": 20461.884673748104,
+        "recency": {
+          "answer_token_recall": 16.124220947081987,
+          "avg_context_tokens": 305.86646433990893,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 1.1254425897824987,
+          "worst_category_recall": 0.6514657980456026
+        }
+      },
       "_status": {
         "hippocampus": {
           "valid": true
+        },
+        "sc_baseline_poisoning": {
+          "valid": true
+        },
+        "sc_duplicate_question": {
+          "reason": "duplicate row for question conv-30:p0",
+          "valid": false
         },
         "sc_empty_output": {
           "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
@@ -97,8 +127,20 @@
           },
           "valid": false
         },
+        "sc_invalid_utf8": {
+          "reason": "cannot read retriever output: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte",
+          "valid": false
+        },
         "sc_longest_entries": {
           "valid": true
+        },
+        "sc_malformed_json": {
+          "reason": "line 1: invalid JSON",
+          "valid": false
+        },
+        "sc_missing_output": {
+          "reason": "retriever wrote no output file",
+          "valid": false
         },
         "sc_over_budget": {
           "reason": "question conv-30:p0: 50 entries returned, budget is 10",
@@ -157,6 +199,20 @@
           "evidence_recall_at_10": 26.38593829033889,
           "worst_category_recall": 10.488505747126435
         },
+        "sc_baseline_poisoning": {
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
+        },
+        "sc_duplicate_question": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        },
         "sc_empty_output": {
           "answer_token_recall": 0.0,
           "avg_context_tokens": 784.9878603945372,
@@ -185,12 +241,33 @@
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
         },
+        "sc_invalid_utf8": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        },
         "sc_longest_entries": {
           "answer_token_recall": 41.57610300255082,
           "avg_context_tokens": 775.1380880121396,
           "evidence_hit_at_1": 0.30349013657056145,
           "evidence_recall_at_10": 5.171977744056652,
           "worst_category_recall": 2.586206896551724
+        },
+        "sc_malformed_json": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        },
+        "sc_missing_output": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
         },
         "sc_over_budget": {
           "answer_token_recall": 0.0,

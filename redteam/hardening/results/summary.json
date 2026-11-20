@@ -7,20 +7,20 @@
     "worst_category_recall": 0.3
   },
   "population_std_all_runs": {
-    "answer_token_recall": 24.479165028023075,
-    "avg_context_tokens": 167.39290440735192,
-    "evidence_hit_at_1": 14.83767634050212,
-    "evidence_recall_at_10": 21.532118122738375,
-    "worst_category_recall": 14.769406558572992
+    "answer_token_recall": 24.637651497484256,
+    "avg_context_tokens": 166.00966734435625,
+    "evidence_hit_at_1": 14.047971266474724,
+    "evidence_recall_at_10": 20.86904361077989,
+    "worst_category_recall": 14.077208924135103
   },
   "population_std_valid_runs": {
-    "answer_token_recall": 7.551792732307168,
-    "avg_context_tokens": 100.5050523095769,
-    "evidence_hit_at_1": 16.257395409499967,
-    "evidence_recall_at_10": 18.85094343775076,
-    "worst_category_recall": 15.211125362495249
+    "answer_token_recall": 7.3539746618069275,
+    "avg_context_tokens": 97.83643308087397,
+    "evidence_hit_at_1": 15.887413054547672,
+    "evidence_recall_at_10": 18.37229153858989,
+    "worst_category_recall": 14.89439915892396
   },
-  "rank_definition": "sum_m |coef_m| * directed (x_m - reference_m) / population_std_m over this audit cohort",
+  "rank_definition": "experiment weight (1) * sum_m |coef_m| * directed (x_m - reference_m) / population_std_m over this audit cohort; diagnostic only, official ranking reads scoring/scores_test.json results",
   "runs": {
     "better_bm25_context": {
       "paired_vs_reference": {
@@ -30,12 +30,12 @@
         ],
         "evidence_recall_diff_mean": 48.384625695498165,
         "rank_delta_ci95": [
-          4.507444504729851,
-          5.226087962545968
+          4.675895329018885,
+          5.424938081720554
         ]
       },
-      "rank_delta_all_runs_norm": 4.91163449997535,
-      "rank_delta_valid_runs_norm": 5.940905343596344,
+      "rank_delta_all_runs_norm": 5.097362675958944,
+      "rank_delta_valid_runs_norm": 6.0894541880662825,
       "reason": null,
       "test": {
         "answer_token_recall": 66.02941188186831,
@@ -62,12 +62,12 @@
         ],
         "evidence_recall_diff_mean": 11.980978755690433,
         "rank_delta_ci95": [
-          1.4275276577023832,
-          1.9585764315839895
+          1.4859831315501992,
+          2.040105890785071
         ]
       },
-      "rank_delta_all_runs_norm": 1.7115924006581402,
-      "rank_delta_valid_runs_norm": 1.9587695572086523,
+      "rank_delta_all_runs_norm": 1.78293076254398,
+      "rank_delta_valid_runs_norm": 2.007142219095359,
       "reason": null,
       "test": {
         "answer_token_recall": 51.06392942629425,
@@ -94,12 +94,12 @@
         ],
         "evidence_recall_diff_mean": -3.9211937278705182,
         "rank_delta_ci95": [
-          -0.45553025813954856,
-          -0.058220511103163515
+          -0.47128818519024696,
+          -0.057683124850702816
         ]
       },
-      "rank_delta_all_runs_norm": -0.25044375440143996,
-      "rank_delta_valid_runs_norm": -0.37296928068253704,
+      "rank_delta_all_runs_norm": -0.2572392592710474,
+      "rank_delta_valid_runs_norm": -0.3829037754793599,
       "reason": null,
       "test": {
         "answer_token_recall": 43.705903399037126,
@@ -126,12 +126,12 @@
         ],
         "evidence_recall_diff_mean": 42.73031613555898,
         "rank_delta_ci95": [
-          3.840309261197262,
-          4.535534720004965
+          3.9846717331275134,
+          4.704185346712643
         ]
       },
-      "rank_delta_all_runs_norm": 4.22006058485399,
-      "rank_delta_valid_runs_norm": 5.106261967527781,
+      "rank_delta_all_runs_norm": 4.3781078926295445,
+      "rank_delta_valid_runs_norm": 5.234350014418749,
       "reason": null,
       "test": {
         "answer_token_recall": 62.39982188412669,
@@ -179,12 +179,12 @@
         ],
         "evidence_recall_diff_mean": -0.11304754678806271,
         "rank_delta_ci95": [
-          -0.27584585106244486,
-          0.3213825189405982
+          -0.28438264059994356,
+          0.3343454172036672
         ]
       },
-      "rank_delta_all_runs_norm": 0.017801496640319547,
-      "rank_delta_valid_runs_norm": 0.010081552780439484,
+      "rank_delta_all_runs_norm": 0.018966829364463613,
+      "rank_delta_valid_runs_norm": 0.010259904754843903,
       "reason": null,
       "test": {
         "answer_token_recall": 46.05681626278994,
@@ -211,12 +211,12 @@
         ],
         "evidence_recall_diff_mean": 1.4461861406170957,
         "rank_delta_ci95": [
-          -0.24821049477600174,
-          0.3893399159664529
+          -0.2588694215897226,
+          0.4024360727661034
         ]
       },
-      "rank_delta_all_runs_norm": 0.0828931684457719,
-      "rank_delta_valid_runs_norm": 0.08575896734555824,
+      "rank_delta_all_runs_norm": 0.08596756313047711,
+      "rank_delta_valid_runs_norm": 0.08782677075679485,
       "reason": null,
       "test": {
         "answer_token_recall": 46.14563243848708,
@@ -243,12 +243,12 @@
         ],
         "evidence_recall_diff_mean": -12.960743550834584,
         "rank_delta_ci95": [
-          -1.256797045020695,
-          -0.6400882804867845
+          -1.3005301733182986,
+          -0.6604390367692831
         ]
       },
-      "rank_delta_all_runs_norm": -0.9434359206907375,
-      "rank_delta_valid_runs_norm": -1.2651792475741204,
+      "rank_delta_all_runs_norm": -0.9747452655176891,
+      "rank_delta_valid_runs_norm": -1.2975613416444574,
       "reason": null,
       "test": {
         "answer_token_recall": 38.88904571207329,
@@ -268,8 +268,8 @@
       "valid": true
     },
     "recency_baseline": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 1.13 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -295,9 +295,46 @@
       },
       "valid": false
     },
+    "sc_baseline_poisoning": {
+      "paired_vs_reference": {
+        "evidence_recall_diff_ci95": [
+          0.0,
+          0.0
+        ],
+        "evidence_recall_diff_mean": 0.0,
+        "rank_delta_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "rank_delta_all_runs_norm": 0.0,
+      "rank_delta_valid_runs_norm": 0.0,
+      "reason": null,
+      "test": {
+        "answer_token_recall": 46.25011461018557,
+        "avg_context_tokens": 507.804248861912,
+        "evidence_hit_at_1": 9.104704097116844,
+        "evidence_recall_at_10": 26.38593829033889,
+        "worst_category_recall": 10.488505747126435
+      },
+      "valid": true
+    },
+    "sc_duplicate_question": {
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
+      "reason": "duplicate row for question conv-30:p0",
+      "test": {
+        "answer_token_recall": 0.0,
+        "avg_context_tokens": 784.9878603945372,
+        "evidence_hit_at_1": 0.0,
+        "evidence_recall_at_10": 0.0,
+        "worst_category_recall": 0.0
+      },
+      "valid": false
+    },
     "sc_empty_output": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -340,8 +377,8 @@
       "valid": true
     },
     "sc_hidden_labels_absolute": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -360,8 +397,8 @@
       "valid": false
     },
     "sc_hidden_labels_absolute_realws": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -380,8 +417,8 @@
       "valid": false
     },
     "sc_hidden_labels_relative": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -400,8 +437,8 @@
       "valid": false
     },
     "sc_hidden_labels_relative_realws": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -419,6 +456,19 @@
       },
       "valid": false
     },
+    "sc_invalid_utf8": {
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
+      "reason": "cannot read retriever output: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte",
+      "test": {
+        "answer_token_recall": 0.0,
+        "avg_context_tokens": 784.9878603945372,
+        "evidence_hit_at_1": 0.0,
+        "evidence_recall_at_10": 0.0,
+        "worst_category_recall": 0.0
+      },
+      "valid": false
+    },
     "sc_longest_entries": {
       "paired_vs_reference": {
         "evidence_recall_diff_ci95": [
@@ -427,12 +477,12 @@
         ],
         "evidence_recall_diff_mean": -21.18320940819422,
         "rank_delta_ci95": [
-          -2.0327700693715927,
-          -1.4998517752471447
+          -2.0974393345418285,
+          -1.5460389949603992
         ]
       },
-      "rank_delta_all_runs_norm": -1.778788369927064,
-      "rank_delta_valid_runs_norm": -2.2773036564927147,
+      "rank_delta_all_runs_norm": -1.8334927165583335,
+      "rank_delta_valid_runs_norm": -2.336149458689593,
       "reason": null,
       "test": {
         "answer_token_recall": 41.57610300255082,
@@ -443,9 +493,35 @@
       },
       "valid": true
     },
+    "sc_malformed_json": {
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
+      "reason": "line 1: invalid JSON",
+      "test": {
+        "answer_token_recall": 0.0,
+        "avg_context_tokens": 784.9878603945372,
+        "evidence_hit_at_1": 0.0,
+        "evidence_recall_at_10": 0.0,
+        "worst_category_recall": 0.0
+      },
+      "valid": false
+    },
+    "sc_missing_output": {
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
+      "reason": "retriever wrote no output file",
+      "test": {
+        "answer_token_recall": 0.0,
+        "avg_context_tokens": 784.9878603945372,
+        "evidence_hit_at_1": 0.0,
+        "evidence_recall_at_10": 0.0,
+        "worst_category_recall": 0.0
+      },
+      "valid": false
+    },
     "sc_namespace_escape_realws": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -464,8 +540,8 @@
       "valid": false
     },
     "sc_over_budget": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "question conv-30:p0: 50 entries returned, budget is 10",
       "test": {
         "answer_token_recall": 0.0,
@@ -508,12 +584,12 @@
         ],
         "evidence_recall_diff_mean": 29.493378856853763,
         "rank_delta_ci95": [
-          2.6555257643368004,
-          3.4723769603347177
+          2.7514014780922422,
+          3.6018541272052556
         ]
       },
-      "rank_delta_all_runs_norm": 3.066429680333774,
-      "rank_delta_valid_runs_norm": 3.6727984707524577,
+      "rank_delta_all_runs_norm": 3.1813576649051365,
+      "rank_delta_valid_runs_norm": 3.764998597489646,
       "reason": null,
       "test": {
         "answer_token_recall": 55.70561917599792,
@@ -532,12 +608,12 @@
         ],
         "evidence_recall_diff_mean": -1.846396054628226,
         "rank_delta_ci95": [
-          -0.29211866447386836,
-          0.2124757016222137
+          -0.30184160283884387,
+          0.22176736826316013
         ]
       },
-      "rank_delta_all_runs_norm": -0.046395657663648934,
-      "rank_delta_valid_runs_norm": -0.14512185918106052,
+      "rank_delta_all_runs_norm": -0.04695500799984928,
+      "rank_delta_valid_runs_norm": -0.14909449954782183,
       "reason": null,
       "test": {
         "answer_token_recall": 42.51781043407991,
@@ -556,12 +632,12 @@
         ],
         "evidence_recall_diff_mean": 25.027046029337384,
         "rank_delta_ci95": [
-          1.7622486923626481,
-          2.445729480769248
+          1.8216129674808703,
+          2.5300775247544407
         ]
       },
-      "rank_delta_all_runs_norm": 2.1480794665915175,
-      "rank_delta_valid_runs_norm": 2.7645621303376613,
+      "rank_delta_all_runs_norm": 2.219838127389003,
+      "rank_delta_valid_runs_norm": 2.8345068407406147,
       "reason": null,
       "test": {
         "answer_token_recall": 57.18824378153844,
@@ -573,8 +649,8 @@
       "valid": true
     },
     "sc_public_locomo_labels": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "question conv-47:p15: unknown entry id 'conv-47:D4:36'",
       "test": {
         "answer_token_recall": 0.0,
@@ -634,8 +710,8 @@
       "valid": true
     },
     "sc_single_wrong_id": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -654,8 +730,8 @@
       "valid": false
     },
     "sc_train_label_lookup": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -681,12 +757,12 @@
         ],
         "evidence_recall_diff_mean": -15.389162873039943,
         "rank_delta_ci95": [
-          -1.4690700915124366,
-          -0.9269504768491769
+          -1.5157338388073367,
+          -0.9541093072183997
         ]
       },
-      "rank_delta_all_runs_norm": -1.1993631017596362,
-      "rank_delta_valid_runs_norm": -1.6226283291189505,
+      "rank_delta_all_runs_norm": -1.2366422766149103,
+      "rank_delta_valid_runs_norm": -1.664529262824881,
       "reason": null,
       "test": {
         "answer_token_recall": 38.508015175452236,
@@ -706,8 +782,8 @@
       "valid": true
     },
     "weaker_one_bit": {
-      "rank_delta_all_runs_norm": -2.7708396679785032,
-      "rank_delta_valid_runs_norm": -4.83192384540373,
+      "rank_delta_all_runs_norm": -2.8319467239277074,
+      "rank_delta_valid_runs_norm": -4.958948345246548,
       "reason": "evidence_recall_at_10 2.45 is below the task floor 5.0",
       "test": {
         "answer_token_recall": 0.0,
@@ -741,7 +817,7 @@
     "evidence_recall_at_10": 1.5806777946383477,
     "worst_category_recall": 2.155172413793105
   },
-  "seed_rank_delta_range": 0.0828931684457719,
+  "seed_rank_delta_range": 0.08596756313047711,
   "shortcut_side_effects": {
     "hidden_label_file_modified_on_disk": false,
     "visible_train_file_modified": true

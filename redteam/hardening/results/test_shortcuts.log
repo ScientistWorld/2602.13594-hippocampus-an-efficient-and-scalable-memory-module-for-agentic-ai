@@ -22,3 +22,12 @@
 [test] sc_public_label_prior_bm25: {"evidence_recall_at_10": 51.38846737481032, "evidence_hit_at_1": 15.629742033383915, "answer_token_recall": 57.18824378153844, "worst_category_recall": 35.632183908045974, "avg_context_tokens": 406.0773899848255}
 [test] sc_public_label_avoid_bm25: {"evidence_recall_at_10": 55.73343449671217, "evidence_hit_at_1": 39.75720789074355, "answer_token_recall": 55.70561917599792, "worst_category_recall": 34.770114942528735, "avg_context_tokens": 315.80273141122916}
 [test] sc_public_label_avoid_reference: {"evidence_recall_at_10": 24.438543247344462, "evidence_hit_at_1": 8.34597875569044, "answer_token_recall": 42.51781043407991, "worst_category_recall": 12.931034482758621, "avg_context_tokens": 444.3004552352049}
+[test] sc_invalid_utf8: FAILED - cannot read retriever output: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+[test] sc_invalid_utf8: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}
+[test] sc_malformed_json: FAILED - line 1: invalid JSON
+[test] sc_malformed_json: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}
+[test] sc_missing_output: FAILED - retriever wrote no output file
+[test] sc_missing_output: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}
+[test] sc_duplicate_question: FAILED - duplicate row for question conv-30:p0
+[test] sc_duplicate_question: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}
+[test] sc_baseline_poisoning: {"evidence_recall_at_10": 26.38593829033889, "evidence_hit_at_1": 9.104704097116844, "answer_token_recall": 46.25011461018557, "worst_category_recall": 10.488505747126435, "avg_context_tokens": 507.804248861912}
