@@ -234,3 +234,9 @@ core.[0-9]*
 
 # Hardening per-question dumps (regenerable)
 redteam/hardening/results/per_question_*/
+
+# Private-question authoring scratch (dumps are regenerable by build_dumps.py;
+# drafts are superseded by verified/ + supplement/)
+eval/test/authoring/dumps/
+eval/test/authoring/drafts/
+eval/test/authoring/calibrated/

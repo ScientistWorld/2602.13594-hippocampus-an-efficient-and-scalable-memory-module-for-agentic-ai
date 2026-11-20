@@ -1,0 +1,172 @@
+##### Category single_hop
+Q: What type of training was the workshop Audrey signed up for in May 2023?
+A: Positive reinforcement training
+   evidence [conv-44:D6:4] (2:03 pm on 11 May, 2023) Audrey: I know right? I saw this workshop flyer at my local pet store. It was a positive reinforcement training class and I wanted to give it a shot. The volunteer in the store was nice enough to let me meet their dog – he was so friendly and playful!
+
+Q: What kind of activities did John and his mates from the online group do as part of their service efforts?
+A: gave out food and supplies at a homeless shelter, organized a toy drive for kids in need
+   evidence [conv-41:D3:5] (8:30 pm on 1 January, 2023) John: We held some events and got to meet some people. We went to a homeless shelter to give out food and supplies. Seeing the smiles on their faces, we knew we made a real difference. We also organized a toy drive for kids in need. It was amazing seeing the community come together to spread some jo
+
+Q: How do Audrey's dogs react to snow?
+A: Confused
+   evidence [conv-44:D23:12] (4:22 pm on 13 October, 2023) Audrey: Haha, that must've been hilarious! What breed is your pup again? He looks so fun! My dogs love running around the park. But one thing they hate is snow. I took them to a snowy one last winter and they were so confused! They definitely prefer nice, sunny days in the grass. [shares image: a ph
+
+Q: What are the new shoes that Melanie got used for?
+A: Running
+   evidence [conv-26:D7:19] (4:33 pm on 12 July, 2023) Caroline: Love that purple color! For walking or running?
+
+Q: How did Melanie feel while watching the meteor shower?
+A: in awe of the universe
+   evidence [conv-26:D10:18] (8:56 pm on 20 July, 2023) Melanie: It was one of those moments where I felt tiny and in awe of the universe. Reminds me how awesome life is - so many little moments like that. [shares image: a photo of a beach with footprints in the sand and a blue sky]
+
+Q: What did Sam suggest Evan should do with his keys?
+A: put a GPS sensor on them
+   evidence [conv-49:D21:21] (4:25 pm on 26 December, 2023) Sam: Ooh, Evan, I'd put a GPS sensor on your keys!
+
+Q: Which  classical musicians does Melanie enjoy listening to?
+A: Bach and Mozart
+   evidence [conv-26:D15:28] (3:19 pm on 28 August, 2023) Melanie: I'm a fan of both classical like Bach and Mozart, as well as modern music like Ed Sheeran's "Perfect". [shares image: a photo of a laptop computer with a graph on it]
+
+Q: How does Audrey describe the new beds for her dogs?
+A: Super cozy and comfy
+   evidence [conv-44:D18:12] (7:49 pm on 6 September, 2023) Audrey: Sure! Here's a pic of them. Super cozy and comfy. My furry friends love them! [shares image: a photo of a dog laying on a dog bed in a living room]
+
+Q: What creative project do Mel and her kids do together besides pottery?
+A: painting
+   evidence [conv-26:D8:5] (1:51 pm on 15 July, 2023) Caroline: Aww, that's so sweet! That cup is so cute. It's awesome to see how kids show their personalities through art. What other creative projects do you do with them, besides pottery?
+
+##### Category multi_hop
+Q: What is a stress reliever for Sam?
+A: Unhealthy snacks, sweets, yoga, places with beautiful views
+   evidence [conv-49:D10:6] (9:28 am on 11 September, 2023) Sam: It's usually stress, boredom, or just wanting comfort. You know, those sugary treats are so tempting, right?
+   evidence [conv-49:D13:2] (4:07 pm on 14 October, 2023) Sam: Hey Evan! It's been a rough week - I gave in and bought some unhealthy snacks. I feel kinda guilty. How's it going for you? That painting is awesome! Did you paint it? [shares image: a photo of a person holding a box of sodas in front of a wall]
+   evidence [conv-49:D13:4] (4:07 pm on 14 October, 2023) Sam: Thanks, Evan! Yeah, I just couldn't resist them. Gotta do better. As for me, just dealing with work stress and trying to stay motivated.
+   evidence [conv-49:D16:17] (9:13 pm on 9 November, 2023) Sam: Wow, that sunset is stunning! It's so soothing just to see it. Is that a special spot you go to watch sunsets?
+   evidence [conv-49:D16:23] (9:13 pm on 9 November, 2023) Sam: Absolutely, Evan! A trip there sounds like the perfect way to de-stress.
+   evidence [conv-49:D18:8] (8:16 pm on 5 December, 2023) Sam: The meeting was really insightful, and that smoothie bowl was a hit! Yoga's a great choice, it's done wonders for my flexibility and stress levels. You should definitely try it.
+
+Q: What are the names of John's children?
+A: Kyle, Sara
+   evidence [conv-41:D8:4] (6:03 pm on 6 March, 2023) John: Thanks, Maria! They're doing great. Our one-year-old is so cute, his name is Kyle!
+   evidence [conv-41:D22:7] (6:59 pm on 5 July, 2023) John: Thanks, Maria! That picture was from a trip we took last year for my daughter Sara's birthday - so much fun and good memories! My family motivates me to keep striving for change.
+
+Q: What does Melanie do to destress?
+A: Running, pottery
+   evidence [conv-26:D7:22] (4:33 pm on 12 July, 2023) Melanie: I've been running farther to de-stress, which has been great for my headspace.
+   evidence [conv-26:D5:4] (1:36 pm on 3 July, 2023) Melanie: Wow, Caroline! That's great! I just signed up for a pottery class yesterday. It's like therapy for me, letting me express myself and get creative. Have you found any activities that make you feel the same way? [shares image: a photo of a person holding a frisbee in their hand]
+
+Q: What symbols are important to Caroline?
+A: Rainbow flag, transgender symbol
+   evidence [conv-26:D14:15] (1:33 pm on 25 August, 2023) Caroline: The rainbow flag mural is important to me as it reflects the courage and strength of the trans community. The eagle symbolizes freedom and pride, representing my own resilience and that of others. [shares image: a photo of a stained glass window with a picture of a person on a horse]
+   evidence [conv-26:D4:1] (10:37 am on 27 June, 2023) Caroline: Hey Melanie! Long time no talk! A lot's been going on in my life! Take a look at this. [shares image: a photo of a person holding a necklace with a cross and a heart]
+
+Q: What accidents has Evan's son faced lately?
+A: injured at a soccer game, fell off his bike
+   evidence [conv-49:D7:1] (4:20 pm on 15 August, 2023) Evan: Hey Sam, what's up? It's been a few days since we talked. How have you been? Life's been tough lately - my son had a soccer accident last Saturday and hurt his ankle, it was tough seeing him hurt! I just been looking after him and taking him to the doctor. As a dad, it's hard to watch your kid
+   evidence [conv-49:D20:3] (6:48 pm on 17 December, 2023) Evan: It's not easy for us right now, my son had an accident last Tuesday, he fell off his bike and it was rough. But he's doing better now. How are you dealing with all this? [shares image: a photo of a young boy with crutches and a backpack]
+
+Q: What kind of writing does Sam do to relax and cope with his health issues?
+A: journalling, creative writing
+   evidence [conv-49:D6:4] (4:09 pm on 13 August, 2023) Sam: Thanks, Evan. Your support means a lot to me. It's tough staying positive, but knowing I have people like you in my corner makes it easier. [shares image: a photo of a notepad with a pen and a note]
+   evidence [conv-49:D11:7] (8:57 pm on 6 October, 2023) Sam: Hey Evan, that sounds like a fun and unexpected event! It's always interesting how helping someone can turn into a little adventure of its own. And how's your watercolor painting going?
+
+Q: Who supports Caroline when she has a negative experience?
+A: Her mentors, family, and friends
+   evidence [conv-26:D12:1] (1:50 pm on 17 August, 2023) Caroline: Hey Mel! How're ya doin'? Recently, I had a not-so-great experience on a hike. I ran into a group of religious conservatives who said something that really upset me. It made me think how much work we still have to do for LGBTQ rights. It's been so helpful to have people around me who accep
+   evidence [conv-26:D3:11] (7:55 pm on 9 June, 2023) Caroline: Thanks, Mel! My friends, family and mentors are my rocks – they motivate me and give me the strength to push on. Here's a pic from when we met up last week! [shares image: a photo of a family posing for a picture in a yard]
+
+Q: What are Maria's dogs' names?
+A: Coco, Shadow
+   evidence [conv-41:D30:1] (12:10 am on 11 August, 2023) Maria: Hey John! Long time no talk! Guess what - I got a puppy two weeks ago! Her name's Coco and she's adorable. [shares image: a photo of a white dog laying in the grass with a baseball]
+   evidence [conv-41:D31:4] (3:14 pm on 13 August, 2023) Maria: Her name is Shadow! She's full of energy and always puts a smile on my face. She's been a great addition to my life. They get along great. [shares image: a photo of a dog sitting in the grass with a leash]
+
+Q: What instruments does Melanie play?
+A: clarinet and violin
+   evidence [conv-26:D15:26] (3:19 pm on 28 August, 2023) Melanie: Yeah, I play clarinet! Started when I was young and it's been great. Expression of myself and a way to relax. [shares image: a photo of a sheet music with notes and a pencil]
+   evidence [conv-26:D2:5] (1:14 pm on 25 May, 2023) Melanie: Yeah, it's tough. So I'm carving out some me-time each day - running, reading, or playing my violin - which refreshes me and helps me stay present for my fam!
+
+##### Category temporal
+Q: Did Andrew have a pet dog during March 2023?
+A: No
+   evidence [conv-44:D2:8] (2:42 pm on 2 April, 2023) Andrew: That's great to hear! I'm considering getting a dog too, but it can be challenging finding a dog-friendly place in the city. Do you have any tips on finding such a place?
+
+Q: When did Maria start volunteering at the homeless shelter?
+A: Around August 2022
+   evidence [conv-41:D27:4] (6:20 pm on 3 August, 2023) Maria: I started volunteering here about a year ago after witnessing a family struggling on the streets. It made me want to help, so I reached out to the shelter and asked if they needed any volunteers. They said yes, and it has been a really fulfilling experience for me since then.
+
+Q: How long ago was Caroline's 18th birthday?
+A: 10 years ago
+   evidence [conv-26:D4:5] (10:37 am on 27 June, 2023) Caroline: Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression.
+
+Q: When did Evan and Sam decide to paint together?
+A: Saturday after 11 September, 2023.
+   evidence [conv-49:D10:12] (9:28 am on 11 September, 2023) Sam: Sounds great, Evan! Can you help me pick out the stuff? Let's plan a painting session soon. I'm really excited!
+   evidence [conv-49:D10:13] (9:28 am on 11 September, 2023) Evan: Yeah, Sam - let's do it! Let's get everything ready and paint next Saturday. Can't wait!
+   evidence [conv-49:D10:14] (9:28 am on 11 September, 2023) Sam: Sounds good, Evan! Can't wait to paint with you next Saturday. It'll be a fun and creative activity.
+
+Q: When did Andrew go rock climbing?
+A: June 11, 2023
+   evidence [conv-44:D8:1] (5:23 pm on 13 June, 2023) Andrew: Hey! Long time no chat. Last Sunday was awesome - my friends and I took a rock climbing class and I made it to the top! It was a fantastic experience and now I'm hooked. Think I'm going to try to do more outdoor activities like this every week!
+
+Q: When did Melanie go to the pottery workshop?
+A: The Friday before 15 July 2023
+   evidence [conv-26:D8:2] (1:51 pm on 15 July, 2023) Melanie: Hey Caroline, it's been super busy here. So much since we talked! Last Fri I finally took my kids to a pottery workshop. We all made our own pots, it was fun and therapeutic! [shares image: a photography of a group of children making clay sculptures in a classroom]
+
+Q: When did Melanie go to the park?
+A: 27 August 2023
+   evidence [conv-26:D15:2] (3:19 pm on 28 August, 2023) Melanie: Hey Caroline! Since we last spoke, I took my kids to a park yesterday. They had fun exploring and playing. It was nice seeing them have a good time outdoors. Time flies, huh? What's new with you? [shares image: a photo of a playground with a climbing net and a slide]
+
+Q: When did Andrew and his girlfriend go on a wine tasting trip?
+A: the weekend before October 24, 2023
+   evidence [conv-44:D25:1] (10:14 am on 24 October, 2023) Andrew: Hi Audrey! How have you been lately? My girlfriend and I went to this awesome wine tasting last weekend. It was great! We tried so many unique wines and learned a lot. I was surprised at how much I enjoyed it. A reminder to step out of the comfort zone!
+
+Q: When is Andrew going to go hiking with Audrey?
+A: August
+   evidence [conv-44:D11:7] (9:48 am on 8 July, 2023) Andrew: Yeah definitely ! I'm down for a hike with you and your furry friends. Let's do it next month when the weather is more pleasant. Here's the trail that I think it'd be great for the dogs. [shares image: a photo of a woman walking up a steep hill with a view of the ocean]
+
+##### Category open_domain
+Q: Would Caroline pursue writing as a career option?
+A: LIkely no; though she likes reading, she wants to be a counselor
+   evidence [conv-26:D7:5] (4:33 pm on 12 July, 2023) Caroline: Thanks, Mell! I'm still looking into counseling and mental health jobs. It's important to me that people have someone to talk to, and I want to help make that happen.
+   evidence [conv-26:D7:9] (4:33 pm on 12 July, 2023) Caroline: Thanks so much, Mel! Seeing this pic just made me appreciate my love of reading even more. Books guide me, motivate me and help me discover who I am. They're a huge part of my journey, and this one's reminding me to keep going and never give up!
+
+Q: Which US state was Sam travelling in during October 2023?
+A: California
+   evidence [conv-49:D13:14] (4:07 pm on 14 October, 2023) Sam: We're traveling through Lake Tahoe! I heard it's great for kayaking.
+
+Q: What is a career that Andrew could potentially pursue with his love for animals and nature?
+A: Park ranger or a similar position working for the National Park Services.
+   evidence [conv-44:D2:18] (2:42 pm on 2 April, 2023) Andrew: That pic is so cute! It would be fun to hang out with a dog, cuddling away. Got me thinking of my old hiking pics and how much I miss exploring nature trails with my family's dog. Ah, the peaceful moments out in nature! [shares image: a photo of a man walking a dog on a trail]
+   evidence [conv-44:D3:1] (4:19 pm on 16 April, 2023) Andrew: Hey Audrey! What's up? Missed chatting with ya! Check it out, my girl & I tried out that new cafe scene in the city last weekend! Super fun but kinda sad not being out in nature - that's when I feel like I'm really thriving. Oh man, I miss the peacefulness of being out on a hike.
+   evidence [conv-44:D5:7] (10:47 am on 6 May, 2023) Andrew: I'm looking for a place near a park or woods, so I can stay close to nature and give the dog a large open space to run around
+   evidence [conv-44:D8:27] (5:23 pm on 13 June, 2023) Andrew: Agreed! It's great for refreshing the mind and giving a different outlook. Whenever I'm in need of a reset, I turn to nature.
+
+Q: Which major holiday season conincides with Evan's wedding?
+A: Christmas
+   evidence [conv-49:D21:2] (4:25 pm on 26 December, 2023) Evan: Hey Sam! Long time no see! Been up and down lately, got married last week - how about you? [shares image: a photography of a bride and groom kissing in front of a tree]
+
+Q: Around which US holiday did Maria get into a car accident?
+A: Independence Day
+   evidence [conv-41:D21:3] (8:43 pm on 3 July, 2023) Maria: Hey John! They were great, their smiles warmed my heart. But something not so great happened yesterday... [shares image: a photography of a car that has been damaged and is sitting on a flatbed]
+
+Q: Would Caroline likely have Dr. Seuss books on her bookshelf?
+A: Yes, since she collects classic children's books
+   evidence [conv-26:D6:9] (8:18 pm on 6 July, 2023) Caroline: I've got lots of kids' books- classics, stories from different cultures, educational books, all of that. What's a favorite book you remember from your childhood?
+
+Q: What personality traits might Melanie say Caroline has?
+A: Thoughtful, authentic, driven
+   evidence [conv-26:D16:18] (12:09 am on 13 September, 2023) Melanie: The sign was just a precaution, I had a great time. But thank you for your concern, you're so thoughtful!
+   evidence [conv-26:D13:16] (3:31 pm on 23 August, 2023) Melanie: Wow, Caroline! That's amazing. You really care about being real and helping others. Wishing you the best on your adoption journey!
+   evidence [conv-26:D7:4] (4:33 pm on 12 July, 2023) Melanie: Wow, Caroline. We've come so far, but there's more to do. Your drive to help is awesome! What's your plan to pitch in?
+
+Q: What job might Maria pursue in the future?
+A: Shelter coordinator, Counselor
+   evidence [conv-41:D32:14] (11:08 am on 16 August, 2023) Maria: Hey John, I'm here for you. Last Friday, I spent some time at the shelter volunteering at the front desk. Seeing the smiles on their faces when they got food or a bed really made me feel good. We have the power to make a difference in people's lives. [shares image: a photo of a group of peopl
+   evidence [conv-41:D5:8] (1:17 pm on 28 January, 2023) Maria: I started volunteering to help make a difference. My aunt believed in volunteering, and used to help my family out when we were struggling, so I'm inspired by her. It makes me happy knowing I can brighten somebody's day.
+   evidence [conv-41:D11:10] (6:13 pm on 10 April, 2023) Maria: I recently gave a few talks at the homeless shelter I volunteer at. It was really fulfilling and I received lots of compliments from other volunteers. It was a great reminder about why connecting with and helping others is so important. And, I bought a cross necklace to feel closer to my fait
+   evidence [conv-41:D27:4] (6:20 pm on 3 August, 2023) Maria: I started volunteering here about a year ago after witnessing a family struggling on the streets. It made me want to help, so I reached out to the shelter and asked if they needed any volunteers. They said yes, and it has been a really fulfilling experience for me since then.
+
+Q: What might John's degree be in?
+A: Political science, Public administration, Public affairs
+   evidence [conv-41:D9:6] (9:36 am on 2 April, 2023) John: Thanks! I'm considering going into policymaking because of my degree and my passion for making a positive impact. There are many opportunities to make improvements.
+

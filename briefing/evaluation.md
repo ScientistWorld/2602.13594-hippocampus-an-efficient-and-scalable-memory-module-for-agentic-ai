@@ -9,12 +9,12 @@ The input JSON has `conversations` (each with `conversation_id` and `entries`; e
 
     {"question_id": "...", "retrieved_entry_ids": ["<best entry id>", "..."]}
 
-Other fields in the row are ignored. At most 10 IDs are allowed, with no duplicates, and all from the question's own conversation. The evaluator runs the script itself, from a copy of the workspace, with a fresh input file. The script must not need internet.
+Other fields in the row are ignored. At most 10 IDs are allowed, with no duplicates, and all from the question's own conversation. The evaluator runs the script itself, from a sandboxed view of the workspace, with a fresh input file. The run happens in separate user, mount and PID namespaces where `eval/` and `.git` are empty. It is limited in CPU time (4 CPU-hours per process), not wall-clock time. The script must not need internet.
 
 ## Commands
 - `bash scripts/evaluate_train.sh` runs every registered retriever on the visible training conversations and writes `scoring/scores_train.json`.
 - `bash scripts/evaluate.sh` does the same and writes `scoring/scores.json`. `bash scripts/evaluate.sh --artifacts <file.jsonl> ...` scores saved outputs produced on `data/locomo_train.json`.
-- `bash scripts/evaluate_test.sh` (hidden) runs every registered retriever on held-out conversations with the same protocol and writes `scoring/scores_test.json`.
+- `bash scripts/evaluate_test.sh` (hidden) runs every registered retriever on held-out conversations and private questions with the same protocol, and writes `scoring/scores_test.json`.
 
 ## Metrics (experiment `locomo_memory_retrieval`)
 The evaluator computes every number from the returned entry IDs and its own copy of the corpus and labels. Each entry's delivered context is `[session timestamp] speaker: text`.

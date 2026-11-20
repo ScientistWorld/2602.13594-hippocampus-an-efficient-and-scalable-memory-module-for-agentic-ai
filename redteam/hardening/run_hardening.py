@@ -7,6 +7,9 @@ Phase A  hidden test, real workspace: registered retrievers + variants
 Phase B  train split, same retrievers (train/test parity).
 Phase C  hidden test, isolated workspace copy: shortcut submissions (some of
          them rewrite data/, scoring/ or the evaluator's label file).
+Phase E  hidden test, real workspace: read-only shortcuts that try to reach the
+         evaluator's own label file (relative path, absolute path, /proc/<pid>/root,
+         unmounting the cover over eval/).
 Phase D  summary.json: metrics, validity, cohort-normalised rank deltas,
          paired bootstrap intervals and seed ranges.
 
@@ -36,7 +39,8 @@ REFERENCE = "hippocampus"
 VARIANT_GROUPS = {
     "registry": sorted(REGISTRY.glob("*.sh")),
     "seeds": [HERE / "retrievers" / f"hippocampus_seed{s}.sh" for s in (14, 15)],
-    "better": [HERE / "retrievers" / "better_idf_weighting.sh", HERE / "retrievers" / "better_bm25_rerank.sh"],
+    "better": [HERE / "retrievers" / "better_idf_weighting.sh", HERE / "retrievers" / "better_bm25_rerank.sh",
+               HERE / "retrievers" / "better_bm25_context.sh"],
     "weaker": [
         HERE / "retrievers" / "weaker_16bit.sh",
         HERE / "retrievers" / "weaker_one_bit.sh",
@@ -47,8 +51,11 @@ VARIANT_GROUPS = {
 SHORTCUTS = [
     "sc_forged_fields", "sc_train_label_lookup", "sc_empty_output", "sc_over_budget", "sc_single_wrong_id",
     "sc_longest_entries", "sc_prewrite_scores", "sc_relabel_visible_data", "sc_hidden_labels_relative",
-    "sc_hidden_labels_absolute", "sc_relabel_hidden_absolute",
+    "sc_hidden_labels_absolute", "sc_relabel_hidden_absolute", "sc_public_locomo_labels",
+    "sc_public_label_prior_bm25", "sc_public_label_avoid_bm25", "sc_public_label_avoid_reference",
 ]
+# Read-only attempts on the evaluator's own files, run against the real workspace.
+ESCAPES = ["sc_hidden_labels_relative", "sc_hidden_labels_absolute", "sc_namespace_escape"]
 
 
 def run(cmd: list[str], cwd: Path, log: Path) -> None:
@@ -88,6 +95,15 @@ def phase_shortcuts() -> Path:
             "visible_train_file_modified": json.loads((ws / "data" / "locomo_train.json").read_text())
             != json.loads((ROOT / "data" / "locomo_train.json").read_text()),
         }, indent=2) + "\n")
+    return out
+
+
+def phase_escapes() -> Path:
+    out = RESULTS / "test_escapes.json"
+    scripts = [HERE / "shortcuts" / f"{name}.sh" for name in ESCAPES]
+    cmd = [sys.executable, str(ROOT / "eval" / "test" / "evaluate_retrieval.py"), *map(str, scripts),
+           "--output", str(out), "--per-question-dir", str(RESULTS / "per_question_test_escapes")]
+    run(cmd, ROOT, RESULTS / "test_escapes.log")
     return out
 
 
@@ -166,9 +182,13 @@ def paired_bootstrap(a: list[dict], b: list[dict], spec: dict, stds: dict, reps:
 def summarise() -> None:
     spec = metric_spec()
     test_paths = sorted(RESULTS.glob("test_*.json"))
-    test_paths = [p for p in test_paths if p.name != "test_shortcuts.json"]
+    test_paths = [p for p in test_paths if p.name not in ("test_shortcuts.json", "test_escapes.json")]
     variants, v_status = load_results(test_paths)
     shortcuts, s_status = load_results([RESULTS / "test_shortcuts.json"])
+    escapes, e_status = load_results([RESULTS / "test_escapes.json"])
+    for name in escapes:
+        shortcuts[f"{name}_realws"] = escapes[name]
+        s_status[f"{name}_realws"] = e_status[name]
     train, t_status = load_results(sorted(RESULTS.glob("train_*.json")))
     reference = variants[REFERENCE]
     if shortcuts[REFERENCE] != reference:
@@ -182,6 +202,7 @@ def summarise() -> None:
 
     per_q = load_per_question(RESULTS / "per_question_test")
     per_q.update({k: v for k, v in load_per_question(RESULTS / "per_question_test_shortcuts").items() if k != REFERENCE})
+    per_q.update({f"{k}_realws": v for k, v in load_per_question(RESULTS / "per_question_test_escapes").items()})
     rows = {}
     for name, metrics in cohort.items():
         row = {
@@ -243,6 +264,7 @@ def main() -> None:
             jobs.append(pool.submit(phase_eval, "test", group, scripts))
             jobs.append(pool.submit(phase_eval, "train", group, scripts))
         jobs.append(pool.submit(phase_shortcuts))
+        jobs.append(pool.submit(phase_escapes))
         for job in jobs:
             job.result()
     summarise()

@@ -1,0 +1,1087 @@
+{
+ "conversation_id": "conv-42",
+ "questions": [
+  {
+   "question": "What kind of game was the tournament Nate won in January 2022?",
+   "answer": "A team shooter game",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D1:4",
+    "conv-42:D1:5"
+   ],
+   "support": "D1:4 Joanna congratulates Nate on winning and asks what game; D1:5 Nate says it's a team shooter game",
+   "verdict": "fixed",
+   "note": "'first tournament' premise came from public D1:3; anchored to January 2022 and added D1:4 (establishes the win)"
+  },
+  {
+   "question": "What does Joanna love about watching dramas and romantic comedies?",
+   "answer": "Getting immersed in the feelings and plots",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D1:14"
+   ],
+   "support": "D1:14 Joanna explains she loves getting immersed in the feelings and plots",
+   "verdict": "fixed",
+   "note": "reworded to avoid copying the rare token 'romcoms' from D1:14"
+  },
+  {
+   "question": "What happens to Joanna's face when she is around certain animals?",
+   "answer": "It gets puffy and itchy",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D2:21"
+   ],
+   "support": "D2:21 Joanna describes her face getting puffy and itchy",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In January 2022, what did Joanna say writing helps her create?",
+   "answer": "Wild worlds with awesome characters",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D2:27"
+   ],
+   "support": "D2:27 Joanna says writing helps her create wild worlds with awesome characters",
+   "verdict": "fixed",
+   "note": "added time anchor (D18:3 and D27:10 describe other things writing gives her)"
+  },
+  {
+   "question": "What is the new screenplay Joanna described to Nate in February 2022 about?",
+   "answer": "A thirty-year-old woman's journey of self-discovery after a loss, including a road trip to heal",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D4:12",
+    "conv-42:D4:14"
+   ],
+   "support": "D4:12 gives the premise; D4:14 adds the healing road trip",
+   "verdict": "fixed",
+   "note": "'started' premise came from public D4:10; reworded to the screenplay she described in D4:12/D4:14"
+  },
+  {
+   "question": "In March 2022, how did Nate offer to let Joanna enjoy his turtles despite her allergies?",
+   "answer": "By sending her pictures of them so she can watch them grow",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D5:12"
+   ],
+   "support": "D5:12 Nate promises to send turtle pics",
+   "verdict": "fixed",
+   "note": "added anchor; in November 2022 (D28:28-29) Nate agreed to have her watch them in person from a distance"
+  },
+  {
+   "question": "What had Joanna been doing non-stop in March 2022 to move her script forward?",
+   "answer": "Research and networking",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D5:15"
+   ],
+   "support": "D5:15 Joanna says she has been researching and networking non-stop",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Joanna share a photo of as her go-to place for writing inspiration in March 2022?",
+   "answer": "A bookshelf filled with books and magazines",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D6:8"
+   ],
+   "support": "D6:8 Joanna shares a bookshelf photo as her go-to inspiration spot",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What advice did Joanna give Nate about pursuing writing?",
+   "answer": "Read a lot, try different genres, write and share for feedback, and have faith in himself",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D6:10"
+   ],
+   "support": "D6:10 Joanna lists her writing advice",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Where did Nate hear there is a nice hiking trail?",
+   "answer": "Just north of where he lives",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D8:5"
+   ],
+   "support": "D8:5 Nate mentions a trail just north of his home",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Where does Nate sometimes bring his turtles so they can watch him?",
+   "answer": "Into the kitchen while he makes food",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D8:15"
+   ],
+   "support": "D8:15 Nate brings the turtles into the kitchen to watch him cook",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did Joanna feel after joining a writers group?",
+   "answer": "Motivated and supported, like she finally belonged somewhere",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D9:1"
+   ],
+   "support": "D9:1 Joanna describes how the writers group makes her feel",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Nate share a photo of when Joanna told him she had just joined a writers group?",
+   "answer": "A cup of ice cream with a cherry on top",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D9:1",
+    "conv-42:D9:2"
+   ],
+   "support": "D9:1 Joanna says she just joined a writers group; D9:2 Nate replies with a photo of a cup of ice cream with a cherry on top",
+   "verdict": "fixed",
+   "note": "disambiguated: in August 2022 (D19:6-7) Joanna mentioned her writers group and Nate shared a different dessert photo; added D9:1"
+  },
+  {
+   "question": "What did Nate's opponent in the final do after the tournament win Nate told Joanna about on 2 May 2022?",
+   "answer": "Shook his hand",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D10:7",
+    "conv-42:D10:8"
+   ],
+   "support": "D10:7 Joanna asks how it felt to finally win; D10:8 Nate says the other finalist even shook his hand",
+   "verdict": "fixed",
+   "note": "'Street Fighter' is only named in public D10:6; anchored by date, added D10:7, avoided copying 'finalist'"
+  },
+  {
+   "question": "What does Nate think about when he is out in nature?",
+   "answer": "His life or new recipes",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D11:14",
+    "conv-42:D11:15"
+   ],
+   "support": "D11:14 Nate gets deep in thought about his life or new recipes; D11:15 Joanna places this in the context of being out on the trails",
+   "verdict": "fixed",
+   "note": "added D11:15; D11:14 alone does not establish the outdoors context (D11:13 is public)"
+  },
+  {
+   "question": "What did the photo Joanna shared on 20 May 2022 of the project she had just finished show?",
+   "answer": "A notepad with a dog on it and a pen",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D12:12"
+   ],
+   "support": "D12:12 Joanna shares the notepad photo of her finished work",
+   "verdict": "fixed",
+   "note": "anchored to 20 May; on 2 May (public D10:9) she also shared a photo of what she had been working on"
+  },
+  {
+   "question": "According to Joanna, what makes her write at her best?",
+   "answer": "Being true to herself, even when it is hard",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D12:16"
+   ],
+   "support": "D12:16 Joanna says she writes best when being true to herself",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What does Nate enjoy most about the doggy playdates?",
+   "answer": "Watching the pets play together and seeing his dog so happy",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D13:7"
+   ],
+   "support": "D13:7 Nate enjoys watching the pets play and his dog being happy",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Why did Joanna find the rejection letter she told Nate about in June 2022 so disheartening?",
+   "answer": "It was generic, with little feedback on why",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D14:5"
+   ],
+   "support": "D14:5 Joanna says it was a generic letter without much feedback",
+   "verdict": "fixed",
+   "note": "the date she received the letter is not stated; anchored to when she told Nate"
+  },
+  {
+   "question": "What did the game controller in Nate's early June 2022 photo look like?",
+   "answer": "Purple and blue with a star field design",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D14:14"
+   ],
+   "support": "D14:14 image of a purple and blue star field controller",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Nate say in June 2022 he had noticed on Joanna's bag the last time they saw each other?",
+   "answer": "A Spider-Man pin",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D15:2"
+   ],
+   "support": "D15:2 Nate mentions the Spider-Man pin on her purse",
+   "verdict": "fixed",
+   "note": "reworded to avoid trivial copy of the rare word 'purse'; added anchor"
+  },
+  {
+   "question": "What does Joanna like about Iron Man?",
+   "answer": "His tech and funny jokes",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D15:5"
+   ],
+   "support": "D15:5 Joanna says she loves Iron Man's tech and jokes too",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Why does Nate keep his Iron Man figure in his room?",
+   "answer": "As a reminder to keep working on his goals",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D15:5",
+    "conv-42:D15:6"
+   ],
+   "support": "D15:5 Joanna asks why he got the Iron Man figure; D15:6 Nate says it is a reminder to keep working on his goals",
+   "verdict": "fixed",
+   "note": "added D15:5 to identify the figure as Iron Man (D15:4 is public)"
+  },
+  {
+   "question": "Did all of Nate's friends like the controller accessories he gave them?",
+   "answer": "No - most of them did",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D16:3",
+    "conv-42:D16:4"
+   ],
+   "support": "D16:3 Joanna asks; D16:4 Nate says most of them did",
+   "verdict": "fixed",
+   "note": "removed gaming-party premise that came from public D16:2"
+  },
+  {
+   "question": "How did Joanna say the new script she was excited about in July 2022 compared to her previous work?",
+   "answer": "It is different from her previous work, but she thinks it has the potential to be something awesome",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D17:10"
+   ],
+   "support": "D17:10 Joanna says the new script is different from her previous work",
+   "verdict": "fixed",
+   "note": "road-trip link relied on public D17:2/D17:8 and clashed with the separate 'road-trip script' (D29:1); reworded"
+  },
+  {
+   "question": "When explaining in August 2022 why writing is an escape for her, what did Joanna say about words?",
+   "answer": "Words have a magical way of healing - writing lets her turn her thoughts and feelings into something good",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D18:3"
+   ],
+   "support": "D18:3 Joanna says words have a magical way of healing",
+   "verdict": "fixed",
+   "note": "public D18:5 also speaks of the power of her words (comforting others); narrowed to D18:3"
+  },
+  {
+   "question": "Besides books, what was on the bookcase Nate shared a photo of in August 2022?",
+   "answer": "A toy car",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D19:13"
+   ],
+   "support": "D19:13 image of a bookcase with books and a toy car",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did the extra cash from the big tournament win Nate told Joanna about on 6 October 2022 let him do?",
+   "answer": "Stop stressing about money and just enjoy his movies and games",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D22:5",
+    "conv-42:D22:6"
+   ],
+   "support": "D22:5 Joanna mentions extra cash; D22:6 Nate says he can stop stressing and enjoy movies and games",
+   "verdict": "fixed",
+   "note": "the win was 'last week' relative to 6 Oct (late Sep/early Oct), not clearly October; anchored to when he told her"
+  },
+  {
+   "question": "What does Joanna have in common with the person she made a bookmark for in October 2022?",
+   "answer": "They both love DIYs",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D22:20",
+    "conv-42:D22:21"
+   ],
+   "support": "D22:20 Nate says she'll love the bookmark; D22:21 Joanna says she loves DIYs and so does the recipient",
+   "verdict": "fixed",
+   "note": "writing-club recipient is only stated in public D22:19; reworded and added D22:20 for the bookmark referent"
+  },
+  {
+   "question": "How competitive is the board game Nate played at the convention?",
+   "answer": "It can be both competitive and chill - they were competing but still had lots of fun",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D23:5",
+    "conv-42:D23:9"
+   ],
+   "support": "D23:5 Nate joined people playing a board game he loves at the convention; D23:9 says it can be both competitive and chill",
+   "verdict": "fixed",
+   "note": "added D23:5 to identify the board game (D23:7 is public)"
+  },
+  {
+   "question": "On 9 October 2022, what rating out of 10 did Joanna give a movie she had seen?",
+   "answer": "9 or 10 out of 10",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D23:20"
+   ],
+   "support": "D23:20 Joanna rates it 9 or 10 out of 10",
+   "verdict": "fixed",
+   "note": "removed 'classic movie' premise from public D23:18; anchored to the date"
+  },
+  {
+   "question": "What did Nate's turtles do after their walk in October 2022?",
+   "answer": "Relaxed in their tank, tired from walking",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D25:17"
+   ],
+   "support": "D25:17 Nate says they are tired and relaxing in the tank",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How do the personalities of Nate's turtles differ?",
+   "answer": "One is more adventurous and the other more reserved",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D25:25"
+   ],
+   "support": "D25:25 Nate describes one adventurous and one reserved turtle",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Since when has Nate liked turtles?",
+   "answer": "Since he was a boy",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D25:27"
+   ],
+   "support": "D25:27 Nate says he has liked turtles since he was a boy",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Where did Joanna get the idea for her love-story movie script?",
+   "answer": "From a dream",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:6",
+    "conv-42:D27:8"
+   ],
+   "support": "D27:6 introduces the love-story script; D27:8 says the idea came from a dream",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Why did Nate start playing the Japanese game series he told Joanna about in November 2022?",
+   "answer": "His friends played it and recommended it, and he is a big Nintendo fan",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:24",
+    "conv-42:D27:25"
+   ],
+   "support": "D27:24 Joanna asks what made him start playing the Japanese series; D27:25 Nate says he is a big Nintendo fan and friends recommended it",
+   "verdict": "fixed",
+   "note": "game title only appears in public D27:23; reworded and added D27:24"
+  },
+  {
+   "question": "Why does Nate like getting movie recommendations from Joanna?",
+   "answer": "He usually likes them a lot more than a random pick",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:27"
+   ],
+   "support": "D27:27 Nate says he likes her picks more than random ones",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When sharing memories with Joanna in November 2022, where did Nate say he had taken his pets for a special, memorable day?",
+   "answer": "To the park",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:33"
+   ],
+   "support": "D27:33 Nate describes taking his pets to the park",
+   "verdict": "fixed",
+   "note": "disambiguated from the November Tampa beach trip with his turtles (public D29:6)"
+  },
+  {
+   "question": "What photo did Joanna share when talking about making new memories as we grow up?",
+   "answer": "Two little girls in pink dresses in front of a castle",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:32"
+   ],
+   "support": "D27:32 image of two little girls in pink dresses by a castle",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did Nate's friend react to the ice cream he made in February 2022?",
+   "answer": "They loved it",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D4:1"
+   ],
+   "support": "D4:1 Nate says his friend loved the ice cream",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Joanna say when Nate asked about a character in her drawings?",
+   "answer": "He would have to watch the movie to find out",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-42:D25:11",
+    "conv-42:D25:12"
+   ],
+   "support": "D25:11 Nate asks about the character; D25:12 Joanna tells him to watch the movie",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Nate say he would start writing down in November 2022?",
+   "answer": "The things his animals like and his favorite memories with Joanna",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:35",
+    "conv-42:D27:37"
+   ],
+   "support": "D27:35 Nate will write down what his animals like; D27:37 he will also write down favorite memories with Joanna",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What steps did Joanna take with movie producers in early November 2022?",
+   "answer": "Set up meetings with them, finished a presentation for them, and pitched a script plan to them",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D26:1",
+    "conv-42:D27:2",
+    "conv-42:D28:8"
+   ],
+   "support": "D26:1 meetings set up; D27:2 presentation finished; D28:8 pitched to producers",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What goes into the dessert Nate said in November 2022 he had been wanting to try from Joanna?",
+   "answer": "Almond flour, coconut oil, chocolate and raspberries (her chocolate raspberry cake)",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D26:22",
+    "conv-42:D21:14",
+    "conv-42:D21:15"
+   ],
+   "support": "D26:22 Nate wants to try her chocolate and raspberry cake; D21:14 Nate asks how she made the cake; D21:15 Joanna lists its ingredients",
+   "verdict": "fixed",
+   "note": "added D21:14 to link D21:15's 'it' to the cake (D21:13 is public)"
+  },
+  {
+   "question": "How has Max changed things for Nate's other pets and his social life?",
+   "answer": "He keeps Nate's other pets active and led to doggy playdates with a nearby couple's dog",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D12:5",
+    "conv-42:D12:6",
+    "conv-42:D13:1"
+   ],
+   "support": "D12:5 the new dog keeps other pets active; D12:6 names him Max; D13:1 walking Max led to playdates with a couple",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Nate have in common with the couple he met walking Max and with the board game players at the convention?",
+   "answer": "With the couple, not much besides a love of animals; with the convention players, a lot - starting with a board game he loves",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D13:1",
+    "conv-42:D13:5",
+    "conv-42:D23:3",
+    "conv-42:D23:5"
+   ],
+   "support": "D13:1 met a couple while walking Max; D13:5 shared little besides love of animals; D23:3 made friends at the convention; D23:5 bonded with players of a board game he loves and had a lot in common",
+   "verdict": "fixed",
+   "note": "added D13:1 and D23:3 to resolve who 'they' are and the convention setting; answer now reflects 'a lot in common' in D23:5"
+  },
+  {
+   "question": "What does Joanna get out of cooking and tweaking dessert recipes?",
+   "answer": "A creative outlet, a rewarding challenge, the joy of seeing people smile when they try her desserts, and comfort",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D10:13",
+    "conv-42:D20:4"
+   ],
+   "support": "D10:13 cooking and baking are creative outlets and she loves the smiles; D20:4 tinkering with recipes brings comfort",
+   "verdict": "fixed",
+   "note": "completed answer: D10:13 also calls it a rewarding challenge"
+  },
+  {
+   "question": "How did Joanna's thoughts about getting a pet change between January and May 2022?",
+   "answer": "In January she considered getting pets she wasn't allergic to; by May she didn't want any and was too lazy to research alternatives",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D2:15",
+    "conv-42:D12:8"
+   ],
+   "support": "D2:15 Joanna may get pets if not allergic; D12:8 she no longer wants any and won't research alternatives",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How does Nate describe his own competitiveness when playing games with others?",
+   "answer": "He doesn't get very competitive - he plays for fun, sticks with the more chill people, and treats games as an escape",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D2:18",
+    "conv-42:D2:20",
+    "conv-42:D23:11"
+   ],
+   "support": "D2:18 sticks with chill people; D2:20 plays for fun; D23:11 games are an escape so he isn't crazy competitive",
+   "verdict": "fixed",
+   "note": "reworded to Nate's self-description; 'not very competitive' clashes with his pro play to beat competitors (D27:21)"
+  },
+  {
+   "question": "What did Nate share a photo of when congratulating Joanna on her script pitch and on filming her movie?",
+   "answer": "A trophy and a game controller on a table",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D28:9",
+    "conv-42:D29:2"
+   ],
+   "support": "D28:9 and D29:2 Nate congratulates Joanna with a trophy-and-controller photo",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What does Nate use the home gaming setup he showed Joanna in November 2022 for, and how does he describe it?",
+   "answer": "Practicing, competing and playing with friends; his own little haven to escape into the virtual world",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D27:16",
+    "conv-42:D27:17",
+    "conv-42:D27:19"
+   ],
+   "support": "D27:16 Joanna asks if he uses the computer for gaming; D27:17 practice, competing and playing with friends; D27:19 his own little haven to escape into the virtual world",
+   "verdict": "fixed",
+   "note": "removed 'upgraded' premise from public D27:15; added D27:16 for the referent"
+  },
+  {
+   "question": "What kinds of cookies did Nate and Joanna share photos of in September 2022?",
+   "answer": "Nate: a pile of cookies with sprinkles; Joanna: a cookie with chocolate drizzle and almonds",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D20:13",
+    "conv-42:D20:16"
+   ],
+   "support": "D20:13 Nate's sprinkle cookies photo; D20:16 Joanna's chocolate-drizzle almond cookie photo",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did Nate describe how winning felt in the tournaments he told Joanna about in May and June 2022?",
+   "answer": "Super awesome and full of adrenaline, and a huge confidence boost showing his hard work paid off",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D10:8",
+    "conv-42:D14:10"
+   ],
+   "support": "D10:8 super awesome with adrenaline; D14:10 huge confidence boost",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What get-togethers did Nate plan with gamers he met at a tournament in late May 2022 and at a convention in October 2022?",
+   "answer": "Hanging out later with the guys from the tournament, and a gaming session with his new convention friends",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D14:14",
+    "conv-42:D23:3"
+   ],
+   "support": "D14:14 (3 Jun 2022, tournament the week before) the guys wanted to hang out later; D23:3 planned a gaming session with convention friends",
+   "verdict": "fixed",
+   "note": "the tournament was the week before 3 June (late May), not June; narrowed to get-togethers (public D14:16 adds giving tips)"
+  },
+  {
+   "question": "How does Nate feel about helping others?",
+   "answer": "He likes helping people and feels good using his skills to make a difference",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D14:18",
+    "conv-42:D20:17",
+    "conv-42:D26:14"
+   ],
+   "support": "D14:18 likes helping people; D20:17 loves to help; D26:14 feels good to make a difference with his skills",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What practical suggestions has Nate given Joanna for her writing life?",
+   "answer": "Back up her work and go to a writing convention",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D21:2",
+    "conv-42:D23:13"
+   ],
+   "support": "D21:2 suggests backing up work; D23:13 suggests a writing convention",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Joanna say about video games in her first chat with Nate, and what did she say about them in April 2022?",
+   "answer": "At first she said she wasn't into games; in April 2022 she said she loves how video games can spark imagination",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D1:8",
+    "conv-42:D9:11"
+   ],
+   "support": "D1:8 not into games; D9:11 loves how games spark imagination",
+   "verdict": "fixed",
+   "note": "reworded: 'attitude change' overstated what D9:11 says"
+  },
+  {
+   "question": "What did Nate make for Joanna in October 2022, and why?",
+   "answer": "A whiteboard drawing to look back on for encouragement, because encouragement got him far in gaming",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D22:14",
+    "conv-42:D22:16",
+    "conv-42:D22:18"
+   ],
+   "support": "D22:14 shares the whiteboard he made; D22:16 it is for encouragement; D22:18 encouragement helped his gaming career",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What has Joanna shared about her past with acting?",
+   "answer": "It was her first passion, and she was so nervous at her first play that she forgot her lines",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D9:5",
+    "conv-42:D9:7"
+   ],
+   "support": "D9:5 forgot lines at first play; D9:7 acting was her first passion",
+   "verdict": "fixed",
+   "note": "reworded to third-person LoCoMo style"
+  },
+  {
+   "question": "How did Nate respond to not making the finals of the tournament he told Joanna about on 9 November 2022?",
+   "answer": "He stayed positive and started thinking about joining a new gaming team",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-42:D28:3",
+    "conv-42:D28:5"
+   ],
+   "support": "D28:3 missed finals but will get them next time; D28:5 staying positive and considering a new team",
+   "verdict": "fixed",
+   "note": "tournament date is not stated; anchored to when he told her (he also had a tourney letdown in Sept, public D20:1)"
+  },
+  {
+   "question": "When was Joanna reading lots of good books she had forgotten she owned?",
+   "answer": "The week before 17 April 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D8:2"
+   ],
+   "support": "D8:2 (17 Apr 2022) Joanna has been reading a lot in the past week",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Joanna say she would try making the dairy-free ice cream recipe Nate shared in April 2022?",
+   "answer": "The night of 17 April 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D8:17",
+    "conv-42:D8:20"
+   ],
+   "support": "D8:17 Nate offers his dairy-free ice cream recipe; D8:20 (17 Apr 2022) Joanna will try making it tonight",
+   "verdict": "fixed",
+   "note": "removed reliance on the ingredient list in public D8:19; added D8:17"
+  },
+  {
+   "question": "When did Joanna join a writers group?",
+   "answer": "Shortly before 21 April 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D9:1"
+   ],
+   "support": "D9:1 (21 Apr 2022) Joanna just joined a writers group",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Based on what he told Joanna in April 2022, when was Nate expecting to play in his fourth gaming tournament?",
+   "answer": "May 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D9:4"
+   ],
+   "support": "D9:4 (21 Apr 2022) tournament next month will be his 4th",
+   "verdict": "fixed",
+   "note": "anchored; public D17:1 calls a July 2022 win his fourth tournament"
+  },
+  {
+   "question": "When did Nate meet a couple with a dog while walking Max?",
+   "answer": "A few days before 25 May 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D13:1"
+   ],
+   "support": "D13:1 (25 May 2022) happened the other day",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Joanna set up meetings with movie producers?",
+   "answer": "Shortly before 4 November 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D26:1"
+   ],
+   "support": "D26:1 (4 Nov 2022) Joanna just set up producer meetings",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate make the ice cream he invited Joanna over to try in November 2022?",
+   "answer": "3 November 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D26:16"
+   ],
+   "support": "D26:16 (4 Nov 2022) made it yesterday",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Joanna finish her presentation for producers?",
+   "answer": "The Friday before 7 November 2022 (4 November 2022)",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D27:2"
+   ],
+   "support": "D27:2 (7 Nov 2022) finished it last Friday",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Joanna submit a few more scripts?",
+   "answer": "The week before 7 November 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D27:12"
+   ],
+   "support": "D27:12 (7 Nov 2022) submitted a few more last week",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Joanna pitch her plan for turning a script into a movie to producers?",
+   "answer": "8 November 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D28:8"
+   ],
+   "support": "D28:8 (9 Nov 2022) pitched it yesterday",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Joanna plan to recharge with a long walk and some reading?",
+   "answer": "The weekend after 22 August 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D19:10"
+   ],
+   "support": "D19:10 (22 Aug 2022) relaxing this weekend with a walk and reading",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate start hanging out with people outside his circle at a gaming tournament?",
+   "answer": "Around 23 January 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D2:16"
+   ],
+   "support": "D2:16 (23 Jan 2022) Nate starts hanging out with new people at the tournament",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate show Joanna the whiteboard he made to encourage her?",
+   "answer": "6 October 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D22:14"
+   ],
+   "support": "D22:14 (6 Oct 2022) Nate shares what he made for her",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate ask Joanna for advice on pursuing writing?",
+   "answer": "24 March 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D6:9"
+   ],
+   "support": "D6:9 (24 Mar 2022) Nate asks for writing advice",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate ask if he could join Joanna in baking?",
+   "answer": "5 September 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D20:13"
+   ],
+   "support": "D20:13 (5 Sep 2022) Nate asks to join her sometime",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did one of the actors on Joanna's movie set tell Joanna how much she liked the script?",
+   "answer": "November 2022, shortly before 11 November 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D29:5"
+   ],
+   "support": "D29:5 (11 Nov 2022) coolest moment on set",
+   "verdict": "fixed",
+   "note": "clarified ambiguous pronoun"
+  },
+  {
+   "question": "When was Joanna writing a love-story movie script full of challenges?",
+   "answer": "Early November 2022 (around 7 November 2022)",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D27:6"
+   ],
+   "support": "D27:6 (7 Nov 2022) Joanna is writing a love story script",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When was Nate thinking about joining a new gaming team?",
+   "answer": "November 2022 (around 9 November 2022)",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D28:5"
+   ],
+   "support": "D28:5 (9 Nov 2022) considering team offers",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What was Nate focused on in his gaming in late October 2022?",
+   "answer": "Practicing for his next video game tournament",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D24:11"
+   ],
+   "support": "D24:11 (21 Oct 2022) Nate has been practicing for his next tournament",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Did Joanna have a vacation planned in mid-April 2022?",
+   "answer": "No, her writing was consuming her",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D7:8"
+   ],
+   "support": "D7:8 (15 Apr 2022) no vacation lined up because of writing",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Had Joanna ever published a book as of July 2022?",
+   "answer": "No",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D17:18"
+   ],
+   "support": "D17:18 (10 Jul 2022) she has never tried publishing a book",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate promise to send Joanna pictures of his turtles?",
+   "answer": "18 March 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D5:12"
+   ],
+   "support": "D5:12 (18 Mar 2022) Nate promises turtle pics",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Nate first offer to send Joanna a dairy-free ice cream recipe?",
+   "answer": "25 February 2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-42:D4:5"
+   ],
+   "support": "D4:5 (25 Feb 2022) Nate offers a coconut milk recipe",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would Nate likely go on a hiking trip by himself?",
+   "answer": "Probably not; he isn't really into hiking, though he likes nature and might enjoy it with company",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D8:5",
+    "conv-42:D8:7"
+   ],
+   "support": "D8:5 not into hiking; D8:7 likes nature and might go with someone",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Which country does the video game company Nate called himself a big fan of in November 2022 come from?",
+   "answer": "Japan - he is a big fan of Nintendo games, and he confirmed the series he was playing is Japanese",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D27:24",
+    "conv-42:D27:25"
+   ],
+   "support": "D27:24 Joanna asks if it is a Japanese series; D27:25 Nate confirms and says he loves Nintendo games",
+   "verdict": "fixed",
+   "note": "'games Nate was a big fan of' was ambiguous (he is also a fan of gaming videos, public D28:15); pinned to the company"
+  },
+  {
+   "question": "Would Joanna be a good fit to run a bakery for people with dietary restrictions?",
+   "answer": "Likely yes; she makes all sorts of desserts that work for everyone's diets",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D20:12"
+   ],
+   "support": "D20:12 Joanna makes cookies, pies and cakes that suit everyone's diets",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would Joanna rather watch a movie at a cinema or at home?",
+   "answer": "Probably at home, where she feels at peace on a comfy couch with a blanket",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D23:22",
+    "conv-42:D23:24"
+   ],
+   "support": "D23:22 shows her cozy movie room; D23:24 prefers the comfy couch over a theater",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Is Nate likely to quit professional gaming soon?",
+   "answer": "Unlikely; he keeps preparing for tournaments and is grateful for a job he enjoys every day",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D27:3",
+    "conv-42:D27:5"
+   ],
+   "support": "D27:3 preparing for more tournaments; D27:5 grateful for a job he enjoys",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would Nate likely enjoy watching an old classic film like Casablanca?",
+   "answer": "Likely yes; he says he loves watching classics",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D1:17"
+   ],
+   "support": "D1:17 Nate loves watching classics",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Is Nate likely to spend the big tournament prize he told Joanna about on 6 October 2022 on a luxury purchase?",
+   "answer": "Unlikely; he saved some, feels content and has no big plans",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D22:3",
+    "conv-42:D22:4"
+   ],
+   "support": "D22:3 Joanna asks if he saved the cash; D22:4 Nate saved some, is content and has no big plans",
+   "verdict": "fixed",
+   "note": "win was the week before 6 Oct (late Sep/early Oct); anchored and added D22:3 (referent of 'it')"
+  },
+  {
+   "question": "Would Joanna likely enjoy digging through a small town's historical archives?",
+   "answer": "Likely yes; she was thrilled by a 1900s book of stories and sketches about a town's people",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D17:6"
+   ],
+   "support": "D17:6 Joanna loved the old book about the town and its people",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would Joanna likely sign up for an ice cream making class taught by Nate?",
+   "answer": "Likely yes; she loves his ice cream and wishes she could make it the way he does",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D8:16"
+   ],
+   "support": "D8:16 Joanna loves his ice cream and wishes she could make it like him",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would Nate likely enjoy a cooking contest about inventing new dessert flavors?",
+   "answer": "Likely yes; he finds experimenting in the kitchen fun and wants to try new flavors and toppings",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D3:8",
+    "conv-42:D3:14"
+   ],
+   "support": "D3:8 looks forward to new flavors and toppings; D3:14 experimenting in the kitchen is fun",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would Joanna likely schedule breaks during a busy writing project?",
+   "answer": "Likely yes; she believes breaks and self-care are important for her inspiration and mental health",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-42:D19:12"
+   ],
+   "support": "D19:12 Joanna says breaks matter for inspiration and mental health",
+   "verdict": "ok",
+   "note": ""
+  }
+ ]
+}

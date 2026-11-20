@@ -10,7 +10,9 @@ rules), so train scores are a faithful development signal.
 Integrity rules enforced here:
 * Retrievers receive a label-free copy of the memories and questions in a
   private temporary directory, and run from a sandbox view of the workspace
-  that does not contain eval/ or .git.
+  that does not contain eval/ or .git, inside user/mount/PID namespaces where
+  eval/ and .git are hidden (same run conditions as the hidden test).
+* Retrievers are limited in CPU time, never in wall-clock time.
 * Only the ranked entry IDs a retriever returns are read. Every scored number
   (evidence recall, answer-token recall, context tokens, ...) is recomputed
   from the evaluator's own copy of the corpus and labels; any other field a
@@ -27,6 +29,8 @@ import argparse
 import json
 import os
 import re
+import resource
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -42,7 +46,23 @@ MAX_RETRIEVED = 10
 # Utility floor: below this evidence recall@10 the run has not solved the task
 # (returning random entries gives ~1.7%; the most-recent-entries baseline ~0.4%).
 MIN_EVIDENCE_RECALL = 5.0
-RETRIEVER_TIMEOUT_S = 4 * 3600
+# CPU-time limit per retriever process (not wall-clock, so results never depend
+# on machine load). The reference retriever uses a few CPU-minutes.
+RETRIEVER_CPU_LIMIT_S = 4 * 3600
+# Retrievers run in their own user, mount and PID namespaces: eval/ and .git are
+# covered by empty read-only mounts, the mounts are locked by a second nested
+# user namespace (they cannot be unmounted from inside), and the evaluator's
+# processes are invisible. If the host does not allow unprivileged namespaces
+# the evaluator falls back to the sandboxed working directory and records it.
+ISOLATION_INNER = r"""
+set -e
+root="$1"; shift
+for hidden in "$root/eval" "$root/.git"; do
+  if [ -d "$hidden" ]; then mount -t tmpfs -o ro,size=4k,mode=0555 hidden "$hidden";
+  elif [ -e "$hidden" ]; then mount --bind /dev/null "$hidden"; fi
+done
+exec unshare --user --map-root-user --mount -- "$@"
+"""
 CATEGORIES = ("multi_hop", "open_domain", "single_hop", "temporal")
 SCORED_METRICS = (
     "evidence_recall_at_10",
@@ -115,26 +135,55 @@ def build_sandbox(base: Path) -> Path:
     return sandbox
 
 
-def run_retriever(script: Path, input_path: Path, output_path: Path, sandbox: Path, log_path: Path) -> None:
+def isolation_prefix() -> list[str]:
+    return [
+        "unshare", "--user", "--map-root-user", "--mount", "--pid", "--fork", "--mount-proc", "--",
+        "bash", "-c", ISOLATION_INNER, "isolate", str(ROOT),
+    ]
+
+
+def probe_isolation() -> tuple[bool, str]:
+    """True if a namespaced child sees an empty eval/ (and .git) under ROOT."""
+    if shutil.which("unshare") is None:
+        return False, "unshare not available"
+    check = 'test -d "$1/eval" && test -z "$(ls -A "$1/eval")" && ! test -e "$1/.git/HEAD"'
+    try:
+        proc = subprocess.run(
+            isolation_prefix() + ["bash", "-c", check, "probe", str(ROOT)],
+            capture_output=True,
+            timeout=120,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return False, f"probe failed: {exc}"
+    if proc.returncode != 0:
+        return False, f"probe exit {proc.returncode}: {proc.stderr.decode(errors='replace')[-300:]}"
+    return True, "user+mount+pid namespaces; eval/ and .git hidden"
+
+
+def _limit_cpu() -> None:
+    resource.setrlimit(resource.RLIMIT_CPU, (RETRIEVER_CPU_LIMIT_S, RETRIEVER_CPU_LIMIT_S))
+
+
+def run_retriever(
+    script: Path, input_path: Path, output_path: Path, sandbox: Path, log_path: Path, isolate: bool
+) -> None:
     script = script.resolve()
     try:
         launch = sandbox / script.relative_to(ROOT)
     except ValueError:
         launch = script
     with log_path.open("w") as log:
-        try:
-            env = dict(os.environ)
-            env["PATH"] = f"{sandbox.parent / 'bin'}{os.pathsep}{env.get('PATH', '')}"
-            proc = subprocess.run(
-                ["bash", str(launch), str(input_path), str(output_path)],
-                cwd=sandbox,
-                env=env,
-                stdout=log,
-                stderr=subprocess.STDOUT,
-                timeout=RETRIEVER_TIMEOUT_S,
-            )
-        except subprocess.TimeoutExpired as exc:
-            raise RunFailure(f"retriever timed out after {RETRIEVER_TIMEOUT_S}s") from exc
+        env = dict(os.environ)
+        env["PATH"] = f"{sandbox.parent / 'bin'}{os.pathsep}{env.get('PATH', '')}"
+        command = ["bash", str(launch), str(input_path), str(output_path)]
+        proc = subprocess.run(
+            (isolation_prefix() + command) if isolate else command,
+            cwd=sandbox,
+            env=env,
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            preexec_fn=_limit_cpu,
+        )
     if proc.returncode != 0:
         tail = log_path.read_text()[-600:]
         raise RunFailure(f"retriever exited with code {proc.returncode}: {tail}")
@@ -277,12 +326,14 @@ def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, kee
         input_path = tmp_path / "memory_input.json"
         input_path.write_text(json.dumps(public_input(data)))
         sandbox = build_sandbox(tmp_path)
+        isolate, isolation_note = probe_isolation()
+        print(f"[{SLICE}] isolation: {isolation_note}", file=sys.stderr)
         for script in scripts:
             name = script.stem
             output_path = tmp_path / f"{name}.jsonl"
             log_path = tmp_path / f"{name}.log"
             try:
-                run_retriever(script, input_path, output_path, sandbox, log_path)
+                run_retriever(script, input_path, output_path, sandbox, log_path, isolate)
                 rankings = parse_rows(output_path, data)
                 records = per_question(rankings, data)
                 metrics, category_recall = aggregate(records)
@@ -321,6 +372,7 @@ def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, kee
             EXPERIMENT: {
                 "slice": SLICE,
                 "split": {
+                    "retriever_isolation": isolation_note,
                     "name": "locomo_train_conversations_v3",
                     "conversations": [c["conversation_id"] for c in data["conversations"]],
                     "question_count": len(data["questions"]),

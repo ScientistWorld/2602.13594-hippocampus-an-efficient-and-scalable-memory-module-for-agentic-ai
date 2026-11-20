@@ -10,4 +10,4 @@ A good memory system recovers the evidence turns while delivering little context
 
 Data:
 - `data/locomo_train.json` holds 4 visible conversations with 581 labelled questions (built by `scripts/download.sh` from the public release, pinned commit and checksum).
-- The hidden test uses 6 other LoCoMo conversations (955 questions) that are not in the workspace. Your retriever is run on them at test time.
+- The hidden test uses 6 other LoCoMo conversations that are not in the workspace, with a private set of 659 questions written for them in LoCoMo's style and four groups. These are not the public LoCoMo questions, and the public LoCoMo labels do not answer them. Your retriever is run on them at test time.

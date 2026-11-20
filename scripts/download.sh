@@ -7,7 +7,9 @@
 # benchmark used by the paper, pinned to a fixed commit and checksum.
 # Only the four TRAIN conversations are extracted into data/locomo_train.json;
 # the raw download is deleted afterwards so held-out conversations never sit
-# in data/. The hidden test split is built only by eval/test/prepare_test_split.py.
+# in data/. The hidden test split (held-out conversation text + the private
+# question set in eval/test/private_questions.json) is built only by
+# eval/test/prepare_test_split.py.
 set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"

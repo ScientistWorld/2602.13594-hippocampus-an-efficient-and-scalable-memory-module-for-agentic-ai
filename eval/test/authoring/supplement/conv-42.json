@@ -1,0 +1,257 @@
+{
+  "conversation_id": "conv-42",
+  "questions": [
+    {
+      "question": "What does Joanna say she really likes about the memory-themed romantic drama she recommended to Nate?",
+      "answer": "The idea and the acting",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D1:16", "conv-42:D1:20"],
+      "support": "D1:16 Joanna recommends a romantic drama about memory and relationships; D1:20 she really likes the idea and the acting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "How did Nate describe the personalities of his two turtles when he first showed them to Joanna?",
+      "answer": "Though they're small, both have big personalities",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D2:14"],
+      "support": "D2:14 (23 Jan 2022) Nate: the turtles might be small, but both sure have big personalities",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "How did Nate describe the video game tournament he was in the middle of in late March 2022?",
+      "answer": "Intense, with so much adrenaline flowing",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D6:7"],
+      "support": "D6:7 (24 Mar 2022) Nate: participating in the tournament again and it's INTENSE, so much adrenaline flowing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What did Nate's boldness with his new hair color remind Joanna of?",
+      "answer": "A gorgeous sunset she had seen while hiking a few days earlier",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D7:6"],
+      "support": "D7:6 Joanna: his boldness reminded her of a gorgeous sunset she saw while hiking the other day",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "According to Joanna, how has hiking changed her?",
+      "answer": "It has opened up a whole new world for her, and she feels like a different person now",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D11:11"],
+      "support": "D11:11 Joanna: hiking has opened up a whole new world for her and she feels like a different person",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What had kept Joanna from writing the story behind her third screenplay sooner?",
+      "answer": "She hadn't had the guts; she'd had the story for ages before finally writing it",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D12:13", "conv-42:D12:14"],
+      "support": "D12:13 Nate asks if it's her third; D12:14 Joanna: a story she's had for ages but just got the guts to write",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What attraction did the new trail Joanna planned to hike with her buddies in early June 2022 have?",
+      "answer": "A waterfall",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D14:19"],
+      "support": "D14:19 (3 Jun 2022) Joanna: hiking with buddies this weekend, checking out a new trail with a rad waterfall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What prompted Joanna to begin writing a book?",
+      "answer": "Her movie had done well",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D17:14"],
+      "support": "D17:14 Joanna: started on a book recently since her movie did well",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "According to the reader who wrote Joanna a letter about her blog post, what had her story done for them?",
+      "answer": "It had brought them comfort",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D18:5"],
+      "support": "D18:5 Joanna: the letter writer said her story had brought them comfort",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What precaution did Nate suggest when using butter substitutes in dairy-free baking?",
+      "answer": "Check the labels to make sure they're dairy-free",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D20:15"],
+      "support": "D20:15 Nate: make sure to check the labels to ensure they're dairy-free",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What did Joanna start using after her laptop crash wiped out her work?",
+      "answer": "An external drive for backups",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D21:3"],
+      "support": "D21:3 Joanna: nothing was recoverable, but now she has an external drive for backups",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "Why did Joanna's family have to give up the dog she had in Michigan?",
+      "answer": "Joanna became allergic to her",
+      "category": "single_hop",
+      "evidence_entry_ids": ["conv-42:D24:6"],
+      "support": "D24:6 Joanna: had a dog in Michigan, but then she got allergic and they had to get rid of her",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "When did Nate first try making coconut milk ice cream?",
+      "answer": "Shortly before 7 February 2022",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D3:4"],
+      "support": "D3:4 (7 Feb 2022) Nate: just discovered he can make coconut milk icecream and gave it a try",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "About how long did it take Joanna to write her second screenplay?",
+      "answer": "Less than a month: she started it around 25 February 2022 and had wrapped it up by 18 March 2022",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D4:10", "conv-42:D5:1"],
+      "support": "D4:10 (25 Feb 2022) just started writing another one; D5:1 (18 Mar 2022) wrapped up her second script",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "When did Joanna first discover a great hiking trail in her hometown?",
+      "answer": "16 April 2022 (the day before 17 April 2022)",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D8:4"],
+      "support": "D8:4 (17 Apr 2022) Joanna: found an awesome hiking trail in her hometown yesterday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "When did Joanna first see words she had written appear on the big screen?",
+      "answer": "4 June 2022 (the day before 5 June 2022)",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D15:1"],
+      "support": "D15:1 (5 Jun 2022) Joanna: wrote a few bits for a screenplay that appeared on the big screen yesterday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "When did Nate say he would give Joanna the recipe for the vegan ice cream he shared with his diet group?",
+      "answer": "25 June 2022 (the day after 24 June 2022)",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D16:8", "conv-42:D16:9", "conv-42:D16:10"],
+      "support": "D16:8 vegan ice cream shared with his vegan diet group; D16:9 Joanna asks for the recipe; D16:10 (24 Jun 2022) Nate: can give it to you tomorrow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "When did Nate get a new tank for his turtles?",
+      "answer": "Shortly before 22 August 2022",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D19:3", "conv-42:D19:5"],
+      "support": "D19:3 (22 Aug 2022) Nate: my little dudes got a new tank; D19:5 the tank expansion has made them so happy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "When did Nate upgrade some of his home gaming equipment?",
+      "answer": "Shortly before 7 November 2022",
+      "category": "temporal",
+      "evidence_entry_ids": ["conv-42:D27:15"],
+      "support": "D27:15 (7 Nov 2022) Nate: just upgraded some of his equipment at home",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What does Nate love about the movie trilogy Joanna watched on his recommendation in May 2022?",
+      "answer": "Its world building, battles and storytelling; he calls it probably the greatest trilogy of all time",
+      "category": "multi_hop",
+      "evidence_entry_ids": ["conv-42:D9:12", "conv-42:D10:1", "conv-42:D10:2"],
+      "support": "D9:12 Nate: this trilogy's world building, battles and storytelling blow him away; D10:1 Joanna watched The Lord of the Rings on his recommendation; D10:2 probably the greatest trilogy of all time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What draws Joanna and Nate to their favorite superheroes?",
+      "answer": "Joanna loves Spider-Man for Peter Parker's struggle between being a hero and being a person; Nate loves Iron Man's tech and sarcastic humor",
+      "category": "multi_hop",
+      "evidence_entry_ids": ["conv-42:D15:3", "conv-42:D15:4"],
+      "support": "D15:3 Joanna: Spider-Man, Peter Parker's struggles between hero and person; D15:4 Nate: Iron Man is his top pick for his tech and sarcastic humor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What do Nate's turtles remind him to do?",
+      "answer": "Slow down and enjoy the small things and little joys in life",
+      "category": "multi_hop",
+      "evidence_entry_ids": ["conv-42:D5:4", "conv-42:D28:23", "conv-42:D29:10"],
+      "support": "D5:4 walking them reminds him to enjoy the small stuff; D28:23 they make him appreciate life's little joys; D29:10 they remind him to slow down and appreciate the small things",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What encouraging reactions did Joanna's scripts get from people in the film industry in November 2022?",
+      "answer": "Producers she met loved the self-discovery elements of her script, producers she pitched another script to really liked it, and an actor on her set told her how much she liked the script",
+      "category": "multi_hop",
+      "evidence_entry_ids": ["conv-42:D26:3", "conv-42:D28:8", "conv-42:D29:5"],
+      "support": "D26:3 (4 Nov) producers loved the self-discovery elements; D28:8 (9 Nov) pitched to producers who really liked it; D29:5 (11 Nov) an actor said how much she liked the script",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What did Joanna say about the dairy-free recipe she made for her family in October 2022?",
+      "answer": "It was a winner with her family, and she then kept revising and perfecting it until it turned out really tasty",
+      "category": "multi_hop",
+      "evidence_entry_ids": ["conv-42:D22:1", "conv-42:D24:2"],
+      "support": "D22:1 (6 Oct 2022) newest dairy-free recipe was a winner with her family; D24:2 (21 Oct 2022) revising and perfecting the recipe she made for her family, turned out really tasty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "How did Nate's June 2022 gaming party turn out compared with what he expected?",
+      "answer": "He expected it to be hectic but fun; it was a great success, with 6 of the 7 guests saying they'd want to do it again next month",
+      "category": "multi_hop",
+      "evidence_entry_ids": ["conv-42:D14:20", "conv-42:D16:2", "conv-42:D16:6"],
+      "support": "D14:20 party will be hectic but fun; D16:2 the gaming party was a great success; D16:6 7 attended and 6 want to do it again next month",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "Who wrote the books behind the movie trilogy Joanna watched at Nate's suggestion in May 2022?",
+      "answer": "J.R.R. Tolkien, author of The Lord of the Rings",
+      "category": "open_domain",
+      "evidence_entry_ids": ["conv-42:D10:1"],
+      "support": "D10:1 Joanna watched The Lord of the Rings trilogy on Nate's recommendation (world knowledge: Tolkien)",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "Who directed the twist-filled dream movie that Nate saw in October 2022?",
+      "answer": "Christopher Nolan (the movie was Inception)",
+      "category": "open_domain",
+      "evidence_entry_ids": ["conv-42:D23:17"],
+      "support": "D23:17 Nate saw a mind-blowing movie with twists and dream stuff called Inception (world knowledge: Nolan)",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "question": "What place likely inspired the setting of the suspenseful thriller Joanna was writing in November 2022?",
+      "answer": "Likely Woodhaven, the small Midwestern town she visited on her July 2022 research road trip, whose history sparked ideas for her next script",
+      "category": "open_domain",
+      "evidence_entry_ids": ["conv-42:D17:2", "conv-42:D17:4", "conv-42:D17:8", "conv-42:D28:12"],
+      "support": "D17:2 road trip for research for her next movie; D17:4 Woodhaven, a small town in the Midwest; D17:8 its past sparked ideas for her next script; D28:12 thriller set in a small Midwestern town",
+      "verdict": "ok",
+      "note": ""
+    }
+  ]
+}

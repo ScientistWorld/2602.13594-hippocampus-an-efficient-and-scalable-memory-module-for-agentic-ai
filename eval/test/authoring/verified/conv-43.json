@@ -1,0 +1,1048 @@
+{
+ "conversation_id": "conv-43",
+ "questions": [
+  {
+   "question": "Did John take part in the game shown in the photo he shared in June 2023?",
+   "answer": "Yes - he was playing in it, not just watching",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D2:15",
+    "conv-43:D2:16"
+   ],
+   "support": "D2:15 Tim asks playing or watching; D2:16 John says it was a game he just played and he was in it",
+   "verdict": "fixed",
+   "note": "reworded so the answer is not offered as an option in the question"
+  },
+  {
+   "question": "How did John connect with big companies for endorsement deals?",
+   "answer": "Through his contacts in the basketball industry and his marketing skills (networking)",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D3:11"
+   ],
+   "support": "D3:11 John used basketball-industry contacts and marketing skills to make connections",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Besides the food, what does John love about Seattle?",
+   "answer": "Its energy and diversity, and the incredible support from fans at games",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D3:20",
+    "conv-43:D3:21"
+   ],
+   "support": "D3:20 Tim asks what he loves about Seattle; D3:21 John lists energy, diversity, food, fan support",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What do John's lucky basketball shoes symbolize to him?",
+   "answer": "Resilience, determination, and his love for the game",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D6:9",
+    "conv-43:D6:11"
+   ],
+   "support": "D6:9 John shows his lucky basketball shoes; D6:11 says they symbolize resilience, determination and love for the game",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Why did John look for a new gym in August 2023?",
+   "answer": "To stay on his basketball game, since staying fit is essential to surviving pro ball",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:1"
+   ],
+   "support": "D8:1 John found a new gym to stay on his b-ball game; staying fit is essential for pro ball",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What was the hardest part for John when he started training at his new gym?",
+   "answer": "Adapting and tweaking his routine to find the right balance",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:3"
+   ],
+   "support": "D8:3 John had to overcome adapting and tweaking his routine",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Why does John think strength training matters for basketball?",
+   "answer": "It builds muscle, increases power, prevents injuries and makes him more explosive",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:7"
+   ],
+   "support": "D8:7 John explains strength training builds muscle, power, prevents injuries, adds explosiveness",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Which parts of John's game improved after he added strength training?",
+   "answer": "His shooting accuracy, agility, and speed",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:9"
+   ],
+   "support": "D8:9 strength training improved his shooting accuracy, agility and speed",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Has Tim ever been on a sports team?",
+   "answer": "No, never",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D9:5"
+   ],
+   "support": "D9:5 Tim says he has never been on a sports team",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What gave John trouble on his New York City trip?",
+   "answer": "Figuring out the subway at first, until someone explained it",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D10:1",
+    "conv-43:D10:2"
+   ],
+   "support": "D10:1 Tim asks about troubles on the NYC trip; D10:2 John had trouble with the subway until someone helped",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Why couldn't John give Tim a recipe for the soup he made?",
+   "answer": "He made it up on the spot",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D10:6"
+   ],
+   "support": "D10:6 John made it up on the spot so has no recipe",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did John and his new teammates bond over at a local restaurant?",
+   "answer": "Their shared love for basketball",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D11:3",
+    "conv-43:D11:5"
+   ],
+   "support": "D11:3 restaurant outing with new teammates; D11:5 they connected over a shared love for basketball",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In September 2023, what did John say he loves most about being a pro basketball player?",
+   "answer": "It's a constant challenge that keeps him growing; he loves seeing himself improve and beat goals, playing with his teammates, and having the fans cheer",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D11:15"
+   ],
+   "support": "D11:15 John explains what he loves about playing pro ball",
+   "verdict": "fixed",
+   "note": "added time anchor (other turns also say what he loves about basketball); reduced copying of D11:14"
+  },
+  {
+   "question": "What was John's favorite memory from his wedding day?",
+   "answer": "Seeing his bride walk down the aisle with her face lit up",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D12:8"
+   ],
+   "support": "D12:8 favorite memory was seeing her walk down the aisle, which choked him up",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What was LeBron like when John met him?",
+   "answer": "Real chill; John has met him a few times",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D12:23",
+    "conv-43:D12:24"
+   ],
+   "support": "D12:23 Tim asks if he met LeBron; D12:24 John met him a few times and says he's real chill",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What effect did seeing LeBron play in person have on John?",
+   "answer": "He learned a lot from watching a top player like him, and it motivated him to work even harder",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D12:23",
+    "conv-43:D12:24",
+    "conv-43:D12:26"
+   ],
+   "support": "D12:23 Tim names LeBron and asks if John saw him play live; D12:24 learned a lot watching him live; D12:26 seeing the top players made him want to work even harder",
+   "verdict": "fixed",
+   "note": "added D12:23 (needed to resolve 'him'); answer combines two separate turns -> multi_hop; reduced copying"
+  },
+  {
+   "question": "Besides particular authors, which three sources did Tim say spark his creativity in writing?",
+   "answer": "Books, movies, and real-life experiences",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D15:5"
+   ],
+   "support": "D15:5 Tim says books, movies and real-life experiences fire up his creativity",
+   "verdict": "fixed",
+   "note": "narrowed to the three sources in D15:5 so the public author turn is not an alternative answer"
+  },
+  {
+   "question": "What does the plaque on John's desk remind him to do?",
+   "answer": "Believe in himself",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D15:16"
+   ],
+   "support": "D15:16 plaque on his desk reminds him to believe in himself",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What does John usually do when he hangs out with friends and family?",
+   "answer": "Watches movies and goes out to dinner",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D15:28"
+   ],
+   "support": "D15:28 John says movies and dinner out",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What did Tim compare John's frustration at being off the court to?",
+   "answer": "Being unable to read because of an injury",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D18:12",
+    "conv-43:D18:13"
+   ],
+   "support": "D18:12 John hates not being on the court; D18:13 Tim says it's like if he couldn't read due to an injury",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What advice did John give Tim for improving his storytelling?",
+   "answer": "Reflect on what went wrong and find ways to improve, like John does on the court",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D19:4",
+    "conv-43:D19:5"
+   ],
+   "support": "D19:4 John suggests reflecting on what went wrong and finding ways to improve; D19:5 Tim restates the advice",
+   "verdict": "fixed",
+   "note": "added D19:5, which also states the advice"
+  },
+  {
+   "question": "In November 2023, what did John say he reminds himself of when times are hard?",
+   "answer": "Why he is so passionate about basketball - that love and enthusiasm keeps him motivated",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D19:8"
+   ],
+   "support": "D19:8 John remembers why he's passionate about basketball when things get tough",
+   "verdict": "fixed",
+   "note": "added time anchor (D15:18 gives a different answer about what keeps him going); reduced copying"
+  },
+  {
+   "question": "Which yoga pose makes John feel strong?",
+   "answer": "Warrior II",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D20:6"
+   ],
+   "support": "D20:6 Warrior II makes John feel strong",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In what areas did John say he has grown as a pro basketball player, as of December 2023?",
+   "answer": "His overall game on the court, endorsement deals, and marketing himself and his brand",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D21:8"
+   ],
+   "support": "D21:8 John lists better overall game, endorsement deals, and learning to market himself/brand",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What advice did John give Tim on keeping teammates motivated?",
+   "answer": "Show care for teammates, celebrate their achievements, give constructive feedback, remind them of the bigger goal, keep a positive environment and give pep talks",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D21:16"
+   ],
+   "support": "D21:16 John's list of ways to motivate teammates",
+   "verdict": "fixed",
+   "note": "reduced copying of D21:15"
+  },
+  {
+   "question": "According to John on 8 December 2023, what was the best part of his team's recent win?",
+   "answer": "The camaraderie they built on and off the court",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D22:6"
+   ],
+   "support": "D22:6 best part was the camaraderie built on and off the court",
+   "verdict": "fixed",
+   "note": "date of the win is not stated; anchored to the conversation date instead"
+  },
+  {
+   "question": "What theme did Tim say the series he was reading on 8 December 2023 is about?",
+   "answer": "The power of friendship and loyalty",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D22:7"
+   ],
+   "support": "D22:7 Tim is reading a series about the power of friendship and loyalty",
+   "verdict": "fixed",
+   "note": "anchored to 8 December (Tim mentions other series later in December 2023)"
+  },
+  {
+   "question": "In December 2023, what did John say his team does off the court to build unity?",
+   "answer": "Team dinners, outings, and basketball games",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D22:8"
+   ],
+   "support": "D22:8 team dinners, outings and basketball games build their unity",
+   "verdict": "fixed",
+   "note": "added time anchor (D5:10 also mentions hanging out); reduced copying of D22:8"
+  },
+  {
+   "question": "What did John's injury make him miss, as he told Tim in December 2023?",
+   "answer": "Some games - he couldn't help his team",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D24:10"
+   ],
+   "support": "D24:10 John had to miss some games and couldn't help his team",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How often was John doing physical therapy exercises for his injury in December 2023?",
+   "answer": "Every day",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D24:12"
+   ],
+   "support": "D24:12 John does physical therapy exercises every day",
+   "verdict": "fixed",
+   "note": "added anchor (an earlier ankle injury also involved physical therapy)"
+  },
+  {
+   "question": "How did John find the riverside spot shown in his photoshoot picture?",
+   "answer": "He stumbled across it while hiking",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D25:8"
+   ],
+   "support": "D25:8 John stumbled across the river spot while hiking",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What tool do Tim and John both use to practice their languages?",
+   "answer": "The same language-learning app on their phones",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D27:9",
+    "conv-43:D27:10"
+   ],
+   "support": "D27:9 Tim shows the app he uses; D27:10 John uses that app on his phone too",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did John's benefit basketball game turn out?",
+   "answer": "A total success - lots of people came, had a great time, and they raised money for charity",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D28:12"
+   ],
+   "support": "D28:12 the game was a total success and raised money for charity",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "According to what John told Tim in May 2023, how had his new team been treating him?",
+   "answer": "Well - the team had been really nice and he was having fun",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D1:13"
+   ],
+   "support": "D1:13 John says things are going well, team is nice, he's having fun",
+   "verdict": "fixed",
+   "note": "reduced copying of D1:12"
+  },
+  {
+   "question": "What did John capture in a photo during one of his team's practices in September 2023?",
+   "answer": "The sunset over the court",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D11:13"
+   ],
+   "support": "D11:13 John's practice pic shows the sunset on the court",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did John describe the people who attended his seminars?",
+   "answer": "Aspiring pros who were eager and motivated",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D26:3"
+   ],
+   "support": "D26:3 the aspiring pros at his seminars were eager and motivated",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How often does John's family get together?",
+   "answer": "All the time",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:19"
+   ],
+   "support": "D8:19 John says his family gets together all the time",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How often does John practice and train, as of January 2024?",
+   "answer": "Every day",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D27:14"
+   ],
+   "support": "D27:14 John practices and trains every day",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Had John ever been to Edinburgh when Tim suggested it for the team trip?",
+   "answer": "No",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D11:11"
+   ],
+   "support": "D11:11 John says he hasn't been to Edinburgh yet",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "According to John in November 2023, what makes a win feel so satisfying?",
+   "answer": "Pushing through the struggles and challenges to get there",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D16:2",
+    "conv-43:D16:4"
+   ],
+   "support": "D16:2 making it through makes it more satisfying; D16:4 struggles make it worth it, that's when the win feels great",
+   "verdict": "fixed",
+   "note": "added time anchor"
+  },
+  {
+   "question": "In December 2023, which two things did John say basketball allows him to do?",
+   "answer": "Be himself and pursue his passions",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D23:10",
+    "conv-43:D23:11"
+   ],
+   "support": "D23:10 Tim talks about how much basketball has done for John; D23:11 John says it allows him to be himself and pursue his passions",
+   "verdict": "fixed",
+   "note": "added D23:10 (needed to resolve 'it'); anchored and narrowed"
+  },
+  {
+   "question": "What did John say was on his bucket list during the second half of 2023?",
+   "answer": "Visiting Universal Studios and visiting castles",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D10:10",
+    "conv-43:D15:2"
+   ],
+   "support": "D10:10 Universal Studios is on his bucket list; D15:2 visiting castles is on his bucket list",
+   "verdict": "fixed",
+   "note": "anchored to exclude the May 2023 'to-do list' of Potter places, whose referent needs public turns"
+  },
+  {
+   "question": "What does Tim like to do for fun with his friends?",
+   "answer": "Road trips, exploring and hiking, playing board games, and movie marathons",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D15:29",
+    "conv-43:D26:30"
+   ],
+   "support": "D15:29 road trips, hiking, board games with friends and family; D26:30 movie marathons with friends",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What school challenges did Tim deal with in late August 2023?",
+   "answer": "Overwhelming assignments and exams, and a nerve-wracking presentation in class",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D9:1",
+    "conv-43:D10:3"
+   ],
+   "support": "D9:1 assignments and exams overwhelming; D10:3 nervous class presentation",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Besides Home Alone, which movies does Tim's family watch during the holidays?",
+   "answer": "Elf and The Santa Clause",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:26",
+    "conv-43:D8:28"
+   ],
+   "support": "D8:26 they also watch Elf; D8:28 they love The Santa Clause too",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In November 2023, what did Tim recommend to John that John had earlier called a bucket-list item?",
+   "answer": "Visiting castles",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D15:2",
+    "conv-43:D16:15"
+   ],
+   "support": "D15:2 castles on John's bucket list; D16:15 Tim recommends visiting castles",
+   "verdict": "fixed",
+   "note": "added anchor (Tim also endorsed John's to-do list item in May 2023)"
+  },
+  {
+   "question": "Besides fantasy, what kinds of books has Tim read?",
+   "answer": "A book about castles in the UK, self-improvement books on growth and psychology (including one on how small changes make big differences), and a book of travelers' stories",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D15:1",
+    "conv-43:D19:17",
+    "conv-43:D19:19",
+    "conv-43:D26:6"
+   ],
+   "support": "D15:1 UK castles book; D19:17 growth/psychology books; D19:19 small-changes book; D26:6 travelers' stories book",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What is Tim keen to explore while he's in Ireland?",
+   "answer": "The nature there, including the Cliffs of Moher",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D28:4",
+    "conv-43:D28:5",
+    "conv-43:D28:7"
+   ],
+   "support": "D28:4 John asks what Tim is keen to check out in Galway; D28:5 excited to explore the nature; D28:7 wants to visit the Cliffs of Moher",
+   "verdict": "fixed",
+   "note": "added D28:4 (D28:5 reply is meaningless without it)"
+  },
+  {
+   "question": "Which places has Tim said are on his travel list?",
+   "answer": "New York City, Italy, and Barcelona",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D9:9",
+    "conv-43:D27:3",
+    "conv-43:D29:13"
+   ],
+   "support": "D9:9 adds NYC to travel list; D27:3 Italy on his list; D29:13 adding Barcelona to his list",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In what ways do John's teammates support him during hard times?",
+   "answer": "They encourage him when he's down, believe in him, support him even when he makes mistakes, and act like a cheer team that helps him through tough times",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D5:10",
+    "conv-43:D7:13",
+    "conv-43:D15:18",
+    "conv-43:D15:20"
+   ],
+   "support": "D5:10 encourage him when down; D7:13 supportive people are like a cheer team through tough times; D15:18 teammates believe in him; D15:20 support him even after mistakes",
+   "verdict": "fixed",
+   "note": "added D7:13, which also answers; reduced copying"
+  },
+  {
+   "question": "What food are both John and Tim eager to try in Seattle?",
+   "answer": "The local seafood",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D3:21",
+    "conv-43:D3:22",
+    "conv-43:D3:23"
+   ],
+   "support": "D3:21 John says local seafood is a must; D3:22 Tim always wanted to try the seafood there; D3:23 John can't wait for it",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did Tim respond to being rejected for a summer job, and to the exam that made him doubt himself?",
+   "answer": "He stayed positive about the job, and turned the exam into a learning experience by studying hard",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D10:1",
+    "conv-43:D20:1"
+   ],
+   "support": "D10:1 got a no for a summer job but staying positive; D20:1 turned tough exam into a learning experience",
+   "verdict": "fixed",
+   "note": "anchored the exam (Tim mentions several exam periods)"
+  },
+  {
+   "question": "What draws Tim to travel?",
+   "answer": "Experiencing a different kind of magic in new places, a longtime interest in different cultures and countries, and finding travel eye-opening",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D9:5",
+    "conv-43:D21:1",
+    "conv-43:D27:39"
+   ],
+   "support": "D9:5 loves traveling to experience a different kind of magic; D21:1 always interested in different cultures and countries; D27:39 traveling is so eye-opening",
+   "verdict": "fixed",
+   "note": "added D27:39, which also gives a reason"
+  },
+  {
+   "question": "Where did John go camping, and what did he enjoy most about it?",
+   "answer": "In the mountains; he loved chilling and taking in the beauty of nature",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D20:34",
+    "conv-43:D20:36",
+    "conv-43:D20:38"
+   ],
+   "support": "D20:34 camping trip; D20:36 camped in the mountains; D20:38 favorite part was chilling in nature",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How has Tim shown off his Harry Potter fandom at Christmas and at a party?",
+   "answer": "He decorated a Harry Potter-themed Christmas tree himself and wore his Gryffindor scarf to a Harry Potter party",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D8:32",
+    "conv-43:D22:1",
+    "conv-43:D22:3"
+   ],
+   "support": "D8:32 Tim decorated the HP-themed Christmas tree himself; D22:1 HP party; D22:3 wore his Gryffindor scarf",
+   "verdict": "fixed",
+   "note": "removed D8:30 (redundant with D8:32)"
+  },
+  {
+   "question": "What did Tim recommend when John said he'd need new shoes?",
+   "answer": "His comfy black-and-pink running shoes, which feel like walking on clouds and which he bought online",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D13:14",
+    "conv-43:D13:15",
+    "conv-43:D13:17"
+   ],
+   "support": "D13:14 John needs new shoes; D13:15 Tim shows shoes like walking on clouds; D13:17 got them online",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Which Harry Potter actress is Tim a big fan of, and why?",
+   "answer": "Emma Watson, for her advocacy of gender equality and women's rights",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D26:16",
+    "conv-43:D26:18"
+   ],
+   "support": "D26:16 Emma Watson, supporter of gender equality, Tim a huge fan; D26:18 her women's rights advocacy inspires him",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What trek did Tim read about in his book of travelers' stories, and what made it tough?",
+   "answer": "Two hikers trekking through the Himalayas; challenging terrain, altitude sickness, and bad weather",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D26:6",
+    "conv-43:D26:8",
+    "conv-43:D26:10"
+   ],
+   "support": "D26:6 book of travelers' stories; D26:8 Himalaya trek story; D26:10 terrain, altitude sickness, bad weather",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "How did Tim feel about the fan event he told John about in August 2023?",
+   "answer": "It was fantastic - being with fellow fans was special and he felt like he truly belonged",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D6:2",
+    "conv-43:D7:4"
+   ],
+   "support": "D6:2 recent event was fantastic, special to be with fans; D7:4 that event made him feel he belonged",
+   "verdict": "fixed",
+   "note": "anchored to the August 2023 mentions"
+  },
+  {
+   "question": "Which two suggestions from John did Tim agree to try between 21 November and 1 December 2023?",
+   "answer": "Reflecting on what went wrong to improve his storytelling, and trying John's yoga pose for legs and core",
+   "category": "multi_hop",
+   "evidence_entry_ids": [
+    "conv-43:D19:4",
+    "conv-43:D19:5",
+    "conv-43:D20:8",
+    "conv-43:D20:11"
+   ],
+   "support": "D19:4/D19:5 storytelling advice and Tim accepting it; D20:8/D20:11 yoga pose suggestion and Tim saying he'll give it a shot",
+   "verdict": "fixed",
+   "note": "anchored: 'late 2023' would also include the October recipe, which needs public turns"
+  },
+  {
+   "question": "When did Tim and John first meet?",
+   "answer": "21 May 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D1:1",
+    "conv-43:D1:2"
+   ],
+   "support": "D1:1/D1:2 'nice to meet you' exchange in session dated 21 May 2023",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did John first tell Tim he was exploring endorsement opportunities?",
+   "answer": "15 June 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D2:2"
+   ],
+   "support": "D2:2 (15 June 2023) John says he's exploring endorsement opportunities",
+   "verdict": "fixed",
+   "note": "when he began is not stated; reworded to the first mention"
+  },
+  {
+   "question": "When did John show Tim his lucky basketball shoes?",
+   "answer": "11 August 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D6:9"
+   ],
+   "support": "D6:9 lucky shoes shared in session dated 11 August 2023",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When was the fan event where Tim felt he truly belonged?",
+   "answer": "July 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D7:4"
+   ],
+   "support": "D7:4 (17 August 2023) 'last month at that event'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did John find a new gym to train at?",
+   "answer": "A few days before 21 August 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D8:1"
+   ],
+   "support": "D8:1 (21 August 2023) 'just the other day' found a new gym",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Which year's Christmas tree did John show Tim a photo of in August 2023?",
+   "answer": "2022",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D8:29"
+   ],
+   "support": "D8:29 (21 August 2023) 'This was our tree last year'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did John make a trip home to see his family and old pals?",
+   "answer": "The week before 26 August 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D9:2"
+   ],
+   "support": "D9:2 (26 August 2023) 'Last week I visited home'",
+   "verdict": "fixed",
+   "note": "reduced copying of D9:2"
+  },
+  {
+   "question": "When did Tim add New York City to his travel list?",
+   "answer": "26 August 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D9:9"
+   ],
+   "support": "D9:9 adding NYC to travel list, session dated 26 August 2023",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Tim find out he didn't get a summer job he wanted?",
+   "answer": "Late August 2023 (shortly before 31 August 2023)",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D10:1"
+   ],
+   "support": "D10:1 (31 August 2023) got a no for a summer job since they last talked",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Tim give a presentation in class?",
+   "answer": "30 August 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D10:3"
+   ],
+   "support": "D10:3 (31 August 2023) 'Yesterday... I gave a presentation in class'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did John go out to eat with some of his new teammates?",
+   "answer": "The week before 21 September 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D11:3"
+   ],
+   "support": "D11:3 (21 September 2023) restaurant with new teammates last week",
+   "verdict": "fixed",
+   "note": "reduced copying of D11:3"
+  },
+  {
+   "question": "When did Tim recommend his comfy running shoes to John?",
+   "answer": "13 October 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D13:15",
+    "conv-43:D13:17"
+   ],
+   "support": "D13:15/D13:17 Tim recommends his shoes in session dated 13 October 2023",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Tim read a book about castles in the UK?",
+   "answer": "October 2023 (shortly before 21 October 2023)",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D15:1"
+   ],
+   "support": "D15:1 (21 October 2023) Tim says he read a book about UK castles",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Tim suggest that John visit some castles?",
+   "answer": "6 November 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D16:15"
+   ],
+   "support": "D16:15 castle recommendation in session dated 6 November 2023",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Tim read the book about minor tweaks leading to major results?",
+   "answer": "November 2023 (shortly before 21 November 2023)",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D19:19"
+   ],
+   "support": "D19:19 (21 November 2023) 'I recently read a book'",
+   "verdict": "fixed",
+   "note": "reduced copying of D19:19"
+  },
+  {
+   "question": "When did Tim have the tough exam that made him doubt himself?",
+   "answer": "The week before 1 December 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D20:1"
+   ],
+   "support": "D20:1 (1 December 2023) 'I had a tough exam last week'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did Tim reorganize his bookshelf?",
+   "answer": "Just before 1 December 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D20:17"
+   ],
+   "support": "D20:17 (1 December 2023) 'I just reorganized my book shelf'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When was John first able to jog without pain during his injury rehab?",
+   "answer": "The Friday before 16 December 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D24:14"
+   ],
+   "support": "D24:14 (16 December 2023) 'Last Friday... I was able to jog a bit with no pain'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When did John's team have the scrimmage where they gave it their all?",
+   "answer": "The week before 19 December 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D25:12"
+   ],
+   "support": "D25:12 (19 December 2023) 'last week's scrimmage'",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In which month was Tim reading a book of travelers' stories to plan his next adventure?",
+   "answer": "December 2023",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D26:6"
+   ],
+   "support": "D26:6 in session dated 26 December 2023",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "When was the upcoming fantasy show Tim was looking forward to set to premiere?",
+   "answer": "January 2024",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D26:34"
+   ],
+   "support": "D26:34 (26 December 2023) series coming out next month",
+   "verdict": "fixed",
+   "note": "reduced copying of D26:34"
+  },
+  {
+   "question": "When does John think he could swing by the Cliffs of Moher?",
+   "answer": "After his basketball season",
+   "category": "single_hop",
+   "evidence_entry_ids": [
+    "conv-43:D28:7",
+    "conv-43:D28:8"
+   ],
+   "support": "D28:7 Tim wants to visit the Cliffs of Moher; D28:8 John could stop by after his season",
+   "verdict": "fixed",
+   "note": "answer is a relative condition, not a date; relabeled single_hop and clarified wording"
+  },
+  {
+   "question": "When was Tim looking into visa rules for countries on his travel wishlist?",
+   "answer": "January 2024",
+   "category": "temporal",
+   "evidence_entry_ids": [
+    "conv-43:D29:3",
+    "conv-43:D29:9"
+   ],
+   "support": "D29:3/D29:9 visa research mentioned in session dated 12 January 2024",
+   "verdict": "fixed",
+   "note": "reduced copying of D29:3"
+  },
+  {
+   "question": "Which Hogwarts house does Tim most likely identify with?",
+   "answer": "Likely Gryffindor, since he wore his own Gryffindor scarf instead of a costume",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D22:3"
+   ],
+   "support": "D22:3 Tim wore his Gryffindor scarf instead of a costume",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "In which Irish county is the landmark Tim said he wants to visit?",
+   "answer": "County Clare, where the Cliffs of Moher are",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D28:7"
+   ],
+   "support": "D28:7 Tim wants to visit the Cliffs of Moher (world knowledge: County Clare)",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "What is the Sanskrit name of the yoga pose that makes John feel strong?",
+   "answer": "Virabhadrasana II, the Sanskrit name for Warrior II",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D20:6"
+   ],
+   "support": "D20:6 Warrior II makes John feel strong (world knowledge: Virabhadrasana II)",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Which popular self-help book might be the one Tim said made a big impact on him in November 2023?",
+   "answer": "Possibly 'Atomic Habits' by James Clear, since it is about how small changes add up to big results",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D19:19"
+   ],
+   "support": "D19:19 book about how small changes make big differences",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Which UN gender-equality campaign might Tim know through the actress he admires?",
+   "answer": "Likely HeForShe, the UN Women campaign Emma Watson launched as a Goodwill Ambassador",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D26:16",
+    "conv-43:D26:18"
+   ],
+   "support": "D26:16/D26:18 Tim admires Emma Watson's gender-equality and women's rights advocacy",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would John likely enjoy visiting Neuschwanstein Castle in Germany?",
+   "answer": "Likely yes; visiting castles is on his bucket list and historical architecture fascinates him",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D15:2"
+   ],
+   "support": "D15:2 John is fascinated by historical architecture and castles are on his bucket list",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "question": "Would John likely enjoy a visit to Pike Place Market in Seattle?",
+   "answer": "Likely yes; he loves Seattle's energy and food and considers trying the local seafood a must",
+   "category": "open_domain",
+   "evidence_entry_ids": [
+    "conv-43:D3:20",
+    "conv-43:D3:21",
+    "conv-43:D3:23"
+   ],
+   "support": "D3:21 loves Seattle's energy and food, seafood a must; D3:23 can't wait for the seafood",
+   "verdict": "ok",
+   "note": ""
+  }
+ ]
+}
