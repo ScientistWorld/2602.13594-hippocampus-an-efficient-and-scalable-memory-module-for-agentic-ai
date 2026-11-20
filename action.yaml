@@ -1,8 +1,8 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: submit
+action: pending
 gpus: 0
 test: false
 milestone: core_claim_plus
-notes: "CPU job: scripts/run.sh = reproduce (train + hidden test rebuilt on 659 private questions, namespace-isolated retrievers), hardening audit incl. public-label and namespace-escape shortcuts, then validate --compare. Next turn: freeze new reference values and update HARDENING/TARGETS/MILESTONES."
+notes: ""
