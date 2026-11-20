@@ -59,3 +59,7 @@ A lexical baseline sanity check reaches 100% `hit_at_1` on the current synthetic
 - The portable benchmark includes same-person/project/company decoys that mention alternative tools but state the original decision did not change. This is enough to validate the memory-substrate mechanics against a recency baseline, but it does not fully reproduce the difficulty of LoCoMo/LongMemEval: a lexical sanity baseline can still solve the templated synthetic questions near-perfectly.
 - The paper reports wall-clock latency on fixed HPE hardware. This workspace records search time for diagnostics but uses bit-operation count and token footprint as hardware-independent constraint metrics.
 - The benchmark passes the conversation ID to retrieval as a per-user memory boundary. This models querying one user's memory store rather than open-corpus retrieval across all users.
+
+## Final review follow-up (2026-11-20)
+
+Private-question data and prior audit were already present, but the report and frozen reference were stale. Prepared one combined verification job: require test-file isolation; turn malformed/unreadable output into complete failure vectors; freeze evaluator-owned baseline comparisons; deterministic BM25 summation; sequential official runs and audit; retain private raw outputs for paired checks and rescoring. Fixed private assembly to exactly reproduce the released 659 questions from verified sources. Full paper claim and BM25/reference calibration remain limitations to report after verification.

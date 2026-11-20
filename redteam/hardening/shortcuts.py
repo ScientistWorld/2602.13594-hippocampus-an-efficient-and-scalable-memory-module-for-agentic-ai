@@ -48,7 +48,24 @@ def main() -> None:
     mode = args.mode
     scratch = args.output + ".ref.jsonl"
 
-    if mode == "train_label_lookup":
+    if mode == "invalid_utf8":
+        Path(args.output).write_bytes(b"\xff\xfe\x80")
+        return
+    elif mode == "malformed_json":
+        Path(args.output).write_text('{"question_id":')
+        return
+    elif mode == "missing_output":
+        return
+    elif mode == "duplicate_question":
+        row = {"question_id": questions[0]["question_id"], "retrieved_entry_ids": []}
+        rows = [row, row]
+    elif mode == "baseline_poisoning":
+        # The visible baseline is editable by a submission; eval's comparison
+        # must remain the frozen algorithm on eval's own data.
+        Path("baseline/lexical_retriever.py").write_text("raise SystemExit('poisoned')\n")
+        Path("baseline/recency_retriever.py").write_text("raise SystemExit('poisoned')\n")
+        rows = reference_rows(args.input, scratch)
+    elif mode == "train_label_lookup":
         # Copy evidence labels from the visible training file by question text.
         train = json.loads(Path("data/locomo_train.json").read_text())
         by_text = {(q["conversation_id"], q["question"]): q["evidence_entry_ids"] for q in train["questions"]}

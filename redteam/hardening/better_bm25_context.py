@@ -67,7 +67,7 @@ class Index:
         self.k1, self.b = k1, b
 
     def search(self, question: str, top_k: int) -> list[str]:
-        q = set(terms(question))
+        q = sorted(set(terms(question)))
         scored = []
         for i, doc in enumerate(self.docs):
             norm = self.k1 * (1 - self.b + self.b * self.lengths[i] / self.avg)

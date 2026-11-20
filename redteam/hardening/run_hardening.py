@@ -26,13 +26,13 @@ import subprocess
 import sys
 import tempfile
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = ROOT / "redteam" / "hardening"
 RESULTS = HERE / "results"
 REGISTRY = ROOT / "scripts" / "retrievers"
+PRIVATE_AUDIT = ROOT / "eval" / "test" / "audit"
 EXPERIMENT = "locomo_memory_retrieval"
 REFERENCE = "hippocampus"
 
@@ -53,6 +53,7 @@ SHORTCUTS = [
     "sc_longest_entries", "sc_prewrite_scores", "sc_relabel_visible_data", "sc_hidden_labels_relative",
     "sc_hidden_labels_absolute", "sc_relabel_hidden_absolute", "sc_public_locomo_labels",
     "sc_public_label_prior_bm25", "sc_public_label_avoid_bm25", "sc_public_label_avoid_reference",
+    "sc_invalid_utf8", "sc_malformed_json", "sc_missing_output", "sc_duplicate_question", "sc_baseline_poisoning",
 ]
 # Read-only attempts on the evaluator's own files, run against the real workspace.
 ESCAPES = ["sc_hidden_labels_relative", "sc_hidden_labels_absolute", "sc_namespace_escape"]
@@ -68,7 +69,8 @@ def run(cmd: list[str], cwd: Path, log: Path) -> None:
 def phase_eval(split: str, group: str, scripts: list[Path]) -> Path:
     out = RESULTS / f"{split}_{group}.json"
     cmd = [sys.executable, str(ROOT / "eval" / split / "evaluate_retrieval.py"), *map(str, scripts),
-           "--output", str(out), "--per-question-dir", str(RESULTS / f"per_question_{split}")]
+           "--output", str(out), "--per-question-dir", str(PRIVATE_AUDIT / f"per_question_{split}"),
+           "--keep-outputs", str(PRIVATE_AUDIT / f"raw_{split}")]
     run(cmd, ROOT, RESULTS / f"{split}_{group}.log")
     return out
 
@@ -85,9 +87,13 @@ def phase_shortcuts() -> Path:
         scripts += [ws / "redteam" / "hardening" / "shortcuts" / f"{name}.sh" for name in SHORTCUTS]
         cmd = [sys.executable, str(ws / "eval" / "test" / "evaluate_retrieval.py"), *map(str, scripts),
                "--output", str(ws / "scoring" / "scores_test.json"),
-               "--per-question-dir", str(RESULTS / "per_question_test_shortcuts")]
+               "--per-question-dir", str(PRIVATE_AUDIT / "per_question_test_shortcuts")]
         run(cmd, ws, RESULTS / "test_shortcuts.log")
         shutil.copy(ws / "scoring" / "scores_test.json", out)
+        before = json.loads((RESULTS / "test_registry.json").read_text())["experiments"][EXPERIMENT]
+        after = json.loads(out.read_text())["experiments"][EXPERIMENT]
+        if after["_fixed_comparisons"] != before["_fixed_comparisons"]:
+            raise RuntimeError("method changed an evaluator-owned comparison")
         hidden = json.loads((ws / "eval" / "test" / "locomo_test.json").read_text())
         original = json.loads((ROOT / "eval" / "test" / "locomo_test.json").read_text())
         (RESULTS / "shortcut_side_effects.json").write_text(json.dumps({
@@ -102,7 +108,7 @@ def phase_escapes() -> Path:
     out = RESULTS / "test_escapes.json"
     scripts = [HERE / "shortcuts" / f"{name}.sh" for name in ESCAPES]
     cmd = [sys.executable, str(ROOT / "eval" / "test" / "evaluate_retrieval.py"), *map(str, scripts),
-           "--output", str(out), "--per-question-dir", str(RESULTS / "per_question_test_escapes")]
+           "--output", str(out), "--per-question-dir", str(PRIVATE_AUDIT / "per_question_test_escapes")]
     run(cmd, ROOT, RESULTS / "test_escapes.log")
     return out
 
@@ -200,9 +206,9 @@ def summarise() -> None:
     valid = [k for k in cohort if status[k]["valid"]]
     stds_valid = {m: population_std([cohort[k][m] for k in valid]) for m in spec}
 
-    per_q = load_per_question(RESULTS / "per_question_test")
-    per_q.update({k: v for k, v in load_per_question(RESULTS / "per_question_test_shortcuts").items() if k != REFERENCE})
-    per_q.update({f"{k}_realws": v for k, v in load_per_question(RESULTS / "per_question_test_escapes").items()})
+    per_q = load_per_question(PRIVATE_AUDIT / "per_question_test")
+    per_q.update({k: v for k, v in load_per_question(PRIVATE_AUDIT / "per_question_test_shortcuts").items() if k != REFERENCE})
+    per_q.update({f"{k}_realws": v for k, v in load_per_question(PRIVATE_AUDIT / "per_question_test_escapes").items()})
     rows = {}
     for name, metrics in cohort.items():
         row = {
@@ -225,7 +231,7 @@ def summarise() -> None:
     seed_ranges = {m: max(cohort[s][m] for s in seeds) - min(cohort[s][m] for s in seeds) for m in spec}
     seed_ranks = [rows[s]["rank_delta_all_runs_norm"] for s in seeds]
     summary = {
-        "rank_definition": "sum_m |coef_m| * directed (x_m - reference_m) / population_std_m over this audit cohort",
+        "rank_definition": "experiment weight (1) * sum_m |coef_m| * directed (x_m - reference_m) / population_std_m over this audit cohort; diagnostic only, official ranking reads scoring/scores_test.json results",
         "coefficients": {m: spec[m]["coefficient"] for m in spec},
         "population_std_all_runs": stds_all,
         "population_std_valid_runs": stds_valid,
@@ -257,16 +263,25 @@ def main() -> None:
     if RESULTS.exists():
         shutil.rmtree(RESULTS)
     RESULTS.mkdir(parents=True)
-    jobs = []
-    workers = max(2, min(8, os.cpu_count() or 2))
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        for group, scripts in VARIANT_GROUPS.items():
-            jobs.append(pool.submit(phase_eval, "test", group, scripts))
-            jobs.append(pool.submit(phase_eval, "train", group, scripts))
-        jobs.append(pool.submit(phase_shortcuts))
-        jobs.append(pool.submit(phase_escapes))
-        for job in jobs:
-            job.result()
+    for name in ("per_question_test_shortcuts", "per_question_test_escapes"):
+        path = PRIVATE_AUDIT / name
+        if path.exists():
+            shutil.rmtree(path)
+    # The official reference and baselines ran alone in reproduce.sh. Reuse
+    # those raw per-question records; do not run them beside audit variants.
+    for split in ("train", "test"):
+        shutil.copy(ROOT / "scoring" / f"scores_{split}.json", RESULTS / f"{split}_registry.json")
+        dest = PRIVATE_AUDIT / f"per_question_{split}"
+        if dest.exists():
+            shutil.rmtree(dest)
+        shutil.copytree(PRIVATE_AUDIT / f"official_{split}", dest)
+    for group, scripts in VARIANT_GROUPS.items():
+        if group == "registry":
+            continue
+        for split in ("test", "train"):
+            phase_eval(split, group, scripts)
+    phase_shortcuts()
+    phase_escapes()
     summarise()
 
 

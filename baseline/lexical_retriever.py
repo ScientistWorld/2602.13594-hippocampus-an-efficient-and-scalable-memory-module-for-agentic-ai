@@ -52,7 +52,7 @@ class BM25Index:
         self.k1, self.b = k1, b
 
     def search(self, question: str, top_k: int) -> list[str]:
-        terms = set(tokenize(question))
+        terms = sorted(set(tokenize(question)))
         scored = []
         for index, tf in enumerate(self.tfs):
             norm = self.k1 * (1 - self.b + self.b * self.lengths[index] / self.avg_len)

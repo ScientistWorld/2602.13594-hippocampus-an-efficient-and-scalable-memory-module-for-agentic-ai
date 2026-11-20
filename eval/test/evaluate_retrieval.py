@@ -5,8 +5,8 @@ Runs every registered retriever (scripts/retrievers/*.sh, or explicit scripts)
 on six held-out LoCoMo conversations, then scores the returned entry IDs
 against PRIVATE questions and evidence labels that exist only in eval/test/
 (eval/test/private_questions.json, built into eval/test/locomo_test.json by
-eval/test/prepare_test_split.py). None of these questions is public, and none
-of their evidence turns is cited by any public LoCoMo question.
+eval/test/prepare_test_split.py). None of these questions is public. Both previously cited and uncited
+turns supply evidence, so public evidence lists cannot identify the answers.
 
 Integrity rules enforced here:
 * Labels are loaded into memory before any retriever runs.
@@ -54,8 +54,8 @@ RETRIEVER_CPU_LIMIT_S = 4 * 3600
 # Retrievers run in their own user, mount and PID namespaces: eval/ and .git are
 # covered by empty read-only mounts, the mounts are locked by a second nested
 # user namespace (they cannot be unmounted from inside), and the evaluator's
-# processes are invisible. If the host does not allow unprivileged namespaces
-# the evaluator falls back to the sandboxed working directory and records it.
+# processes are invisible. If the host does not allow unprivileged namespaces, evaluation fails
+# closed: no retriever runs with readable test labels.
 ISOLATION_INNER = r"""
 set -e
 root="$1"; shift
@@ -153,7 +153,6 @@ def probe_isolation() -> tuple[bool, str]:
         proc = subprocess.run(
             isolation_prefix() + ["bash", "-c", check, "probe", str(ROOT)],
             capture_output=True,
-            timeout=120,
         )
     except (OSError, subprocess.TimeoutExpired) as exc:
         return False, f"probe failed: {exc}"
@@ -176,10 +175,11 @@ def run_retriever(
         launch = script
     with log_path.open("w") as log:
         env = dict(os.environ)
+        env["PYTHONHASHSEED"] = "0"
         env["PATH"] = f"{sandbox.parent / 'bin'}{os.pathsep}{env.get('PATH', '')}"
         command = ["bash", str(launch), str(input_path), str(output_path)]
         proc = subprocess.run(
-            (isolation_prefix() + command) if isolate else command,
+            isolation_prefix() + command,
             cwd=sandbox,
             env=env,
             stdout=log,
@@ -187,7 +187,7 @@ def run_retriever(
             preexec_fn=_limit_cpu,
         )
     if proc.returncode != 0:
-        tail = log_path.read_text()[-600:]
+        tail = log_path.read_text(errors="replace")[-600:]
         raise RunFailure(f"retriever exited with code {proc.returncode}: {tail}")
     if not output_path.is_file():
         raise RunFailure("retriever wrote no output file")
@@ -197,12 +197,20 @@ def parse_rows(output_path: Path, data: dict) -> dict[str, list[str]]:
     questions = data["_questions"]
     entries = data["_entries"]
     rankings: dict[str, list[str]] = {}
-    for line_no, line in enumerate(output_path.read_text().splitlines(), start=1):
+    # Bound parsing and turn every malformed artifact into a complete failure
+    # vector. Extra fields may exist but can never supply a scored number.
+    try:
+        if output_path.stat().st_size > max(1_048_576, len(questions) * 16_384):
+            raise RunFailure("retriever output exceeds the JSONL size limit")
+        output_text = output_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise RunFailure(f"cannot read retriever output: {exc}") from exc
+    for line_no, line in enumerate(output_text.splitlines(), start=1):
         if not line.strip():
             continue
         try:
             row = json.loads(line)
-        except json.JSONDecodeError as exc:
+        except (ValueError, RecursionError) as exc:
             raise RunFailure(f"line {line_no}: invalid JSON") from exc
         if not isinstance(row, dict):
             raise RunFailure(f"line {line_no}: row is not an object")
@@ -295,6 +303,30 @@ def failed_metrics(data: dict) -> dict[str, float]:
     }
 
 
+def fixed_comparisons(data: dict) -> dict:
+    """Comparison procedures are frozen here, never imported from a method.
+
+    These diagnostics are not leaderboard entries; only results are ranked.
+    """
+    import importlib.util
+    path = Path(__file__).with_name("fixed_baselines.py")
+    spec = importlib.util.spec_from_file_location("fixed_memory_baselines", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    comparison = {}
+    for name, rankings in module.rankings(data, MAX_RETRIEVED).items():
+        metrics, _ = aggregate(per_question(rankings, data))
+        comparison[name] = metrics
+    lengths = {
+        c["conversation_id"]: sum(len(tokens(render(e))) for e in c["entries"])
+        for c in data["conversations"]
+    }
+    comparison["full_history_context_tokens"] = (
+        sum(lengths[q["conversation_id"]] for q in data["questions"]) / len(data["questions"])
+    )
+    return comparison
+
+
 def discover(registry: Path) -> list[Path]:
     return sorted(path for path in registry.glob("*.sh") if path.is_file())
 
@@ -306,6 +338,7 @@ def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, kee
     results: dict[str, dict[str, float]] = {}
     status: dict[str, dict] = {}
     categories: dict[str, dict[str, float]] = {}
+    comparisons = fixed_comparisons(data)
     with tempfile.TemporaryDirectory(prefix="memory_eval_") as tmp:
         tmp_path = Path(tmp)
         input_path = tmp_path / "memory_input.json"
@@ -318,6 +351,8 @@ def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, kee
             output_path = tmp_path / f"{name}.jsonl"
             log_path = tmp_path / f"{name}.log"
             try:
+                if not isolate:
+                    raise RunFailure(f"required test-file isolation unavailable: {isolation_note}")
                 run_retriever(script, input_path, output_path, sandbox, log_path, isolate)
                 rankings = parse_rows(output_path, data)
                 records = per_question(rankings, data)
@@ -336,7 +371,7 @@ def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, kee
                     (per_question_dir / f"{name}.jsonl").write_text(
                         "".join(json.dumps(r) + "\n" for r in records)
                     )
-            except RunFailure as exc:
+            except (RunFailure, OSError, UnicodeError) as exc:
                 results[name] = failed_metrics(data)
                 status[name] = {"valid": False, "reason": str(exc.args[0])}
                 if len(exc.args) > 1:
@@ -368,6 +403,7 @@ def evaluate(scripts: list[Path], data: dict, per_question_dir: Path | None, kee
                 "results": results,
                 "_status": status,
                 "_category_recall": categories,
+                "_fixed_comparisons": comparisons,
             }
         },
     }

@@ -1,3 +1,20 @@
+# Final hardening: review follow-up
+
+Verification is queued as one sequential CPU job. The report below this section records the earlier hardening and is historical; its 955-question results are superseded by the 659-question private set. Final measured tables will be filled from the queued job, not inferred from earlier scores.
+
+The later `REVIEW.md` correctly identified public LoCoMo labels as a route to perfect answers. The final test uses 659 newly authored questions with evidence-turn IDs on the six held-out conversations, kept only in `eval/test/`. All have support notes from the prior answer/evidence review. Public questions remain on the visible training split. The private set includes both turns cited by public questions and previously uncited turns, so a public evidence list is not an answer key. Fixed the private assembly script to read the complete verified sources instead of the incomplete calibrated drafts; this preserves the released questions.
+
+Additional fixes from the final audit:
+- Removed the readable-file fallback: required user/mount/PID isolation hides `eval/` and `.git`, including absolute paths. If isolation fails, every method gets every worst metric, and no method runs.
+- Unreadable UTF-8, absent files, malformed/deep JSON and oversized outputs receive complete failure vectors rather than aborting evaluation. Scored values still come only from entry IDs and the evaluator's corpus.
+- Froze BM25 and recency comparison procedures inside each evaluator. The methods' editable baseline files cannot change comparison diagnostics.
+- Run the official reference and baselines alone, then audit variants sequentially. Keep raw outputs and paired records behind `eval/test/`; keep shortcut scores only in this audit report and its supporting summaries.
+- Freeze every scored reference metric from the final official run; preserve all paper-reported numbers under `_paper_reported` unchanged. No coefficient changes.
+
+Known limitation to verify and report plainly: the current reproduction is much weaker than exhaustive BM25. The evaluator cannot turn that into a successful reproduction of the paper's full joint claim. The supplied implementation uses the Appendix G hashing formulation and a stopword keyword extractor instead of the paper's LLM prompt; no substitute algorithm is introduced in this patch. Neither latency nor downstream LLM answer quality is established by evidence-retrieval scores.
+
+---
+
 # Hardening Report (iteration 11)
 
 ## Summary

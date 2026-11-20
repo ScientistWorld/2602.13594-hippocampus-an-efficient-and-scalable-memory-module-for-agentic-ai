@@ -240,3 +240,7 @@ redteam/hardening/results/per_question_*/
 eval/test/authoring/dumps/
 eval/test/authoring/drafts/
 
+
+# Private test-time raw outputs and paired records stay behind eval isolation.
+eval/test/audit/
+redteam/hardening/results/*.log

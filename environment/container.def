@@ -42,7 +42,7 @@ From: python:3.11-slim
 
 %post
     apt-get update && apt-get install -y --no-install-recommends \
-        tmux nano vim-tiny less curl wget git && \
+        tmux nano vim-tiny less curl wget git util-linux mount && \
     ln -sf /usr/bin/vim.tiny /usr/bin/vim && \
     rm -rf /var/lib/apt/lists/*
 
