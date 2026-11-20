@@ -1,6 +1,8 @@
 # Once you set action to 'submit' or 'done', STOP immediately.
 # Do NOT sleep, poll, or wait for jobs. The system reads this file
 # only after your turn ends.
-action: done
+action: pending
+gpus: 0
+test: false
 milestone: core_claim_plus
-notes: "Hardened gym on LoCoMo with held-out test run by the evaluator (IDs-only scoring, failure gates). Reference recall@10 24.42; seed rank range 0.083. Better variant +1.20 (CI 1.04-1.36), weaker -0.98 / failed. All REDTEAM shortcuts tie or fail except deliberate absolute-path reads of eval/ (documented in HARDENING.md)."
+notes: ""
