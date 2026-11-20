@@ -1,4 +1,4 @@
-> **Superseded (iteration 11):** this file describes the earlier synthetic-benchmark gym. The current gym (LoCoMo, evaluator-run retrievers) is described in `HARDENING.md`, `briefing/` and `scoring/`.
+> **Historical progress below:** the current result and unresolved requirements are in `HARDENING.md`. Final integrity review withdraws the earlier core-claim milestone; current milestone is `none`.
 
 # Progress
 
@@ -63,3 +63,9 @@ A lexical baseline sanity check reaches 100% `hit_at_1` on the current synthetic
 ## Final review follow-up (2026-11-20)
 
 Private-question data and prior audit were already present, but the report and frozen reference were stale. Prepared one combined verification job: require test-file isolation; turn malformed/unreadable output into complete failure vectors; freeze evaluator-owned baseline comparisons; deterministic BM25 summation; sequential official runs and audit; retain private raw outputs for paired checks and rescoring. Fixed private assembly to exactly reproduce the released 659 questions from verified sources. Full paper claim and BM25/reference calibration remain limitations to report after verification.
+
+## Final audit result (2026-11-20)
+
+Job `370ea91b-ced` completed with exit code 0. Required isolation worked for all real runs; its intentionally denied preflight produced complete failure vectors without launching a method. The job ran official reference and baselines alone, then all variants/attacks sequentially, froze all five reference metrics, and passed `validate.py --compare`. Reference private metrics are unchanged by the final patches. Raw outputs and paired records are under `eval/test/audit/`; official score files contain only registered reference/baselines.
+
+Final recall@10: reference 26.39, reranker 38.34, stronger context variant 74.72, BM25 69.05, weaker 16-bit 10.96; seed range 1.58. Paired intervals show the desired stronger/weaker ordering. File-read attacks and malformed-output attacks fail completely; mutation fixtures perform genuine reference retrieval and get unchanged scores. Public-label BM25 priors still outrank the reference, and the simple BM25 baseline remains much better. These and the missing paper LLM keyword step are explicitly unresolved. Current milestone is `none` under the strict fidelity rule, superseding earlier claims. Final `scripts/run.sh` reproduces the reference end to end; the separate full audit remains available.

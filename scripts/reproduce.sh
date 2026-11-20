@@ -9,6 +9,6 @@ python method/wavelet_selftest.py
 bash scripts/evaluate_train.sh --per-question-dir eval/test/audit/official_train --keep-outputs eval/test/audit/raw_train
 # scores.json is the visible (train-split) reproduction; same protocol as evaluate.sh.
 cp scoring/scores_train.json scoring/scores.json
-if [ -d eval/test ]; then
+if [ -f eval/test/evaluate_retrieval.py ]; then
   bash scripts/evaluate_test.sh --per-question-dir eval/test/audit/official_test --keep-outputs eval/test/audit/raw_test
 fi

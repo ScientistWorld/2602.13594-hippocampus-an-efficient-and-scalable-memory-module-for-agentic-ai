@@ -1,3 +1,0 @@
-[test] isolation: user+mount+pid namespaces; eval/ and .git hidden
-[test] hippocampus_seed14: {"evidence_recall_at_10": 26.22913505311078, "evidence_hit_at_1": 9.711684370257966, "answer_token_recall": 46.05681626278994, "worst_category_recall": 10.919540229885056, "avg_context_tokens": 505.1896813353566}
-[test] hippocampus_seed15: {"evidence_recall_at_10": 27.80981284774913, "evidence_hit_at_1": 8.34597875569044, "answer_token_recall": 46.14563243848708, "worst_category_recall": 12.64367816091954, "avg_context_tokens": 511.8634294385432}

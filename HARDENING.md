@@ -1,149 +1,108 @@
-# Final hardening: review follow-up
+# Final hardening report
 
-Verification is queued as one sequential CPU job. The report below this section records the earlier hardening and is historical; its 955-question results are superseded by the 659-question private set. Final measured tables will be filled from the queued job, not inferred from earlier scores.
+Job 370ea91b-ced completed successfully on 2026-11-20. Measured better and weaker variants rank in the right direction, beyond seed noise. The evaluator rejects the tested file-reading and malformed-output attacks and recomputes all scores from entry IDs.
 
-The later `REVIEW.md` correctly identified public LoCoMo labels as a route to perfect answers. The final test uses 659 newly authored questions with evidence-turn IDs on the six held-out conversations, kept only in `eval/test/`. All have support notes from the prior answer/evidence review. Public questions remain on the visible training split. The private set includes both turns cited by public questions and previously uncited turns, so a public evidence list is not an answer key. Fixed the private assembly script to read the complete verified sources instead of the incomplete calibrated drafts; this preserves the released questions.
+**The gym still does not meet every requested scientific criterion.** Exhaustive BM25 substantially outranks the reference; public-label priors also still outrank it. The reference omits the paper's LLM keyword extraction, and the scored quantities are retrieval proxies rather than the paper's end-to-end answer metrics. These are unresolved failures, not successful headroom checks. The earlier core_claim_plus milestone is withdrawn under the reproduction-integrity rule; the current milestone is **none**.
 
-Additional fixes from the final audit:
-- Removed the readable-file fallback: required user/mount/PID isolation hides `eval/` and `.git`, including absolute paths. If isolation fails, every method gets every worst metric, and no method runs.
-- Unreadable UTF-8, absent files, malformed/deep JSON and oversized outputs receive complete failure vectors rather than aborting evaluation. Scored values still come only from entry IDs and the evaluator's corpus.
-- Froze BM25 and recency comparison procedures inside each evaluator. The methods' editable baseline files cannot change comparison diagnostics.
-- Run the official reference and baselines alone, then audit variants sequentially. Keep raw outputs and paired records behind `eval/test/`; keep shortcut scores only in this audit report and its supporting summaries.
-- Freeze every scored reference metric from the final official run; preserve all paper-reported numbers under `_paper_reported` unchanged. No coefficient changes.
+## Review follow-up and final setup
 
-Known limitation to verify and report plainly: the current reproduction is much weaker than exhaustive BM25. The evaluator cannot turn that into a successful reproduction of the paper's full joint claim. The supplied implementation uses the Appendix G hashing formulation and a stopword keyword extractor instead of the paper's LLM prompt; no substitute algorithm is introduced in this patch. Neither latency nor downstream LLM answer quality is established by evidence-retrieval scores.
+REVIEW.md identified that downloading public LoCoMo supplied the old held-out answers. The final hidden test instead uses **659 newly authored, evidence-checked questions** on six held-out conversations: single-hop 307, temporal 163, multi-hop 131, open-domain 58. Questions, answers, evidence IDs, support notes, assembly code and the merged corpus live only in eval/test/. The 581 public questions on four other conversations remain the visible training split. All methods receive the same label-free histories and questions at evaluation time.
 
----
+The private questions include both publicly cited and previously uncited evidence turns. A public evidence list therefore does not identify the private answers exactly. The private set was already present at the start of this final audit. Fixed its assembly script to read the complete verified/ and supplement/ sources instead of incomplete calibration drafts, and verified exact reconstruction of the released questions. No released question or label changed.
 
-# Hardening Report (iteration 11)
+The previous report's 955-question public test is superseded. Its historical measurements below are identified separately. No private answer or question-level scoring record was moved into the visible workspace.
 
-## Summary
+## Changes in this iteration
 
-The old gym scored a 72-question templated synthetic set whose labels sat in `data/`. It also trusted self-reported operation counts and evidence text. Exhaustive lexical matching solved it (100%), and seed noise (rank range 2.17) was larger than the weaker-variant effect.
+- **Required isolation:** removed the readable-file fallback. Methods run in user, mount and PID namespaces with locked empty mounts over eval/ and .git. Relative paths, resolved workspace paths, /proc roots and unmount attempts were tested. If isolation fails, no method runs and every method gets all five failure values. The container explicitly installs the required mount/namespace tools.
+- **Complete failure accounting:** missing output, invalid UTF-8, malformed/deep JSON, oversized output, duplicate/missing questions, invalid IDs and budget violations fail the whole run. Every quality metric becomes zero and context cost becomes the largest possible under the ten-entry budget. Below-5% recall receives the same vector. Raw diagnostics outside results cannot earn rank.
+- **Independent measurements:** only ranked entry IDs are accepted. Context and every metric are rebuilt from the evaluator's loaded corpus and labels. Submitted text, gold, scores, flags, operation counts and verdicts have no authority.
+- **Fixed comparisons:** independent frozen BM25 and recency implementations live inside each split's evaluator. Neither imports editable baseline or method code. Comparison diagnostics and full-history cost are computed before methods run. Poisoning visible baseline code left them unchanged.
+- **Reproducible runs:** deterministic summation, PYTHONHASHSEED=0 and fixed reference seed 13. Official reference and baselines ran sequentially, with no other audit retriever alongside them. Variants also ran sequentially. Removed the isolation probe's wall-clock timeout. The method path has a four-CPU-hour process limit and no wall-clock cutoff.
+- **Evidence and packaging:** raw official/variant outputs and paired records stay under eval/test/audit/, behind isolation. Every reference metric was refreshed from the official run, replacing the stale single-metric entry. Official score files contain only registered reference/baseline runs. The default scripts/run.sh again reproduces the reference end to end; the full audit remains separately runnable.
 
-The rebuilt gym uses the paper's own benchmark, LoCoMo:
-- 4 visible training conversations (581 questions).
-- 6 held-out test conversations (955 questions) that exist only in `eval/test/`.
+The contract preflight exercised both independent evaluators, including forced isolation denial, and checked private evidence IDs/support records. The job ran the DWM self-test and python validate.py --compare; all passed. Initial "isolation: denied" stderr lines are the intentional fail-closed preflight, followed by successful isolation for real runs.
 
-`scripts/evaluate_test.sh` runs every retriever in `scripts/retrievers/` on a label-free copy of the held-out conversations. The run happens in a sandboxed view of the workspace that has no `eval/` and no `.git`. The evaluator reads only the ranked entry IDs. Every scored number is recomputed from its own corpus and labels.
+## Reference before and after
 
-Results on the hidden test:
-- Better results now score higher and worse results lower, by far more than seed noise.
-- Every major shortcut from `REDTEAM.md` now ties or fails.
-- One shortcut is left open: deliberately reading the evaluator's label file through an absolute path. It can't be closed inside a shared container.
+| Setting | Recall@10 | Hit@1 | Answer-token recall | Worst category | Context tokens |
+|---|---:|---:|---:|---:|---:|
+| Previous report: 955 public held-out questions | 24.42 | 9.32 | 39.60 | 12.71 | 491.1 |
+| Private set on disk before final fixes | 26.39 | 9.10 | 46.25 | 10.49 | 507.8 |
+| Final official rerun: 659 private questions | **26.39** | **9.10** | **46.25** | **10.49** | **507.8** |
 
-All numbers below come from job `9aae9672-758` (`redteam/hardening/results/`, produced by `python redteam/hardening/run_hardening.py`).
+The private reference vector is exactly unchanged by final hardening. Public-to-private differences measure changed questions, not an improved method. The official test vector exactly matches the audit's independently run reference in its copied workspace.
 
-**How rank delta is computed:** Σ |coefficient| × improvement over the reference, taken in its better direction, divided by the metric's standard deviation across the 21 runs of this audit (failed runs included at their failure values). Valid-runs-only normalisation gives the same ordering (`summary.json`).
+Train reference recall is 23.80 versus test 26.39. BM25 is 56.51 versus 69.05, so private questions are easier for lexical retrieval; comparable difficulty is imperfect. Train/test context costs are 493.1/507.8 for the reference and 347.2/349.1 for BM25. Raw recency recall is 0.90/1.13; both fail the utility floor.
 
-**How CIs are computed:** paired bootstrap over questions, so every method is scored on the same resampled questions.
+## Do better results score higher?
 
-## What was fixed
+Yes for measured variants. The final audit contains **34 attempts**, including 16 complete failures. Its diagnostic rank delta adds experiment weight times each metric's absolute coefficient times directed improvement over the reference divided by population standard deviation across those attempts. Direction comes only from higher_is_better; a constant metric contributes zero. Valid-only normalization preserves the main better/reference/weaker ordering.
 
-| Requirement | Old gym | Now |
+Only experiment results in scoring/scores_test.json (or scores_train.json for train) are ranked by the gym. These audit deltas are diagnostic. Different future populations change normalization and tradeoffs.
+
+The "before" column uses the 29-attempt private audit present before the final patches (commit e4e2191, redteam/hardening/results/summary.json). Raw metrics are identical; adding parser-failure controls changed normalization, not outcomes. All variants were rerun from final code.
+
+| Method | Recall before → after | Rank delta before → after | Final paired recall difference, 95% CI | Final paired rank-delta CI |
+|---|---:|---:|---|---|
+| Reference | 26.39 → 26.39 | 0 → 0 | — | — |
+| Candidate reranking with BM25 | 38.34 → 38.34 | +1.712 → **+1.783** | +11.95 [9.72, 14.42] | [1.49, 2.04] |
+| BM25 with adjacent-turn context and stemming | 74.72 → 74.72 | +4.912 → **+5.097** | +48.33 [44.58, 52.19] | [4.68, 5.42] |
+| Exhaustive BM25 baseline | 69.05 → 69.05 | +4.220 → **+4.378** | +42.67 [39.05, 46.57] | [3.98, 4.70] |
+| IDF weighting variant | 22.38 → 22.38 | −0.250 → **−0.257** | −4.00 [−6.27, −1.71] | [−0.47, −0.06] |
+| Weaker, 16-bit signatures | 10.96 → 10.96 | −1.199 → **−1.237** | −15.43 [−18.42, −12.20] | [−1.52, −0.95] |
+| Previous configuration | 13.38 → 13.38 | −0.943 → **−0.975** | −13.00 [−16.45, −9.20] | [−1.30, −0.66] |
+| Weaker, one-bit signatures | failed → failed | −2.771 → **−2.832** | raw recall 2.45 | — |
+
+Intervals use 1,000 paired bootstrap question resamples, seed 0, with the same resampled inputs for each method and reference. Table point differences are full-test means; the summary also records bootstrap means. These intervals describe question sampling on six fixed conversations, not uncertainty across new conversations.
+
+Reference seeds 13/14/15 give recalls 26.39/26.23/27.81: **1.58-point range**, versus the reranker's 11.95-point gain and the 16-bit variant's 15.43-point loss. Their rank range is **0.086**, versus +1.783 and −1.237. Fixing the seed removes this variation from stored reference scores. In REDTEAM.md's original synthetic audit the honest gain was +3.173, one-bit loss −1.317 and seed range 2.173; that weak-effect/noise problem is resolved on this larger test.
+
+## Major shortcuts: fixes and retests
+
+Historical "before" deltas come from REDTEAM.md's synthetic test unless identified otherwise. Their scales/cohorts differ from this audit. Every final failure has quality vector (0,0,0,0) and context cost **784.9878603945372**, producing delta **−2.832** in this cohort.
+
+| Shortcut | Before | Defense / final result |
 |---|---|---|
-| Test labels hidden | Labels in `data/memory_qa.json`; the generator in `data/` regenerated them | Test labels only in `eval/test/locomo_test.json`, built only by `eval/test/prepare_test_split.py`. Synthetic data and generator deleted. |
-| No-training method scored on unseen instances | Scored saved outputs on visible questions | The evaluator runs each retriever on held-out conversations, from a label-free input file in a private temp directory |
-| Scored numbers recomputed | Evidence text, token count and `bit_operations` taken from the artifact | Only `retrieved_entry_ids` is read. Context text, answer-token recall and token footprint are rebuilt from the evaluator's corpus. Operation counts are not scored. |
-| Comparison side fixed by `eval/` | Ground truth reloaded from a mutable `data/` file | Corpus, labels, budget (10 entries), failure floor (5% recall) and test size are fixed in `eval/test/`. Labels are loaded before any retriever runs. |
-| Impossible values / failed constraints | Negative ops accepted; empty evidence outranked the reference | Malformed, over-budget, duplicate, unknown or cross-conversation output, or recall below 5%, is scored as failed: quality 0 and the maximum context the budget allows |
-| Effect larger than seed noise | 36 questions; seed rank range 2.17 | 955 questions; seed rank range **0.083**; recall range 1.84 points |
-| Brute force must not solve the test | Exhaustive lexical baseline 100% | Exhaustive BM25: **55.97%** recall@10 |
-| Train/test comparable | n/a | Reference recall 23.80 (train) vs 24.42 (test); BM25 56.51 vs 55.97 |
-| `evaluate_test.sh` with no args scores every method | Enumerated saved outputs | Enumerates `scripts/retrievers/*.sh`, the same interface as train, with no method name hardcoded |
+| Copy visible test labels | +3.659 | Private labels under eval/test/; train-label lookup finds no test evidence and **fails, −2.832**. |
+| Rebuild synthetic generator answers | +3.659 | Old generator/synthetic test removed in earlier hardening. Private assembly stays only in eval/test/. No old-generator replay is applicable. |
+| Label IDs with empty evidence | +3.605 | No visible private labels. For legitimate IDs, context and cost are rebuilt; empty/forged text cannot erase cost. |
+| Read evaluator labels by relative/absolute path | Absolute read +7.248 in previous 955-question report; private pre-patch audit already failed when namespaces worked | Required isolation also closes fallback. Both paths **fail, −2.832**, in copied and real workspaces. |
+| Escape through /proc or unmount eval/ | Not in original audit | Locked mounts/PID isolation: **fails, −2.832** in real workspace. Forced isolation denial also fails without launching a method. |
+| Forge text / row gold / scores / omit, negate or null operations | +0.993 / 0 / tiny positive / +0.046 / evaluator crash | Fields ignored. Combined fixture executes real reference retrieval and **ties, 0** on every metric. Wrong IDs plus forged answer fail. |
+| Relabel visible data / replace corpus | +4.393 / +4.505 | Evaluator owns loaded corpus. Fixture executes real reference and **ties, 0**. Visible train file was changed in the attack copy; private labels were not. |
+| Overwrite hidden labels on disk | Tie in previous report | Hidden/read-only eval mount; private file unchanged. Fixture runs genuine reference and **ties, 0**. |
+| Poison visible baselines | Tie | Comparison procedures owned by eval/; assertion confirms them unchanged. Genuine reference retrieval **ties, 0**. |
+| Prewrite perfect score files | Tie | Evaluator writes scores last; fixture runs real reference and **ties, 0**. |
+| Empty retrieval / wrong IDs plus forged answer | −2.221 / −1.322 | Utility floor/rebuilt context: **both fail, −2.832**. |
+| Return 50 entries | Not in original audit | Ten-entry constraint: **fails, −2.832**. |
+| Invalid UTF-8 / malformed JSON / missing file / duplicate question | Previously risked evaluator abort or absent result | All four new attacks **fail, −2.832**, with every metric present. |
+| Ten longest turns to harvest answer words | −1.497 on previous public test | Rebuilt cost/evidence scoring: recall **5.17**, 775.1 tokens, delta **−1.833**. |
+| Public LoCoMo question/evidence lookup | Revealed old public answers | Fixture fails on a nonexistent public evidence ID, **−2.832**. This alone does **not** prove resistance to corrected public-label lookup. See open shortcuts. |
 
-## Better and weaker results (hidden test)
+A tie is not counted as closing a major shortcut merely because it fails to beat the reference. Each tied fixture performs full genuine reference retrieval; the attempted extra mutation changes no metric. It shows no shortcut to producing those predictions. A new cheap procedure producing reference-quality predictions would need separate assessment.
 
-| Run | Recall@10 | Hit@1 | Answer-token recall | Worst category | Context tokens | Rank delta | Paired recall diff (95% CI) | Paired rank-delta CI |
-|---|---:|---:|---:|---:|---:|---:|---|---|
-| **reference `hippocampus` (seed 13)** | 24.42 | 9.32 | 39.60 | 12.71 | 491.1 | 0 | | |
-| reference, seed 14 | 26.26 | 9.21 | 40.45 | 12.06 | 491.7 | +0.083 | +1.84 [−1.13, +4.80] | [−0.12, +0.28] |
-| reference, seed 15 | 25.00 | 9.42 | 39.73 | 12.52 | 490.7 | +0.027 | +0.62 [−2.28, +3.39] | [−0.17, +0.22] |
-| better: signature candidates re-ranked by BM25 | 36.95 | 28.06 | 45.35 | 20.08 | 401.9 | **+1.195** | +12.56 [+10.42, +14.72] | [+1.04, +1.36] |
-| exhaustive BM25 baseline | 55.97 | 31.94 | 55.49 | 26.19 | 332.4 | +2.436 | +31.57 [+28.42, +34.64] | [+2.22, +2.65] |
-| variant: frequency (IDF)-weighted keywords | 23.25 | 7.33 | 39.99 | 10.77 | 498.8 | −0.116 | −1.13 [−2.78, +0.46] | [−0.24, −0.02] |
-| weaker: 16-bit signatures | 10.87 | 3.25 | 33.28 | 5.38 | 549.9 | **−0.981** | −13.56 [−16.37, −10.87] | [−1.18, −0.82] |
-| weaker: previous iteration's configuration | 12.40 | 3.87 | 32.31 | 2.08 | 471.5 | −0.887 | −12.02 [−14.84, −9.07] | [−1.08, −0.68] |
-| weaker: one-bit signatures | failed (2.68 raw) | | | | | **−2.454** | | |
-| recency baseline | failed (1.05 raw) | | | | | −2.454 | | |
+## Shortcuts and scientific weaknesses left open
 
-**Before → after:**
-- Honest better variant: +3.17 (inside a 2.17 seed spread on 36 questions) → **+1.195**, CI [+1.04, +1.36], against a 0.083 seed range.
-- One-bit ablation: −1.32 (smaller than the seed spread) → **failed**, −2.45.
-- 16-bit ablation: −0.98, with a paired CI far from zero.
+1. **Embedded public held-out label priors remain profitable.** Private questions remove the exact public answer key, but conversation histories are public. Boosting publicly cited evidence plus BM25 gives **51.39 recall, +2.220** (before +2.148). Avoiding those turns plus BM25 gives **55.73, +3.181** (before +3.066). Avoiding them with reference candidates gives **24.44, −0.047**. These priors are forbidden, but raw-output validation cannot identify an embedded prior. They are left to the separate code grader. Both BM25 attacks lose to honest BM25 (69.05) and the context variant (74.72), yet outrank the reference, so this remains an **unclosed major shortcut**. The failed exact-lookup fixture does not establish otherwise.
+2. **Exhaustive lexical search remains a baseline-calibration failure.** It does not saturate, but recovers 69.05% of evidence with 349.1 tokens, versus reference 26.39% and 507.8. It is an honest alternative, not a loophole. The test was not scaled until exhaustive search ceased to pay. Calling this valid headroom would contradict the requested criterion. No larger-history experiment was completed.
+3. **Search cost is not measured.** Appendix F also scans signatures linearly; this is not exponential objective search. A self-reported budget cannot bind private lexical computation. CPU limits are resource guards, not scientific speed measurements. Slower honest procedures remain expressible; methods are not restricted to reference settings.
+4. **Paper fidelity and scientific quantity are incomplete.** The identifiable dual-DWM, random-indexing, Hamming search, metadata validation and exact reconstruction steps are present. The implementation uses Appendix G's Gaussian-hyperplane hashing rather than Section 3.3's top-activated coordinates, and substitutes stopword filtering for LLM keyword extraction. The missing step was not restored. Word-token context and evidence/answer-token coverage are retrieval measurements, not the paper's LLM answer F1, BLEU-1, judge score or billed LLM tokens. LongMemEval and the paper's neural/memory baselines were not reproduced. No full joint claim is established; the previous milestone overclaimed.
 
-The IDF variant is not an improvement (−0.12), and it scores slightly lower, as it should.
+## Headroom and weights
 
-## Shortcuts (hidden test)
+No scored reference metric is at its bound: quality is far below 100%, and 507.8 context tokens exceeds the minimum. Neither BM25 nor the 74.72% context variant reaches the bound. The latter is 5.67 recall points above BM25 on the same inputs; the method-specific reranker also clearly beats the reference. There is measured room for improvement, but **the baseline-calibrated headroom check still fails**. No new scored experiment was added; the private questions replace exposed public questions in the existing experiment. Weakest-category recall supplies scored pressure on open-domain and multi-hop weaknesses.
 
-| Shortcut (old name → re-run) | Before (old gym rank delta) | Fix | After |
-|---|---:|---|---:|
-| visible labels → `sc_train_label_lookup` (copies labels from `data/` by question) | +3.659 | Test questions and labels are not in `data/` | **failed** (−2.454) |
-| generator answers | +3.659 | Generator deleted; the test split is built only in `eval/test/` | no route left (not runnable) |
-| ID-only labels | +3.605 | Labels hidden; text rebuilt from IDs | no route left (same as above) |
-| forged text, omitted / negative / null operations, row gold → `sc_forged_fields` (reference IDs plus forged text, `bit_operations=-1e12`, gold, answer, score fields) | +0.993 / +3e-10 / +0.046 / crash / 0 | Only `retrieved_entry_ids` is read | **tie** (0.000) |
-| relabel dataset, replace corpus → `sc_relabel_visible_data` (rewrites `data/` labels and a corpus entry) | +4.393 / +4.505 | Evaluator uses its own corpus and labels in `eval/test/` | **tie** (0.000) |
-| new: `sc_relabel_hidden_absolute` (follows the sandbox symlink and overwrites the evaluator's label file on disk) | — | Labels are loaded into memory before retrievers run | **tie** (0.000) |
-| prewrite scores → `sc_prewrite_scores` | 0 | Evaluator writes `scores_test.json` last | **tie** (0.000) |
-| empty output → `sc_empty_output` | −2.221 | Recall floor | **failed** |
-| wrong IDs + answer text → `sc_single_wrong_id` | −1.322 | Text ignored; recall floor | **failed** |
-| new: `sc_over_budget` (50 entries) | — | Budget check | **failed** |
-| new: `sc_longest_entries` (10 longest turns, to collect answer words) | — | Context cost counted; evidence recall dominates | −1.497 |
-| new: `sc_hidden_labels_relative` (opens `eval/test/...` from its working directory) | — | Sandbox has no `eval/` | **failed** |
-| new: `sc_hidden_labels_absolute` (resolves the sandbox symlink to the real workspace and reads `eval/test/locomo_test.json`) | — | **Not closable here** | **+7.248 (still pays)** |
-| baseline poisoning | 0 (tie) | Not replayed. Baselines are context only, and the reference is frozen in `scores_test.json`. | tie by construction |
+Weights are unchanged: experiment 1; coefficient magnitudes recall 1.0, hit@1 0.4, answer coverage 0.4, weakest category 0.3, context 0.2. Lower context direction comes from higher_is_better=false, not coefficient sign. Complete failure vectors are componentwise no better than any valid run, so a failed task cannot win through cheap context or missing metrics.
 
-### Shortcuts left open
-1. **Reading the evaluator's private files at test time** (`sc_hidden_labels_absolute`; reading git objects is the same class).
-   - The retriever runs as the same user, in the same container, as the evaluator. Any file the evaluator can read, a deliberately written retriever can read by absolute path.
-   - The sandbox stops accidental and relative-path access only. Closing this fully needs OS-level isolation (a separate user or mount namespace), which this job environment does not provide.
-   - The attack is explicit tampering with `eval/`, easy to spot with a search for `eval/test`, `realpath` or `.git` in method code. `scoring/CONSTRAINTS.md` forbids it.
-2. **Embedding public LoCoMo labels.**
-   - LoCoMo is public, so a submission could hard-code its answers or evidence IDs. This is the same class as above: external labelled data, forbidden in `CONSTRAINTS.md`.
-   - It is inherent to using the paper's real benchmark, which was needed so that brute force no longer solves the test.
-3. **Search cost is not scored.**
-   - Latency and operation counts cannot be measured without timing or trusting the method, so they were removed from scoring.
-   - A slow method is therefore not penalised. This is a limit on what the gym measures (headroom), not a loophole.
+The reference delivers about **40 times less context** than full history (507.8 versus 20,461.9 words) and beats recency on evidence recall (26.39 versus 1.13 raw). These match the paper's directions on limited comparisons, but do not establish its joint claim against competitive baselines. All paper-reported results remain unchanged under _paper_reported in scoring/reference.json and are not targets on the proxy scale.
 
-## Reference before → after
+## Reproduction and verification
 
-| | Old gym (synthetic, 36 test questions) | New gym (LoCoMo held-out, 955 questions) |
-|---|---|---|
-| Reference metrics | hit@1 33.33, hit@3 55.56, F1 2.37, tokens 62.6, ops 7,468.5 (self-reported) | recall@10 **24.42**, hit@1 9.32, answer-token recall 39.60, worst category 12.71, context tokens 491.1 |
-| Seed spread | rank 2.17 (hit@1 38.9 points) | rank 0.083 (recall 1.84 points) |
+- bash scripts/run.sh: public-artifact setup, contract preflight when available, DWM self-test, sequential train/test reference and baselines, validation. No package installation in the run path.
+- python redteam/hardening/run_hardening.py: optional full sequential audit after reproduction. Audit outputs are separate; official score files remain reference/baseline only.
+- Official results: scoring/scores_test.json, scores_train.json; scores.json is the train copy. All five reproduced reference metrics are frozen in reference.json.
+- Audit evidence: redteam/hardening/results/summary.json, summary.md, split/variant aggregate JSON, side-effect assertions. Regenerable logs are ignored. Raw outputs and paired records remain only in eval/test/audit/.
+- The completed job reran final-code reference/baselines, better/weaker/seeds and fixed attacks, froze scores, and passed validate.py --compare.
 
-### Changes to the reference implementation
-These are setup and fidelity fixes. They do not change the paper's algorithm:
-- **Memories and I/O:** one memory (two DWMs) per conversation, and the new I/O contract.
-- **Faster bit levels:** bytearray bit-levels with `count`-based rank during append, and no duplicate rebuild. The DWM self-test still passes.
-- **Dense hyperplanes:** random hyperplanes are now dense Gaussian, as in the paper's Appendix G. The old 16-non-zero hyperplanes projected a lone keyword to about 0, giving near-constant all-ones signatures.
-- **Ranking:** candidates are ranked by how many query keywords co-occur in the entry span, which is the paper's "all (or many) of these query signatures co-occur". The old version summed per-position matches.
-- **Parameters:** radius 8, window ±1, keyword-alone queries. These are absent from the paper and were chosen on the training conversations only. Train recall@10: old configuration 12.6, chosen 23.8; radius 7 gives 18.4, radius 9 gives 15.9.
-- **Unchanged from the paper:** D = 512 and d = 32.
-- **Reconstruction:** returned entries are still reconstructed losslessly from the Content DWM; the evaluator ignores that text.
-
-### Does the reproduction show the paper's claim?
-- **Against lightweight memory:** the reference recovers 24.4% of evidence, against 1.05% for the most-recent-entries baseline. That is the paper's direction versus MemoryBank-style memory.
-- **Token footprint:** it delivers 491 tokens per question, against about 20.7K for the full history (42× less). That matches the direction of the paper's 14× token claim.
-- **Against exhaustive BM25:** stated plainly, exhaustive BM25 over raw text recovers more than twice as much evidence (55.97%) with fewer tokens. The paper never compared against BM25. On LoCoMo turn-level evidence, the 32-bit context signatures lose much of the lexical signal, which is where the method falls short and where the headroom lies.
-
-## Headroom check
-- **No scored reference metric is at its bound:** recall 24.4, hit@1 9.3, answer-token recall 39.6 and worst category 12.7 are all far below 100, and context tokens (491) are far above the minimum.
-- **Better variants exist:** BM25 re-ranking of the method's own candidates (+1.195) and exhaustive BM25 (+2.436) both score above the reference, beyond paired noise.
-- **Nothing is trivially at the bound:** exhaustive BM25 reaches only 56% recall.
-- **What was added:** the whole scored experiment moved to where the paper's method falls short, real long-conversation evidence retrieval on LoCoMo, and the reference and baselines were run on it.
-- **Simple baseline:** recency is clearly below the reference. It is recorded as failed, with raw numbers kept under `_status`.
-
-## Weights
-Single experiment (weight 1.0). Coefficients:
-- `evidence_recall_at_10` **1.0**: primary; the paper's accuracy axis maps to recovering the evidence.
-- `evidence_hit_at_1` 0.4 and `answer_token_recall` 0.4: ranking quality, and whether the answer reaches the context.
-- `worst_category_recall` 0.3: the paper reports all four LoCoMo groups.
-- `avg_context_tokens` −0.2: the paper's token-footprint claim; the only efficiency quantity measurable here.
-
-Latency and operation counts were the old cost metrics. They were removed because they could not be measured without trusting the method.
-
-## Could not fix
-- In-container isolation of the evaluator's files from a deliberately malicious retriever (see "Shortcuts left open").
-- The paper's LLM-answer metrics (F1, BLEU-1, LLM judge) and latency are not reproduced. They need an LLM and timing. They are kept unchanged in `scoring/reference.json` under `_paper_reported`.
-- The old audit harness (`redteam/audit.py` and the case folders) targets the deleted synthetic gym. It is kept as a historical record and is not runnable against the new gym; `redteam/hardening/` replaces it.
+Evaluator/private-label defenses are packaged and verified. Unresolved calibration, profitable public-label priors and fidelity omissions prevent claiming that all hardening/reproduction requirements are met.

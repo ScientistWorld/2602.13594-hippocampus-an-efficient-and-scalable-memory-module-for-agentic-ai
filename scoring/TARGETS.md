@@ -15,8 +15,8 @@ All targets belong to experiment `locomo_memory_retrieval` (weight 1.0). Scores 
 - Hard budget: at most 10 entries per question. Over-budget, malformed, or near-zero-recall runs (below 5% evidence recall) are scored as failed.
 
 ## Reference (hidden test, seed 13)
-HIPPOCAMPUS: recall@10 26.39, hit@1 9.10, answer-token recall 46.25, worst category 10.49, 507.8 context tokens. Exhaustive BM25 gets 69.05 recall@10 at 349.1 tokens. The most-recent-entries baseline gets 1.13 recall and is scored as failed. Returning the whole history would cost about 20.7K tokens per question.
+HIPPOCAMPUS: recall@10 26.39, hit@1 9.10, answer-token recall 46.25, worst category 10.49, 507.8 context tokens. Exhaustive BM25 gets 69.05 recall@10 at 349.1 tokens. The most-recent-entries baseline gets 1.13 recall and is scored as failed. Returning the whole history would cost about 20.5K word tokens per question.
 
 Not scored: wall-clock latency and operation counts, which cannot be measured method-agnostically without timing.
 
-The final rerun will freeze all five metrics in `reference.json`. Paper-reported answer-quality and latency numbers remain under `_paper_reported`, outside this retrieval scale. This proxy does not establish the paper's full accuracy-and-latency claim; the reference loses to BM25.
+The final isolated rerun froze all five metrics in `reference.json`. Paper-reported answer-quality and latency numbers remain under `_paper_reported`, outside this retrieval scale. This proxy does not establish the paper's full accuracy-and-latency claim; the reference loses to BM25.

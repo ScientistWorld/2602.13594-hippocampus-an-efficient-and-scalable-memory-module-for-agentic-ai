@@ -1,4 +1,0 @@
-[test] isolation: user+mount+pid namespaces; eval/ and .git hidden
-[test] better_idf_weighting: {"evidence_recall_at_10": 22.3823975720789, "evidence_hit_at_1": 6.676783004552352, "answer_token_recall": 43.705903399037126, "worst_category_recall": 13.104325699745548, "avg_context_tokens": 516.690440060698}
-[test] better_bm25_rerank: {"evidence_recall_at_10": 38.34092058674761, "evidence_hit_at_1": 35.50834597875569, "answer_token_recall": 51.06392942629425, "worst_category_recall": 23.918575063613225, "avg_context_tokens": 429.8649468892261}
-[test] better_bm25_context: {"evidence_recall_at_10": 74.71927162367221, "evidence_hit_at_1": 54.17298937784522, "answer_token_recall": 66.02941188186831, "worst_category_recall": 57.23918575063616, "avg_context_tokens": 357.8679817905918}

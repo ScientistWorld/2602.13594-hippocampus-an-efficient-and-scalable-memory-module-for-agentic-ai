@@ -1,6 +1,6 @@
 # Reproduction Milestones
 
-**Current: core_claim_plus**
+**Current: none**
 
 ## Progress Log
 
@@ -50,5 +50,11 @@
 - Comparisons: recency 1.05 (failed); full history about 20.7K tokens; exhaustive BM25 55.97. Seed range 1.84 recall points.
 - Signature-length ablation: 16-bit 10.87, 1-bit fails the floor. A better variant (BM25 re-ranking of signature candidates) reaches 36.95. Details in `HARDENING.md`.
 
+### [2026-11-20] - none (final integrity correction)
+- Job `370ea91b-ced` passed: final reference/baselines, private-question checks, sequential paired variant/shortcut audit and validation.
+- Stored private reference recall@10 is 26.39; better reranking 38.34; weaker 16-bit 10.96; seed range 1.58 points. Required isolation and complete failure scores are verified.
+- Withdrew the earlier `core_claim_plus` assessment. The implementation omits the paper's LLM keyword extraction and uses its Appendix G hashing formulation instead of Section 3.3's construction. Under the strict reproduction-integrity rule, a higher milestone is not justified.
+- BM25 still outranks the reference (69.05 versus 26.39), and embedded public-label priors remain profitable. The full scientific hardening goal is not achieved; `HARDENING.md` records these failures.
+
 ## Stop Justification
-- Completed at milestone `core_claim_plus`.
+- Packaged the completed final audit at milestone `none`, with unresolved requirements explicitly recorded. No claim of a full scientific reproduction is made.
