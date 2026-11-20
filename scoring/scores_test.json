@@ -3,16 +3,16 @@
     "locomo_memory_retrieval": {
       "_category_recall": {
         "bm25_baseline": {
-          "multi_hop": 26.192042606516292,
-          "open_domain": 34.43396226415094,
-          "single_hop": 61.96969696969696,
-          "temporal": 67.79166666666667
+          "multi_hop": 46.66666666666669,
+          "open_domain": 46.40804597701149,
+          "single_hop": 73.66992399565689,
+          "temporal": 86.40081799591002
         },
         "hippocampus": {
-          "multi_hop": 12.714598997493734,
-          "open_domain": 17.955974842767294,
-          "single_hop": 25.939393939393938,
-          "temporal": 30.833333333333336
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
         }
       },
       "_status": {
@@ -23,35 +23,35 @@
           "valid": true
         },
         "recency_baseline": {
-          "reason": "evidence_recall_at_10 1.05 is below the task floor 5.0",
+          "reason": "evidence_recall_at_10 1.13 is below the task floor 5.0",
           "unscored_raw_metrics": {
-            "answer_token_recall": 12.836771123343343,
-            "avg_context_tokens": 308.5298429319372,
+            "answer_token_recall": 16.124220947081987,
+            "avg_context_tokens": 305.86646433990893,
             "evidence_hit_at_1": 0.0,
-            "evidence_recall_at_10": 1.0471204188481675,
-            "worst_category_recall": 0.0
+            "evidence_recall_at_10": 1.1254425897824987,
+            "worst_category_recall": 0.6514657980456026
           },
           "valid": false
         }
       },
       "results": {
         "bm25_baseline": {
-          "answer_token_recall": 55.4933397284029,
-          "avg_context_tokens": 332.4492146596859,
-          "evidence_hit_at_1": 31.93717277486911,
-          "evidence_recall_at_10": 55.96634255796559,
-          "worst_category_recall": 26.192042606516292
+          "answer_token_recall": 62.39982188412669,
+          "avg_context_tokens": 349.07890743550837,
+          "evidence_hit_at_1": 48.25493171471927,
+          "evidence_recall_at_10": 69.05159332321698,
+          "worst_category_recall": 46.40804597701149
         },
         "hippocampus": {
-          "answer_token_recall": 39.60265608702625,
-          "avg_context_tokens": 491.0523560209424,
-          "evidence_hit_at_1": 9.319371727748692,
-          "evidence_recall_at_10": 24.41635502368487,
-          "worst_category_recall": 12.714598997493734
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
         "recency_baseline": {
           "answer_token_recall": 0.0,
-          "avg_context_tokens": 784.4062827225131,
+          "avg_context_tokens": 784.9878603945372,
           "evidence_hit_at_1": 0.0,
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
@@ -60,10 +60,10 @@
       "slice": "test",
       "split": {
         "category_counts": {
-          "multi_hop": 152,
-          "open_domain": 53,
-          "single_hop": 550,
-          "temporal": 200
+          "multi_hop": 131,
+          "open_domain": 58,
+          "single_hop": 307,
+          "temporal": 163
         },
         "conversations": [
           "conv-30",
@@ -75,8 +75,9 @@
         ],
         "max_retrieved": 10,
         "min_evidence_recall": 5.0,
-        "name": "locomo_heldout_conversations_v3",
-        "question_count": 955
+        "name": "locomo_heldout_private_questions_v4",
+        "question_count": 659,
+        "retriever_isolation": "user+mount+pid namespaces; eval/ and .git hidden"
       }
     }
   },

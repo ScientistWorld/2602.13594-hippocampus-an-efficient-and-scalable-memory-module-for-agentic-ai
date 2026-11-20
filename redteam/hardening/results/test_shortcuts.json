@@ -3,46 +3,58 @@
     "locomo_memory_retrieval": {
       "_category_recall": {
         "hippocampus": {
-          "multi_hop": 12.714598997493734,
-          "open_domain": 17.955974842767294,
-          "single_hop": 25.939393939393938,
-          "temporal": 30.833333333333336
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
         },
         "sc_forged_fields": {
-          "multi_hop": 12.714598997493734,
-          "open_domain": 17.955974842767294,
-          "single_hop": 25.939393939393938,
-          "temporal": 30.833333333333336
-        },
-        "sc_hidden_labels_absolute": {
-          "multi_hop": 100.0,
-          "open_domain": 100.0,
-          "single_hop": 100.0,
-          "temporal": 100.0
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
         },
         "sc_longest_entries": {
-          "multi_hop": 5.519005847953216,
-          "open_domain": 7.735849056603772,
-          "single_hop": 4.363636363636363,
-          "temporal": 8.75
+          "multi_hop": 5.407124681933841,
+          "open_domain": 2.586206896551724,
+          "single_hop": 5.374592833876221,
+          "temporal": 5.521472392638037
         },
         "sc_prewrite_scores": {
-          "multi_hop": 12.714598997493734,
-          "open_domain": 17.955974842767294,
-          "single_hop": 25.939393939393938,
-          "temporal": 30.833333333333336
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
+        },
+        "sc_public_label_avoid_bm25": {
+          "multi_hop": 39.65648854961833,
+          "open_domain": 34.770114942528735,
+          "single_hop": 59.01194353963083,
+          "temporal": 69.93865030674847
+        },
+        "sc_public_label_avoid_reference": {
+          "multi_hop": 16.704834605597966,
+          "open_domain": 12.931034482758621,
+          "single_hop": 24.3756786102063,
+          "temporal": 34.86707566462167
+        },
+        "sc_public_label_prior_bm25": {
+          "multi_hop": 36.88295165394402,
+          "open_domain": 35.632183908045974,
+          "single_hop": 54.88599348534202,
+          "temporal": 62.06543967280163
         },
         "sc_relabel_hidden_absolute": {
-          "multi_hop": 12.714598997493734,
-          "open_domain": 17.955974842767294,
-          "single_hop": 25.939393939393938,
-          "temporal": 30.833333333333336
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
         },
         "sc_relabel_visible_data": {
-          "multi_hop": 12.714598997493734,
-          "open_domain": 17.955974842767294,
-          "single_hop": 25.939393939393938,
-          "temporal": 30.833333333333336
+          "multi_hop": 15.49618320610687,
+          "open_domain": 10.488505747126435,
+          "single_hop": 27.14440825190011,
+          "temporal": 39.36605316973415
         }
       },
       "_status": {
@@ -64,7 +76,15 @@
           "valid": true
         },
         "sc_hidden_labels_absolute": {
-          "valid": true
+          "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
+          "unscored_raw_metrics": {
+            "answer_token_recall": 0.0,
+            "avg_context_tokens": 0.0,
+            "evidence_hit_at_1": 0.0,
+            "evidence_recall_at_10": 0.0,
+            "worst_category_recall": 0.0
+          },
+          "valid": false
         },
         "sc_hidden_labels_relative": {
           "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
@@ -81,11 +101,24 @@
           "valid": true
         },
         "sc_over_budget": {
-          "reason": "question conv-30:q0: 50 entries returned, budget is 10",
+          "reason": "question conv-30:p0: 50 entries returned, budget is 10",
           "valid": false
         },
         "sc_prewrite_scores": {
           "valid": true
+        },
+        "sc_public_label_avoid_bm25": {
+          "valid": true
+        },
+        "sc_public_label_avoid_reference": {
+          "valid": true
+        },
+        "sc_public_label_prior_bm25": {
+          "valid": true
+        },
+        "sc_public_locomo_labels": {
+          "reason": "question conv-47:p15: unknown entry id 'conv-47:D4:36'",
+          "valid": false
         },
         "sc_relabel_hidden_absolute": {
           "valid": true
@@ -96,8 +129,8 @@
         "sc_single_wrong_id": {
           "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
           "unscored_raw_metrics": {
-            "answer_token_recall": 5.589730513814291,
-            "avg_context_tokens": 16.869109947643977,
+            "answer_token_recall": 8.042648303741396,
+            "avg_context_tokens": 16.526555386949923,
             "evidence_hit_at_1": 0.0,
             "evidence_recall_at_10": 0.0,
             "worst_category_recall": 0.0
@@ -118,85 +151,113 @@
       },
       "results": {
         "hippocampus": {
-          "answer_token_recall": 39.60265608702625,
-          "avg_context_tokens": 491.0523560209424,
-          "evidence_hit_at_1": 9.319371727748692,
-          "evidence_recall_at_10": 24.41635502368487,
-          "worst_category_recall": 12.714598997493734
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
         "sc_empty_output": {
           "answer_token_recall": 0.0,
-          "avg_context_tokens": 784.4062827225131,
+          "avg_context_tokens": 784.9878603945372,
           "evidence_hit_at_1": 0.0,
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
         },
         "sc_forged_fields": {
-          "answer_token_recall": 39.60265608702625,
-          "avg_context_tokens": 491.0523560209424,
-          "evidence_hit_at_1": 9.319371727748692,
-          "evidence_recall_at_10": 24.41635502368487,
-          "worst_category_recall": 12.714598997493734
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
         "sc_hidden_labels_absolute": {
-          "answer_token_recall": 72.25226374248543,
-          "avg_context_tokens": 65.4628272251309,
-          "evidence_hit_at_1": 100.0,
-          "evidence_recall_at_10": 100.0,
-          "worst_category_recall": 100.0
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
         },
         "sc_hidden_labels_relative": {
           "answer_token_recall": 0.0,
-          "avg_context_tokens": 784.4062827225131,
+          "avg_context_tokens": 784.9878603945372,
           "evidence_hit_at_1": 0.0,
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
         },
         "sc_longest_entries": {
-          "answer_token_recall": 33.0830413811627,
-          "avg_context_tokens": 774.0931937172775,
-          "evidence_hit_at_1": 1.256544502617801,
-          "evidence_recall_at_10": 5.653286794648051,
-          "worst_category_recall": 4.363636363636363
+          "answer_token_recall": 41.57610300255082,
+          "avg_context_tokens": 775.1380880121396,
+          "evidence_hit_at_1": 0.30349013657056145,
+          "evidence_recall_at_10": 5.171977744056652,
+          "worst_category_recall": 2.586206896551724
         },
         "sc_over_budget": {
           "answer_token_recall": 0.0,
-          "avg_context_tokens": 784.4062827225131,
+          "avg_context_tokens": 784.9878603945372,
           "evidence_hit_at_1": 0.0,
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
         },
         "sc_prewrite_scores": {
-          "answer_token_recall": 39.60265608702625,
-          "avg_context_tokens": 491.0523560209424,
-          "evidence_hit_at_1": 9.319371727748692,
-          "evidence_recall_at_10": 24.41635502368487,
-          "worst_category_recall": 12.714598997493734
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
+        },
+        "sc_public_label_avoid_bm25": {
+          "answer_token_recall": 55.70561917599792,
+          "avg_context_tokens": 315.80273141122916,
+          "evidence_hit_at_1": 39.75720789074355,
+          "evidence_recall_at_10": 55.73343449671217,
+          "worst_category_recall": 34.770114942528735
+        },
+        "sc_public_label_avoid_reference": {
+          "answer_token_recall": 42.51781043407991,
+          "avg_context_tokens": 444.3004552352049,
+          "evidence_hit_at_1": 8.34597875569044,
+          "evidence_recall_at_10": 24.438543247344462,
+          "worst_category_recall": 12.931034482758621
+        },
+        "sc_public_label_prior_bm25": {
+          "answer_token_recall": 57.18824378153844,
+          "avg_context_tokens": 406.0773899848255,
+          "evidence_hit_at_1": 15.629742033383915,
+          "evidence_recall_at_10": 51.38846737481032,
+          "worst_category_recall": 35.632183908045974
+        },
+        "sc_public_locomo_labels": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
         },
         "sc_relabel_hidden_absolute": {
-          "answer_token_recall": 39.60265608702625,
-          "avg_context_tokens": 491.0523560209424,
-          "evidence_hit_at_1": 9.319371727748692,
-          "evidence_recall_at_10": 24.41635502368487,
-          "worst_category_recall": 12.714598997493734
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
         "sc_relabel_visible_data": {
-          "answer_token_recall": 39.60265608702625,
-          "avg_context_tokens": 491.0523560209424,
-          "evidence_hit_at_1": 9.319371727748692,
-          "evidence_recall_at_10": 24.41635502368487,
-          "worst_category_recall": 12.714598997493734
+          "answer_token_recall": 46.25011461018557,
+          "avg_context_tokens": 507.804248861912,
+          "evidence_hit_at_1": 9.104704097116844,
+          "evidence_recall_at_10": 26.38593829033889,
+          "worst_category_recall": 10.488505747126435
         },
         "sc_single_wrong_id": {
           "answer_token_recall": 0.0,
-          "avg_context_tokens": 784.4062827225131,
+          "avg_context_tokens": 784.9878603945372,
           "evidence_hit_at_1": 0.0,
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
         },
         "sc_train_label_lookup": {
           "answer_token_recall": 0.0,
-          "avg_context_tokens": 784.4062827225131,
+          "avg_context_tokens": 784.9878603945372,
           "evidence_hit_at_1": 0.0,
           "evidence_recall_at_10": 0.0,
           "worst_category_recall": 0.0
@@ -205,10 +266,10 @@
       "slice": "test",
       "split": {
         "category_counts": {
-          "multi_hop": 152,
-          "open_domain": 53,
-          "single_hop": 550,
-          "temporal": 200
+          "multi_hop": 131,
+          "open_domain": 58,
+          "single_hop": 307,
+          "temporal": 163
         },
         "conversations": [
           "conv-30",
@@ -220,8 +281,9 @@
         ],
         "max_retrieved": 10,
         "min_evidence_recall": 5.0,
-        "name": "locomo_heldout_conversations_v3",
-        "question_count": 955
+        "name": "locomo_heldout_private_questions_v4",
+        "question_count": 659,
+        "retriever_isolation": "user+mount+pid namespaces; eval/ and .git hidden"
       }
     }
   },

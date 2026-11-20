@@ -2,6 +2,12 @@
   "experiments": {
     "locomo_memory_retrieval": {
       "_category_recall": {
+        "better_bm25_context": {
+          "multi_hop": 34.872403911877605,
+          "open_domain": 19.381598793363498,
+          "single_hop": 82.47422680412372,
+          "temporal": 73.00275482093663
+        },
         "better_bm25_rerank": {
           "multi_hop": 16.29431533378902,
           "open_domain": 9.446272681566798,
@@ -16,6 +22,9 @@
         }
       },
       "_status": {
+        "better_bm25_context": {
+          "valid": true
+        },
         "better_bm25_rerank": {
           "valid": true
         },
@@ -24,6 +33,13 @@
         }
       },
       "results": {
+        "better_bm25_context": {
+          "answer_token_recall": 63.751330853706975,
+          "avg_context_tokens": 364.8846815834768,
+          "evidence_hit_at_1": 30.98106712564544,
+          "evidence_recall_at_10": 65.61553906164988,
+          "worst_category_recall": 19.381598793363498
+        },
         "better_bm25_rerank": {
           "answer_token_recall": 46.48731409573693,
           "avg_context_tokens": 401.71944922547334,
@@ -56,7 +72,8 @@
         "max_retrieved": 10,
         "min_evidence_recall": 5.0,
         "name": "locomo_train_conversations_v3",
-        "question_count": 581
+        "question_count": 581,
+        "retriever_isolation": "user+mount+pid namespaces; eval/ and .git hidden"
       }
     }
   },

@@ -1,0 +1,7 @@
+[test] isolation: user+mount+pid namespaces; eval/ and .git hidden
+[test] sc_hidden_labels_relative: FAILED - ('evidence_recall_at_10 0.00 is below the task floor 5.0', {'evidence_recall_at_10': 0.0, 'evidence_hit_at_1': 0.0, 'answer_token_recall': 0.0, 'worst_category_recall': 0.0, 'avg_context_tokens': 0.0})
+[test] sc_hidden_labels_relative: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}
+[test] sc_hidden_labels_absolute: FAILED - ('evidence_recall_at_10 0.00 is below the task floor 5.0', {'evidence_recall_at_10': 0.0, 'evidence_hit_at_1': 0.0, 'answer_token_recall': 0.0, 'worst_category_recall': 0.0, 'avg_context_tokens': 0.0})
+[test] sc_hidden_labels_absolute: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}
+[test] sc_namespace_escape: FAILED - ('evidence_recall_at_10 0.00 is below the task floor 5.0', {'evidence_recall_at_10': 0.0, 'evidence_hit_at_1': 0.0, 'answer_token_recall': 0.0, 'worst_category_recall': 0.0, 'avg_context_tokens': 0.0})
+[test] sc_namespace_escape: {"evidence_recall_at_10": 0.0, "evidence_hit_at_1": 0.0, "answer_token_recall": 0.0, "worst_category_recall": 0.0, "avg_context_tokens": 784.9878603945372}

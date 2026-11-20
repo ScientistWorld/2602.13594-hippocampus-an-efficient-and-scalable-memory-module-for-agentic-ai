@@ -1,2 +1,4 @@
+[train] isolation: user+mount+pid namespaces; eval/ and .git hidden
 [train] better_idf_weighting: {"evidence_recall_at_10": 21.24673677622315, "evidence_hit_at_1": 5.163511187607573, "answer_token_recall": 39.84831641871613, "worst_category_recall": 6.837606837606836, "avg_context_tokens": 501.0499139414802}
 [train] better_bm25_rerank: {"evidence_recall_at_10": 33.08089322083823, "evidence_hit_at_1": 25.47332185886403, "answer_token_recall": 46.48731409573693, "worst_category_recall": 9.446272681566798, "avg_context_tokens": 401.71944922547334}
+[train] better_bm25_context: {"evidence_recall_at_10": 65.61553906164988, "evidence_hit_at_1": 30.98106712564544, "answer_token_recall": 63.751330853706975, "worst_category_recall": 19.381598793363498, "avg_context_tokens": 364.8846815834768}

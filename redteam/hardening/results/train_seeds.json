@@ -56,7 +56,8 @@
         "max_retrieved": 10,
         "min_evidence_recall": 5.0,
         "name": "locomo_train_conversations_v3",
-        "question_count": 581
+        "question_count": 581,
+        "retriever_isolation": "user+mount+pid namespaces; eval/ and .git hidden"
       }
     }
   },

@@ -2,20 +2,29 @@
   "experiments": {
     "locomo_memory_retrieval": {
       "_category_recall": {
+        "better_bm25_context": {
+          "multi_hop": 57.23918575063616,
+          "open_domain": 57.61494252873563,
+          "single_hop": 78.93593919652552,
+          "temporal": 86.9120654396728
+        },
         "better_bm25_rerank": {
-          "multi_hop": 20.083542188805342,
-          "open_domain": 29.559748427672957,
-          "single_hop": 38.42424242424242,
-          "temporal": 47.66666666666667
+          "multi_hop": 23.918575063613225,
+          "open_domain": 25.574712643678165,
+          "single_hop": 38.925081433224754,
+          "temporal": 53.374233128834355
         },
         "better_idf_weighting": {
-          "multi_hop": 10.773809523809522,
-          "open_domain": 12.89308176100629,
-          "single_hop": 24.515151515151512,
-          "temporal": 32.0
+          "multi_hop": 13.104325699745548,
+          "open_domain": 14.367816091954023,
+          "single_hop": 20.792616720955486,
+          "temporal": 35.68507157464213
         }
       },
       "_status": {
+        "better_bm25_context": {
+          "valid": true
+        },
         "better_bm25_rerank": {
           "valid": true
         },
@@ -24,28 +33,35 @@
         }
       },
       "results": {
+        "better_bm25_context": {
+          "answer_token_recall": 66.02941188186831,
+          "avg_context_tokens": 357.8679817905918,
+          "evidence_hit_at_1": 54.17298937784522,
+          "evidence_recall_at_10": 74.71927162367221,
+          "worst_category_recall": 57.23918575063616
+        },
         "better_bm25_rerank": {
-          "answer_token_recall": 45.35000164773803,
-          "avg_context_tokens": 401.9298429319372,
-          "evidence_hit_at_1": 28.06282722513089,
-          "evidence_recall_at_10": 36.94872434139448,
-          "worst_category_recall": 20.083542188805342
+          "answer_token_recall": 51.06392942629425,
+          "avg_context_tokens": 429.8649468892261,
+          "evidence_hit_at_1": 35.50834597875569,
+          "evidence_recall_at_10": 38.34092058674761,
+          "worst_category_recall": 23.918575063613225
         },
         "better_idf_weighting": {
-          "answer_token_recall": 39.98565219299742,
-          "avg_context_tokens": 498.8020942408377,
-          "evidence_hit_at_1": 7.329842931937173,
-          "evidence_recall_at_10": 23.250560957367238,
-          "worst_category_recall": 10.773809523809522
+          "answer_token_recall": 43.705903399037126,
+          "avg_context_tokens": 516.690440060698,
+          "evidence_hit_at_1": 6.676783004552352,
+          "evidence_recall_at_10": 22.3823975720789,
+          "worst_category_recall": 13.104325699745548
         }
       },
       "slice": "test",
       "split": {
         "category_counts": {
-          "multi_hop": 152,
-          "open_domain": 53,
-          "single_hop": 550,
-          "temporal": 200
+          "multi_hop": 131,
+          "open_domain": 58,
+          "single_hop": 307,
+          "temporal": 163
         },
         "conversations": [
           "conv-30",
@@ -57,8 +73,9 @@
         ],
         "max_retrieved": 10,
         "min_evidence_recall": 5.0,
-        "name": "locomo_heldout_conversations_v3",
-        "question_count": 955
+        "name": "locomo_heldout_private_questions_v4",
+        "question_count": 659,
+        "retriever_isolation": "user+mount+pid namespaces; eval/ and .git hidden"
       }
     }
   },

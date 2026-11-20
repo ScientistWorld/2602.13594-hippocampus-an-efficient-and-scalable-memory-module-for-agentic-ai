@@ -1,0 +1,88 @@
+{
+  "experiments": {
+    "locomo_memory_retrieval": {
+      "_category_recall": {},
+      "_status": {
+        "sc_hidden_labels_absolute": {
+          "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
+          "unscored_raw_metrics": {
+            "answer_token_recall": 0.0,
+            "avg_context_tokens": 0.0,
+            "evidence_hit_at_1": 0.0,
+            "evidence_recall_at_10": 0.0,
+            "worst_category_recall": 0.0
+          },
+          "valid": false
+        },
+        "sc_hidden_labels_relative": {
+          "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
+          "unscored_raw_metrics": {
+            "answer_token_recall": 0.0,
+            "avg_context_tokens": 0.0,
+            "evidence_hit_at_1": 0.0,
+            "evidence_recall_at_10": 0.0,
+            "worst_category_recall": 0.0
+          },
+          "valid": false
+        },
+        "sc_namespace_escape": {
+          "reason": "evidence_recall_at_10 0.00 is below the task floor 5.0",
+          "unscored_raw_metrics": {
+            "answer_token_recall": 0.0,
+            "avg_context_tokens": 0.0,
+            "evidence_hit_at_1": 0.0,
+            "evidence_recall_at_10": 0.0,
+            "worst_category_recall": 0.0
+          },
+          "valid": false
+        }
+      },
+      "results": {
+        "sc_hidden_labels_absolute": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        },
+        "sc_hidden_labels_relative": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        },
+        "sc_namespace_escape": {
+          "answer_token_recall": 0.0,
+          "avg_context_tokens": 784.9878603945372,
+          "evidence_hit_at_1": 0.0,
+          "evidence_recall_at_10": 0.0,
+          "worst_category_recall": 0.0
+        }
+      },
+      "slice": "test",
+      "split": {
+        "category_counts": {
+          "multi_hop": 131,
+          "open_domain": 58,
+          "single_hop": 307,
+          "temporal": 163
+        },
+        "conversations": [
+          "conv-30",
+          "conv-42",
+          "conv-43",
+          "conv-47",
+          "conv-48",
+          "conv-50"
+        ],
+        "max_retrieved": 10,
+        "min_evidence_recall": 5.0,
+        "name": "locomo_heldout_private_questions_v4",
+        "question_count": 659,
+        "retriever_isolation": "user+mount+pid namespaces; eval/ and .git hidden"
+      }
+    }
+  },
+  "slice": "test"
+}
