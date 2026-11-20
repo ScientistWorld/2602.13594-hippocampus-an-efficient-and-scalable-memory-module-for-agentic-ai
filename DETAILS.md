@@ -32,7 +32,7 @@ HIPPOCAMPUS keeps one memory per conversation, made of two co-indexed Dynamic Wa
 - **Metadata validation:** candidate entries are ranked by how many query keywords co-occur in their span, then by Hamming closeness. Exact signature co-occurrence adds a bonus, checked with DWM `rank(c, beta) - rank(c, alpha) > 0`; `rank(c, n)` orders the query signatures by frequency.
 - **Reconstruction:** the top 10 entries are rebuilt from the Content DWM.
 
-Settings: D = 512 and d = 32 are taken from the paper. The radius, window and query window are not given in the paper; they were chosen on the training conversations only. Seed 13. `method/wavelet_selftest.py` checks `access`/`rank`/`select`. The implementation is from scratch; no public code exists.
+Settings: D = 512 and d = 32 are taken from the paper. The radius, window and query window are not given in the paper; they were chosen on the training conversations only. Seed 13. `method/wavelet_selftest.py` checks `access`/`rank`/`select`. The implementation is from scratch. The missing LLM keyword step and the difference between Section 3.3 and Appendix G hashing prevent claiming a faithful end-to-end reproduction; see `HARDENING.md`.
 
 ---
 
@@ -47,7 +47,7 @@ The input JSON has `conversations` (each with `conversation_id` and `entries`; e
 
     {"question_id": "...", "retrieved_entry_ids": ["<best entry id>", "..."]}
 
-Other fields in the row are ignored. At most 10 IDs are allowed, with no duplicates, and all from the question's own conversation. The evaluator runs the script itself, from a sandboxed view of the workspace, with a fresh input file. The run happens in separate user, mount and PID namespaces where `eval/` and `.git` are empty. It is limited in CPU time (4 CPU-hours per process), not wall-clock time. The script must not need internet.
+Other fields in the row are ignored. At most 10 IDs are allowed, with no duplicates, and all from the question's own conversation. The evaluator runs the script itself, from a sandboxed view of the workspace, with a fresh input file. The run happens in separate user, mount and PID namespaces where `eval/` and `.git` are empty. It is limited in CPU time (4 CPU-hours per process), not wall-clock time. The script must not need internet. If namespace isolation is unavailable, evaluation fails closed and never runs the retriever with readable test files.
 
 ## Commands
 - `bash scripts/evaluate_train.sh` runs every registered retriever on the visible training conversations and writes `scoring/scores_train.json`.
@@ -63,9 +63,14 @@ The evaluator computes every number from the returned entry IDs and its own copy
 - `avg_context_tokens` (lower is better): word tokens of delivered context per question.
 
 ## Failure rules
-A run that crashes, misses or duplicates a question, returns more than 10 entries, or returns unknown or cross-conversation IDs is scored as failed. A run whose `evidence_recall_at_10` is below 5% is also failed (random entries give about 1.7%). A failed run gets 0 on every quality metric and the largest context the budget allows. Its reason is recorded under `_status`.
+An unreadable, absent, oversized or malformed output is failed as a whole. A run that crashes, misses or duplicates a question, returns more than 10 entries, or returns unknown or cross-conversation IDs is scored as failed. A run whose `evidence_recall_at_10` is below 5% is also failed (random entries give about 1.7%). A failed run gets 0 on every quality metric and the largest context the budget allows. Its reason is recorded under `_status`.
 
 Wall-clock latency and self-reported operation counts are not scored, because they cannot be measured independently of hardware and code.
+
+## Comparisons and ranking
+The evaluator owns the corpus, labels, entry budget, recall floor, test size and the BM25/recency comparison procedures. Their results appear under `_fixed_comparisons` as diagnostics and cannot be changed by editing a submitted baseline. Only numbers under each experiment's `results` in `scoring/scores_test.json` are ranked; train numbers use `scoring/scores_train.json`.
+
+For each metric, ranking takes its improvement over the frozen reference in the direction given by `higher_is_better`, divides by that metric's population standard deviation across the attempts being ranked, and multiplies by the absolute value of its coefficient and the experiment weight. These terms are added. A constant metric contributes zero. A failed run has a complete worst-value vector, so it cannot gain through cheap context or missing metrics. Population changes can change tradeoffs; audit ranks are specific to the stated audit cohort.
 
 ---
 
@@ -544,12 +549,74 @@ Wall-clock latency and self-reported operation counts are not scored, because th
 
 </details>
 
+### Iteration 11: gpt-6.1-sol (hardener)
+- **Milestone**: `core_claim_plus` | **Status**: done
+- **Working time**: 10m | **GPU**: 0.0h
+- **Jobs**: 11 total (10 completed, 1 failed)
+
+<details>
+<summary>Progress Log</summary>
+
+### [2026-06-11 20:07] - core_claim
+- Scheduler-confirmed `bash scripts/run.sh` completed successfully on a CPU compute node.
+- HIPPOCAMPUS retrieved answer-bearing memory entries on the portable long-memory QA benchmark while keeping returned context small and using binary-signature search work.
+
+### [2026-06-11 20:13] - core_claim_plus
+- Added and ran a compact-signature HIPPOCAMPUS setting through `scripts/ablation.sh`.
+- Preserved the standard gym score as HIPPOCAMPUS versus recency baseline, with the compact setting written separately to `scoring/ablation_scores.json`.
+
+### [2026-06-11 20:31] - core_claim_plus
+- Replaced lazy static DWM materialization with append-time level insertion and a reusable DWM primitive self-test.
+- Hardened evaluation to reload gold labels from `data/memory_qa.json` and recompute token footprint from returned text.
+- Removed content-token lexical reranking from HIPPOCAMPUS retrieval; candidate span validation now uses Signature-DWM rank checks.
+- Local `scripts/reproduce.sh`, `python validate.py --compare`, and compact-signature ablation all pass after the integrity fixes.
+
+### [2026-06-11 20:35] - core_claim_plus
+- CPU validation job `3ddccb10-194` failed before reproduction because the DWM self-test was run as a file under a clean container environment, leaving the repository root off `sys.path`.
+- Patched `method/wavelet_selftest.py` to add the repository root explicitly before importing `method.hippocampus`; the same entrypoint now passes under a clean local environment.
+
+### [2026-06-11 20:38] - core_claim_plus
+- Scheduler-confirmed CPU validation job `d64d2a90-2ab` completed successfully in the clean container.
+- The job ran the DWM self-test, standard HIPPOCAMPUS reproduction, `python validate.py --compare`, and compact-signature ablation without errors.
+- Confirmed standard reproduced scores: HIPPOCAMPUS 43.06% `hit_at_1`, 62.50% `hit_at_3`, 62.68 retrieved tokens/query, and 7,640.38 bit operations/query.
+- Confirmed compact-signature setting: 50.00% `hit_at_1`, 73.61% `hit_at_3`, 63.76 retrieved tokens/query, and 7,640.38 bit operations/query.
+
+### [2026-06-11 21:00] - core_claim_plus
+- Hardened the main reusable evaluator to enforce top-3 retrieval, known entry IDs, no duplicate retrieved entries, and per-conversation memory boundaries.
+- Added reproduced `gold_entry_recall` and `worst_category_hit_at_1` to `scoring/scores.json`, matching the declared metrics in `scoring/reference.json`.
+- Local `bash scripts/reproduce.sh`, `python method/wavelet_selftest.py`, and `python validate.py --compare` pass after the evaluator update.
+
+### [2026-06-11 21:10] - core_claim_plus
+- Final verification confirmed the workspace validates, train/test scoring is wired correctly, and the method/problem separation is clean.
+- Documented the benchmark limitation: the portable synthetic dataset validates the memory-substrate claim but remains easier than LoCoMo/LongMemEval and is vulnerable to lexical matching.
+- Refreshed the optional compact-signature ablation score with the current evaluator schema and removed the stale wall-clock metric from the tracked ablation artifact.
+
+### [2026-06-11 21:12] - core_claim_plus
+- Final verifier fixed train/test scoring so arbitrary future method names are evaluated instead of filtered to `reference.json` methods.
+- Updated `scripts/run.sh` to pass official artifacts explicitly, avoiding stale ignored output files in split scores.
+- Reran `bash scripts/run.sh`; validation passed with the current core-claim scores.
+
+### [2026-11-09 07:20] - core_claim_plus (iteration 11, hardening)
+- Moved the gym to the paper's LoCoMo benchmark: 4 visible training conversations (581 questions) and 6 held-out test conversations (955 questions), with test labels only in `eval/test/`.
+- The hidden test runs every `scripts/retrievers/*.sh` on label-free held-out inputs and scores only the returned entry IDs. Failure gates: 10-entry budget and a 5% recall floor.
+- HIPPOCAMPUS reference (fidelity fixes: dense Gaussian hyperplanes per Appendix G, keyword co-occurrence ranking, per-conversation DWMs): hidden-test recall@10 24.42 (train 23.80) at 491 context tokens.
+- Comparisons: recency 1.05 (failed); full history about 20.7K tokens; exhaustive BM25 55.97. Seed range 1.84 recall points.
+- Signature-length ablation: 16-bit 10.87, 1-bit fails the floor. A better variant (BM25 re-ranking of signature candidates) reaches 36.95. Details in `HARDENING.md`.
+
+### [2026-11-20] - none (final integrity correction)
+- Job `370ea91b-ced` passed: final reference/baselines, private-question checks, sequential paired variant/shortcut audit and validation.
+- Stored private reference recall@10 is 26.39; better reranking 38.34; weaker 16-bit 10.96; seed range 1.58 points. Required isolation and complete failure scores are verified.
+- Withdrew the earlier `core_claim_plus` assessment. The implementation omits the paper's LLM keyword extraction and uses its Appendix G hashing formulation instead of Section 3.3's construction. Under the strict reproduction-integrity rule, a higher milestone is not justified.
+- BM25 still outranks the reference (69.05 versus 26.39), and embedded public-label priors remain profitable. The full scientific hardening goal is not achieved; `HARDENING.md` records these failures.
+
+</details>
+
 
 ---
 
 # Reproduction Milestones
 
-**Current: core_claim_plus**
+**Current: none**
 
 ## Stop Justification
 - Completed at milestone `core_claim_plus`.
